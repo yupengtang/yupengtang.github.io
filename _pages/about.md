@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I’m currently pursuing a Master’s degree in Computer Science at Georgia Tech, specializing in Machine Learning and Visual Analytics. This path follows my Bachelor’s degree in Artificial Intelligence from Shandong University, where I developed a deep passion for using technology to solve real-world problems. My academic journey has not only strengthened my technical foundation but also sparked a genuine excitement for creating solutions that make an impact.
+I’m currently pursuing a Master’s degree in **Computer Science** at **Georgia Tech**, specializing in both **Machine Learning** and **Visual Analytics**. This path follows my Bachelor’s degree in **Artificial Intelligence** from **Shandong University**, where I developed a deep passion for using technology to solve real-world problems. My academic journey has not only strengthened my technical foundation but also sparked a genuine excitement for creating solutions that make an impact.
 
 Over the years, I’ve honed my skills in languages like Python, C/C++, and SQL, and worked extensively with tools such as AWS, Docker, and Kubernetes. Whether it’s building distributed systems or working on full-stack development, I’ve always been drawn to projects that challenge me to think critically and innovate. I thrive in environments where I can apply data-driven approaches to tackle complex, large-scale challenges.
 
