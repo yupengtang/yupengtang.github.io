@@ -21,7 +21,7 @@ Skills
 * **Database Systems:** MySQL, SQL Server, PostgreSQL, MongoDB, Oracle, NoSQL, Redis
 * **Data Analysis & Visualization:** Tableau, Power BI, D3.js
 
-Project experience
+Selected Projects
 ======
 * **Distributed Key-Value Storage System**  
   * Designed and implemented a distributed key-value storage system in C++, utilizing the Raft consensus algorithm to ensure fault tolerance and high availability, supporting high transaction volumes across a distributed network.
