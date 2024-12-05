@@ -1,6 +1,6 @@
 ---
-title: "Portfolio item number 1"
-excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+title: "Are We Reducing Carbon Emissions?"
+excerpt: "An Assessment on US Emissions Reduction Efforts<br/><img src='/images/500x300.png'>"
 collection: portfolio
 ---
 
