@@ -11,72 +11,125 @@ redirect_from:
 
 Education
 ======
-* Master of Science in Computer Science, Georgia Institute of Technology, Aug. 2023 – present
-* Bachelor of Engineering in Artificial Intelligence, Shandong University, GPA 3.82/4.00, Sep. 2019 – June. 2023
+* **Master of Science in Computer Science**, Georgia Institute of Technology, Aug. 2024 – May 2026
+* **Master of Science in Computational and Applied Mathematics**, Georgia Institute of Technology, Aug. 2023 – May 2026
+* **Bachelor of Engineering in Artificial Intelligence**, Shandong University (山东大学), Sep. 2019 – June 2023
+
+Work Experience
+======
+
+## Machine Learning Engineer
+**GMI Cloud** | Mountain View, California | May 2025 – August 2025
+
+* Optimized Flux-Schnell (12B DiT) multimodal inference on H100 clusters with GPU memory persistence & offload, reaching ~30 images/min/GPU and 1–2s latency (10–15× faster than baseline).
+* Scaled a distributed multi-GPU inference pipeline (NCCL all-reduce, ONNX → TensorRT) achieving linear throughput across nodes.
+* Built production-ready infrastructure (queuing, heartbeat monitoring, structured logging, GCS integration, content moderation) to ensure long-running stability & compliance.
+* Implemented a video super-resolution pipeline (Real-ESRGAN + FastAPI) with PSNR/SSIM evaluation, reducing 5s@24fps clip runtime by ~65% (284s → 100s) when integrated with Wan2.2 text-to-video.
+* Developed an AI-powered e-commerce try-on service (ComfyUI, Flux-Kontext + Segformer), delivering <5s per image outfit changing, background removal, and style transfer via secure RESTful APIs.
+
+## Independent AI Systems Engineer
+**Stealth Startup** | Remote | April 2024 – August 2024
+
+* Architected an AI-powered recommendation system that analyzes millions of Amazon product reviews to help users quickly discover the most relevant and high-quality items through semantic search and LLM-based understanding.
+* Developed a PySpark ETL pipeline to clean, tokenize, and embed reviews (768-dim via text-embedding-005), storing vectors and metadata efficiently in BigQuery for hybrid semantic retrieval.
+* Designed a hybrid retrieval engine (ScaNN + metadata filters) that improved nDCG@3 by +21% (0.85 vs 0.70) and achieved MRR = 0.88, using approximate nearest neighbors (TreeAH + AVQ) with reranking via FastAPI microservice.
+* Integrated Google Gemini with LangChain for RAG-based sentiment analysis and feature summarization, achieving 88% accuracy and 4.3 / 5 relevance for explainable recommendations.
+* Provisioned scalable infrastructure on GCP (Cloud Run, BigQuery, Cloud Storage) using Terraform, sustaining ~6 s query latency and 92% product-category coverage across 500 test queries.
+
+Research Experience
+======
+
+## Graduate Research Assistant
+**Georgia Institute of Technology** | Atlanta, GA | Sep. 2025 – Present
+
+Advised by Prof. Mingfeng Lin.
+
+* Designing scalable multi-agent LLM experimentation frameworks to study causal effects in identity disclosure and stance change, using controlled R1–R2 role structures and cross-model interactions across 12 frontier models and 1.9K sessions.
+* Building a Chromium/Electron orchestration layer that unifies browser chatbot sessions and direct API inference, using Playwright automation for parallel prompting, DOM-based response capture, and coordinator-LLM consistency scoring at scale.
+* Current work targets an ACL 2026 submission on causal inference in multi-agent LLM interactions and identity-conditioned persuasion dynamics.
+
+## Machine Learning Researcher
+**Sustainable Urban Systems Lab, Georgia Tech** | Atlanta, GA | Jan. 2025 – Present
+
+* Designed a TFT-inspired deep learning architecture combining multi-head attention and multi-scale LSTM for urban microclimate forecasting, processing 1.5M+ 10-min observations (10 years).
+* Built a physics-informed feature pipeline with solar-angle and cyclic-time encodings, enabling robust 24-hour temporal modeling and strong generalization across seasonal domains.
+* Integrated Regression Kriging with Random Forest and nine geospatial covariates (LULC, elevation, shadow ratio) to generate 100 K+ high-resolution grid-level predictions across the Georgia Tech campus (~3.5 km²).
+* Preparing a research paper for submission to a top-tier SCI Q1 journal (Impact Factor ≈ 7.1).
+
+## Research Assistant
+**Georgia Institute of Technology** | Atlanta, GA | May 2025 – July 2025
+
+Advised by Prof. Patrick Kastner.
+
+* Optimization of microclimate surrogate models with cross-station generalization and Regression Kriging refinement.
+
+## Undergraduate Researcher
+**Shandong University** | Shandong, China | Feb. 2023 – June 2023
+
+* Developed an enhanced Bidirectional Rapidly-Exploring Random Tree (Bi-RRT) algorithm for autonomous vehicle path planning in complex parking lot environments.
+* Implemented adaptive probabilistic sampling and local trajectory smoothing modules, improving exploration efficiency and reducing curvature in dense obstacle fields.
+* Integrated real-time collision detection, dynamic obstacle avoidance, and kinematic feasibility validation for continuous, safe navigation under motion constraints.
+* Achieved 2× faster planning speed, ~35% smoother paths, and 15% shorter average trajectory length compared to baseline RRT and RRT*, validated across 100+ randomized test scenarios.
+
+## Research Intern
+**Shandong University** | Shandong, China | Sep. 2021 – April 2022
+
+* Co-first & corresponding author of a peer-reviewed international conference paper (SPIE 2022) on automatic image colorization.
+* Designed a novel lightweight GAN pipeline (U-Net generator + ResNet18 discriminator) and introduced a YUV-channel separation technique, reducing training cost while boosting structural fidelity and perceptual sharpness.
+* Stabilized adversarial training with optimized objectives (re-weighted "realness" reliability term and tuned loss balance), improving color fidelity and transfer robustness under diverse textures and scenes.
+* Scaled experiments on 4.3K+ natural & animated images in PyTorch with extensive visual comparisons, consistently outperforming baselines in visual quality and detail preservation.
+
+Kaggle Competition
+======
+
+## Kaggle Competitor – American Express Default Prediction
+**Shandong University** | Shandong, China | May 2022 – August 2022
+
+* **Ranked 20th out of 4,874 teams (Top 0.4%)** in the American Express – Default Prediction global Kaggle competition.
+* Developed a weighted ensemble of LightGBM (DART) and GPU-accelerated XGBoost models on 16 GB tabular time-series data covering transactions, balances, delinquencies, and repayments.
+* Led model tuning and ensemble strategy, optimizing hyperparameters via grid search and stratified 5-fold cross-validation.
+* Designed diverse feature sets—including lag features, rolling statistics, and trend indicators—and trained multiple seeds to boost stability, delivering a compact, high-performing solution that outperformed all baselines.
+
+Teaching Experience
+======
+
+## Graduate Teaching Assistant
+**Georgia Institute of Technology** | Atlanta, GA | Sep. 2025 – Present
+
+* **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Present)
+* **MGT 6655** – Business Fundamentals for Analytics (Jan. 2026 – Present, with Dr. Mingfeng Lin)
+  * 16 hours per week total: 8 hours supporting MGT 6655, 8 hours supporting Academic Integrity TA team
+
+## Undergraduate Teaching Assistant
+**Shandong University** | Shandong, China | Sep. 2020 – July 2021
+
+* Supported a 400+ student Linear Algebra course, driving grading, records management, and personalized learning support; recognized as Outstanding Teaching Assistant for exceptional dedication to student success.
+* Assessed 600+ handwritten assignments with clear, actionable feedback, directly boosting student understanding and measurable performance outcomes.
+* Tracked weekly attendance and maintained meticulous, audit-ready academic records, enabling accurate progress reviews and timely academic interventions.
+* Answered 30+ student questions weekly via online forums, delivering detailed explanations and real-world examples to clarify key concepts like eigenvalues, matrix operations, and vector spaces.
+
+Leadership & Service
+======
+
+## Publicity Manager – Starlight Art Troupe
+**Shandong University** | Shandong, China | Sep. 2019 – August 2021
+
+* Directed the design and production of 30+ posters, flyers, and digital media assets to promote events, boosting audience turnout by 25% and strengthening brand recognition.
+* Managed social media operations and curated engaging content, streamlining workflows and driving a 40% increase in follower engagement over two semesters.
+* Coordinated 170+ photo/video shoots and post-production using Photoshop, Canva, Adobe Illustrator, Lightworks, and CapCut, delivering polished outputs on tight timelines.
+* Led event planning and promotion with cross-functional teams, fostering community participation and earning the Outstanding Individual Award for Student Organizations at Shandong University.
+
+Publications
+======
+* **Erxi Cheng, Ruiqian Ma, Ruichen Qi, Yupeng Tang**, "Image colorization using generative adversarial network," *Proc. SPIE 12294*, 7th International Symposium on Advances in Electrical, Electronics, and Computer Engineering, 122943Z (19 October 2022). **Co-first author and corresponding author.**
 
 Skills
 ======
 * **Programming Languages:** Python, C/C++, Java, JavaScript, HTML/CSS, SQL, Bash/Shell, MATLAB, R, Julia
-* **Tools & Technologies:** Linux, Docker, Kubernetes, React, Node.js, Express, REST APIs, AWS, Azure, Apache Airflow, Git, Visual Studio
-* **Database Systems:** MySQL, SQL Server, PostgreSQL, MongoDB, Oracle, NoSQL, Redis
-* **Data Analysis & Visualization:** Tableau, Power BI, D3.js
-
-Selected Projects
-======
-* **Distributed Key-Value Storage System**  
-  * Designed and implemented a distributed key-value storage system in C++, utilizing the Raft consensus algorithm to ensure fault tolerance and high availability, supporting high transaction volumes across a distributed network.
-  * Developed a shard controller to manage shard allocation across multiple servers, ensuring load balancing and seamless data migration, enhanced by efficient RPC communication using ZeroMQ and cppzmq.
-  * Built a load balancing algorithm with heap sort to dynamically adjust shard allocation, significantly improving system stability and data access efficiency.
-  * Implemented a comprehensive testing framework for validating system reliability and performance under various failure scenarios, demonstrating robustness in managing distributed data storage.
-
-* **Chicago Urban Planning Dashboard**  
-  * Developed a full-stack interactive dashboard using Flask, Pandas, XGBoost, and D3.js to support urban planning in Chicago, integrating comprehensive data from the City’s open data portal for insightful analysis.
-  * Implemented an XGBoost model for predicting future greening needs, incorporating SHAP values to provide urban planners with transparent and explainable AI insights.
-  * Enhanced backend architecture, achieving a 40% increase in data processing efficiency and a 35% improvement in response times by optimizing Flask and D3.js components.
-  * Created interactive features that allow users to explore and compare community areas by life quality metrics, aiding decision-making for urban planning and residential choices.
-
-* **Enterprise Metrics Platform**  
-  * Developed a full-stack platform using MongoDB, Express.js, React.js, and Node.js to provide real-time business metric visualization.
-  * Created data visualizations such as revenue analysis and expense breakdowns, using Recharts to enhance decision-making.
-  * Implemented regression algorithms for future revenue prediction, providing actionable business forecasts based on data trends.
-  * Configured a high-performance development environment with Vite, ensuring rapid development cycles and efficient builds.
-
-* **Insurance Management System**  
-  * Developed a backend insurance management system using Spring Boot and MySQL, streamlining client data and policy management processes.
-  * Built robust RESTful APIs, improving system efficiency and reducing client response times by 30%.
-  * Increased transaction processing speed by 25% through optimization of backend routines and data handling strategies.
-  * Conducted extensive API testing with Postman, achieving a 95% success rate in stress tests, significantly improving system reliability.
- 
-* **US Immigration Insights Project**  
-  * Engineered a data pipeline using Apache Spark, Apache Airflow, Amazon Redshift, and Amazon S3 to process and analyze 1994 US immigration data.
-  * Optimized Redshift database performance through schema design and columnar storage, facilitating rapid querying and scalability for analytical insights.
-  * Implemented secure data orchestration with Apache Airflow DAGs, ensuring efficient scheduling and monitoring of data flows across AWS services.
-  * Developed and executed SQL queries to derive actionable insights, enabling visualization of demographic trends and immigration patterns.
-
-* **Customer Credit Default Forecasting**  
-  * Led a predictive analytics project using American Express’s extensive credit card usage dataset to forecast customer credit defaults.
-  * Trained LightGBM, XGBoost, and CatBoost models, fine-tuning and combining them through linear weighted averages based on correlation insights.
-  * Enhanced prediction accuracy by extracting features from time series data, improving model performance.
-  * Achieved a top 0.4% ranking and earned a Silver Medal in the Kaggle American Express Default Prediction competition.
-
-Research Experience
-======
-* **Image Colorization using Generative Adversarial Network** (Sep. 2021 – April. 2022)  
-  *	Proposed an automatic colorization model for grayscale images based on a generative adversarial network (GAN) composed of a U-Net structure generator and a discriminator with multi-layer CNN.
-  *	Constructed a deep generator network to extract the content features of the image, optimized the loss function and weights of actual reliability value in the discriminator and trained the model with grayscale images and colored images to obtain the automatic coloring model.
-  *	Validated the modeling results through extensive grayscale images coloring experiment to demonstrate this model’s excellent learning ability on color transfer, coloring effects, efficiency, and accuracy.
-  *	**Publication**: Erxi Cheng, Ruiqian Ma, Ruichen Qi, Yupeng Tang, Image colorization using generative adversarial network, Proc. SPIE 12294, 7th International Symposium on Advances in Electrical, Electronics, and Computer Engineering, 122943Z (19 October 2022). Co-first author and corresponding author.
-
-Teaching
-======
-* **Teaching Assistant, Linear Algebra Course, Shandong University** (Sep. 2020 – Jan. 2021)  
-  * Assisted the professor by grading assignments and providing constructive feedback to approximately 200 students each semester.
-  * Managed student attendance and maintained detailed records, supporting academic requirements.
-  * Calculated and recorded students’ scores based on assignments and participation, contributing to course grade evaluations.
-  * Actively participated in course discussion groups, responding to students' queries and clarifying complex concepts.
-
-Leadership
-======
-* **Head of Publicity Department, Starlight Art Troupe of Shandong University** (Oct. 2019 – June. 2021)  
-  * Led a team to design posters, write manuscripts, and handle video production and photography for significant artistic events.
-  * Directed promotion efforts to engage students and enrich campus life through creative and impactful publicity strategies.
+* **Machine Learning & AI:** PyTorch, TensorFlow, scikit-learn, XGBoost, LightGBM, Transformers, LangChain, RAG
+* **Deep Learning:** CNNs, RNNs, LSTMs, Transformers, GANs, Diffusion Models, Attention Mechanisms
+* **Cloud & Infrastructure:** AWS, Azure, GCP, Docker, Kubernetes, Terraform
+* **Big Data & ETL:** Apache Spark, Apache Airflow, PySpark, Databricks
+* **Database Systems:** MySQL, PostgreSQL, MongoDB, Redis, BigQuery, Amazon Redshift
+* **Tools & Frameworks:** Git, Linux, FastAPI, Flask, React, Node.js, Express, REST APIs
+* **Data Analysis & Visualization:** Pandas, NumPy, Matplotlib, Tableau, Power BI, D3.js

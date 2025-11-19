@@ -11,7 +11,7 @@ locale                   : "en-US"
 title                    : "Yupeng Tang"
 title_separator          : "-"
 name                     : &name "Yupeng Tang"
-description              : &description "MSCS Student at Georgia Tech"
+description              : &description "MLE Intern @ GMI Cloud | GRA & GTA @ Georgia Tech | M.S. CS @ Georgia Tech | B.E. AI @ SDU"
 url                      : https://yupengtang.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "yupengtang/yupengtang.github.io"
@@ -21,11 +21,11 @@ repository               : "yupengtang/yupengtang.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "Profile.png"
+  avatar           : "https://github.com/yupengtang.png"
   name             : "Yupeng Tang"
   pronouns         : "He/Him/His"  
-  bio              : "MSCS Student at Georgia Tech"
-  location         : "Atlanta, GA"
+  bio              : "MLE Intern @ GMI Cloud | GRA & GTA @ Georgia Tech"
+  location         : "Mountain View, CA / Atlanta, GA"
   employer         : # "Red Brick University"
   uri              : # URL
   email            : "yupengtang@gatech.edu" 

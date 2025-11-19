@@ -8,8 +8,10 @@ redirect_from:
   - /about.html
 ---
 
-I’m currently pursuing a Master’s degree in **Computer Science** at **Georgia Tech**, specializing in both **Machine Learning** and **Visual Analytics**. This path follows my Bachelor’s degree in **Artificial Intelligence** from **Shandong University**, where I developed a deep passion for using technology to solve real-world problems. My academic journey has not only strengthened my technical foundation but also sparked a genuine excitement for creating solutions that make an impact.
+I am a Master's student in Computer Science at Georgia Tech focusing on multimodal intelligence. I study how AI learns from language, vision, and real physical signals, and how this can translate into systems that hold up in real deployment settings.
 
-Over the years, I’ve honed my skills in languages like Python, C/C++, and SQL, and worked extensively with tools such as AWS, Docker, and Kubernetes. Whether it’s building distributed systems or working on full-stack development, I’ve always been drawn to projects that challenge me to think critically and innovate. I thrive in environments where I can apply data-driven approaches to tackle complex, large-scale challenges.
+My work evolved into this direction through experience: optimizing large multimodal generation models on GPUs, designing retrieval and evaluation pipelines, studying identity and reasoning in language models, and modeling high resolution environmental signals. These efforts are not separate tracks. They are different viewpoints on one core aim: understanding how to build AI systems that generalize across modalities.
 
-I’m eager to continue this journey and contribute to teams that are shaping the future of technology. I’m actively seeking roles in Software Development Engineering, Data Science, Data Engineering, or Machine Learning Engineering, where I can channel my passion and expertise into creating efficient, scalable, and impactful solutions. I truly believe that technology, when applied thoughtfully, can drive change—and I’m excited to be part of that movement.
+I value research that is rigorous, measurable, and usable in practice. I like taking ideas beyond theory and making them survive real constraints and real data.
+
+I am currently exploring opportunities in multimodal applied research, machine learning engineering, and roles where strong engineering meets advanced modeling. I am also open to software engineering and data science positions where this foundation can create impact.
