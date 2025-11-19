@@ -2,7 +2,7 @@
 title: "ME 4710 – Foundations in Machine Learning for Engineers"
 collection: teaching
 type: "Teaching Assistant"
-permalink: /teaching/2025-fall-teaching-2
+permalink: /teaching/2025-fall-teaching
 venue: "Georgia Institute of Technology, Mechanical Engineering"
 date: 2025-09-01
 location: "Atlanta, GA"

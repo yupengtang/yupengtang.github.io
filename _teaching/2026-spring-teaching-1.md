@@ -2,7 +2,7 @@
 title: "MGT 6655 – Business Data Preparation and Visualization"
 collection: teaching
 type: "Teaching Assistant"
-permalink: /teaching/2026-spring-teaching-3
+permalink: /teaching/2026-spring-teaching-1
 venue: "Georgia Institute of Technology, Scheller College of Business"
 date: 2026-01-01
 location: "Atlanta, GA"

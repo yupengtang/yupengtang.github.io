@@ -2,7 +2,7 @@
 title: "Academic Integrity TA Team"
 collection: teaching
 type: "Teaching Assistant"
-permalink: /teaching/2026-spring-teaching-4
+permalink: /teaching/2026-spring-teaching-2
 venue: "Georgia Institute of Technology"
 date: 2026-01-01
 location: "Atlanta, GA"
