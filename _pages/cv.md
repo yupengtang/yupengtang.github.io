@@ -98,7 +98,7 @@ Teaching Experience
 **Georgia Institute of Technology** | Atlanta, GA | Sep. 2025 – Present
 
 * **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Dr. Jarred Fountain)
-* **MGT 6655** – Business Fundamentals for Analytics (Jan. 2026 – May 2026, with Prof. Mingfeng Lin)
+* **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin)
 * **Academic Integrity TA Team** (Jan. 2026 – May 2026)
 
 ## Undergraduate Teaching Assistant

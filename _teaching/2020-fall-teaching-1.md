@@ -2,7 +2,7 @@
 title: "Linear Algebra"
 collection: teaching
 type: "Undergraduate Course - Teaching Assistant"
-permalink: /teaching/2020-fall-teaching-2
+permalink: /teaching/2020-fall-teaching-1
 venue: "Shandong University, School of Mechanical, Electrical and Information Engineering"
 date: 2020-09-01
 location: "Shandong, China"
