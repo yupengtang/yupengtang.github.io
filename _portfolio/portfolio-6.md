@@ -1,6 +1,6 @@
 ---
 title: "Multi-Agent LLM Experimentation Framework"
-excerpt: "Scalable framework studying causal effects across 12 frontier models and 1.9K sessions<br/><img src='/images/portfolio-1.jpg'>"
+excerpt: "Scalable framework studying causal effects across 12 frontier models and 1.9K sessions"
 collection: portfolio
 ---
 

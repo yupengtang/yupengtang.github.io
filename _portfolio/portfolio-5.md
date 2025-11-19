@@ -1,6 +1,6 @@
 ---
 title: "Urban Microclimate Forecasting with Deep Learning"
-excerpt: "TFT-inspired architecture processing 1.5M+ observations for high-resolution campus predictions<br/><img src='/images/portfolio-1.jpg'>"
+excerpt: "TFT-inspired architecture processing 1.5M+ observations for high-resolution campus predictions"
 collection: portfolio
 ---
 

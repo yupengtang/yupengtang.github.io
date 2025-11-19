@@ -1,6 +1,6 @@
 ---
 title: "Large-Scale Multimodal Inference Optimization"
-excerpt: "Optimized Flux-Schnell (12B DiT) for 10-15× faster inference on H100 GPU clusters<br/><img src='/images/portfolio-1.jpg'>"
+excerpt: "Optimized Flux-Schnell (12B DiT) for 10-15× faster inference on H100 GPU clusters"
 collection: portfolio
 ---
 

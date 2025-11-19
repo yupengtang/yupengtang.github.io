@@ -1,6 +1,6 @@
 ---
 title: "Kaggle Competition: American Express Default Prediction"
-excerpt: "Top 0.4% (20th/4,874 teams) - Silver Medal in credit default forecasting<br/><img src='/images/portfolio-1.jpg'>"
+excerpt: "Top 0.4% (20th/4,874 teams) - Silver Medal in credit default forecasting"
 collection: portfolio
 ---
 

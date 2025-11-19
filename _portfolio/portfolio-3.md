@@ -1,6 +1,6 @@
 ---
 title: "AI-Powered Product Recommendation System"
-excerpt: "Semantic search and LLM-based recommendation system analyzing millions of Amazon reviews<br/><img src='/images/portfolio-1.jpg'>"
+excerpt: "Semantic search and LLM-based recommendation system analyzing millions of Amazon reviews"
 collection: portfolio
 ---
 
