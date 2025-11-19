@@ -126,8 +126,7 @@ Publications
 Skills
 ======
 * **Programming Languages:** Python, C/C++, Java, JavaScript, HTML/CSS, SQL, Bash/Shell, MATLAB, R, Julia
-* **Machine Learning & AI:** PyTorch, TensorFlow, scikit-learn, XGBoost, LightGBM, Transformers, LangChain, RAG
-* **Deep Learning:** CNNs, RNNs, LSTMs, Transformers, GANs, Diffusion Models, Attention Mechanisms
+* **Machine Learning & AI:** PyTorch, TensorFlow, scikit-learn, HuggingFace, LangChain
 * **Cloud & Infrastructure:** AWS, Azure, GCP, Docker, Kubernetes, Terraform
 * **Big Data & ETL:** Apache Spark, Apache Airflow, PySpark, Databricks
 * **Database Systems:** MySQL, PostgreSQL, MongoDB, Redis, BigQuery, Amazon Redshift
