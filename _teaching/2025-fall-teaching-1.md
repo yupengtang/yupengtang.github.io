@@ -8,7 +8,7 @@ date: 2025-09-01
 location: "Atlanta, GA"
 ---
 
-Graduate Teaching Assistant for ME 4710 – Foundations in Machine Learning for Engineers at Georgia Institute of Technology (Fall 2025 – Present).
+Graduate Teaching Assistant for ME 4710 – Foundations in Machine Learning for Engineers at Georgia Institute of Technology (Fall 2025), working with Dr. Jarred Fountain.
 
 Responsibilities
 ======

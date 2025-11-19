@@ -8,7 +8,7 @@ date: 2026-01-01
 location: "Atlanta, GA"
 ---
 
-Graduate Teaching Assistant for MGT 6655 – Business Fundamentals for Analytics, working with Dr. Mingfeng Lin, plus Academic Integrity TA team member.
+Graduate Teaching Assistant for MGT 6655 – Business Fundamentals for Analytics, working with Prof. Mingfeng Lin, plus Academic Integrity TA team member.
 
 Position Details
 ======
@@ -24,7 +24,7 @@ Responsibilities
 * Assisting students with analytics concepts and business applications
 * Grading assignments and providing detailed feedback
 * Holding office hours for student questions
-* Supporting Dr. Mingfeng Lin with course materials
+* Supporting Prof. Mingfeng Lin with course materials
 
 ### Academic Integrity Team
 * Member of the new Academic Integrity TA team
@@ -38,5 +38,5 @@ MGT 6655 provides graduate students with essential business fundamentals needed 
 
 Advisor
 ======
-Dr. Mingfeng Lin, Georgia Institute of Technology
+Prof. Mingfeng Lin, Georgia Institute of Technology
 
