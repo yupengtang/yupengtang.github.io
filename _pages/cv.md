@@ -12,7 +12,7 @@ redirect_from:
 Education
 ======
 * **Master of Science in Computer Science**, Georgia Institute of Technology, Aug. 2024 – May 2026
-* **Master of Science in Computational and Applied Mathematics**, Georgia Institute of Technology, Aug. 2023 – May 2026
+* **Master of Science in Computational Science and Engineering (Applied Mathematics)**, Georgia Institute of Technology, Aug. 2023 – May 2026
 * **Bachelor of Engineering in Artificial Intelligence**, Shandong University, Sep. 2019 – June 2023
 
 Research Experience
