@@ -97,9 +97,9 @@ Teaching Experience
 ## Teaching Assistant
 **Georgia Institute of Technology** | Atlanta, GA | Sep. 2025 – Present
 
-* **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Dr. Jarred Fountain)
-* **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin)
-* **Academic Integrity TA Team** (Jan. 2026 – May 2026)
+* **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Dr. Jarred Fountain): Designed grading rubrics and assessed weekly assignments on Python implementations, statistical modeling, and ML algorithm selection
+* **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin): Responsibilities include grading visualization exercises and dashboard projects; supporting students on Ed Discussions with Tableau, PowerBI, and data preparation techniques
+* **Academic Integrity TA Team** (Jan. 2026 – May 2026): Institute-wide initiative; responsibilities include supporting academic integrity policies and student education across all colleges and departments
 
 ## Undergraduate Teaching Assistant
 **Shandong University** | Shandong, China | Sep. 2020 – July 2021
@@ -108,16 +108,6 @@ Teaching Experience
 * Assessed 600+ handwritten assignments with clear, actionable feedback, directly boosting student understanding and measurable performance outcomes.
 * Tracked weekly attendance and maintained meticulous, audit-ready academic records, enabling accurate progress reviews and timely academic interventions.
 * Answered 30+ student questions weekly via online forums, delivering detailed explanations and real-world examples to clarify key concepts like eigenvalues, matrix operations, and vector spaces.
-
-Skills
-======
-* **Programming Languages:** Python, C/C++, Java, JavaScript, HTML/CSS, SQL, Bash/Shell, MATLAB, R, Julia
-* **Machine Learning & AI:** PyTorch, TensorFlow, scikit-learn, HuggingFace, LangChain
-* **Cloud & Infrastructure:** AWS, Azure, GCP, Docker, Kubernetes, Terraform
-* **Big Data & ETL:** Apache Spark, Apache Airflow, PySpark, Databricks
-* **Database Systems:** MySQL, PostgreSQL, MongoDB, Redis, BigQuery, Amazon Redshift
-* **Tools & Frameworks:** Git, Linux, FastAPI, Flask, React, Node.js, Express, REST APIs
-* **Data Analysis & Visualization:** Pandas, NumPy, Matplotlib, Tableau, Power BI, D3.js
 
 Leadership & Service
 ======
@@ -129,3 +119,13 @@ Leadership & Service
 * Managed social media operations and curated engaging content, streamlining workflows and driving a 40% increase in follower engagement over two semesters.
 * Coordinated 170+ photo/video shoots and post-production using Photoshop, Canva, Adobe Illustrator, Lightworks, and CapCut, delivering polished outputs on tight timelines.
 * Led event planning and promotion with cross-functional teams, fostering community participation and earning the Outstanding Individual Award for Student Organizations at Shandong University.
+
+Skills
+======
+* **Programming Languages:** Python, C/C++, Java, JavaScript, HTML/CSS, SQL, Bash/Shell, MATLAB, R, Julia
+* **Machine Learning & AI:** PyTorch, TensorFlow, scikit-learn, HuggingFace, LangChain
+* **Cloud & Infrastructure:** AWS, Azure, GCP, Docker, Kubernetes, Terraform
+* **Big Data & ETL:** Apache Spark, Apache Airflow, PySpark, Databricks
+* **Database Systems:** MySQL, PostgreSQL, MongoDB, Redis, BigQuery, Amazon Redshift
+* **Tools & Frameworks:** Git, Linux, FastAPI, Flask, React, Node.js, Express, REST APIs
+* **Data Analysis & Visualization:** Pandas, NumPy, Matplotlib, Tableau, Power BI, D3.js

@@ -13,7 +13,7 @@ Teaching Assistant for ME 4710 – Foundations in Machine Learning for Engineers
 Responsibilities
 ======
 * Designed and developed comprehensive grading rubrics for programming assignments covering data analysis workflows, statistical measures, and machine learning algorithm implementations
-* Assessed and graded 100+ student assignments weekly, providing detailed technical feedback on Python implementations, experimental design, feature engineering, and model performance evaluation
+* Assessed and graded student assignments weekly, providing detailed technical feedback on Python implementations, experimental design, feature engineering, and model performance evaluation
 * Responded to student inquiries via email, clarifying complex concepts in statistical modeling, uncertainty quantification, algorithm selection, and dataset amenability assessment for ML applications
 * Collaborated with the instructor to refine assignment specifications and rubric criteria, ensuring alignment with course objectives on evaluating when, why, and how to apply machine learning in engineering problems
 

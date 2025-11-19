@@ -8,16 +8,16 @@ date: 2026-01-01
 location: "Atlanta, GA"
 ---
 
-Member of the Academic Integrity TA team, a new campus-wide institutional initiative at Georgia Institute of Technology.
+Member of the Academic Integrity TA team, a new campus-wide institutional initiative at Georgia Institute of Technology. (Starting January 2026)
 
 Responsibilities
 ======
-* Supporting institute-wide academic integrity initiatives across all colleges and departments
-* Assisting with campus-wide academic integrity policy implementation and student education
-* Collaborating with faculty, staff, and administration across Georgia Tech on integrity-related matters
-* Helping develop institute-wide resources and guidance for students on academic honesty
-* Providing support for academic integrity cases and procedures across the campus
-* Serving as a liaison between students, faculty, and the Office of Student Integrity
+* Support institute-wide academic integrity initiatives across all colleges and departments
+* Assist with campus-wide academic integrity policy implementation and student education
+* Collaborate with faculty, staff, and administration across Georgia Tech on integrity-related matters
+* Help develop institute-wide resources and guidance for students on academic honesty
+* Provide support for academic integrity cases and procedures across the campus
+* Serve as a liaison between students, faculty, and the Office of Student Integrity
 
 Program Information
 ======
