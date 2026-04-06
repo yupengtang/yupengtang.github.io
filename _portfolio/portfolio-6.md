@@ -1,34 +1,33 @@
 ---
-title: "Multi-Agent LLM Experimentation Framework"
-excerpt: "Scalable framework studying causal effects across 12 frontier models and 1.9K sessions"
+title: "Causal Probe & LLM Evaluation Framework"
+excerpt: "Cross-platform Electron app and two-pass causal probe for LLM decision revision across 5 LLMs on a 1,989-task benchmark"
 collection: portfolio
 ---
 
 ## Overview
-Designing scalable multi-agent LLM experimentation frameworks to study causal effects in identity disclosure and stance change, targeting ACL 2026 submission on identity-conditioned persuasion dynamics.
+Introduced a two-pass causal probe for LLM decision revision, distinguishing evidence-based belief updating from authority-driven compliance. This effort resulted in a first-author ICML 2026 submission based on 31K+ trials on a 1,989-task benchmark.
 
 ## Key Technologies
-* **LLMs:** 12 frontier models (GPT-4, Claude, Gemini, etc.)
-* **Automation:** Playwright, Chromium/Electron orchestration
-* **Experimentation:** Controlled R1-R2 role structures, Coordinator-LLM consistency scoring
+* **Frontend:** React, TypeScript, Electron, BrowserView automation
+* **Backend:** FastAPI, SQLite, PyInstaller, electron-builder
+* **LLMs:** 9+ LLM chat services, 100+ API models via OpenRouter
 
 ## Research Contributions
-* Designed experiments across 12 frontier models with 1.9K sessions
-* Built Chromium/Electron orchestration layer unifying browser chatbot sessions and direct API inference
-* Developed controlled R1-R2 role structures for studying identity disclosure effects
-* Implemented coordinator-LLM consistency scoring at scale
+* Introduced a two-pass causal probe for LLM decision revision across 5 LLMs (31K+ trials).
+* Distinguished evidence-based belief updating from authority-driven compliance.
+* Built a cross-platform Electron desktop app for side-by-side evaluation of chat services and APIs.
+* Developed and productionized an LLM-as-a-Judge evaluation pipeline with structured JSON outputs.
 
 ## Technical Implementation
-* **Browser Automation:** Playwright automation for parallel prompting
-* **Response Capture:** DOM-based extraction from web interfaces
-* **API Integration:** Unified interface for direct model API calls
-* **Consistency Scoring:** LLM-based evaluation of multi-agent interactions
+* **Browser Automation:** Implemented a lightweight BrowserView automation engine (DOM injection, async polling, stability checks) cutting memory usage ~40% vs Playwright/Selenium.
+* **Backend architecture:** Backed by a FastAPI service (15+ endpoints) and SQLite persistence.
+* **Packaging:** One-command cross-platform packaging using PyInstaller and electron-builder.
+* **Model Integration:** Integrated side-by-side evaluation across OpenRouter and native web interfaces.
 
 ## Research Goals
-* Study causal effects in multi-agent LLM interactions
-* Analyze identity-conditioned persuasion dynamics
-* Understand stance change in controlled conversational settings
-* Target publication: ACL 2026
+* Understand decision revision and belief updating vs authority-driven compliance.
+* Accelerate and scale side-by-side model evaluations efficiently.
+* Target publication: First-author ICML 2026 submission.
 
 ## Advisor
 Prof. Mingfeng Lin, Georgia Institute of Technology

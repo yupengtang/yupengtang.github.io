@@ -15,6 +15,17 @@ Education
 * **Master of Science in Computational Science and Engineering (Applied Mathematics)**, Georgia Institute of Technology, Aug. 2023 – May 2026
 * **Bachelor of Engineering in Artificial Intelligence**, Shandong University, Sep. 2019 – June 2023
 
+Publications & Manuscripts
+======
+
+* **Y. Tang**, M. Lin. *Beyond Reversal Rates: A Mechanistic Audit of LLM Decision Revision Under Reputation Cues*. **ICML 2026** (International Conference on Machine Learning), under review.
+* **Y. Tang**. *Incremental Event Boundary Signals in Large Language Models: Correlations, Event-Level Localization, and Robustness to Prompts and Controls*. **CogSci 2026** (Annual Conference of the Cognitive Science Society), under review.
+* **Y. Tang**, M. Lin. *Retrieved but Ignored: Diagnosing and Fixing Evidence Neglect in Multimodal Retrieval-Augmented Generation*. **ACM MM 2026** (ACM Multimedia), under review.
+* **Y. Tang**. *The Language of Surprise: LLM Compression as a Unifying Primitive for Knowledge Discovery*. **KDD 2026** (ACM SIGKDD Conference on Knowledge Discovery and Data Mining), Blue Sky Ideas Track, under review.
+* **Y. Tang**. *UPD: Uncertainty-Preserving Distillation for Vision-Language Models*. In preparation for **NeurIPS 2026** (Conference on Neural Information Processing Systems).
+* **Y. Tang**, Z. Y. Jiang, T. Changnawa, H.-S. Shih, I. Karadag, P. Kastner. *High-Resolution Microclimate Forecasting with Morphology-Aware Spatiotemporal Models*. In preparation for **Building and Environment** (SCI Q1, IF ≈ 7.6).
+* E. Cheng, R. Ma, R. Qi, **Y. Tang**. *Image Colorization Using Generative Adversarial Networks*. **Proc. SPIE 12294**, 7th Int. Symp. on Advances in Electrical, Electronics, and Computer Engineering, 122943Z, 2022. **(Co-first author)**
+
 Research Experience
 ======
 
@@ -23,24 +34,19 @@ Research Experience
 
 Advised by Prof. Mingfeng Lin.
 
-* Designing scalable multi-agent LLM experimentation frameworks to study causal effects in identity disclosure and stance change, using controlled R1–R2 role structures and cross-model interactions across 12 frontier models and 1.9K sessions.
-* Building a Chromium/Electron orchestration layer that unifies browser chatbot sessions and direct API inference, using Playwright automation for parallel prompting, DOM-based response capture, and coordinator-LLM consistency scoring at scale.
-* Current work targets an ACL 2026 submission on causal inference in multi-agent LLM interactions and identity-conditioned persuasion dynamics.
+* First-author ICML 2026 submission: introduced a two-pass causal probe for LLM decision revision, distinguishing evidence-based belief updating from authority-driven compliance across 5 LLMs (31K+ trials on a 1,989-task benchmark).
+* Built a cross-platform Electron desktop app (React/TypeScript/FastAPI) for side-by-side evaluation across 9+ LLM chat services and 100+ API models via OpenRouter; implemented a lightweight BrowserView automation engine (DOM injection, async polling, stability checks) cutting memory usage ~40% vs Playwright/Selenium.
+* Developed and productionized an LLM-as-a-Judge evaluation pipeline with structured JSON outputs, backed by a FastAPI service (15+ endpoints), SQLite persistence, and one-command cross-platform packaging (PyInstaller + electron-builder).
 
-## Machine Learning Researcher
-**Sustainable Urban Systems Lab, Georgia Tech** | Atlanta, GA | Jan. 2025 – Present
-
-* Developed FusionLSTM, a novel deep learning architecture integrating Gated Residual Networks, Variable Selection Networks, parallel multi-scale LSTM branches, and multi-head attention for urban microclimate forecasting, processing 947K warm-season 10-min observations from 16 weather stations (2015-2019).
-* Built a physics-aware feature pipeline with solar-angle and cyclic-time encodings, enabling station-agnostic 24-hour temporal modeling and robust generalization to unseen locations (MAE: 0.95°C for temperature, 4.23% for humidity; R²: 0.857/0.823).
-* Integrated Regression Kriging with PyKrige and Random Forest using nine geospatial covariates (LULC, elevation, shadow ratio) to generate 100K+ high-resolution grid-level predictions across the Georgia Tech campus (~3.5 km²), leveraging 16-station coverage for stable variogram estimation.
-* Established comprehensive baseline comparisons and preparing a research manuscript for Building and Environment (SCI Q1, Impact Factor ≈ 7.1).
-
-## Research Assistant
-**Georgia Institute of Technology** | Atlanta, GA | May 2025 – July 2025
+## Graduate Researcher
+**Georgia Institute of Technology** | Atlanta, GA | Jan. 2025 – Present
 
 Advised by Prof. Patrick Kastner.
 
-* Optimization of microclimate surrogate models with cross-station generalization and Regression Kriging refinement.
+* Architected a spatiotemporal modeling framework for high-frequency sensor data (947K samples), achieving large-scale training optimized on distributed HPC infrastructure.
+* Proposed a novel physics-informed sequence architecture (incorporating Gated Residual Networks, Variable Selection Networks, and multi-head attention) with structured inductive biases, achieving strong out-of-distribution generalization across unseen locations (Temp RMSE: 0.43 °C; RH RMSE: 1.3%).
+* Built a scalable sparse-to-dense inference pipeline for high-resolution spatial prediction (100K+ grid points), coupling Random Forest embeddings with Regression Kriging over high-dimensional geospatial covariates.
+* Evaluated zero-shot spatial transferability across rigorous deep learning baselines, resulting in a manuscript prepared for an SCI Q1 journal.
 
 ## Undergraduate Researcher
 **Shandong University** | Shandong, China | Feb. 2023 – June 2023
@@ -57,6 +63,7 @@ Advised by Prof. Patrick Kastner.
 * Designed a novel lightweight GAN pipeline (U-Net generator + ResNet18 discriminator) and introduced a YUV-channel separation technique, reducing training cost while boosting structural fidelity and perceptual sharpness.
 * Stabilized adversarial training with optimized objectives (re-weighted "realness" reliability term and tuned loss balance), improving color fidelity and transfer robustness under diverse textures and scenes.
 * Scaled experiments on 4.3K+ natural & animated images in PyTorch with extensive visual comparisons, consistently outperforming baselines in visual quality and detail preservation.
+
 
 Work Experience
 ======
