@@ -106,7 +106,7 @@ Teaching Experience
 
 * **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Dr. Jarred Fountain): Designed grading rubrics and assessed weekly assignments on Python implementations, statistical modeling, and ML algorithm selection
 * **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin): Responsibilities include grading visualization exercises and dashboard projects; supporting students on Ed Discussions with Tableau, PowerBI, and data preparation techniques
-* **Academic Integrity TA Team** (Jan. 2026 – May 2026): Institute-wide initiative; responsibilities include supporting academic integrity policies and student education across all colleges and departments
+* **Campus Academic Integrity TA Team** (Jan. 2026 – May 2026): Supporting OMS Analytics and OMS Cybersecurity programs (Spring 2026); reviewing academic misconduct cases and assisting with policy-consistent case evaluation
 
 ## Undergraduate Teaching Assistant
 **Shandong University** | Shandong, China | Sep. 2020 – July 2021
