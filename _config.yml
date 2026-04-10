@@ -11,7 +11,7 @@ locale                   : "en-US"
 title                    : "Yupeng Tang"
 title_separator          : "-"
 name                     : &name "Yupeng Tang"
-description              : &description "MLE Intern @ GMI Cloud | GRA & GTA @ Georgia Tech | M.S. CS @ Georgia Tech | B.E. AI @ SDU"
+description              : &description "LLMs, Multimodal AI, ML Systems & Inference | M.S. CS @ Georgia Tech | MLE Intern @ GMI Cloud | Research Assistant"
 url                      : https://yupengtang.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "yupengtang/yupengtang.github.io"
@@ -24,7 +24,11 @@ author:
   avatar           : "https://github.com/yupengtang.png"
   name             : "Yupeng Tang"
   pronouns         : "He/Him/His"  
-  bio              : "Former MLE Intern @ GMI Cloud<br/>GRA & GTA @ Georgia Tech"
+  bio              : |
+    LLMs, Multimodal AI, ML Systems & Inference<br/>
+    M.S. CS @ Georgia Tech<br/>
+    MLE Intern @ GMI Cloud<br/>
+    Research Assistant
   location         : "Atlanta, GA"
   employer         : # "Red Brick University"
   uri              : # URL
