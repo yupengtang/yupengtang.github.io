@@ -35,6 +35,7 @@ Research Experience
 Advised by Prof. Mingfeng Lin.
 
 * First-author ICML 2026 submission: introduced a two-pass causal probe for LLM decision revision, distinguishing evidence-based belief updating from authority-driven compliance across 5 LLMs (31K+ trials on a 1,989-task benchmark).
+* First-author NeurIPS 2026 submission: identified a post-retrieval evidence-ignoring failure mode in multimodal RAG and introduced a retrieval-conditioned auditing framework, revealing that matched retrieval success can still mask sharply different evidence-use behavior across VLMs.
 * Built a cross-platform Electron desktop app (React/TypeScript/FastAPI) for side-by-side evaluation across 9+ LLM chat services and 100+ API models via OpenRouter; implemented a lightweight BrowserView automation engine (DOM injection, async polling, stability checks) cutting memory usage ~40% vs Playwright/Selenium.
 * Developed and productionized an LLM-as-a-Judge evaluation pipeline with structured JSON outputs, backed by a FastAPI service (15+ endpoints), SQLite persistence, and one-command cross-platform packaging (PyInstaller + electron-builder).
 
@@ -94,9 +95,9 @@ Competition Experience
 
 ## American Express Default Prediction
 **Kaggle Competition** | May 2022 – August 2022 | **Top 0.4% (20th/4,874 teams), Silver Medal**
-* Developed a weighted ensemble of LightGBM (DART) and GPU-accelerated XGBoost models on 16 GB tabular time-series data covering transactions, balances, delinquencies, and repayments.
-* Led model tuning and ensemble strategy, optimizing hyperparameters via grid search and stratified 5-fold cross-validation.
-* Designed diverse feature sets—including lag features, rolling statistics, and trend indicators—and trained multiple seeds to boost stability, delivering a compact, high-performing solution that outperformed all baselines.
+* Trained a weighted ensemble of LightGBM (DART) and GPU-accelerated XGBoost on 16 GB of credit card transaction time-series covering spending, balances, delinquency, and repayment.
+* Ran 5-fold stratified cross-validation with a custom Gini-aligned training metric; iterated from a baseline through feature-enriched and feature-compressed model variants, checkpointing best models each round and tracking feature importance for selection.
+* Assembled the final submission as a weighted blend of four checkpoints (LightGBM at 30/25/25%, XGBoost at 20%), with weights assigned by per-model validation Gini; multi-seed training across variants kept variance low and generalization stable.
 
 Teaching Experience
 ======
