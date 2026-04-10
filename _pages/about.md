@@ -8,10 +8,10 @@ redirect_from:
   - /about.html
 ---
 
-I am a Master's student in Computer Science at Georgia Tech. I study how AI learns from multiple modalities, including language, vision, and real physical signals, and how this translates into systems that hold up in real deployment settings.
-
-My work is driven by a single focus: building AI systems that generalize across modalities and form consistent internal representations of the world. I approach this goal through optimizing large multimodal generation models on GPUs, designing retrieval and evaluation pipelines, studying identity and reasoning in language models, and modeling high-resolution environmental signals. These efforts are not separate tracks, but complementary perspectives on the same underlying problem.
-
-I value research that is rigorous, measurable, and usable in practice. I enjoy taking ideas beyond theory and making them survive real constraints, real data, and real systems.
+I am a Master’s student in Computer Science at Georgia Tech working on large-scale multimodal AI systems across the full stack, from model behavior to inference infrastructure. My work is centered on a simple goal: building foundation models and AI systems that are reliable, efficient, and deployable at scale, not just impressive on benchmarks.
+ 
+I study how large language models and vision-language models represent information, revise decisions, use evidence, and preserve uncertainty across language, vision, and real-world signals. In parallel, I build the systems required to train, evaluate, and deploy them in practice, including GPU-optimized generation and inference pipelines, large-scale evaluation platforms, and production-grade retrieval and serving infrastructure.
+ 
+I am most interested in problems where frontier modeling and hard systems engineering have to coexist, especially reliable multimodal inference, evidence-grounded generation, scalable evaluation, and robust deployment under real operational constraints. I care about work that is empirically rigorous, technically demanding, and built to survive contact with real data, real workloads, and real-world failure modes.
 
 I am currently exploring opportunities in multimodal applied research, machine learning engineering, and roles where strong engineering meets advanced modeling. I am also open to software engineering and data science positions where this foundation can create impact.
