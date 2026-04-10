@@ -1,0 +1,204 @@
+---
+permalink: /
+title: "About Me"
+excerpt: "About Me"
+author_profile: true
+redirect_from:
+  - /about/
+  - /about.html
+---
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
+
+I am a Master's student in Computer Science at Georgia Tech working on large-scale multimodal AI systems across the full stack, from model behavior to inference infrastructure. My work is centered on a simple goal: building foundation models and AI systems that are reliable, efficient, and deployable at scale, not just impressive on benchmarks.
+
+I study how large language models and vision-language models represent information, revise decisions, use evidence, and preserve uncertainty across language, vision, and real-world signals. In parallel, I build the systems required to train, evaluate, and deploy them in practice, including GPU-optimized generation and inference pipelines, large-scale evaluation platforms, and production-grade retrieval and serving infrastructure.
+
+I am most interested in problems where frontier modeling and hard systems engineering have to coexist, especially reliable multimodal inference, evidence-grounded generation, scalable evaluation, and robust deployment under real operational constraints. I care about work that is empirically rigorous, technically demanding, and built to survive contact with real data, real workloads, and real-world failure modes.
+
+I am currently exploring opportunities in multimodal applied research, machine learning engineering, and roles where strong engineering meets advanced modeling. I am also open to software engineering and data science positions where this foundation can create impact.
+
+---
+
+<style>
+.tech-wall { margin: 0.5rem 0 2rem; }
+.tech-wall h2 { font-size: 1.15rem; color: #1a1a2e; margin: 0 0 1.2rem; font-weight: 700; letter-spacing: -0.01em; }
+.tech-category { margin-bottom: 1.4rem; }
+.tech-category-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #6b7280;
+  margin-bottom: 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.tech-category-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 0.35rem 0.75rem 0.35rem 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #374151;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  cursor: default;
+  white-space: nowrap;
+}
+.tech-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+}
+.tech-item i { font-size: 1.15rem; }
+.tech-item .ti-plain { font-size: 1.1rem; display: inline-block; width: 1.15rem; text-align: center; font-weight: 800; font-style: normal; }
+
+/* Category accent dots */
+.cat-ml   .tech-category-label { color: #7c3aed; }
+.cat-ml   .tech-category-label::after { background: #ede9fe; }
+.cat-lang .tech-category-label { color: #0369a1; }
+.cat-lang .tech-category-label::after { background: #e0f2fe; }
+.cat-cloud .tech-category-label { color: #0891b2; }
+.cat-cloud .tech-category-label::after { background: #cffafe; }
+.cat-data .tech-category-label { color: #15803d; }
+.cat-data .tech-category-label::after { background: #dcfce7; }
+.cat-mlops .tech-category-label { color: #b45309; }
+.cat-mlops .tech-category-label::after { background: #fef3c7; }
+.cat-web  .tech-category-label { color: #be185d; }
+.cat-web  .tech-category-label::after { background: #fce7f3; }
+.cat-tools .tech-category-label { color: #374151; }
+.cat-tools .tech-category-label::after { background: #f0f0f0; }
+</style>
+
+<div class="tech-wall">
+<h2>Technical Stack</h2>
+
+<div class="tech-category cat-ml">
+  <div class="tech-category-label">Machine Learning &amp; AI</div>
+  <div class="tech-grid">
+    <span class="tech-item"><i class="devicon-pytorch-original colored"></i> PyTorch</span>
+    <span class="tech-item"><i class="devicon-tensorflow-original colored"></i> TensorFlow</span>
+    <span class="tech-item"><i class="devicon-scikitlearn-plain colored"></i> scikit-learn</span>
+    <span class="tech-item"><i class="devicon-numpy-original colored"></i> NumPy</span>
+    <span class="tech-item"><i class="devicon-pandas-original colored"></i> Pandas</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#ff9a00;">🤗</span> HuggingFace</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#1c3d5a;">🦜</span> LangChain</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#6366f1;">⚡</span> CUDA / NCCL</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#10b981;">∿</span> ONNX</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#76b900;">▶</span> TensorRT</span>
+    <span class="tech-item"><i class="devicon-opencv-plain colored"></i> OpenCV</span>
+  </div>
+</div>
+
+<div class="tech-category cat-lang">
+  <div class="tech-category-label">Programming Languages</div>
+  <div class="tech-grid">
+    <span class="tech-item"><i class="devicon-python-plain colored"></i> Python</span>
+    <span class="tech-item"><i class="devicon-cplusplus-plain colored"></i> C++</span>
+    <span class="tech-item"><i class="devicon-c-plain colored"></i> C</span>
+    <span class="tech-item"><i class="devicon-java-plain colored"></i> Java</span>
+    <span class="tech-item"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+    <span class="tech-item"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+    <span class="tech-item"><i class="devicon-bash-plain colored"></i> Bash / Shell</span>
+    <span class="tech-item"><i class="devicon-r-plain colored"></i> R</span>
+    <span class="tech-item"><i class="devicon-matlab-plain colored"></i> MATLAB</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#9558b2;">■</span> Julia</span>
+    <span class="tech-item"><i class="devicon-html5-plain colored"></i> HTML</span>
+    <span class="tech-item"><i class="devicon-css3-plain colored"></i> CSS</span>
+    <span class="tech-item"><i class="devicon-sqldeveloper-plain colored"></i> SQL</span>
+  </div>
+</div>
+
+<div class="tech-category cat-cloud">
+  <div class="tech-category-label">Cloud &amp; Infrastructure</div>
+  <div class="tech-grid">
+    <span class="tech-item"><i class="devicon-googlecloud-plain colored"></i> Google Cloud</span>
+    <span class="tech-item"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS</span>
+    <span class="tech-item"><i class="devicon-azure-plain colored"></i> Azure</span>
+    <span class="tech-item"><i class="devicon-docker-plain colored"></i> Docker</span>
+    <span class="tech-item"><i class="devicon-kubernetes-plain colored"></i> Kubernetes</span>
+    <span class="tech-item"><i class="devicon-terraform-plain colored"></i> Terraform</span>
+    <span class="tech-item"><i class="devicon-linux-plain"></i> Linux</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#757575;">⬡</span> SLURM / HPC</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#4285f4;">◈</span> Vertex AI</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#4285f4;">❏</span> BigQuery</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#dc4e41;">▢</span> GCS</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#ff9900;">▣</span> S3 / Cloud Run</span>
+  </div>
+</div>
+
+<div class="tech-category cat-data">
+  <div class="tech-category-label">Data Engineering &amp; Databases</div>
+  <div class="tech-grid">
+    <span class="tech-item"><i class="devicon-apachespark-original colored"></i> Apache Spark / PySpark</span>
+    <span class="tech-item"><i class="devicon-apacheairflow-plain colored"></i> Apache Airflow</span>
+    <span class="tech-item"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+    <span class="tech-item"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+    <span class="tech-item"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+    <span class="tech-item"><i class="devicon-redis-plain colored"></i> Redis</span>
+    <span class="tech-item"><i class="devicon-sqlite-plain colored"></i> SQLite</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#29b5e8;">❋</span> Databricks</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#8C4FFF;">◈</span> Amazon Redshift</span>
+    <span class="tech-item"><i class="devicon-matplotlib-plain colored"></i> Matplotlib</span>
+    <span class="tech-item"><i class="devicon-d3js-plain colored"></i> D3.js</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#1d6fa5;">📊</span> Tableau</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#f2c811;">📈</span> Power BI</span>
+  </div>
+</div>
+
+<div class="tech-category cat-mlops">
+  <div class="tech-category-label">MLOps &amp; Experiment Tracking</div>
+  <div class="tech-grid">
+    <span class="tech-item"><span class="ti-plain" style="color:#FFBE00;">W</span> Weights &amp; Biases</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#0194e2;">△</span> MLflow</span>
+    <span class="tech-item"><i class="devicon-githubactions-plain colored"></i> GitHub Actions</span>
+    <span class="tech-item"><i class="devicon-pytest-plain colored"></i> pytest</span>
+    <span class="tech-item"><i class="devicon-jupyter-plain colored"></i> Jupyter</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#028CF0;">◎</span> Ray</span>
+  </div>
+</div>
+
+<div class="tech-category cat-web">
+  <div class="tech-category-label">Web &amp; Application Development</div>
+  <div class="tech-grid">
+    <span class="tech-item"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
+    <span class="tech-item"><i class="devicon-flask-original"></i> Flask</span>
+    <span class="tech-item"><i class="devicon-react-original colored"></i> React</span>
+    <span class="tech-item"><i class="devicon-nextjs-plain"></i> Next.js</span>
+    <span class="tech-item"><i class="devicon-electron-original colored"></i> Electron</span>
+    <span class="tech-item"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+    <span class="tech-item"><i class="devicon-vitejs-plain colored"></i> Vite</span>
+    <span class="tech-item"><i class="devicon-express-original"></i> Express</span>
+    <span class="tech-item"><span class="ti-plain" style="color:#ee4c2c;">▶</span> FFmpeg</span>
+  </div>
+</div>
+
+<div class="tech-category cat-tools">
+  <div class="tech-category-label">Tools &amp; Version Control</div>
+  <div class="tech-grid">
+    <span class="tech-item"><i class="devicon-git-plain colored"></i> Git</span>
+    <span class="tech-item"><i class="devicon-github-original colored"></i> GitHub</span>
+    <span class="tech-item"><i class="devicon-vscode-plain colored"></i> VS Code</span>
+    <span class="tech-item"><i class="devicon-vim-plain colored"></i> Vim</span>
+    <span class="tech-item"><i class="devicon-latex-original"></i> LaTeX</span>
+    <span class="tech-item"><i class="devicon-opencv-plain colored"></i> PIL / Pillow</span>
+  </div>
+</div>
+
+</div>

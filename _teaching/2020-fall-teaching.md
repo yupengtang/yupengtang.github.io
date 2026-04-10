@@ -8,22 +8,14 @@ date: 2020-09-01
 location: "Shandong, China"
 ---
 
-Undergraduate Teaching Assistant for Linear Algebra at Shandong University, supporting a course of 400+ students.
+Teaching Assistant for a 400+ student Linear Algebra course at Shandong University (Fall 2020 – Spring 2021), under the School of Mechanical, Electrical and Information Engineering. Recognized as **Outstanding Teaching Assistant** at the end of the academic year.
 
-Responsibilities
-======
-* Assessed 600+ handwritten assignments with clear, actionable feedback
-* Tracked weekly attendance and maintained meticulous academic records
-* Answered 30+ student questions weekly via online forums
-* Provided detailed explanations on key concepts including eigenvalues, matrix operations, and vector spaces
+## Responsibilities
 
-Recognition
-======
-Recognized as **Outstanding Teaching Assistant** for exceptional dedication to student success and measurable impact on student learning outcomes.
+Graded 600+ handwritten problem sets each week, with written feedback focused on identifying conceptual gaps rather than just marking errors — particularly around eigendecomposition, linear transformations, and systems of equations.
 
-Impact
-======
-* Directly boosted student understanding and performance through personalized feedback
-* Enabled accurate progress reviews and timely academic interventions
-* Maintained audit-ready academic records for 400+ students
+Maintained course attendance records and coordinated assignment tracking across multiple class sections. Held weekly online office hours and responded to questions on the course forum, fielding 30+ student questions per week on topics ranging from row reduction to inner product spaces.
 
+## Notes
+
+The course covered standard undergraduate linear algebra: vector spaces, matrix factorizations (LU, QR, eigendecomposition), orthogonality, determinants, and selected applications in engineering contexts. The scale of the course — over 400 students across sections — meant that efficient, consistent grading and communication were as important as subject knowledge.

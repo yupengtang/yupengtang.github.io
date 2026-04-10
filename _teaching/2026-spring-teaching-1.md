@@ -8,20 +8,16 @@ date: 2026-01-01
 location: "Atlanta, GA"
 ---
 
-Teaching Assistant for MGT 6655 – Business Data Preparation and Visualization, working with Prof. Mingfeng Lin. (Starting January 2026)
+Teaching Assistant for MGT 6655 – Business Data Preparation and Visualization at Georgia Tech (Spring 2026), working with Prof. Mingfeng Lin.
 
-Responsibilities
-======
-* Grade weekly quizzes, visualization exercises, and dashboard projects for graduate students, providing detailed feedback on Tableau workbooks, data preparation workflows, and visualization design choices
-* Respond to student inquiries on Ed Discussions platform regarding data preparation techniques (Excel, Tableau Prep), visualization principles, and tool-specific implementations (Tableau Desktop, PowerBI, R)
-* Assist students in mastering data cleaning, transformation, and visualization for both exploratory analysis and presentation purposes, including dashboard creation and network visualization
-* Support course management for an online asynchronous format, helping students navigate Tableau activation, software troubleshooting, and assignment submission requirements
+## About the Course
 
-Course Information
-======
-MGT 6655 teaches graduate students principles and tools of data visualization for two purposes: (1) exploration—creating dashboards to understand data and form opinions; and (2) explanation—using visualizations to convince stakeholders. Tools covered include Excel, Tableau Desktop, Tableau Prep Builder, Microsoft PowerBI, NodeXL, and R. Topics include visualization principles, chart type selection, data preparation and cleaning, dashboard design, and visualization critique.
+MGT 6655 is a graduate-level course in the Scheller College of Business covering data visualization for two distinct purposes: exploratory analysis (understanding your own data) and explanatory communication (convincing an audience). The course is tool-heavy — Tableau Desktop, Tableau Prep Builder, Microsoft Power BI, Excel, NodeXL, and R — and places significant emphasis on visualization critique and design principles alongside the mechanics of data preparation and cleaning. It runs asynchronously online, which adds its own organizational demands.
 
-Instructor
-======
-Prof. Mingfeng Lin, Georgia Institute of Technology
+## Responsibilities
 
+Grade weekly quizzes, visualization exercises, and dashboard projects, with written feedback on both technical execution (e.g., data joins, calculated fields in Tableau) and design choices (chart type selection, color, layout). Respond to student questions on Ed Discussions on data preparation workflows, tool-specific issues, and visualization principles. Support students with software setup and troubleshooting, which takes a nontrivial amount of time given the range of tools and the asynchronous online format.
+
+## Instructor
+
+Prof. Mingfeng Lin, Scheller College of Business, Georgia Institute of Technology

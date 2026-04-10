@@ -1,7 +1,154 @@
 ---
-title: "<a href='https://yupengtang.github.io/USA-Property-Price-Visualization-and-Prediction.github.io'> USA Property Price Visualization and Prediction </a>"
-excerpt: "To help people explore and predict USA property prices"
+title: "Video Super-Resolution Pipeline"
+excerpt: "ESRGAN-based 360p→720p video upscaling system — avg PSNR 31.5 dB, SSIM 0.919, processing at 7.8 fps on GPU"
 collection: portfolio
 ---
 
-This project focuses on visualizing and predicting USA property prices using interactive maps, machine learning, and natural language processing. It integrates state-level and ZIP code-level visualizations with multi-dimensional plots, providing insights into property price trends. Key innovations include data reduction for scalability, predictive models for price forecasting, and GPT-4o for summarizing complex visualizations into natural language. The project aims to enhance accessibility and decision-making for buyers, sellers, and investors by making real estate data more understandable and actionable.
+<style>
+.p2-accent { color: #0284c7; }
+.p2-metric-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.p2-metric-card {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #7dd3fc; border-radius: 12px;
+  padding: 1rem 1.4rem; text-align: center; min-width: 110px; flex: 1;
+}
+.p2-metric-num { font-size: 1.6rem; font-weight: 800; color: #0369a1; line-height: 1.1; }
+.p2-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.p2-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
+.p2-tag { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
+.p2-section { border-left: 3px solid #0ea5e9; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
+.p2-section h3 { margin: 0 0 0.3rem; color: #0c4a6e; font-size: 1.05rem; }
+.p2-callout { background: #f0f9ff; border-left: 4px solid #0ea5e9; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
+.p2-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
+.p2-step { background: #e0f2fe; border: 1px solid #7dd3fc; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #0c4a6e; }
+.p2-arrow { color: #0ea5e9; font-size: 1.1rem; font-weight: 700; }
+.p2-arch { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px; padding: 1rem 1.2rem; margin: 1rem 0; }
+.p2-arch-row { display: flex; align-items: center; gap: 0.5rem; margin: 0.4rem 0; flex-wrap: wrap; }
+.p2-arch-box { background: #0ea5e9; color: #fff; border-radius: 6px; padding: 0.25rem 0.7rem; font-size: 0.78rem; font-weight: 700; }
+.p2-arch-sub { color: #6b7280; font-size: 0.75rem; }
+.p2-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.p2-table th { background: #e0f2fe; color: #0c4a6e; padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #7dd3fc; font-weight: 700; }
+.p2-table td { padding: 0.55rem 1rem; border-bottom: 1px solid #f0f9ff; }
+.p2-table .best { color: #0369a1; font-weight: 700; }
+.p2-table .avg-row td { background: #e0f2fe; font-weight: 700; }
+code { background: #e0f2fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #0369a1; }
+</style>
+
+<p>As an Machine Learning Engineer intern at <strong>GMI Cloud</strong>, I built a <strong>video super-resolution pipeline</strong> that upscales AI-generated video from 360p to 720p using an ESRGAN (Enhanced Super-Resolution Generative Adversarial Network) model. The pipeline was designed as a <strong>post-processing stage</strong> for an internal text-to-video generation system — rather than retraining the generative model at higher resolution (which would require significantly more compute and data), I inserted a dedicated upscaling step that takes low-resolution output and elevates it to a deliverable quality level.</p>
+
+<p>What makes this more than a "run a model on frames" project: I reimplemented the ESRGAN network architecture from scratch in PyTorch, built an FFmpeg-based frame extraction/reassembly pipeline, wrote an automated PSNR/SSIM evaluation system, and wrapped everything in an orchestration script that runs the complete workflow in a single command.</p>
+
+<div class="p2-metric-grid">
+  <div class="p2-metric-card"><div class="p2-metric-num">31.45</div><div class="p2-metric-label">Avg PSNR (dB)</div></div>
+  <div class="p2-metric-card"><div class="p2-metric-num">0.916</div><div class="p2-metric-label">Avg SSIM</div></div>
+  <div class="p2-metric-card"><div class="p2-metric-num">7.83</div><div class="p2-metric-label">FPS on GPU</div></div>
+  <div class="p2-metric-card"><div class="p2-metric-num">360p→720p</div><div class="p2-metric-label">Resolution Uplift</div></div>
+  <div class="p2-metric-card"><div class="p2-metric-num">~10s</div><div class="p2-metric-label">Per 81-Frame Clip</div></div>
+</div>
+
+<div class="p2-tags">
+  <span class="p2-tag">PyTorch</span><span class="p2-tag">ESRGAN / RRDBNet</span><span class="p2-tag">FFmpeg / FFprobe</span>
+  <span class="p2-tag">PIL</span><span class="p2-tag">PSNR / SSIM</span><span class="p2-tag">scikit-image</span>
+  <span class="p2-tag">torch.no_grad()</span><span class="p2-tag">GPU Inference</span>
+</div>
+
+<hr/>
+
+<h2>Network Architecture — Implemented from Scratch</h2>
+
+<p>Rather than using a pre-built library, I reimplemented the RRDBNet architecture directly in PyTorch for fine-grained control over the upsampling path. The architecture has three levels of hierarchy:</p>
+
+<div class="p2-arch">
+  <div class="p2-arch-row">
+    <div class="p2-arch-box">Residual Dense Block</div>
+    <span class="p2-arch-sub">5 conv layers, DenseNet-style concatenation, LeakyReLU (slope 0.2), residual scale 0.2</span>
+  </div>
+  <div class="p2-arch-row" style="padding-left:1.5rem">↓ × 3 chained</div>
+  <div class="p2-arch-row">
+    <div class="p2-arch-box">RRDB Block</div>
+    <span class="p2-arch-sub">3 RDBs in sequence + 0.2-scaled residual skip (residual-in-residual)</span>
+  </div>
+  <div class="p2-arch-row" style="padding-left:1.5rem">↓ × 23 blocks</div>
+  <div class="p2-arch-row">
+    <div class="p2-arch-box">Full RRDBNet</div>
+    <span class="p2-arch-sub">Init conv → 23 RRDB blocks → body conv → 2× upsample → 2× upsample → HR output</span>
+  </div>
+</div>
+
+<div class="p2-callout"><strong>Why reimplement?</strong> The native model does 4× upsampling (360p → 1440p), but I only needed 2× (360p → 720p). By implementing it myself, I could run the full 4× path and <strong>crop the output tensor to 2× dimensions</strong> — which produces sharper results than architecturally limiting the model. The checkpoint loader also handles three weight formats (<code>model_ema</code>, <code>params_ema</code>, raw state dict) for compatibility across official and fine-tuned variants.</div>
+
+<hr/>
+
+<h2>Processing Pipeline</h2>
+
+<div class="p2-flow">
+  <div class="p2-step">FFprobe metadata</div><div class="p2-arrow">→</div>
+  <div class="p2-step">FFmpeg → PNG frames</div><div class="p2-arrow">→</div>
+  <div class="p2-step">PIL load + pad to mod 4</div><div class="p2-arrow">→</div>
+  <div class="p2-step">ESRGAN inference (no_grad)</div><div class="p2-arrow">→</div>
+  <div class="p2-step">Float→uint8 conversion</div><div class="p2-arrow">→</div>
+  <div class="p2-step">FFmpeg reassemble MP4</div>
+</div>
+
+<ul>
+  <li><strong>PNG frames</strong> (not JPEG) — avoids introducing compression artifacts before the upscaler.</li>
+  <li><strong>PIL loading</strong> over OpenCV — more reliable for edge-case color space handling.</li>
+  <li><strong>Pad to nearest mod 4</strong> — required by the architecture's strided convolutions.</li>
+  <li><strong>libx264 / yuv420p / crf=23</strong> — visually lossless reassembly at the original framerate.</li>
+  <li><strong>Auto-cleanup</strong> — temporary frame directories cleaned after completion; no disk residue on shared cluster storage.</li>
+</ul>
+
+<hr/>
+
+<h2>Quality Evaluation System</h2>
+
+<p>I built a dedicated evaluation script computing <strong>frame-by-frame PSNR and SSIM</strong> between the upscaled output and the 720p reference — not on a sample, but on every single frame pair.</p>
+
+<ul>
+  <li><strong>PSNR</strong> — measured in dB on full RGB and on the Y (luminance) channel per ITU-R BT.601. Y-channel PSNR is more perceptually meaningful; human vision is more sensitive to luminance than chrominance.</li>
+  <li><strong>SSIM</strong> — compares luminance, contrast, and structural patterns. Values above 0.90 = high perceptual fidelity.</li>
+  <li><strong>Shape mismatch handling</strong> — cubic interpolation resizes if reference and output dimensions differ slightly.</li>
+  <li><strong>CSV output</strong> — all frame metrics written for downstream analysis.</li>
+</ul>
+
+<hr/>
+
+<h2>Benchmark Results</h2>
+
+<p>Measured on 5 AI-generated videos (81 frames each, 1280×720 target resolution):</p>
+
+<table class="p2-table">
+  <thead>
+    <tr><th>Video</th><th>PSNR (dB)</th><th>SSIM</th><th>Processing Time</th><th>Speed (fps)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Video A</td><td>31.06</td><td>0.927</td><td>10.25s</td><td>7.90</td></tr>
+    <tr><td>Video B</td><td>31.19</td><td>0.891</td><td>10.52s</td><td>7.70</td></tr>
+    <tr><td>Video C</td><td>31.73</td><td>0.926</td><td>10.36s</td><td>7.82</td></tr>
+    <tr><td>Video D</td><td class="best">32.25 ★</td><td>0.924</td><td>10.24s</td><td class="best">7.91 ★</td></tr>
+    <tr><td>Video E</td><td>31.04</td><td>0.910</td><td>10.34s</td><td>7.83</td></tr>
+    <tr class="avg-row"><td><strong>Average</strong></td><td><strong>31.45</strong></td><td><strong>0.916</strong></td><td><strong>10.34s</strong></td><td><strong>7.83</strong></td></tr>
+  </tbody>
+</table>
+
+<div class="p2-callout">PSNR above 30 dB on natural-scene video = <strong>good reconstruction</strong>; above 32 dB (Video D) = <strong>excellent</strong>. All five videos hit SSIM &gt; 0.89, solidly in the high-fidelity range. ~7.8 fps means a 5-second clip processes in about 10 seconds on a single GPU — practical for production post-processing.</div>
+
+<hr/>
+
+<h2>Pipeline Orchestration</h2>
+
+<p>The full workflow runs as a single command with three independently-skippable stages:</p>
+
+<ol>
+  <li><strong>Model download</strong> — fetches pre-trained ESRGAN weights from a remote URL if not cached locally.</li>
+  <li><strong>Batch upscaling</strong> — processes all videos in the input directory, writing results to an output directory.</li>
+  <li><strong>Metrics evaluation</strong> — computes PSNR/SSIM against the reference directory; generates a summary report identifying best and worst-performing clips.</li>
+</ol>
+
+<p>Each stage is subprocess-isolated, so a failure gives a clear error without corrupting state for others.</p>
+
+<hr/>
+
+<h2>Impact</h2>
+
+<p>This pipeline saved the team from retraining the upstream text-to-video model at 720p — a process that would have required significantly more GPU hours, training data, and iteration time. Instead, we got 720p output quality (PSNR &gt; 31 dB, SSIM &gt; 0.91) by adding a lightweight post-processing step that takes ~10 seconds per clip and runs on a single GPU, processing every incoming AI-generated video through the internal content pipeline.</p>

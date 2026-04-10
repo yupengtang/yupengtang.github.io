@@ -8,16 +8,17 @@ date: 2026-01-01
 location: "Atlanta, GA"
 ---
 
-Member of Georgia Tech's Campus Academic Integrity TA Team (Spring 2026), supporting the OMS Analytics and OMS Cybersecurity programs. This is a new campus-wide institutional initiative at Georgia Institute of Technology, starting January 2026.
+Member of Georgia Tech's Campus Academic Integrity TA Team (Spring 2026), supporting the OMS Analytics and OMS Cybersecurity online graduate programs.
 
-Responsibilities
-======
-* Review academic misconduct cases submitted within the OMS Analytics and OMS Cybersecurity programs
-* Assist with policy-consistent case evaluation in coordination with the Office of Student Integrity
-* Support the enforcement and communication of Georgia Tech's academic integrity standards across online graduate programs
-* Serve as a liaison between program administrators and the institute's academic integrity office
+## About the Role
 
-Program Information
-======
-The Campus Academic Integrity TA Team is a new institute-wide initiative at Georgia Tech designed to strengthen the culture of academic honesty across the campus. In Spring 2026, this role specifically supports the OMS Analytics and OMS Cybersecurity graduate programs, focusing on the review and evaluation of academic misconduct cases in accordance with institutional policy.
+This is a relatively new institute-wide initiative at Georgia Tech, designed to handle the volume and consistency demands of academic integrity review at scale across online programs. Unlike traditional TA roles, this one involves no instruction — the work is entirely procedural and quasi-judicial: reviewing submitted misconduct cases, applying institutional policy consistently, and coordinating with the Office of Student Integrity.
 
+## Responsibilities
+
+Review academic misconduct cases submitted within OMS Analytics and OMS Cybersecurity, evaluate them against Georgia Tech's academic integrity policy, and provide documented assessments to program administrators and the integrity office. The role requires careful reading of student submissions, familiarity with policy language, and the judgment to identify ambiguous cases that warrant escalation.
+
+## Programs Supported
+
+- OMS Analytics (Online Master of Science in Analytics)
+- OMS Cybersecurity (Online Master of Science in Cybersecurity)

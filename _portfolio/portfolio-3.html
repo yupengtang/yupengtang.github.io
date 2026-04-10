@@ -1,0 +1,177 @@
+---
+title: "AI Virtual Try-On System"
+excerpt: "Automated diffusion-based garment-swap pipeline — async task orchestration, smart polling, and batch processing across model×garment combinations"
+collection: portfolio
+---
+
+<style>
+.p3-metric-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.p3-metric-card {
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+  border: 1px solid #f9a8d4; border-radius: 12px;
+  padding: 1rem 1.4rem; text-align: center; min-width: 110px; flex: 1;
+}
+.p3-metric-num { font-size: 1.6rem; font-weight: 800; color: #be185d; line-height: 1.1; }
+.p3-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.p3-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
+.p3-tag { background: #fce7f3; color: #be185d; border: 1px solid #f9a8d4; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
+.p3-section { border-left: 3px solid #ec4899; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
+.p3-section h3 { margin: 0 0 0.3rem; color: #831843; font-size: 1.05rem; }
+.p3-callout { background: #fdf2f8; border-left: 4px solid #ec4899; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
+.p3-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
+.p3-step { background: #fce7f3; border: 1px solid #f9a8d4; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #831843; }
+.p3-arrow { color: #ec4899; font-size: 1.1rem; font-weight: 700; }
+.p3-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.p3-table th { background: #fce7f3; color: #831843; padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #f9a8d4; font-weight: 700; }
+.p3-table td { padding: 0.55rem 1rem; border-bottom: 1px solid #fdf2f8; }
+code { background: #fce7f3; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #be185d; }
+.p3-params { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 1rem 0; }
+.p3-param { background: #fdf2f8; border: 1px solid #f9a8d4; border-radius: 8px; padding: 0.6rem 0.9rem; }
+.p3-param-name { font-weight: 700; color: #be185d; font-size: 0.85rem; }
+.p3-param-desc { color: #374151; font-size: 0.8rem; margin-top: 0.2rem; }
+.p3-poll-table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.85rem; }
+.p3-poll-table th { background: #fce7f3; color: #831843; padding: 0.5rem 0.8rem; text-align: left; border-bottom: 2px solid #f9a8d4; font-weight: 700; }
+.p3-poll-table td { padding: 0.45rem 0.8rem; border-bottom: 1px solid #fdf2f8; }
+.p3-poll-table .hit { background: #fce7f3; font-weight: 700; }
+</style>
+
+<p>As an Machine Learning Engineer intern at <strong>GMI Cloud</strong>, I developed an <strong>automated AI virtual try-on pipeline</strong> that enables photorealistic garment swaps on e-commerce model images using a diffusion-based image generation API. The system takes a model photograph and a garment image, and produces a result where the model is wearing the target garment — with natural fabric draping, body-consistent proportions, and preserved facial identity.</p>
+
+<p>This is not a single API call wrapped in a script. It's a <strong>batch orchestration system</strong> built to handle real production workloads: 2 model images × 9 garment items = <strong>18 combinations</strong> per run, with asynchronous task tracking, empirically-tuned polling intervals, multi-format image handling, retry logic, and fault isolation so one API timeout doesn't kill the remaining 17 jobs.</p>
+
+<div class="p3-metric-grid">
+  <div class="p3-metric-card"><div class="p3-metric-num">18</div><div class="p3-metric-label">Combinations / Run</div></div>
+  <div class="p3-metric-card"><div class="p3-metric-num">~27s</div><div class="p3-metric-label">Typical Completion</div></div>
+  <div class="p3-metric-card"><div class="p3-metric-num">~4</div><div class="p3-metric-label">Avg Polls to Done</div></div>
+  <div class="p3-metric-card"><div class="p3-metric-num">3</div><div class="p3-metric-label">Retry Attempts</div></div>
+  <div class="p3-metric-card"><div class="p3-metric-num">0</div><div class="p3-metric-label">Disk Writes at Submission</div></div>
+</div>
+
+<div class="p3-tags">
+  <span class="p3-tag">Diffusion Inpainting API</span><span class="p3-tag">Async Task Orchestration</span>
+  <span class="p3-tag">Base64 Encoding</span><span class="p3-tag">Chunked Download</span>
+  <span class="p3-tag">HMAC-SHA256 (SigV4)</span><span class="p3-tag">Python SDK</span><span class="p3-tag">Batch Processing</span>
+</div>
+
+<hr/>
+
+<h2>How Diffusion-Based Try-On Works</h2>
+
+<p>The underlying model is a diffusion-based virtual dressing system (v2) operating in three stages:</p>
+
+<div class="p3-flow">
+  <div class="p3-step">1. Body Segmentation</div><div class="p3-arrow">→</div>
+  <div class="p3-step">2. Conditioned Inpainting</div><div class="p3-arrow">→</div>
+  <div class="p3-step">3. Post-processing &amp; Blend</div>
+</div>
+
+<p>The model automatically segments the input image to identify body regions (head, torso, arms, hands, legs, feet), masks the target region, and fills it with the garment — conditioned on the reference garment image. The diffusion model learns to respect fabric texture, color, draping physics, and body pose. Unmasked regions (face, background) are seamlessly blended back.</p>
+
+<div class="p3-section">
+  <h3>Generation Parameters I Tuned</h3>
+</div>
+
+<div class="p3-params">
+  <div class="p3-param">
+    <div class="p3-param-name">✓ Super-resolution enabled</div>
+    <div class="p3-param-desc">Output upsampled after generation for sharper fabric texture detail.</div>
+  </div>
+  <div class="p3-param">
+    <div class="p3-param-name">✓ Head preservation on</div>
+    <div class="p3-param-desc">Model's face and hair locked — eliminates identity drift between input and output.</div>
+  </div>
+  <div class="p3-param">
+    <div class="p3-param-name">✓ Hand regeneration allowed</div>
+    <div class="p3-param-desc">Hands re-generated to fit naturally with new sleeve length/style — not forced to original positions.</div>
+  </div>
+  <div class="p3-param">
+    <div class="p3-param-name">✓ Loose mask boundary</div>
+    <div class="p3-param-desc">Relaxed segmentation mask → natural transitions at collars and hemlines; avoids visible seams.</div>
+  </div>
+</div>
+
+<p>Garment type is configurable per-job: <code>"upper"</code>, <code>"lower"</code>, or <code>"full"</code>. I built separate test workflows for each mode before running full-outfit batch sweeps.</p>
+
+<hr/>
+
+<h2>Async Task Architecture</h2>
+
+<p>Because the diffusion model takes 20–30 seconds per image, the API uses an <strong>asynchronous task model</strong> (submit → task_id → poll → result) rather than synchronous request-response.</p>
+
+<div class="p3-section">
+  <h3>Task Submission</h3>
+</div>
+
+<p>Model and garment images are base64-encoded <strong>in memory</strong> and sent as a single JSON payload. The server queues the diffusion job and immediately returns a <code>task_id</code>. No image data touches disk during this step — everything stays in-process until the result comes back.</p>
+
+<div class="p3-section">
+  <h3>Smart Polling Strategy</h3>
+</div>
+
+<p>My first version polled every 5 seconds uniformly — ~7 wasted polls per task. The calibrated version cuts that to ~4 average polls to completion:</p>
+
+<table class="p3-poll-table">
+  <thead><tr><th>Poll</th><th>Wait Before</th><th>Cumulative</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>5s</td><td>~5s</td><td>Early check — unlikely done</td></tr>
+    <tr><td>2</td><td>8s</td><td>~13s</td><td>Still too early</td></tr>
+    <tr><td>3</td><td>10s</td><td>~23s</td><td>Approaching typical completion</td></tr>
+    <tr class="hit"><td>4</td><td>8s</td><td>~31s</td><td>★ Usually catches completion here (~27s typical)</td></tr>
+    <tr><td>5+</td><td>10s each</td><td>—</td><td>Fallback cadence until 300s timeout</td></tr>
+  </tbody>
+</table>
+
+<p>Each poll returns one of four states: <code>"in_queue"</code> / <code>"generating"</code> (continue) · <code>"done"</code> (extract URLs) · <code>"not_found"</code> / <code>"expired"</code> (log and skip).</p>
+
+<div class="p3-section">
+  <h3>Result Download with Retry</h3>
+</div>
+
+<ul>
+  <li><strong>Chunked streaming</strong> (8 KB chunks) — avoids loading large images entirely into memory</li>
+  <li><strong>30-second timeout</strong> per download — handles slow CDN responses</li>
+  <li><strong>3 retries with delay</strong> — transient network errors</li>
+  <li><strong>Descriptive filenames</strong> — encode model ID, garment index, result number for full QA traceability</li>
+</ul>
+
+<hr/>
+
+<h2>Batch Orchestration</h2>
+
+<p>The batch processor iterates the full cross-product of model images × garment images:</p>
+
+<div class="p3-flow">
+  <div class="p3-step">Submit task → get task_id</div><div class="p3-arrow">→</div>
+  <div class="p3-step">Smart poll → wait for done</div><div class="p3-arrow">→</div>
+  <div class="p3-step">Download results</div><div class="p3-arrow">→</div>
+  <div class="p3-step">Log success / failure</div><div class="p3-arrow">→</div>
+  <div class="p3-step">2s rate-limit delay</div><div class="p3-arrow">→</div>
+  <div class="p3-step">Next combination</div>
+</div>
+
+<div class="p3-callout"><strong>Fault tolerance:</strong> If a single task fails — API error, timeout, download failure — the system logs and moves to the next combination. The final summary reports total successes vs. failures so I can immediately identify which combinations need retrying without parsing through logs.</div>
+
+<hr/>
+
+<h2>Authentication &amp; Security</h2>
+
+<p>I implemented two authentication approaches:</p>
+
+<ol>
+  <li><strong>Signature-based (SigV4)</strong> — low-level API; each request cryptographically signed with HMAC-SHA256 over request method, host, path, query parameters, headers, and body. Same protocol as AWS. Proved valuable when debugging a signing bug that only appeared with certain garment image sizes (content hash computation sensitive to base64 padding).</li>
+  <li><strong>SDK-based</strong> — production batch orchestrator uses the platform's official SDK, which handles signing internally and provides a higher-level interface (<code>submit_task</code> / <code>get_result</code>). I implemented both: low-level first to understand the auth mechanism, SDK second for production reliability.</li>
+</ol>
+
+<hr/>
+
+<h2>Results &amp; Impact</h2>
+
+<p>The system successfully processed all 18 model × garment combinations in a single automated run, producing photorealistic try-on images with consistent facial identity and natural garment appearance. The orchestration eliminated what would otherwise be a tedious 2-hour manual process of submitting images one-by-one through a web interface.</p>
+
+<p>The pipeline was later adapted for internal A/B testing of garment presentation quality — the ability to quickly generate try-on images across model-garment pairings let the team evaluate visual consistency at scale rather than one-off spot checks.</p>
+
+<hr/>
+
+<h2>What I Learned</h2>
+
+<p>The most interesting engineering challenge wasn't the ML model — it was <strong>designing robust orchestration around an asynchronous API I didn't control</strong>. Unlike the inference server where I owned the entire stack, here the model was behind someone else's API with its own queue, its own rate limits, and its own failure modes. Learning to build reliable orchestration on top of a service with variable latency and no SLA guarantees was a skill I hadn't developed in any academic project.</p>
