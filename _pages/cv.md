@@ -20,7 +20,7 @@ Publications & Manuscripts
 
 * **Y. Tang**, M. Lin. *Beyond Reversal Rates: A Mechanistic Audit of LLM Decision Revision Under Reputation Cues*. **ICML 2026** (International Conference on Machine Learning), under review.
 * **Y. Tang**, M. Lin. *Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models*. **NeurIPS 2026** (Conference on Neural Information Processing Systems), under review.
-* **Y. Tang**. *UPD: Uncertainty-Preserving Distillation for Vision-Language Models*. **NeurIPS 2026** (Conference on Neural Information Processing Systems).
+* **Y. Tang**. *UPD: Uncertainty-Preserving Distillation for Vision-Language Models*. **NeurIPS 2026** (Conference on Neural Information Processing Systems), under review.
 * **Y. Tang**. *The Language of Surprise: LLM Compression as a Unifying Primitive for Knowledge Discovery*. **KDD 2026** (ACM SIGKDD Conference on Knowledge Discovery and Data Mining), Blue Sky Ideas Track, under review.
 * **Y. Tang**. *Do Large Language Models Track Event Boundaries? Incremental Signals, Localization, and Robustness*. In preparation for **EMNLP 2026** (Conference on Empirical Methods in Natural Language Processing).
 * **Y. Tang**, Z. Y. Jiang, T. Changnawa, H.-S. Shih, I. Karadag, P. Kastner. *High-Resolution Microclimate Forecasting with Morphology-Aware Spatiotemporal Models*. In preparation for **Building and Environment** (SCI Q1, IF ≈ 7.6).
