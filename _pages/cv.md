@@ -106,8 +106,7 @@ Teaching Experience
 **Georgia Institute of Technology** | Atlanta, GA | Sep. 2025 – Present
 
 * **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Dr. Jarred Fountain): Designed grading rubrics and assessed weekly assignments on Python implementations, statistical modeling, and ML algorithm selection
-* **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin): Responsibilities include grading visualization exercises and dashboard projects; supporting students on Ed Discussions with Tableau, PowerBI, and data preparation techniques
-* **Campus Academic Integrity TA Team** (Jan. 2026 – May 2026): Supporting OMS Analytics and OMS Cybersecurity programs (Spring 2026); reviewing academic misconduct cases and assisting with policy-consistent case evaluation
+* **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin): Grading visualization exercises and dashboard projects; supporting students on Ed Discussions with Tableau, PowerBI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students from the ground up — developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows
 
 ## Undergraduate Teaching Assistant
 **Shandong University** | Shandong, China | Sep. 2020 – July 2021
@@ -119,6 +118,11 @@ Teaching Experience
 
 Leadership & Service
 ======
+
+## Campus Academic Integrity TA Team
+**Georgia Institute of Technology** | Atlanta, GA | Jan. 2026 – May 2026
+
+* Supported OMS Analytics and OMS Cybersecurity programs (Spring 2026); reviewed academic misconduct cases and assisted with policy-consistent case evaluation.
 
 ## Publicity Manager – Starlight Art Troupe
 **Shandong University** | Shandong, China | Sep. 2019 – August 2021
