@@ -1,263 +1,109 @@
 ---
-title: "Urban Microclimate Forecasting System"
-excerpt: "Multi-scale LSTM with attention and gated feature selection for campus-scale microclimate prediction — Temperature RMSE 0.43°C / R² 0.993, Relative Humidity RMSE 1.28% / R² 0.995, mapped at 100,283 grid points via Regression Kriging"
+title: "Privacy-Preserving Ed Discussion RAG System"
+excerpt: "End-to-end Python pipeline transforming historical course forum data into RAG corpora, powering a grounded TA chatbot via hybrid retrieval (Dense + Lexical + Metadata) and Gemma-3-4B-IT."
 collection: portfolio
 ---
 
 <style>
 .p6-metric-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 1.5rem 0; }
 .p6-metric-card {
-  background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
-  border: 1px solid #5eead4; border-radius: 12px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #cbd5e1; border-radius: 12px;
   padding: 1rem 1.4rem; text-align: center; min-width: 110px; flex: 1;
 }
-.p6-metric-num { font-size: 1.6rem; font-weight: 800; color: #0f766e; line-height: 1.1; }
-.p6-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.p6-metric-num { font-size: 1.6rem; font-weight: 800; color: #334155; line-height: 1.1; }
+.p6-metric-label { font-size: 0.7rem; color: #64748b; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
 .p6-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
-.p6-tag { background: #ccfbf1; color: #0f766e; border: 1px solid #5eead4; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
-.p6-section { border-left: 3px solid #14b8a6; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
-.p6-section h3 { margin: 0 0 0.3rem; color: #134e4a; font-size: 1.05rem; }
-.p6-callout { background: #f0fdfa; border-left: 4px solid #14b8a6; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
+.p6-tag { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
+.p6-section { border-left: 3px solid #64748b; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
+.p6-section h3 { margin: 0 0 0.3rem; color: #334155; font-size: 1.05rem; }
+.p6-callout { background: #f8fafc; border-left: 4px solid #64748b; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #334155; }
 .p6-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
-.p6-step { background: #ccfbf1; border: 1px solid #5eead4; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #134e4a; }
-.p6-arrow { color: #14b8a6; font-size: 1.1rem; font-weight: 700; }
-.p6-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
-.p6-table th { background: #ccfbf1; color: #134e4a; padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #5eead4; font-weight: 700; }
-.p6-table td { padding: 0.55rem 1rem; border-bottom: 1px solid #f0fdfa; }
-.p6-table .best-row td { background: #ccfbf1; font-weight: 700; }
+.p6-step { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #334155; }
+.p6-arrow { color: #64748b; font-size: 1.1rem; font-weight: 700; }
 .p6-arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 1rem 0; }
-.p6-arch-block { background: #f0fdfa; border: 1px solid #5eead4; border-radius: 10px; padding: 0.8rem 1rem; }
-.p6-arch-title { font-weight: 700; color: #0f766e; font-size: 0.85rem; margin-bottom: 0.4rem; }
-.p6-arch-details { color: #374151; font-size: 0.78rem; line-height: 1.5; }
-.p6-feature-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
-.p6-feature-table th { background: #ccfbf1; color: #134e4a; padding: 0.5rem 0.8rem; text-align: left; border-bottom: 2px solid #5eead4; font-weight: 700; }
-.p6-feature-table td { padding: 0.45rem 0.8rem; border-bottom: 1px solid #f0fdfa; }
-.p6-scenarios { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 1rem 0; }
-.p6-scenario { background: #f0fdfa; border: 1px solid #5eead4; border-radius: 10px; padding: 0.8rem 1rem; }
-.p6-scenario-name { font-weight: 700; color: #0f766e; font-size: 0.88rem; }
-.p6-scenario-data { color: #374151; font-size: 0.78rem; margin-top: 0.3rem; }
-.p6-paper-banner { background: linear-gradient(135deg, #134e4a, #0f766e); color: #ccfbf1; border-radius: 12px; padding: 1rem 1.4rem; margin: 1.5rem 0; }
-.p6-paper-banner h3 { color: #ccfbf1; margin: 0 0 0.4rem; font-size: 1rem; }
-.p6-paper-banner p { margin: 0; font-size: 0.88rem; opacity: 0.92; }
-code { background: #ccfbf1; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #0f766e; }
+.p6-arch-block { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.8rem 1rem; }
+.p6-arch-title { font-weight: 700; color: #334155; font-size: 0.85rem; margin-bottom: 0.4rem; }
+.p6-arch-details { color: #475569; font-size: 0.78rem; line-height: 1.5; }
+code { background: #f1f5f9; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #334155; }
 </style>
 
-<p>This is a research project I led as part of the Georgia Tech <strong>VIP-SMUR</strong> (Vertically Integrated Projects — Sustainable Microclimate Urban Research) group. The goal: predict temperature and relative humidity at hyper-local resolution — not city-scale or even block-scale, but at roughly <strong>6-meter spacing</strong> across the entire Georgia Tech campus (~3.5 km²), using nothing more than 16 weather stations and publicly available geospatial data.</p>
+<p>As a Graduate Teaching Assistant for MGT 6655 at Georgia Tech, I engineered an <strong>end-to-end Python pipeline</strong> for anonymizing, parsing, normalizing, and indexing historical Ed Discussion data. The primary objective was safely recycling massive amounts of prior course knowledge to power a <strong>Retrieval-Augmented Generation (RAG)</strong> chatbot capable of accurately answering recurring course logistics and policy questions.</p>
 
-<div class="p6-paper-banner">
-  <h3>📄 In Preparation — Building and Environment (SCI Q1, IF ≈ 7.1)</h3>
-  <p>Georgia Tech VIP-SMUR Project, Fall 2025. I led the model architecture design, training pipeline, inference system, and geospatial visualization pipeline — responsible for modules 3 and 4 of the project.</p>
-</div>
+<p>Rather than simply writing a naive API wrapper, I approached this as a robust Data Engineering and Applied ML project. The system emphasizes privacy (PII scrubbing), schema-tolerant parsing for unpredictable forum inputs, and an advanced <strong>Hybrid Retrieval pipeline</strong> that balances dense similarity with lexical overlap and metadata intent priors.</p>
 
 <div class="p6-metric-grid">
-  <div class="p6-metric-card"><div class="p6-metric-num">0.43°C</div><div class="p6-metric-label">Temp RMSE</div></div>
-  <div class="p6-metric-card"><div class="p6-metric-num">0.9928</div><div class="p6-metric-label">Temp R²</div></div>
-  <div class="p6-metric-card"><div class="p6-metric-num">1.28%</div><div class="p6-metric-label">RH RMSE</div></div>
-  <div class="p6-metric-card"><div class="p6-metric-num">100,283</div><div class="p6-metric-label">Grid Points</div></div>
-  <div class="p6-metric-card"><div class="p6-metric-num">337,742</div><div class="p6-metric-label">Model Parameters</div></div>
+  <div class="p6-metric-card"><div class="p6-metric-num">Gemma-3</div><div class="p6-metric-label">LLM Backend</div></div>
+  <div class="p6-metric-card"><div class="p6-metric-num">Top-K=5</div><div class="p6-metric-label">Context Chunks</div></div>
+  <div class="p6-metric-card"><div class="p6-metric-num">0.80</div><div class="p6-metric-label">MMR Lambda</div></div>
+  <div class="p6-metric-card"><div class="p6-metric-num">2048-dim</div><div class="p6-metric-label">Local Embeddings</div></div>
 </div>
 
 <div class="p6-tags">
-  <span class="p6-tag">PyTorch</span><span class="p6-tag">Multi-Scale LSTM</span><span class="p6-tag">Multi-Head Attention (4 heads)</span>
-  <span class="p6-tag">Gated Residual Networks</span><span class="p6-tag">Regression Kriging</span>
-  <span class="p6-tag">PyKrige</span><span class="p6-tag">GeoPandas</span><span class="p6-tag">OSMnx</span>
-  <span class="p6-tag">Random Forest</span><span class="p6-tag">SLURM / A100 GPU</span>
+  <span class="p6-tag">Python</span><span class="p6-tag">Retrieval-Augmented Generation (RAG)</span><span class="p6-tag">Hybrid Search</span>
+  <span class="p6-tag">Data Engineering</span><span class="p6-tag">NumPy</span><span class="p6-tag">JSONL</span>
+  <span class="p6-tag">Slurm / GPU</span><span class="p6-tag">LLMs (Gemma, OpenRouter)</span>
 </div>
 
 <hr/>
 
-<h2>Model Architecture</h2>
-
-<p>The architecture combines four components chosen specifically for the microclimate forecasting problem: adaptive feature gating, learned input weighting, parallel temporal processing at two scales, and multi-head attention for long-range dependencies.</p>
+<h2>System Architecture</h2>
 
 <div class="p6-section">
-  <h3>Core Components</h3>
+  <h3>1. Data Normalization & Anonymization Pipeline</h3>
 </div>
+
+<p>Course forums are notoriously noisy and unstructured. I developed a schema-tolerant preprocessing pipeline that ingests raw forum JSON exports and builds clean, retrieval-ready corpora.</p>
+
+<div class="p6-flow">
+  <div class="p6-step">Raw Ed Discussion Exports</div><div class="p6-arrow">→</div>
+  <div class="p6-step">PII Anonymization</div><div class="p6-arrow">→</div>
+  <div class="p6-step">Schema-Tolerant Parsing</div><div class="p6-arrow">→</div>
+  <div class="p6-step">Normalization</div><div class="p6-arrow">→</div>
+  <div class="p6-step">JSONL RAG Corpus</div>
+</div>
+
+<ul>
+  <li><strong>Privacy First:</strong> Applied targeted anonymization scripts to strip out personally identifiable student information while retaining the core instructional context of the question and answer.</li>
+  <li><strong>Schema-Tolerant Parsing:</strong> Handled nested thread replies, varying export formats, and unformatted code blocks gracefully, converting them into standardized structures.</li>
+  <li><strong>SFT Datasets:</strong> Alongside the RAG index, the pipeline automatically generates aligned prompt-completion pairs in <code>JSONL</code> format, laying the groundwork for future Supervised Fine-Tuning (SFT) on the course workflow.</li>
+</ul>
+
+<div class="p6-section">
+  <h3>2. Hybrid Retrieval Engine (In-Memory NumPy)</h3>
+</div>
+
+<p>Because dense embeddings often struggle with highly-specific educational acronyms or exact task names, I built a custom <strong>Hybrid Retriever</strong> operating strictly over in-memory NumPy matrices for zero-latency retrieval.</p>
 
 <div class="p6-arch-grid">
   <div class="p6-arch-block">
-    <div class="p6-arch-title">Gated Residual Networks (GRN)</div>
-    <div class="p6-arch-details">Two FC layers → sigmoid gate → learned interpolation between transformed and original input. Stabilizes training, maintains gradient flow in deep networks. Layer normalization applied after gated sum.</div>
+    <div class="p6-arch-title">Dense Embedding Phase</div>
+    <div class="p6-arch-details">Computes cosine similarity between queries and forum chunks. Supports hot-swapping between lightweight 2048-dim local hash embedders or OpenAI <code>text-embedding-3-small</code> via API. (Weighted at 0.48).</div>
   </div>
   <div class="p6-arch-block">
-    <div class="p6-arch-title">Variable Selection Network</div>
-    <div class="p6-arch-details">Time-averaged input → GRN → softmax feature weights → applied element-wise to every timestep. The model learns solar altitude matters far more than minute-of-hour — adaptively, per sample.</div>
+    <div class="p6-arch-title">Lexical Overlap Phase</div>
+    <div class="p6-arch-details">Tokenizes queries and chunks (with stopword fallback logic), computing a precision/recall blended overlap score to catch exact keyword matches missed by semantic search. (Weighted at 0.34).</div>
   </div>
   <div class="p6-arch-block">
-    <div class="p6-arch-title">Multi-Head Self-Attention (4 heads)</div>
-    <div class="p6-arch-details">After LSTM processing, models long-range temporal dependencies across the output sequence. Attends to specific historical events (e.g., temperature spike 6 hours ago) beyond what LSTM hidden state captures.</div>
+    <div class="p6-arch-title">Metadata Intent Priors</div>
+    <div class="p6-arch-details">Uses heuristic-based coarse intent detection (e.g., detecting "logistics" vs "grading") to boost relevant metadata tags (like <code>type:announcement</code>) and drastically penalize unhelpful social chatter (e.g., introductions). (Weighted at 0.18).</div>
   </div>
   <div class="p6-arch-block">
-    <div class="p6-arch-title">Learnable Position Encoding</div>
-    <div class="p6-arch-details">Temporal embeddings providing the attention layer with sequence position context independent of the LSTM's hidden state.</div>
+    <div class="p6-arch-title">MMR & Redundancy Selection</div>
+    <div class="p6-arch-details">Applies <strong>Maximal Marginal Relevance (λ=0.80)</strong> alongside a thread-deduplication cap (max 2 chunks per thread) to ensure the LLM receives diverse context rather than repeated variations of the same answer.</div>
   </div>
 </div>
 
 <div class="p6-section">
-  <h3>Key Design Decisions (with Rationale)</h3>
+  <h3>3. Grounded LLM Chatbot</h3>
 </div>
 
-<p><strong>1. Multi-scale parallel LSTM branches.</strong> Rather than a single sequential LSTM, we use two parallel branches: a <strong>short-term branch</strong> (1 LSTM layer, hidden_dim/2) and a <strong>long-term branch</strong> (2 LSTM layers, hidden_dim/2), concatenated back to the full dimension. Rationale: microclimate evolution has two overlapping timescales — rapid fluctuations (a cloud passing, a building shadow) on minutes, and diurnal cycles (sunrise heating, nighttime cooling) on hours. A single LSTM collapses both; parallel branches preserve them separately.</p>
-
-<p><strong>2. Single-step point prediction.</strong> Given the past 24 hours (144 timesteps × 10 min), predict <strong>one timestep ahead (+10 min)</strong>. For longer forecasts, iteratively roll — feed prediction back as input. This avoids distribution mismatch beyond the training horizon and produces cleaner inputs for downstream Regression Kriging (no multi-horizon uncertainty propagation).</p>
-
-<p><strong>3. No station identifiers.</strong> No station IDs anywhere in the input. This forces the model to learn location-independent patterns (physics-based features), enabling generalization to unseen stations — validated by our held-out station protocol.</p>
+<p>The system retrieves the top-5 optimal context chunks and prompts an open-weights LLM (defaulting to <code>google/gemma-3-4b-it</code> for local GPU inference, with optional hot-swapping to cloud APIs like OpenRouter). To combat hallucination—a critical failure mode in higher education—the system is heavily prompt-engineered to explicitly state when an answer cannot confidently be formed from historical context, hedging the response and redirecting the student to modern course staff.</p>
 
 <div class="p6-section">
-  <h3>Input Features (12 dimensions, physics-aware)</h3>
+  <h3>4. Evaluation & Reproducibility</h3>
 </div>
 
-<table class="p6-feature-table">
-  <thead><tr><th>Category</th><th>Features</th><th>Encoding</th></tr></thead>
-  <tbody>
-    <tr><td>Weather observations</td><td>Temperature, Relative Humidity</td><td>Raw (autoregressive signal)</td></tr>
-    <tr><td>Solar geometry</td><td>Altitude angle, Azimuth angle</td><td>Sin/cos trigonometric</td></tr>
-    <tr><td>Hour of day</td><td>24-hour diurnal cycle</td><td>Sin/cos (period = 24h)</td></tr>
-    <tr><td>Day of year</td><td>365-day seasonal cycle</td><td>Sin/cos (period = 365d)</td></tr>
-    <tr><td>Minute</td><td>Sub-hourly resolution</td><td>Sin/cos (period = 60 min)</td></tr>
-  </tbody>
-</table>
+<p>To ensure the solution scales effectively for future multi-year data expansion, the project employs a highly structured, production-style organization.</p>
 
-<p>All temporal features encoded as sin/cos pairs to avoid discontinuities (hour 23 → hour 0). Solar angles encoded trigonometrically so the model receives physically meaningful sun-position signals rather than raw degree values.</p>
-
-<hr/>
-
-<h2>Data Engineering</h2>
-
-<p>~947,000 warm-season observations (April–September 2015–2019) from 16 stations at 10-minute intervals. The preprocessing pipeline:</p>
-
-<div class="p6-flow">
-  <div class="p6-step">1. Warm-season filter</div><div class="p6-arrow">→</div>
-  <div class="p6-step">2. Physical constraint cleaning</div><div class="p6-arrow">→</div>
-  <div class="p6-step">3. Per-station segmentation (60-min gap threshold)</div><div class="p6-arrow">→</div>
-  <div class="p6-step">4. Resample + interpolate gaps ≤60 min</div><div class="p6-arrow">→</div>
-  <div class="p6-step">5. Sliding window extraction (L=144, no boundary crossing)</div><div class="p6-arrow">→</div>
-  <div class="p6-step">6. Chronological split (90/10 per station) + 1 station held out</div>
-</div>
-
-<p><strong>Scaling:</strong> Features use RobustScaler (median-centered, IQR-normalized — resistant to sporadic outliers). Targets use MinMaxScaler (range [0,1]). Both fit on training data only.</p>
-
-<p><strong>Training:</strong> AdamW (β₁=0.9, β₂=0.999) + weight decay 1e-3, initial LR 1e-3, ReduceLROnPlateau (factor=0.5, patience=7), gradient clipping max_norm=1.0, early stopping patience=20. Xavier uniform init for linear layers; orthogonal init for LSTM (critical for preventing vanishing gradients in the 2-layer long-term branch). Trained in ~23 minutes on A100 GPU (Phoenix cluster).</p>
-
-<hr/>
-
-<h2>Results</h2>
-
-<div class="p6-section">
-  <h3>Held-Out Station Evaluation</h3>
-</div>
-
-<table class="p6-table">
-  <thead><tr><th>Variable</th><th>RMSE</th><th>MAE</th><th>MAPE</th><th>R²</th><th>Max Error</th></tr></thead>
-  <tbody>
-    <tr class="best-row"><td><strong>Temperature</strong></td><td><strong>0.43°C</strong></td><td>0.29°C</td><td>1.15%</td><td><strong>0.9928</strong></td><td>6.98°C</td></tr>
-    <tr class="best-row"><td><strong>Relative Humidity</strong></td><td><strong>1.28%</strong></td><td>0.90%</td><td>1.51%</td><td><strong>0.9952</strong></td><td>22.23%</td></tr>
-  </tbody>
-</table>
-
-<div class="p6-callout">Sub-0.5°C temperature RMSE and R² &gt; 0.99 on a station the model has never seen during training. That kind of generalization only happens when the model is learning physics (solar-driven diurnal cycles, humidity-temperature coupling), not memorizing station-specific patterns.</div>
-
-<div class="p6-section">
-  <h3>Overfitting Analysis</h3>
-</div>
-
-<table class="p6-table">
-  <thead><tr><th>Variable</th><th>Train RMSE</th><th>Test RMSE</th><th>Test/Train Ratio</th></tr></thead>
-  <tbody>
-    <tr><td>Temperature</td><td>0.41°C</td><td>0.43°C</td><td><strong>1.057</strong> ✓</td></tr>
-    <tr><td>Relative Humidity</td><td>1.19%</td><td>1.28%</td><td><strong>1.074</strong> ✓</td></tr>
-  </tbody>
-</table>
-
-<p>Both ratios below 1.10 — excellent generalization. Ratios below 1.10 = excellent; 1.10–1.20 = good; above 1.20 = potential overfitting.</p>
-
-<div class="p6-section">
-  <h3>Feature Importance (Permutation-Based)</h3>
-</div>
-
-<table class="p6-table">
-  <thead><tr><th>Rank</th><th>Feature</th><th>RMSE Increase When Removed</th></tr></thead>
-  <tbody>
-    <tr><td>1</td><td>Relative Humidity</td><td>+2789%</td></tr>
-    <tr><td>2</td><td>Temperature</td><td>+372%</td></tr>
-    <tr><td>3</td><td>Hour (sin)</td><td>+7.0%</td></tr>
-    <tr><td>4</td><td>Solar altitude (sin)</td><td>+6.5%</td></tr>
-    <tr><td>5</td><td>Hour (cos)</td><td>+2.4%</td></tr>
-    <tr><td>6</td><td>Solar azimuth (sin)</td><td>+2.0%</td></tr>
-  </tbody>
-</table>
-
-<p>Removing solar angles alone degrades RMSE by 2–6% — confirming the model uses sun position to predict temperature evolution, not just correlations with time-of-day.</p>
-
-<hr/>
-
-<h2>Geospatial Inference: Stations → Campus Maps</h2>
-
-<p>The model outputs predictions at 16 discrete station locations. To predict at every campus point, I use <strong>Regression Kriging</strong> (PyKrige) — combining Random Forest regression on spatial covariates with kriging of the residuals.</p>
-
-<p><strong>9 real GIS covariates from OpenStreetMap + elevation data:</strong></p>
-<ul>
-  <li><em>Distance features:</em> Distance to nearest building, park, library, parking lot, footway</li>
-  <li><em>Elevation features:</em> Ground elevation, building height, total elevation</li>
-  <li><em>Shadow features:</em> Monthly shadow ratio (selected by target timestamp's month — computed from building geometry and solar angles)</li>
-</ul>
-
-<div class="p6-flow">
-  <div class="p6-step">Model predicts at 16 stations</div><div class="p6-arrow">→</div>
-  <div class="p6-step">Random Forest regression on 9 GIS covariates</div><div class="p6-arrow">→</div>
-  <div class="p6-step">Kriging of residuals (spherical variogram)</div><div class="p6-arrow">→</div>
-  <div class="p6-step">100,283 grid point predictions</div><div class="p6-arrow">→</div>
-  <div class="p6-step">OSMnx campus boundary overlay</div><div class="p6-arrow">→</div>
-  <div class="p6-step">300 DPI publication maps</div>
-</div>
-
-<p>After kriging, Random Forest feature importances are extracted to analyze which spatial characteristics most influence microclimate variation — connecting predictions back to actionable urban planning insights.</p>
-
-<hr/>
-
-<h2>Extreme Scenario Mapping</h2>
-
-<p>An automated scenario generator scans the full warm-season dataset, identifies extreme-condition timestamps (hot/cold/dry/humid, filtered for ≥10 stations reporting), and runs the full inference → kriging → visualization pipeline for each:</p>
-
-<div class="p6-scenarios">
-  <div class="p6-scenario">
-    <div class="p6-scenario-name">🔥 Hottest</div>
-    <div class="p6-scenario-data">37.30°C avg, 34.6% RH — June 25, 2016 16:10</div>
-  </div>
-  <div class="p6-scenario">
-    <div class="p6-scenario-name">❄️ Coldest</div>
-    <div class="p6-scenario-data">8.45°C avg, 89.6% RH — May 6, 2017 06:30</div>
-  </div>
-  <div class="p6-scenario">
-    <div class="p6-scenario-name">🏜️ Driest</div>
-    <div class="p6-scenario-data">18.13°C avg, 18.0% RH — April 4, 2015 18:30</div>
-  </div>
-  <div class="p6-scenario">
-    <div class="p6-scenario-name">💧 Most Humid</div>
-    <div class="p6-scenario-data">16.73°C avg, 99.5% RH — April 18, 2015 04:40</div>
-  </div>
-</div>
-
-<p>Each comparison map shows side-by-side temperature and humidity predictions with station observations overlaid as square markers. All output maps are 300 DPI (~1.7–2.1 MB PNG) at 4800×3600 px resolution.</p>
-
-<hr/>
-
-<h2>HPC Integration</h2>
-
-<table class="p6-table">
-  <thead><tr><th>Stage</th><th>Time</th><th>Resources</th></tr></thead>
-  <tbody>
-    <tr><td>Training (16 stations)</td><td>~26 min</td><td>A100 GPU, 34 GB RAM</td></tr>
-    <tr><td>Inference (100,283 points)</td><td>~2 min 10 sec</td><td>A100 GPU</td></tr>
-    <tr><td>Visualization (3 maps, 300 DPI)</td><td>~1 min 31 sec</td><td>CPU</td></tr>
-    <tr><td>All 4 extreme scenarios</td><td>~3 min 4 sec</td><td>A100 GPU</td></tr>
-  </tbody>
-</table>
-
-<p>Full SLURM job scripts for each stage, plus a comprehensive HPC tutorial I wrote for onboarding other VIP-SMUR team members (VPN setup, SSH, job submission, file transfer).</p>
-
-<hr/>
-
-<h2>What I Learned</h2>
-
-<p>The most valuable lesson was about <strong>model design as scientific hypothesis testing</strong>. Every architectural decision encodes an assumption: parallel LSTM branches assume multiple temporal scales matter; removing station IDs assumes the model learns location-independent physics; using solar angles assumes that sun position causally drives temperature evolution. The performance metrics then confirm or reject each assumption. When removing solar angles degraded RMSE by 6.5%, that confirmed the assumption. This feedback loop — where the model is simultaneously a prediction tool and a scientific instrument — fundamentally changed how I think about model engineering.</p>
+<div class="p6-callout">Evaluations (measuring Hit-Rate and Mean Reciprocal Rank on historical FAQ test-sets) and inference tests were packaged into modular execution bash scripts. I subsequently containerized and adapted these scripts for Slurm-based HPC clusters, allowing scalable testing of embedding generation and LLM inference batches across multiple GPU nodes.</div>
