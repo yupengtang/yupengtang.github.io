@@ -1,6 +1,6 @@
 ---
 title: "High-Throughput Diffusion Inference System"
-excerpt: "Production inference system for a 12B-parameter Diffusion Transformer on H100 clusters — 20–30 images/min/GPU at 1–3s latency with multi-GPU NCCL coordination"
+excerpt: "Production inference system for a 12B-parameter Diffusion Transformer on H100 clusters, achieving 20-30 images/min/GPU at 1-3s latency with multi-GPU NCCL coordination"
 collection: portfolio
 ---
 
@@ -31,9 +31,9 @@ collection: portfolio
 code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #4f46e5; }
 </style>
 
-<p>As an Machine Learning Engineer intern at <strong>GMI Cloud</strong>, I designed and shipped a <strong>production inference system</strong> for a 12-billion-parameter Diffusion Transformer (DiT) model running on NVIDIA H100 GPU clusters. The system generates high-quality 1360×768 images from natural-language prompts in just 4 denoising steps, deployed as a long-running worker behind an internal request queue — handling continuous, concurrent traffic from real users.</p>
+<p>As a Machine Learning Engineer intern at <strong>GMI Cloud</strong>, I designed and shipped a <strong>production inference system</strong> for a 12-billion-parameter Diffusion Transformer (DiT) model running on NVIDIA H100 GPU clusters. The system generates high-quality 1360×768 images from natural-language prompts in just 4 denoising steps, deployed as a long-running worker behind an internal request queue, handling continuous, concurrent traffic from real users.</p>
 
-<p>What made this project challenging wasn't running the model once — it was making it run <strong>thousands of times a day</strong> without dropping a request, leaking memory, or going silent. I built the entire production wrapper from scratch: distributed multi-GPU coordination, request lifecycle management, cloud storage integration, health monitoring, and prompt safety checking.</p>
+<p>What made this project challenging wasn't running the model once. It was making it run <strong>thousands of times a day</strong> without dropping a request, leaking memory, or going silent. I built the entire production wrapper from scratch: distributed multi-GPU coordination, request lifecycle management, cloud storage integration, health monitoring, and prompt safety checking. Importantly, while the company platform already supported LLMs and video models, this was their <strong>first image generation model deployment</strong>, setting the foundation for the broader Flux series and other state-of-the-art open-source image models.</p>
 
 <div class="p1-metric-grid">
   <div class="p1-metric-card"><div class="p1-metric-num">20–30</div><div class="p1-metric-label">Images / Min / GPU</div></div>
@@ -69,18 +69,18 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <div class="p1-step">4. Infinite Serve Loop</div>
 </div>
 
-<p>All four model components (T5 encoder, CLIP encoder, DiT flow model, VAE decoder) are loaded to the GPU at startup and stay resident permanently — <strong>zero cold-start penalty</strong> between requests. Compared to a load-generate-unload baseline, this delivered a <strong>10–15× throughput improvement</strong>.</p>
+<p>The biggest initial bottleneck was the I/O overhead. The original implementation was designed for offline batch jobs, loading the model from CPU to GPU for every request, which resulted in a ~30-second generation time. By implementing <strong>GPU memory persistence</strong>, all four model components (FLUX DiT, T5 encoder, CLIP encoder, VAE decoder) are loaded to the GPU at startup and stay resident permanently. The total footprint is around 30–40GB, which fits comfortably on an H100 without swapping. Combined with pre-allocated tensors, 4-step sampling, and <code>torch.inference_mode()</code> for faster forward passes, this eliminated the I/O bottleneck and slashed per-request latency from <strong>~30 seconds to 1–2 seconds</strong>.</p>
 
 <div class="p1-section">
-  <h3>Multi-GPU Distributed Inference (NCCL)</h3>
+  <h3>Data-Parallel Distributed Inference (NCCL)</h3>
 </div>
 
-<p>The system launches via <code>torchrun</code> and initializes an NCCL process group, so adding GPUs is a config change, not a code change. The distributed coordination protocol:</p>
+<p>To handle concurrent traffic, the system uses a <strong>data-parallel architecture</strong>. The model fits comfortably on a single H100, so instead of tensor parallelism, each GPU runs an independent worker that pulls from a shared async queue. The system launches via <code>torchrun</code> and initializes an NCCL process group for multi-GPU coordination and synchronization. Adding GPUs is a config change, not a code change. The distributed coordination protocol:</p>
 
 <ul>
   <li><strong>Rank-0 handles all I/O.</strong> Queue polling, status updates, heartbeats, cloud uploads — all on the primary process. Worker GPUs don't touch the network.</li>
   <li><strong>Broadcast before inference.</strong> Once rank-0 pulls a request, the payload (prompt, dimensions, seed) is broadcast to all workers via NCCL <code>broadcast_object_list</code>.</li>
-  <li><strong>Barrier synchronization.</strong> <code>dist.barrier()</code> before and after generation ensures lockstep — no GPU starts early, no GPU races ahead.</li>
+  <li><strong>Barrier synchronization.</strong> <code>dist.barrier()</code> before and after generation ensures lockstep so no GPU starts early or races ahead.</li>
   <li><strong>Seed consistency.</strong> Random seed broadcast from rank-0 guarantees deterministic output regardless of GPU count.</li>
 </ul>
 
@@ -90,7 +90,7 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <h3>Health Monitoring (Heartbeat)</h3>
 </div>
 
-<p>A daemon thread sends a periodic heartbeat POST to the queue scheduler every 30 seconds, with worker ID, GPU count, status (<code>"ready"</code> / <code>"occupied"</code> / <code>"initializing"</code>), and timestamp. Failed heartbeats retry with exponential backoff. Without this, a silently-dead node (OOM kill, GPU hang, network partition) would cause in-flight jobs to disappear permanently.</p>
+<p>A daemon thread sends a periodic heartbeat POST to the queue scheduler every 30 seconds. The heartbeat reports worker status (<code>"ready"</code> / <code>"occupied"</code>), GPU memory usage, generation latency, and error rates. The system automatically alerts if latency exceeds 5 seconds or error rates exceed 1%. If a heartbeat is missing, the system flags the worker as unhealthy and removes it from the pool. Without this, a silently-dead node (OOM kill, GPU hang, network partition) would cause in-flight jobs to disappear permanently.</p>
 
 <div class="p1-section">
   <h3>Request Lifecycle</h3>
@@ -127,8 +127,8 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 <h3>Content Safety Pipeline</h3>
 <p>Every request passes a two-stage safety check before the model processes it:</p>
 <ol>
-  <li><strong>Text-level filtering</strong> — toxicity detector scans the prompt; rejected before any GPU compute is spent.</li>
-  <li><strong>Image-level classification</strong> — NSFW classifier runs on every generated image before the upload step. Both stages run on rank-0 only, with zero distributed overhead.</li>
+  <li><strong>Text-level filtering</strong>: Hugging Face's <code>toxic-bert</code> scans the prompt and rejects flagged inputs before any GPU compute is spent.</li>
+  <li><strong>Image-level classification</strong>: a custom NSFW image classifier runs on every generated image before the upload step. Both stages run on rank-0 only, with zero distributed overhead.</li>
 </ol>
 
 <hr/>
@@ -149,8 +149,14 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 
 <hr/>
 
+<h2>Scalability &amp; TensorRT Optimization</h2>
+
+<p>The stateless worker design makes horizontal scaling straightforward: handling 10× more traffic simply means adding more GPU nodes and placing a Redis cache in front of the queue. To optimize single-card performance further, the next phase of the project involves <strong>ONNX export and TensorRT optimization</strong>. By fusing operations, minimizing kernel overhead, and executing in FP16, TensorRT is expected to reduce inference latency by another 30–50%.</p>
+
+<hr/>
+
 <h2>What I Learned</h2>
 
-<p>This was my first time building a system where <strong>uptime matters more than accuracy</strong>. In production, a crash at 3 AM means real users get error pages. Designing for graceful degradation — catching every exception, retrying uploads, re-queuing failed jobs, never crashing the server loop — was a fundamentally different engineering discipline than anything I'd done in school.</p>
+<p>This was my first time building a system where <strong>uptime matters more than accuracy</strong>. In production, a crash at 3 AM means real users get error pages. Designing for graceful degradation (catching every exception, retrying uploads, re-queuing failed jobs, and never crashing the server loop) was a fundamentally different engineering discipline than anything I'd done in school.</p>
 
-<p>I also learned that distributed GPU programming is 20% NCCL calls and 80% making sure every process agrees on what's happening. The broadcast-barrier-broadcast pattern for request distribution seems simple in retrospect, but getting the synchronization right — especially around error paths — took more debugging than the actual inference code.</p>
+<p>I also learned that distributed GPU programming is 20% NCCL calls and 80% making sure every process agrees on what's happening. The broadcast-barrier-broadcast pattern for request distribution seems simple in retrospect, but getting the synchronization right (especially around error paths) took more debugging than the actual inference code.</p>

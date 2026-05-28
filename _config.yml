@@ -11,7 +11,7 @@ locale                   : "en-US"
 title                    : "Yupeng Tang"
 title_separator          : "-"
 name                     : &name "Yupeng Tang"
-description              : &description "LLMs, Multimodal AI, ML Systems & Inference | M.S. CS @ Georgia Tech | MLE Intern @ GMI Cloud | Research Assistant"
+description              : &description "LLMs, Multimodal AI, ML Systems & Inference | M.S. CS & CSE, Georgia Tech '26"
 url                      : https://yupengtang.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "yupengtang/yupengtang.github.io"
@@ -25,10 +25,8 @@ author:
   name             : "Yupeng Tang"
   pronouns         : "He/Him/His"  
   bio              : |
-    LLMs, Multimodal AI, ML Systems<br/>
-    M.S. CS @ Georgia Tech<br/>
-    MLE Intern @ GMI Cloud<br/>
-    Research Assistant
+    LLMs · Multimodal AI · ML Systems<br/>
+    M.S. CS &amp; CSE, Georgia Tech '26
   location         : "Atlanta, GA"
   employer         : # "Red Brick University"
   uri              : # URL
@@ -120,7 +118,7 @@ staticman:
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
-  hide                   : false     # change to true to hide the RSS feed in the footer
+  hide                   : true      # hide RSS feed to reduce search engine discoverability
   path                   : # blank (default) uses feed.xml
 
 

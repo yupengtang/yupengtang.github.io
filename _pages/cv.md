@@ -11,78 +11,82 @@ redirect_from:
 
 Education
 ======
+
 * **Master of Science in Computer Science**, Georgia Institute of Technology, Aug. 2024 – May 2026
 * **Master of Science in Computational Science and Engineering (Applied Mathematics)**, Georgia Institute of Technology, Aug. 2023 – May 2026
-* **Bachelor of Engineering in Artificial Intelligence**, Shandong University, Sep. 2019 – June 2023
+* **Bachelor of Engineering in Artificial Intelligence**, Shandong University, Sep. 2019 – Jun. 2023
 
 Publications & Manuscripts
 ======
 
-* **Y. Tang**, M. Lin. *Beyond Reversal Rates: A Mechanistic Audit of LLM Decision Revision Under Reputation Cues*. **ICML 2026** (International Conference on Machine Learning), under review.
-* **Y. Tang**, M. Lin. *Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models*. **NeurIPS 2026** (Conference on Neural Information Processing Systems), under review.
-* **Y. Tang**. *UPD: Uncertainty-Preserving Distillation for Vision-Language Models*. **NeurIPS 2026** (Conference on Neural Information Processing Systems), under review.
-* **Y. Tang**. *The Language of Surprise: LLM Compression as a Unifying Primitive for Knowledge Discovery*. **KDD 2026** (ACM SIGKDD Conference on Knowledge Discovery and Data Mining), Blue Sky Ideas Track, under review.
-* **Y. Tang**. *Do Large Language Models Track Event Boundaries? Incremental Signals, Localization, and Robustness*. In preparation for **EMNLP 2026** (Conference on Empirical Methods in Natural Language Processing).
-* **Y. Tang**, Z. Y. Jiang, T. Changnawa, H.-S. Shih, I. Karadag, P. Kastner. *High-Resolution Microclimate Forecasting with Morphology-Aware Spatiotemporal Models*. In preparation for **Building and Environment** (SCI Q1, IF ≈ 7.6).
-* E. Cheng, R. Ma, R. Qi, **Y. Tang**. *Image Colorization Using Generative Adversarial Networks*. **Proc. SPIE 12294**, 7th Int. Symp. on Advances in Electrical, Electronics, and Computer Engineering, 122943Z, 2022. **(Co-first author)**
+* **Y. Tang**, M. Lin. *When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines*. **NeurIPS 2026**, under review.
+* **Y. Tang**, M. Lin. *Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models*. **NeurIPS 2026**, under review.
+* **Y. Tang**, M. Lin. *When Are LLM Judges Reliable? Anchor-Calibrated Task-Conditional Peer Councils for Open-Ended Evaluation*. **ARR**, under review (targeting EMNLP 2026).
+* **Y. Tang**. *EVENTBOUND-LIT: Expert-Derived Narrative Transition Diagnostics for Incremental Language Models*. **ARR**, under review (targeting EMNLP 2026).
 
 Research Experience
 ======
 
 ## Research Assistant
-**Georgia Institute of Technology** | Atlanta, GA | Sep. 2025 – Present
 
-Advised by Prof. Mingfeng Lin.
+**Georgia Institute of Technology** \| Atlanta, GA \| Sep. 2025 – Present
 
-* First-author ICML 2026 submission: introduced a two-pass causal probe for LLM decision revision, distinguishing evidence-based belief updating from authority-driven compliance across 5 LLMs (31K+ trials on a 1,989-task benchmark).
-* First-author NeurIPS 2026 submission: identified a post-retrieval evidence-ignoring failure mode in multimodal RAG and introduced a retrieval-conditioned auditing framework, revealing that matched retrieval success can still mask sharply different evidence-use behavior across VLMs.
-* Built a cross-platform Electron desktop app (React/TypeScript/FastAPI) for side-by-side evaluation across 9+ LLM chat services and 100+ API models via OpenRouter; implemented a lightweight BrowserView automation engine (DOM injection, async polling, stability checks) cutting memory usage ~40% vs Playwright/Selenium.
-* Developed and productionized an LLM-as-a-Judge evaluation pipeline with structured JSON outputs, backed by a FastAPI service (15+ endpoints), SQLite persistence, and one-command cross-platform packaging (PyInstaller + electron-builder).
+Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning LLM behavior, multimodal AI, and AI evaluation, resulting in **2 NeurIPS 2026 submissions** and **2 ARR submissions** (all under review).
+
+* **NeurIPS 2026** (under review) — *When Expert Disagreement Hurts*: designed an audit framework examining how LLMs revise decisions under expert disagreement signals, identifying prestige-driven compliance patterns distinct from evidence-based belief updating.
+* **NeurIPS 2026** (under review) — *Retrieved but Ignored*: identified a post-retrieval evidence-ignoring failure mode in multimodal RAG, revealing that matched retrieval success can mask sharply different evidence-use behavior across VLMs.
+* **ARR** (under review; targeting EMNLP 2026) — *When Are LLM Judges Reliable?*: developed an anchor-calibrated peer council framework for reliable open-ended LLM evaluation, establishing task-conditional reliability bounds for LLM-as-a-Judge pipelines.
+* Built a self-play evaluation framework that audits LLM-generated verifiers and produces correctness-based model rankings, revealing that verifiable correctness and human preference represent substantially divergent axes of LLM capability. Manuscript complete, targeting AAAI 2027.
+* Engineered the supporting evaluation platform from scratch: a cross-platform Electron desktop app (React/TypeScript/FastAPI) with BrowserView-based automation across 9+ LLM chat services and 100+ API models, LLM-as-a-Judge pipeline with structured outputs, SQLite persistence, and one-command packaging (PyInstaller + electron-builder).
+
+## Independent Researcher
+
+**Georgia Institute of Technology** \| Atlanta, GA \| Jan. 2026 – Present
+
+* Running a self-directed research program on reliable reasoning in foundation models, with focus on post-training (RLVR), test-time compute, and multimodal calibration. One paper under review at ARR (targeting EMNLP 2026), multiple additional manuscripts in progress.
+* Current work covers reward hacking and scaling failures in RLVR, self-correction backfire in strong reasoning models, VLM calibration under compression, and few-shot robotic manipulation. The common thread is figuring out where model reasoning breaks under deployment conditions and building fixes that don't trade away capability.
 
 ## Graduate Researcher
-**Georgia Institute of Technology** | Atlanta, GA | Jan. 2025 – Present
 
-Advised by Prof. Patrick Kastner.
+**Georgia Institute of Technology** \| Atlanta, GA \| Jan. 2025 – Dec. 2025
 
-* Architected a spatiotemporal modeling framework for high-frequency sensor data (947K samples), achieving large-scale training optimized on distributed HPC infrastructure.
-* Proposed a novel physics-informed sequence architecture (incorporating Gated Residual Networks, Variable Selection Networks, and multi-head attention) with structured inductive biases, achieving strong out-of-distribution generalization across unseen locations (Temp RMSE: 0.43 °C; RH RMSE: 1.3%).
-* Built a scalable sparse-to-dense inference pipeline for high-resolution spatial prediction (100K+ grid points), coupling Random Forest embeddings with Regression Kriging over high-dimensional geospatial covariates.
-* Evaluated zero-shot spatial transferability across rigorous deep learning baselines, resulting in a manuscript prepared for an SCI Q1 journal.
+Advised by Prof. Patrick Kastner. First author, manuscript targeting *Building and Environment* (SCI Q1, Elsevier).
+
+* Designed a two-stage prediction framework that forecasts campus temperature and humidity at five horizons (10 min – 6 hours) from 16 sparse weather stations, then maps predictions to a 100K-point grid at 5.9 m resolution via morphology-informed Regression Kriging with nine LiDAR/OpenStreetMap features.
+* Implemented a dual-depth parallel LSTM with variable selection and attention (337K params), achieving best DL RMSE at 360 min (3.18°C, 13% below TCN) and benchmarking against six baselines to show that a tuned linear model beats all DL architectures at every horizon.
+* Trained on 947K warm-season observations using A100 GPU (PACE cluster), validated through rolling-origin CV, multi-seed ablation with Wilcoxon significance tests, and leave-one-station-out spatial cross-validation.
 
 ## Undergraduate Researcher
-**Shandong University** | Shandong, China | Feb. 2023 – June 2023
+
+**Shandong University** \| Shandong, China \| Feb. 2023 – Jun. 2023
+
+Advised by Prof. Xianfeng Yuan. Undergraduate thesis project on autonomous vehicle path planning in complex environments.
 
 * Developed an enhanced Bidirectional Rapidly-Exploring Random Tree (Bi-RRT) algorithm for autonomous vehicle path planning in complex parking lot environments.
 * Implemented adaptive probabilistic sampling and local trajectory smoothing modules, improving exploration efficiency and reducing curvature in dense obstacle fields.
 * Integrated real-time collision detection, dynamic obstacle avoidance, and kinematic feasibility validation for continuous, safe navigation under motion constraints.
 * Achieved 2× faster planning speed, ~35% smoother paths, and 15% shorter average trajectory length compared to baseline RRT and RRT*, validated across 100+ randomized test scenarios.
 
-## Research Intern
-**Shandong University** | Shandong, China | Sep. 2021 – April 2022
-
-* Co-first & corresponding author of a peer-reviewed international conference paper (SPIE 2022) on automatic image colorization.
-* Designed a novel lightweight GAN pipeline (U-Net generator + ResNet18 discriminator) and introduced a YUV-channel separation technique, reducing training cost while boosting structural fidelity and perceptual sharpness.
-* Stabilized adversarial training with optimized objectives (re-weighted "realness" reliability term and tuned loss balance), improving color fidelity and transfer robustness under diverse textures and scenes.
-* Scaled experiments on 4.3K+ natural & animated images in PyTorch with extensive visual comparisons, consistently outperforming baselines in visual quality and detail preservation.
-
-
 Work Experience
 ======
 
-## Machine Learning Engineer
-**GMI Cloud** | Mountain View, California | May 2025 – August 2025
+## Machine Learning Engineer Intern
 
-* Optimized Flux-Schnell (12B DiT) multimodal inference on H100 clusters with GPU memory persistence & offload, reaching ~30 images/min/GPU and 1–2s latency (10–15× faster than baseline).
-* Scaled a distributed multi-GPU inference pipeline (NCCL all-reduce, ONNX → TensorRT) achieving linear throughput across nodes.
-* Built production-ready infrastructure (queuing, heartbeat monitoring, structured logging, GCS integration, content moderation) to ensure long-running stability & compliance.
-* Implemented a video super-resolution pipeline (Real-ESRGAN + FastAPI) with PSNR/SSIM evaluation, reducing 5s@24fps clip runtime by ~65% (284s → 100s) when integrated with Wan2.2 text-to-video.
-* Developed an AI-powered e-commerce try-on service (ComfyUI, Flux-Kontext + Segformer), delivering <5s per image outfit changing, background removal, and style transfer via secure RESTful APIs.
+**GMI Cloud** \| Mountain View, California \| May 2025 – Aug. 2025
+
+* Optimized Flux-Schnell (12B DiT) multimodal inference on H100 by implementing GPU memory persistence, offload strategies, and kernel-level tuning, achieving ~30 images/min and 1–2s latency per request on a single GPU compared to the 10–15× slower baseline.
+* Designed a multi-GPU–ready inference architecture (NCCL-compatible, ONNX to TensorRT conversion pipeline) and validated linear-scaling behavior on single-GPU prototypes to support future distributed deployment.
+* Built production-grade serving infrastructure including queueing, heartbeat monitoring, structured logging, GCS integration, and safety filtering, enabling stable long-running operations under high request volume.
+* Implemented a video super-resolution pipeline (Real-ESRGAN + FastAPI) with PSNR/SSIM evaluation, reducing 5s@24fps clip runtime by ~65% (284s to 100s) when integrated with Wan2.2 text-to-video.
+* Developed an AI-powered e-commerce try-on service (ComfyUI, Flux-Kontext + Segformer), delivering under 5s per image outfit changing, background removal, and style transfer via secure RESTful APIs.
+* Synthesized research papers and open-source model documentation to produce a technical review of multimodal generation systems, covering text-to-image, text-to-video, and super-resolution model families and summarizing key benchmark findings for internal evaluation.
 
 Projects
 ======
 
 ## AI-Powered Product Recommendation System
-**Independent Venture** | April 2024 – August 2024
+
+**Independent Venture** \| Apr. 2024 – Aug. 2024
 
 * Architected an AI-powered recommendation system that analyzes millions of Amazon product reviews to help users quickly discover the most relevant and high-quality items through semantic search and LLM-based understanding.
 * Developed a PySpark ETL pipeline to clean, tokenize, and embed reviews (768-dim via text-embedding-005), storing vectors and metadata efficiently in BigQuery for hybrid semantic retrieval.
@@ -94,7 +98,9 @@ Competition Experience
 ======
 
 ## American Express Default Prediction
-**Kaggle Competition** | May 2022 – August 2022 | **Top 0.4% (20th/4,874 teams), Silver Medal**
+
+**Kaggle Competition** \| May 2022 – Aug. 2022 \| **Top 0.4% (20th/4,874 teams), Silver Medal**
+
 * Trained a weighted ensemble of LightGBM (DART) and GPU-accelerated XGBoost on 16 GB of credit card transaction time-series covering spending, balances, delinquency, and repayment.
 * Ran 5-fold stratified cross-validation with a custom Gini-aligned training metric; iterated from a baseline through feature-enriched and feature-compressed model variants, checkpointing best models each round and tracking feature importance for selection.
 * Assembled the final submission as a weighted blend of four checkpoints (LightGBM at 30/25/25%, XGBoost at 20%), with weights assigned by per-model validation Gini; multi-seed training across variants kept variance low and generalization stable.
@@ -103,13 +109,15 @@ Teaching Experience
 ======
 
 ## Teaching Assistant
-**Georgia Institute of Technology** | Atlanta, GA | Sep. 2025 – Present
 
-* **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Dr. Jarred Fountain): Designed grading rubrics and assessed weekly assignments on Python implementations, statistical modeling, and ML algorithm selection
-* **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin): Grading visualization exercises and dashboard projects; supporting students on Ed Discussions with Tableau, PowerBI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students from the ground up — developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows
+**Georgia Institute of Technology** \| Atlanta, GA \| Sep. 2025 – May 2026
+
+* **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Jarred Fountain): Designed grading rubrics and assessed weekly assignments on Python implementations, statistical modeling, and ML algorithm selection.
+* **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin): Graded visualization exercises and dashboard projects; supported students on Ed Discussions with Tableau, PowerBI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students. Developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows.
 
 ## Undergraduate Teaching Assistant
-**Shandong University** | Shandong, China | Sep. 2020 – July 2021
+
+**Shandong University** \| Shandong, China \| Sep. 2020 – Jul. 2021
 
 * Supported a 400+ student Linear Algebra course, driving grading, records management, and personalized learning support; recognized as Outstanding Teaching Assistant for exceptional dedication to student success.
 * Assessed 600+ handwritten assignments with clear, actionable feedback, directly boosting student understanding and measurable performance outcomes.
@@ -119,13 +127,15 @@ Teaching Experience
 Leadership & Service
 ======
 
-## Campus Academic Integrity TA Team
-**Georgia Institute of Technology** | Atlanta, GA | Jan. 2026 – May 2026
+## Campus Academic Integrity TA Team Member
+
+**Georgia Institute of Technology** \| Atlanta, GA \| Jan. 2026 – May 2026
 
 * Supported OMS Analytics and OMS Cybersecurity programs (Spring 2026); reviewed academic misconduct cases and assisted with policy-consistent case evaluation.
 
 ## Publicity Manager – Starlight Art Troupe
-**Shandong University** | Shandong, China | Sep. 2019 – August 2021
+
+**Shandong University** \| Shandong, China \| Sep. 2019 – Aug. 2021
 
 * Directed the design and production of 30+ posters, flyers, and digital media assets to promote events, boosting audience turnout by 25% and strengthening brand recognition.
 * Managed social media operations and curated engaging content, streamlining workflows and driving a 40% increase in follower engagement over two semesters.
@@ -134,6 +144,7 @@ Leadership & Service
 
 Skills
 ======
+
 * **Programming Languages:** Python, C/C++, Java, JavaScript, HTML/CSS, SQL, Bash/Shell, MATLAB, R, Julia
 * **Machine Learning & AI:** PyTorch, TensorFlow, scikit-learn, HuggingFace, LangChain
 * **Cloud & Infrastructure:** AWS, Azure, GCP, Docker, Kubernetes, Terraform

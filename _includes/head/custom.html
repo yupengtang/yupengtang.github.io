@@ -1,9 +1,57 @@
 {% include base_path %}
 
 <!-- start custom head snippets -->
-
-<!-- Prevent search engines from indexing the site -->
 <meta name="robots" content="noindex, nofollow">
+
+<script>
+(function(){
+  var s=localStorage.getItem('theme');
+  var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));
+
+  function toggleTheme(){
+    var c=document.documentElement.getAttribute('data-theme')||'light';
+    var n=c==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',n);
+    localStorage.setItem('theme',n);
+  }
+
+  function b(){
+    var t=document.getElementById('theme-toggle');
+    if(t) t.addEventListener('click',toggleTheme);
+
+    document.addEventListener('keydown',function(e){
+      if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();toggleTheme();}
+    });
+
+    var btn=document.getElementById('back-to-top');
+    if(btn){
+      var shown=false;
+      window.addEventListener('scroll',function(){
+        if(window.scrollY>400){if(!shown){btn.classList.add('visible');shown=true;}}
+        else{if(shown){btn.classList.remove('visible');shown=false;}}
+      },{passive:true});
+      btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+    }
+
+    console.log(
+      '%c  Yupeng Tang  %c\n%cML Engineer & Researcher\nhttps://yupengtang.github.io\n\n%cCtrl+K %c— toggle dark mode',
+      'background:#2563eb;color:#fff;font-size:14px;font-weight:700;padding:6px 12px;border-radius:4px;',
+      '',
+      'color:#6b7280;font-size:11px;',
+      'background:#f3f4f6;color:#2563eb;padding:2px 6px;border-radius:3px;font-family:monospace;font-size:11px;',
+      'color:#6b7280;font-size:11px;'
+    );
+  }
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',b);}else{b();}
+})();
+</script>
+
+<!-- Google Fonts: Inter + JetBrains Mono -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="apple-touch-icon" sizes="57x57" href="{{ base_path }}/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
 <link rel="apple-touch-icon" sizes="60x60" href="{{ base_path }}/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
 <link rel="apple-touch-icon" sizes="72x72" href="{{ base_path }}/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">

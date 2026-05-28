@@ -1,179 +1,106 @@
 ---
-title: "Multi-LLM Evaluation Platform"
-excerpt: "Cross-platform Electron desktop app with custom browser automation for side-by-side LLM evaluation — supporting a first-author ICML 2026 submission (31K+ trials, 5 LLMs, 1,989-task benchmark)"
+title: "Daily AI Trend Reporter"
+excerpt: "Fully automated pipeline that publishes daily digests of frontier AI research papers to a Jekyll site via GitHub Actions, Hugging Face Papers API, and GitHub Models (GPT-5). 431+ posts, zero manual intervention."
 collection: portfolio
 ---
 
 <style>
-.p4-metric-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 1.5rem 0; }
-.p4-metric-card {
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-  border: 1px solid #fcd34d; border-radius: 12px;
+.p8-metric-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.p8-metric-card {
+  background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+  border: 1px solid #fda4af; border-radius: 12px;
   padding: 1rem 1.4rem; text-align: center; min-width: 110px; flex: 1;
 }
-.p4-metric-num { font-size: 1.6rem; font-weight: 800; color: #b45309; line-height: 1.1; }
-.p4-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
-.p4-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
-.p4-tag { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
-.p4-section { border-left: 3px solid #f59e0b; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
-.p4-section h3 { margin: 0 0 0.3rem; color: #78350f; font-size: 1.05rem; }
-.p4-callout { background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
-.p4-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
-.p4-step { background: #fef3c7; border: 1px solid #fcd34d; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #78350f; }
-.p4-arrow { color: #f59e0b; font-size: 1.1rem; font-weight: 700; }
-.p4-arch-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; margin: 1rem 0; }
-.p4-arch-block { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 10px; padding: 0.8rem 1rem; }
-.p4-arch-title { font-weight: 700; color: #b45309; font-size: 0.85rem; margin-bottom: 0.4rem; }
-.p4-arch-details { color: #374151; font-size: 0.78rem; line-height: 1.5; }
-.p4-service-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.8rem 0; }
-.p4-service { background: #78350f; color: #fef3c7; border-radius: 6px; padding: 0.25rem 0.65rem; font-size: 0.75rem; font-weight: 700; }
-.p4-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
-.p4-table th { background: #fef3c7; color: #78350f; padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #fcd34d; font-weight: 700; }
-.p4-table td { padding: 0.55rem 1rem; border-bottom: 1px solid #fffbeb; vertical-align: top; }
-code { background: #fef3c7; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #b45309; }
-.p4-research-banner { background: linear-gradient(135deg, #78350f, #b45309); color: #fef3c7; border-radius: 12px; padding: 1rem 1.4rem; margin: 1.5rem 0; }
-.p4-research-banner h3 { color: #fef3c7; margin: 0 0 0.4rem; font-size: 1rem; }
-.p4-research-banner p { margin: 0; font-size: 0.88rem; opacity: 0.92; }
+.p8-metric-num { font-size: 1.6rem; font-weight: 800; color: #be123c; line-height: 1.1; }
+.p8-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.p8-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
+.p8-tag { background: #ffe4e6; color: #be123c; border: 1px solid #fda4af; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
+.p8-section { border-left: 3px solid #f43f5e; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
+.p8-section h3 { margin: 0 0 0.3rem; color: #9f1239; font-size: 1.05rem; }
+.p8-callout { background: #fff1f2; border-left: 4px solid #f43f5e; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
+.p8-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
+.p8-step { background: #ffe4e6; border: 1px solid #fda4af; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #9f1239; }
+.p8-arrow { color: #f43f5e; font-size: 1.1rem; font-weight: 700; }
+.p8-content-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.7rem; margin: 1rem 0; }
+.p8-content-block { background: #fff1f2; border: 1px solid #fda4af; border-radius: 10px; padding: 0.8rem 1rem; }
+.p8-content-title { font-weight: 700; color: #be123c; font-size: 0.85rem; margin-bottom: 0.4rem; }
+.p8-content-details { color: #374151; font-size: 0.78rem; line-height: 1.5; }
+code { background: #ffe4e6; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #be123c; }
 </style>
 
-<p>This is a desktop application I built from scratch as the primary engineering artifact behind my first-author ICML 2026 submission with Prof. Mingfeng Lin at Georgia Tech. The research investigates how LLMs revise decisions under conflicting information — specifically, whether models update beliefs based on <em>evidence</em> (rational revision) or simply defer to <em>authority framing</em> (sycophantic compliance). Running that experiment at scale required a tool that didn't exist: one that can simultaneously query multiple LLMs through their <strong>native web interfaces</strong>, not just APIs, collect responses, and automatically evaluate whether they agree.</p>
+<p>Keeping up with AI research is a real problem. Hundreds of papers drop every week across arXiv, top venues, and Hugging Face. Most researchers either miss important work or spend hours skimming abstracts. I built a system that solves this: a fully autonomous pipeline that publishes a curated daily digest of frontier AI papers, with no human in the loop.</p>
 
-<div class="p4-research-banner">
-  <h3>📄 First-Author ICML 2026 Submission</h3>
-  <p>This platform powered <strong>31,000+ experimental trials</strong> across a <strong>1,989-task benchmark</strong> spanning 5 LLMs, generating the empirical backbone of the paper. Advisor: Prof. Mingfeng Lin, Georgia Institute of Technology.</p>
+<p>The pipeline runs on a cron schedule via GitHub Actions. Every day at 14:00 UTC, it pulls the top papers from Hugging Face, generates summaries and keyword extraction via GPT-5, formats them as Jekyll posts, commits, and deploys. It has been running autonomously since January 2025, producing 431+ posts without a single manual intervention.</p>
+
+<p>Live site: <a href="https://yupengtang.github.io/Daily-AI-Trend-Reporter" target="_blank"><strong>yupengtang.github.io/Daily-AI-Trend-Reporter</strong></a></p>
+
+<div class="p8-metric-grid">
+  <div class="p8-metric-card"><div class="p8-metric-num">431+</div><div class="p8-metric-label">Posts Generated</div></div>
+  <div class="p8-metric-card"><div class="p8-metric-num">371</div><div class="p8-metric-label">Daily Digests</div></div>
+  <div class="p8-metric-card"><div class="p8-metric-num">40</div><div class="p8-metric-label">Weekly Reports</div></div>
+  <div class="p8-metric-card"><div class="p8-metric-num">0</div><div class="p8-metric-label">Manual Intervention</div></div>
 </div>
 
-<div class="p4-metric-grid">
-  <div class="p4-metric-card"><div class="p4-metric-num">9</div><div class="p4-metric-label">Native LLM Services</div></div>
-  <div class="p4-metric-card"><div class="p4-metric-num">100+</div><div class="p4-metric-label">API Models via OpenRouter</div></div>
-  <div class="p4-metric-card"><div class="p4-metric-num">31K+</div><div class="p4-metric-label">Trials Collected</div></div>
-  <div class="p4-metric-card"><div class="p4-metric-num">1,989</div><div class="p4-metric-label">Benchmark Tasks</div></div>
-  <div class="p4-metric-card"><div class="p4-metric-num">~195 MB</div><div class="p4-metric-label">Single Binary Installer</div></div>
-</div>
-
-<div class="p4-tags">
-  <span class="p4-tag">Electron 28</span><span class="p4-tag">React 18 + TypeScript</span><span class="p4-tag">Vite</span>
-  <span class="p4-tag">BrowserView API</span><span class="p4-tag">FastAPI</span><span class="p4-tag">SQLite</span>
-  <span class="p4-tag">OpenRouter API</span><span class="p4-tag">PyInstaller</span><span class="p4-tag">electron-builder</span>
-  <span class="p4-tag">LLM-as-a-Judge</span>
+<div class="p8-tags">
+  <span class="p8-tag">Python</span><span class="p8-tag">GitHub Actions</span><span class="p8-tag">Jekyll</span>
+  <span class="p8-tag">Hugging Face API</span><span class="p8-tag">GitHub Models API</span>
+  <span class="p8-tag">GPT-5</span><span class="p8-tag">CI/CD</span><span class="p8-tag">GitHub Pages</span>
 </div>
 
 <hr/>
 
-<h2>Why Build a Custom Browser, Not Just Use APIs?</h2>
+<h2>Pipeline</h2>
 
-<p>Most LLM evaluation frameworks operate through APIs. That works for standardized benchmarks, but my research required testing models <strong>through the same interface end users interact with</strong> — the web chat UI. Model behavior can differ between API calls and web interfaces: the web versions have system prompts, guardrails, context-window management, and post-processing layers that raw APIs don't expose. If you're studying how models respond to adversarial framings, you need to test the version users actually encounter.</p>
-
-<p>APIs also don't cover every model. Meta AI has no public API. Duck.ai is browser-only. Amazon Nova through the Bedrock console is a different product than its API variant.</p>
-
-<div class="p4-callout"><strong>Solution: Electron's native BrowserView API.</strong> Each tab is a real Chromium process sharing Electron's runtime — no additional browser install — running in a sandboxed context-isolated environment indistinguishable from a regular session. Each service gets its own persistent session partition, so login credentials survive across restarts. Login once, never reauthenticate.</div>
-
-<p>Supported browser services:</p>
-<div class="p4-service-grid">
-  <span class="p4-service">ChatGPT</span><span class="p4-service">Claude</span><span class="p4-service">Gemini</span>
-  <span class="p4-service">Mistral</span><span class="p4-service">DeepSeek</span><span class="p4-service">Meta AI</span>
-  <span class="p4-service">Duck.ai</span><span class="p4-service">Perplexity</span><span class="p4-service">Amazon Nova</span>
+<div class="p8-flow">
+  <div class="p8-step">Cron trigger (14:00 UTC)</div><div class="p8-arrow">&rarr;</div>
+  <div class="p8-step">Fetch top 10 papers (HF API)</div><div class="p8-arrow">&rarr;</div>
+  <div class="p8-step">LLM summarization + keywords</div><div class="p8-arrow">&rarr;</div>
+  <div class="p8-step">Generate Jekyll markdown</div><div class="p8-arrow">&rarr;</div>
+  <div class="p8-step">Git commit &amp; push</div><div class="p8-arrow">&rarr;</div>
+  <div class="p8-step">Jekyll build &amp; deploy</div>
 </div>
+
+<p>Two GitHub Actions workflows handle orchestration: the first generates content and commits it, the second builds and deploys the Jekyll site. The split keeps content generation failures from blocking deployment of already-committed posts.</p>
 
 <hr/>
 
-<h2>The BrowserView Automation Engine</h2>
+<h2>Three Content Types</h2>
 
-<p>Unlike Playwright, BrowserView provides no built-in selectors, waits, or assertions. I built all of that from scratch.</p>
-
-<div class="p4-section">
-  <h3>Message Injection — Three Phases</h3>
-</div>
-
-<ol>
-  <li><strong>Focus acquisition</strong> — locate the input element using service-specific CSS selectors (with a generic fallback that scans for visible textareas by bounding-box dimensions), then click and focus it.</li>
-  <li><strong>Text insertion</strong> — two strategies:
-    <ul>
-      <li><em>React-controlled inputs (ChatGPT, Meta AI):</em> Directly mutate DOM value and dispatch synthetic <code>InputEvent</code> + <code>change</code> events to trigger React's reconciliation.</li>
-      <li><em>All others:</em> Simulate character-by-character keyboard input via <code>webContents.sendInputEvent()</code> — framework-agnostic and triggers all native handlers.</li>
-    </ul>
-  </li>
-  <li><strong>Submission — cascade of 3 strategies:</strong>
-    <ul>
-      <li>Service-specific button click (e.g., <code>button[data-testid="send-button"]</code> for ChatGPT, <code>button[aria-label="发送"]</code> for Duck.ai)</li>
-      <li>Keyword-based generic fallback (textContent / aria-label / data-testid / className matching: send, submit, ask, 发送…)</li>
-      <li>Icon-button heuristic: buttons containing only SVG/icon elements — "last icon button" default targets the send button on virtually every chat UI</li>
-    </ul>
-  </li>
-</ol>
-
-<div class="p4-section">
-  <h3>Response Extraction — Service-Specific Selectors</h3>
-</div>
-
-<table class="p4-table">
-  <thead><tr><th>Service</th><th>Extraction Strategy</th></tr></thead>
-  <tbody>
-    <tr><td><strong>ChatGPT</strong></td><td><code>[data-message-author-role="assistant"]</code> — last element's text</td></tr>
-    <tr><td><strong>Claude</strong></td><td><code>[class*="font-claude-response"]</code> — select longest text (skips model-name badges like "Sonnet 4.5")</td></tr>
-    <tr><td><strong>Gemini</strong></td><td><code>message-content[class*="model-response-text"]</code></td></tr>
-    <tr><td><strong>Mistral / DeepSeek</strong></td><td>Author-role attributes similar to ChatGPT</td></tr>
-    <tr><td><strong>Meta AI</strong></td><td>Traverse <code>.html-div</code> bottom-up, filter navigation text, strip locale prefixes</td></tr>
-    <tr><td><strong>Duck.ai</strong></td><td>Parse <code>document.body.textContent</code> — locate model-name markers ("GPT-4o mini," "Claude"…) and extract text between marker and trailing UI elements</td></tr>
-  </tbody>
-</table>
-
-<p>Every extraction includes a <strong>validity filter</strong> rejecting JSON payloads, navigation strings, and UI artifacts. A <strong>stability check</strong> (text unchanged across 2+ consecutive polls) determines response completion — no minimum length, so short answers like "Yes" or "Vatican City" are captured correctly.</p>
-
-<hr/>
-
-<h2>LLM-as-a-Judge Pipeline</h2>
-
-<p>Once all bot responses are collected, they go to a <strong>coordinator model</strong> for consistency evaluation — either API-based (default: <code>gpt-4o-mini</code> via OpenRouter) or browser-based (a designated non-bot tab that receives the evaluation prompt directly).</p>
-
-<div class="p4-callout"><strong>Judge prompt design:</strong> The prompt enforces <em>substance-level</em> comparison, not surface similarity. "Two responses are the same if, after normalizing synonyms and surface form, they assert the same main proposition(s) with the same stance and material parameters (action, object/subject, quantities, thresholds, time frame, scope, conditions)." Structured JSON output enforced: <code>consistent</code> (bool) · <code>verdict</code> (string) · <code>unclear_responses</code> (array) · <code>main_differences</code> (array, max 3 bullets).</div>
-
-<div class="p4-flow">
-  <div class="p4-step">Broadcast prompt</div><div class="p4-arrow">→</div>
-  <div class="p4-step">All bots respond (2s poll, 2min timeout)</div><div class="p4-arrow">→</div>
-  <div class="p4-step">POST /api/check-consistency</div><div class="p4-arrow">→</div>
-  <div class="p4-step">Coordinator judges</div><div class="p4-arrow">→</div>
-  <div class="p4-step">🟢 / 🔴 indicator</div><div class="p4-arrow">→</div>
-  <div class="p4-step">Save to SQLite</div>
-</div>
-
-<hr/>
-
-<h2>System Architecture</h2>
-
-<div class="p4-arch-grid">
-  <div class="p4-arch-block">
-    <div class="p4-arch-title">Electron Main Process</div>
-    <div class="p4-arch-details">TypeScript · Manages lifecycle, spawns Python backend, creates BrowserViews, routes all IPC. Platform-aware: detects server.exe (Win) vs server (macOS), falls back to python script in dev mode.</div>
+<div class="p8-content-grid">
+  <div class="p8-content-block">
+    <div class="p8-content-title">Daily Digest (Mon&ndash;Fri)</div>
+    <div class="p8-content-details">Top 10 papers from Hugging Face with titles, links, abstracts, and frequency-ranked keywords. 371 digests generated.</div>
   </div>
-  <div class="p4-arch-block">
-    <div class="p4-arch-title">React Renderer (Vite)</div>
-    <div class="p4-arch-details">React 18 + TypeScript · 5 components: BrowserWindow (tab bar) · ServiceSelector · ConsistencyIndicator · MessageInput · SettingsPanel. useRef for immediate stop-signal propagation without re-render cycles.</div>
+  <div class="p8-content-block">
+    <div class="p8-content-title">Weekly Synthesis (Sat)</div>
+    <div class="p8-content-details">LLM-generated report synthesizing the week's research trends across all five daily digests. 40 reports.</div>
   </div>
-  <div class="p4-arch-block">
-    <div class="p4-arch-title">Python Backend (FastAPI)</div>
-    <div class="p4-arch-details">15+ REST endpoints · Consistency checking (via OpenRouter) · API bot chat relay · Settings persistence (JSON) · Run storage (SQLite). Zero browser automation — cleanly separated to the Electron layer.</div>
+  <div class="p8-content-block">
+    <div class="p8-content-title">Technical Deep Dive (Sun)</div>
+    <div class="p8-content-details">Detailed walkthrough of one paper with code examples and practical applications. 20 deep dives.</div>
   </div>
 </div>
 
 <hr/>
 
-<h2>Build &amp; Distribution</h2>
+<h2>Technical Details</h2>
 
-<p>Delivers as a <strong>single installable binary</strong> — no Python, no Node.js, no browser install required by the end user:</p>
-
-<div class="p4-flow">
-  <div class="p4-step">PyInstaller bundles Python backend (~130 MB .exe)</div><div class="p4-arrow">→</div>
-  <div class="p4-step">Vite builds React → static assets</div><div class="p4-arrow">→</div>
-  <div class="p4-step">electron-builder packages everything → .exe / .dmg (~195–230 MB)</div>
+<div class="p8-section">
+  <h3>Paper Fetching</h3>
 </div>
 
-<hr/>
+<p>The pipeline hits the Hugging Face Daily Papers API with a date-specific query. If that returns empty (weekends, holidays), it falls back to the general papers endpoint. Papers are ranked and the top 10 are selected.</p>
 
-<h2>What Made This Difficult</h2>
+<div class="p8-section">
+  <h3>LLM Integration</h3>
+</div>
 
-<p><strong>DOM fragility.</strong> Every LLM service updates their UI every 2–4 weeks. CSS classes change, data attributes get renamed, React components re-render differently. The solution: layered selectors (service-specific primary → keyword-based generic → icon-button heuristic) that survive most UI refreshes, plus graceful failure (broken selector returns empty text rather than crashing).</p>
+<p>Summaries and keywords are generated via the GitHub Models API (<code>openai/gpt-5</code> endpoint at <code>models.github.ai</code>). Keyword extraction uses a hybrid approach: frequency-based ranking from paper metadata, supplemented by LLM generation when the frequency signal is weak. All API calls include token validation, status checks, and retry logic.</p>
 
-<p><strong>React synthetic events.</strong> ChatGPT and Meta AI use React-controlled inputs. Setting <code>.value</code> directly doesn't work — React doesn't see the DOM mutation. You need synthetic <code>InputEvent</code> with <code>bubbles: true</code> + a <code>change</code> event to trigger reconciliation. Only discoverable through trial and error.</p>
+<div class="p8-section">
+  <h3>Backfill</h3>
+</div>
 
-<p><strong>Cross-platform session persistence.</strong> Each service needs its own Electron session partition (<code>persist:chatgpt</code>, <code>persist:claude</code>, etc.) to maintain authentication state independently. Stale sessions cause authentication loops; some services' CSRF protections conflict with BrowserView's security model. Getting all 9 services to maintain stable login state across restarts took significant iteration.</p>
+<p>A separate workflow supports retroactive generation for missed dates. Running <code>python batch_generate.py --start 2025-01-01 --end 2025-01-31</code> backfills an entire month of posts, which is how the initial archive was populated.</p>
+
+<div class="p8-callout">The entire stack is free: GitHub Actions for compute, GitHub Pages for hosting, Hugging Face API for paper data, GitHub Models for LLM inference. No cloud bill.</div>

@@ -1,6 +1,6 @@
 ---
 title: "Video Super-Resolution Pipeline"
-excerpt: "ESRGAN-based 360p→720p video upscaling system — avg PSNR 31.5 dB, SSIM 0.919, processing at 7.8 fps on GPU"
+excerpt: "ESRGAN-based 360p to 720p video upscaling system with avg PSNR 31.5 dB, SSIM 0.919, processing at 7.8 fps on GPU"
 collection: portfolio
 ---
 
@@ -34,7 +34,7 @@ collection: portfolio
 code { background: #e0f2fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #0369a1; }
 </style>
 
-<p>As an Machine Learning Engineer intern at <strong>GMI Cloud</strong>, I built a <strong>video super-resolution pipeline</strong> that upscales AI-generated video from 360p to 720p using an ESRGAN (Enhanced Super-Resolution Generative Adversarial Network) model. The pipeline was designed as a <strong>post-processing stage</strong> for an internal text-to-video generation system — rather than retraining the generative model at higher resolution (which would require significantly more compute and data), I inserted a dedicated upscaling step that takes low-resolution output and elevates it to a deliverable quality level.</p>
+<p>As a Machine Learning Engineer intern at <strong>GMI Cloud</strong>, I built a <strong>video super-resolution pipeline</strong> that upscales AI-generated video from 360p to 720p using an ESRGAN (Enhanced Super-Resolution Generative Adversarial Network) model. The pipeline was designed as a <strong>post-processing stage</strong> for an internal text-to-video generation system. Rather than retraining the generative model at higher resolution (which would require significantly more compute and data), I inserted a dedicated upscaling step that takes low-resolution output and elevates it to a deliverable quality level.</p>
 
 <p>What makes this more than a "run a model on frames" project: I reimplemented the ESRGAN network architecture from scratch in PyTorch, built an FFmpeg-based frame extraction/reassembly pipeline, wrote an automated PSNR/SSIM evaluation system, and wrapped everything in an orchestration script that runs the complete workflow in a single command.</p>
 
@@ -91,11 +91,11 @@ code { background: #e0f2fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 </div>
 
 <ul>
-  <li><strong>PNG frames</strong> (not JPEG) — avoids introducing compression artifacts before the upscaler.</li>
-  <li><strong>PIL loading</strong> over OpenCV — more reliable for edge-case color space handling.</li>
-  <li><strong>Pad to nearest mod 4</strong> — required by the architecture's strided convolutions.</li>
-  <li><strong>libx264 / yuv420p / crf=23</strong> — visually lossless reassembly at the original framerate.</li>
-  <li><strong>Auto-cleanup</strong> — temporary frame directories cleaned after completion; no disk residue on shared cluster storage.</li>
+  <li><strong>PNG frames</strong> instead of JPEG, to avoid introducing compression artifacts before the upscaler sees the data.</li>
+  <li><strong>PIL loading</strong> over OpenCV for more reliable edge-case color space handling.</li>
+  <li><strong>Pad to nearest mod 4</strong>, which is required by the architecture's strided convolutions.</li>
+  <li><strong>libx264 / yuv420p / crf=23</strong> for visually lossless reassembly at the original framerate.</li>
+  <li><strong>Auto-cleanup</strong>: temporary frame directories are removed after completion, leaving no disk residue on shared cluster storage.</li>
 </ul>
 
 <hr/>
@@ -105,10 +105,10 @@ code { background: #e0f2fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 <p>I built a dedicated evaluation script computing <strong>frame-by-frame PSNR and SSIM</strong> between the upscaled output and the 720p reference — not on a sample, but on every single frame pair.</p>
 
 <ul>
-  <li><strong>PSNR</strong> — measured in dB on full RGB and on the Y (luminance) channel per ITU-R BT.601. Y-channel PSNR is more perceptually meaningful; human vision is more sensitive to luminance than chrominance.</li>
-  <li><strong>SSIM</strong> — compares luminance, contrast, and structural patterns. Values above 0.90 = high perceptual fidelity.</li>
-  <li><strong>Shape mismatch handling</strong> — cubic interpolation resizes if reference and output dimensions differ slightly.</li>
-  <li><strong>CSV output</strong> — all frame metrics written for downstream analysis.</li>
+  <li><strong>PSNR</strong> measured in dB on full RGB and on the Y (luminance) channel per ITU-R BT.601. Y-channel PSNR is more perceptually meaningful because human vision is more sensitive to luminance than chrominance.</li>
+  <li><strong>SSIM</strong> compares luminance, contrast, and structural patterns. Values above 0.90 indicate high perceptual fidelity.</li>
+  <li><strong>Shape mismatch handling</strong> via cubic interpolation when reference and output dimensions differ slightly.</li>
+  <li><strong>CSV output</strong> with all frame metrics written for downstream analysis.</li>
 </ul>
 
 <hr/>
@@ -140,9 +140,9 @@ code { background: #e0f2fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 <p>The full workflow runs as a single command with three independently-skippable stages:</p>
 
 <ol>
-  <li><strong>Model download</strong> — fetches pre-trained ESRGAN weights from a remote URL if not cached locally.</li>
-  <li><strong>Batch upscaling</strong> — processes all videos in the input directory, writing results to an output directory.</li>
-  <li><strong>Metrics evaluation</strong> — computes PSNR/SSIM against the reference directory; generates a summary report identifying best and worst-performing clips.</li>
+  <li><strong>Model download</strong>: fetches pre-trained ESRGAN weights from a remote URL if not cached locally.</li>
+  <li><strong>Batch upscaling</strong>: processes all videos in the input directory and writes results to an output directory.</li>
+  <li><strong>Metrics evaluation</strong>: computes PSNR/SSIM against the reference directory and generates a summary report identifying best and worst-performing clips.</li>
 </ol>
 
 <p>Each stage is subprocess-isolated, so a failure gives a clear error without corrupting state for others.</p>

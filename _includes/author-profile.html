@@ -17,6 +17,10 @@
   <div class="author__content">
     <h3 class="author__name">{{ author.name }}</h3>
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
+    <div class="author__status">
+      <span class="status-pulse"></span>
+      <span class="status-label">Open to Work</span>
+    </div>
     {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
   </div>
 

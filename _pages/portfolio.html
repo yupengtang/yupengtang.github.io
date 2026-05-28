@@ -7,8 +7,157 @@ author_profile: true
 
 {% include base_path %}
 
+<p class="portfolio-intro">
+  Selected engineering and research projects spanning ML systems, inference infrastructure, and applied AI.
+</p>
 
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
-{% endfor %}
+<div class="portfolio-grid">
 
+  <a href="{{ base_path }}/portfolio/portfolio-1/" class="portfolio-card pc-indigo scroll-reveal">
+    <div class="pc-header">
+      <span class="pc-number">01</span>
+      <span class="pc-type">Industry</span>
+    </div>
+    <h3 class="pc-title">High-Throughput Diffusion Inference System</h3>
+    <p class="pc-excerpt">Production inference for a 12B DiT on H100 clusters. GPU memory persistence, NCCL multi-GPU coordination, and full production lifecycle.</p>
+    <div class="pc-metrics">
+      <span class="pc-metric"><strong>10-15&times;</strong> speedup</span>
+      <span class="pc-metric"><strong>1-3s</strong> latency</span>
+    </div>
+    <div class="pc-tags">
+      <span>PyTorch</span><span>NCCL</span><span>H100</span><span>TensorRT</span>
+    </div>
+  </a>
+
+  <a href="{{ base_path }}/portfolio/portfolio-2/" class="portfolio-card pc-sky scroll-reveal">
+    <div class="pc-header">
+      <span class="pc-number">02</span>
+      <span class="pc-type">Industry</span>
+    </div>
+    <h3 class="pc-title">Video Super-Resolution Pipeline</h3>
+    <p class="pc-excerpt">ESRGAN-based 360p&rarr;720p upscaling with reimplemented RRDBNet architecture, FFmpeg pipeline, and automated PSNR/SSIM evaluation.</p>
+    <div class="pc-metrics">
+      <span class="pc-metric"><strong>31.5 dB</strong> PSNR</span>
+      <span class="pc-metric"><strong>0.916</strong> SSIM</span>
+    </div>
+    <div class="pc-tags">
+      <span>PyTorch</span><span>ESRGAN</span><span>FFmpeg</span><span>GPU</span>
+    </div>
+  </a>
+
+  <a href="{{ base_path }}/portfolio/portfolio-3/" class="portfolio-card pc-pink scroll-reveal">
+    <div class="pc-header">
+      <span class="pc-number">03</span>
+      <span class="pc-type">Industry</span>
+    </div>
+    <h3 class="pc-title">AI Virtual Try-On System</h3>
+    <p class="pc-excerpt">Automated diffusion-based garment-swap pipeline with async task orchestration, smart polling, and batch processing across model &times; garment combinations.</p>
+    <div class="pc-metrics">
+      <span class="pc-metric"><strong>18</strong> combos/run</span>
+      <span class="pc-metric"><strong>~27s</strong> completion</span>
+    </div>
+    <div class="pc-tags">
+      <span>Diffusion</span><span>Async</span><span>HMAC-SHA256</span><span>Batch</span>
+    </div>
+  </a>
+
+  <a href="{{ base_path }}/portfolio/portfolio-4/" class="portfolio-card pc-rose scroll-reveal">
+    <div class="pc-header">
+      <span class="pc-number">04</span>
+      <span class="pc-type">Automation</span>
+    </div>
+    <h3 class="pc-title">Daily AI Trend Reporter</h3>
+    <p class="pc-excerpt">Fully automated pipeline publishing daily AI research digests via GitHub Actions, Hugging Face API, and GPT-5. 431+ posts, zero manual intervention.</p>
+    <div class="pc-metrics">
+      <span class="pc-metric"><strong>431+</strong> posts</span>
+      <span class="pc-metric"><strong>0</strong> manual</span>
+    </div>
+    <div class="pc-tags">
+      <span>Python</span><span>GitHub Actions</span><span>Jekyll</span><span>GPT-5</span>
+    </div>
+  </a>
+
+  <a href="{{ base_path }}/portfolio/portfolio-5/" class="portfolio-card pc-amber scroll-reveal">
+    <div class="pc-header">
+      <span class="pc-number">05</span>
+      <span class="pc-type">Research</span>
+    </div>
+    <h3 class="pc-title">Multi-LLM Evaluation Platform</h3>
+    <p class="pc-excerpt">Cross-platform Electron app with custom BrowserView automation for side-by-side LLM evaluation. Powers a first-author NeurIPS 2026 submission.</p>
+    <div class="pc-metrics">
+      <span class="pc-metric"><strong>31K+</strong> trials</span>
+      <span class="pc-metric"><strong>9</strong> LLM services</span>
+    </div>
+    <div class="pc-tags">
+      <span>Electron</span><span>React/TS</span><span>FastAPI</span><span>SQLite</span>
+    </div>
+  </a>
+
+  <a href="{{ base_path }}/portfolio/portfolio-6/" class="portfolio-card pc-green scroll-reveal">
+    <div class="pc-header">
+      <span class="pc-number">06</span>
+      <span class="pc-type">Full-Stack</span>
+    </div>
+    <h3 class="pc-title">LLM-Powered Recommendation Platform</h3>
+    <p class="pc-excerpt">Full-stack RAG chatbot on GCP with BigQuery vector search (ScaNN), Gemini 2.0 Flash, and LangChain over 571M Amazon reviews.</p>
+    <div class="pc-metrics">
+      <span class="pc-metric"><strong>0.88</strong> MRR</span>
+      <span class="pc-metric"><strong>+21%</strong> nDCG@3</span>
+    </div>
+    <div class="pc-tags">
+      <span>PySpark</span><span>BigQuery</span><span>Gemini</span><span>Terraform</span>
+    </div>
+  </a>
+
+  <a href="{{ base_path }}/portfolio/portfolio-7/" class="portfolio-card pc-slate scroll-reveal">
+    <div class="pc-header">
+      <span class="pc-number">07</span>
+      <span class="pc-type">Applied ML</span>
+    </div>
+    <h3 class="pc-title">Privacy-Preserving Ed Discussion RAG</h3>
+    <p class="pc-excerpt">End-to-end pipeline transforming course forum data into RAG corpora with hybrid retrieval (dense + lexical + metadata) and Gemma-3-4B-IT.</p>
+    <div class="pc-metrics">
+      <span class="pc-metric"><strong>Hybrid</strong> retrieval</span>
+      <span class="pc-metric"><strong>100+</strong> students</span>
+    </div>
+    <div class="pc-tags">
+      <span>RAG</span><span>Gemma-3</span><span>NumPy</span><span>SLURM</span>
+    </div>
+  </a>
+
+  <a href="{{ base_path }}/portfolio/portfolio-8/" class="portfolio-card pc-teal scroll-reveal">
+    <div class="pc-header">
+      <span class="pc-number">08</span>
+      <span class="pc-type">Research</span>
+    </div>
+    <h3 class="pc-title">Multi-Horizon Urban Microclimate Prediction</h3>
+    <p class="pc-excerpt">Two-stage hybrid: dual-depth LSTM with variable selection and attention for 5-horizon campus forecasting, extended to 100K+ grid points at 5.9m resolution via Regression Kriging. Manuscript in preparation, targeting Building and Environment (SCI Q1).</p>
+    <div class="pc-metrics">
+      <span class="pc-metric"><strong>3.18&deg;C</strong> RMSE (360 min)</span>
+      <span class="pc-metric"><strong>Best DL</strong> at long horizons</span>
+    </div>
+    <div class="pc-tags">
+      <span>PyTorch</span><span>LSTM</span><span>Kriging</span><span>A100</span>
+    </div>
+  </a>
+
+</div>
+
+<script>
+(function () {
+  var revealEls = document.querySelectorAll('.scroll-reveal');
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('revealed'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var idx = Array.prototype.indexOf.call(revealEls, entry.target);
+      setTimeout(function () { entry.target.classList.add('revealed'); }, Math.min(idx * 60, 350));
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  revealEls.forEach(function (el) { obs.observe(el); });
+})();
+</script>

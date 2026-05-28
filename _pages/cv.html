@@ -1,0 +1,459 @@
+---
+layout: archive
+title: "CV"
+permalink: /cv-styled/
+author_profile: true
+redirect_from:
+  - /resume
+---
+
+{% include base_path %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
+
+<!-- Work Experience Section -->
+<div class="cv-grid scroll-reveal">
+  <div class="cv-sidebar">
+    <h2><span class="cv-sec-num">01</span>Work</h2>
+  </div>
+  <div class="cv-main">
+    <div class="cv-card">
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">MAY 2025 - AUG 2025</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Mountain View, CA</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Machine Learning Engineer Intern</div>
+          <div class="cv-org"><a href="https://www.gmicloud.ai" target="_blank">GMI Cloud</a></div>
+          <div class="cv-desc">
+            <ul>
+              <li>Optimized Flux-Schnell (12B DiT) multimodal inference on H100 by implementing GPU memory persistence, offload strategies, and kernel-level tuning, achieving ~30 images/min and 1–2s latency per request on a single GPU compared to the 10–15× slower baseline.</li>
+              <li>Designed a multi-GPU–ready inference architecture (NCCL-compatible, ONNX → TensorRT conversion pipeline) and validated linear-scaling behavior on single-GPU prototypes to support future distributed deployment.</li>
+              <li>Built production-grade serving infrastructure including queueing, heartbeat monitoring, structured logging, GCS integration, and safety filtering, enabling stable long-running operations under high request volume.</li>
+              <li>Implemented a video super-resolution pipeline (Real-ESRGAN + FastAPI) with PSNR/SSIM evaluation, reducing 5s@24fps clip runtime by ~65% (284s → 100s) when integrated with Wan2.2 text-to-video.</li>
+              <li>Developed an AI-powered e-commerce try-on service (ComfyUI, Flux-Kontext + Segformer), delivering &lt;5s per image outfit changing, background removal, and style transfer via secure RESTful APIs.</li>
+              <li>Synthesized research papers and open-source model documentation to produce a technical review of multimodal generation systems, covering text-to-image, text-to-video, and super-resolution model families and summarizing key benchmark findings for internal evaluation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Education Section -->
+<div class="cv-grid scroll-reveal">
+  <div class="cv-sidebar">
+    <h2><span class="cv-sec-num">02</span>Education</h2>
+  </div>
+  <div class="cv-main">
+    <div class="cv-card">
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">2024 - 2026</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA, USA</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">M.S. in Computer Science</div>
+          <div class="cv-org">Georgia Institute of Technology</div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">2023 - 2026</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA, USA</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">M.S. in Computational Science and Engineering (Applied Mathematics)</div>
+          <div class="cv-org">Georgia Institute of Technology</div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">2019 - 2023</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Shandong, China</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">B.E. in Artificial Intelligence</div>
+          <div class="cv-org">Shandong University</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Research Section -->
+<div class="cv-grid scroll-reveal">
+  <div class="cv-sidebar">
+    <h2><span class="cv-sec-num">03</span>Research</h2>
+  </div>
+  <div class="cv-main">
+    <div class="cv-card">
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">SEP 2025 - PRESENT</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Research Assistant</div>
+          <div class="cv-org">Georgia Institute of Technology</div>
+          <div class="cv-desc">
+            <p>Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning LLM behavior, multimodal AI, and AI evaluation — resulting in <strong>2 NeurIPS 2026 submissions</strong> and <strong>2 ARR submissions</strong> (all under review).</p>
+            <ul>
+              <li>Built a self-play evaluation framework that audits LLM-generated verifiers and produces correctness-based model rankings, revealing that verifiable correctness and human preference represent substantially divergent axes of LLM capability. Manuscript complete, targeting AAAI 2027.</li>
+              <li>Engineered the supporting evaluation platform from scratch: a cross-platform Electron desktop app (React/TypeScript/FastAPI) with BrowserView-based automation across 9+ LLM chat services and 100+ API models, LLM-as-a-Judge pipeline with structured outputs, SQLite persistence, and one-command packaging (PyInstaller + electron-builder).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">JAN 2026 - PRESENT</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Independent Researcher</div>
+          <div class="cv-org">Georgia Institute of Technology</div>
+          <div class="cv-desc">
+            <ul>
+              <li>Running a self-directed research program on reliable reasoning in foundation models, with focus on post-training (RLVR), test-time compute, and multimodal calibration. One paper at ARR (under review; targeting EMNLP 2026), multiple additional manuscripts in progress.</li>
+              <li>Current work covers reward hacking and scaling failures in RLVR, self-correction backfire in strong reasoning models, VLM calibration under compression, and few-shot robotic manipulation. The common thread is figuring out where model reasoning breaks under deployment conditions and building fixes that don't trade away capability.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">JAN 2025 - DEC 2025</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Graduate Researcher</div>
+          <div class="cv-org">Georgia Institute of Technology</div>
+          <div class="cv-desc">
+            <p>Advised by Prof. Patrick Kastner. First author, manuscript targeting <em>Building and Environment</em> (SCI Q1, Elsevier). A companion chapter is forthcoming in Springer Nature's <em>Urban Climate Resilience</em> series.</p>
+            <ul>
+              <li>Designed a two-stage prediction framework that forecasts campus temperature and humidity at five horizons (10 min &ndash; 6 hours) from 16 sparse weather stations, then maps predictions to a 100K-point grid at 5.9 m resolution via morphology-informed Regression Kriging with nine LiDAR/OpenStreetMap features.</li>
+              <li>Implemented a dual-depth parallel LSTM with variable selection and attention (337K params), achieving best DL RMSE at 360 min (3.18&deg;C, 13% below TCN) and benchmarking against six baselines to show that a tuned linear model beats all DL architectures at every horizon.</li>
+              <li>Trained on 947K warm-season observations using A100 GPU (PACE cluster), validated through rolling-origin CV, multi-seed ablation with Wilcoxon significance tests, and leave-one-station-out spatial cross-validation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">FEB 2023 - JUN 2023</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Shandong, China</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Undergraduate Researcher</div>
+          <div class="cv-org">Shandong University</div>
+          <div class="cv-desc">
+            <p>Advised by Prof. Xianfeng Yuan. Undergraduate thesis project on autonomous vehicle path planning in complex environments.</p>
+            <ul>
+              <li>Proposed an enhanced Bi-RRT planner with adaptive goal-biased sampling and narrow-passage heuristics, achieving 2&times; faster planning convergence than RRT and RRT* across 100+ randomized obstacle configurations.</li>
+              <li>Designed a curvature-constrained trajectory optimization module with local smoothing under Ackermann steering limits, reducing path curvature by ~35% and average trajectory length by 15% while maintaining continuous kinematic feasibility.</li>
+              <li>Integrated real-time collision detection with dynamic obstacle avoidance and full-trajectory safety validation, ensuring replanning capability under motion constraints in simulation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Publications Section -->
+<div class="cv-grid scroll-reveal">
+  <div class="cv-sidebar">
+    <h2><span class="cv-sec-num">04</span>Publications</h2>
+  </div>
+  <div class="cv-main">
+    <div class="cv-card">
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">NeurIPS 2026</div>
+          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>, M. Lin.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">NeurIPS 2026</div>
+          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>, M. Lin.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">ARR</div>
+          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review · Target: EMNLP '26</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">When Are LLM Judges Reliable? Anchor-Calibrated Task-Conditional Peer Councils for Open-Ended Evaluation</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>, M. Lin.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">ARR</div>
+          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review · Target: EMNLP '26</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">EVENTBOUND-LIT: Expert-Derived Narrative Transition Diagnostics for Incremental Language Models</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- Skills Section -->
+<div class="cv-grid scroll-reveal">
+  <div class="cv-sidebar">
+    <h2><span class="cv-sec-num">05</span>Skills</h2>
+  </div>
+  <div class="cv-main">
+    <div class="cv-card">
+      <div class="tech-category cat-ml">
+        <div class="tech-category-label">Machine Learning &amp; AI</div>
+        <div class="tech-grid">
+          <span class="tech-item"><i class="devicon-pytorch-original colored"></i> PyTorch</span>
+          <span class="tech-item"><i class="devicon-tensorflow-original colored"></i> TensorFlow</span>
+          <span class="tech-item"><i class="devicon-scikitlearn-plain colored"></i> scikit-learn</span>
+          <span class="tech-item"><i class="devicon-numpy-original colored"></i> NumPy</span>
+          <span class="tech-item"><i class="devicon-pandas-original colored"></i> Pandas</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#ff9a00;">🤗</span> HuggingFace</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#1c3d5a;">🦜</span> LangChain</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#6366f1;">⚡</span> CUDA / NCCL</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#10b981;">∿</span> ONNX</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#76b900;">▶</span> TensorRT</span>
+        </div>
+      </div>
+
+      <div class="tech-category cat-lang">
+        <div class="tech-category-label">Programming Languages</div>
+        <div class="tech-grid">
+          <span class="tech-item"><i class="devicon-python-plain colored"></i> Python</span>
+          <span class="tech-item"><i class="devicon-cplusplus-plain colored"></i> C/C++</span>
+          <span class="tech-item"><i class="devicon-java-plain colored"></i> Java</span>
+          <span class="tech-item"><i class="devicon-typescript-plain colored"></i> JavaScript/TS</span>
+          <span class="tech-item"><i class="devicon-bash-plain colored"></i> Bash</span>
+          <span class="tech-item"><i class="devicon-r-plain colored"></i> R</span>
+          <span class="tech-item"><i class="devicon-julia-plain colored"></i> Julia</span>
+          <span class="tech-item"><i class="devicon-matlab-plain colored"></i> MATLAB</span>
+        </div>
+      </div>
+
+      <div class="tech-category cat-cloud">
+        <div class="tech-category-label">Cloud &amp; Infrastructure</div>
+        <div class="tech-grid">
+          <span class="tech-item"><i class="devicon-amazonwebservices-original colored"></i> AWS</span>
+          <span class="tech-item"><i class="devicon-googlecloud-plain colored"></i> GCP</span>
+          <span class="tech-item"><i class="devicon-azure-plain colored"></i> Azure</span>
+          <span class="tech-item"><i class="devicon-docker-plain colored"></i> Docker</span>
+          <span class="tech-item"><i class="devicon-kubernetes-plain colored"></i> Kubernetes</span>
+          <span class="tech-item"><i class="devicon-terraform-plain colored"></i> Terraform</span>
+        </div>
+      </div>
+
+      <div class="tech-category cat-data">
+        <div class="tech-category-label">Big Data &amp; Database Systems</div>
+        <div class="tech-grid">
+          <span class="tech-item"><i class="devicon-apachespark-original colored"></i> Apache Spark</span>
+          <span class="tech-item"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+          <span class="tech-item"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+          <span class="tech-item"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+          <span class="tech-item"><i class="devicon-redis-plain colored"></i> Redis</span>
+        </div>
+      </div>
+
+      <div class="tech-category cat-tools">
+        <div class="tech-category-label">Tools &amp; Frameworks</div>
+        <div class="tech-grid">
+          <span class="tech-item"><i class="devicon-git-plain colored"></i> Git</span>
+          <span class="tech-item"><i class="devicon-linux-plain colored"></i> Linux</span>
+          <span class="tech-item"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
+          <span class="tech-item"><i class="devicon-react-original colored"></i> React</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Projects Section -->
+<div class="cv-grid scroll-reveal">
+  <div class="cv-sidebar">
+    <h2><span class="cv-sec-num">06</span>Projects</h2>
+  </div>
+  <div class="cv-main">
+    <div class="cv-card">
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">APR 2024 - AUG 2024</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">AI-Powered Product Recommendation System</div>
+          <div class="cv-org">Independent Venture</div>
+          <div class="cv-desc">
+            <ul>
+              <li>Architected an AI-powered recommendation system that analyzes millions of Amazon product reviews using semantic search and LLM-based understanding.</li>
+              <li>Developed a PySpark ETL pipeline to clean, tokenize, and embed reviews, storing vectors in BigQuery.</li>
+              <li>Designed a hybrid retrieval engine (ScaNN + metadata filters) that improved nDCG@3 by +21% and achieved MRR = 0.88, using approximate nearest neighbors with reranking via FastAPI microservice.</li>
+              <li>Integrated Google Gemini with LangChain for RAG-based sentiment analysis and feature summarization.</li>
+              <li>Provisioned scalable infrastructure on GCP using Terraform, sustaining ~6 s query latency.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Competitions Section -->
+<div class="cv-grid scroll-reveal">
+  <div class="cv-sidebar">
+    <h2><span class="cv-sec-num">07</span>Awards</h2>
+  </div>
+  <div class="cv-main">
+    <div class="cv-card">
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">MAY 2022 - AUG 2022</div>
+          <div class="cv-location"><i class="fas fa-trophy" style="color: #94a3b8;"></i> Silver Medal</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title"><a href="https://www.kaggle.com/competitions/amex-default-prediction/" target="_blank">American Express Default Prediction</a></div>
+          <div class="cv-org">Kaggle Competition &middot; Top 0.4% (20th / 4,874 teams)</div>
+          <div class="cv-desc">
+            <ul>
+              <li>Trained a weighted ensemble of LightGBM (DART) and GPU-accelerated XGBoost on 16 GB of credit card transaction time-series.</li>
+              <li>Ran 5-fold stratified cross-validation with a custom Gini-aligned training metric; iterated from a baseline through feature-enriched and feature-compressed model variants.</li>
+              <li>Assembled the final submission as a weighted blend of four checkpoints with multi-seed training to keep variance low.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Teaching Section -->
+<div class="cv-grid scroll-reveal">
+  <div class="cv-sidebar">
+    <h2><span class="cv-sec-num">08</span>Teaching</h2>
+  </div>
+  <div class="cv-main">
+    <div class="cv-card">
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">SEP 2025 - MAY 2026</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Teaching Assistant</div>
+          <div class="cv-org">Georgia Institute of Technology</div>
+          <div class="cv-desc">
+            <ul>
+              <li><strong>ME 4710</strong> (Foundations in ML for Engineers): Designed grading rubrics and assessed weekly assignments on Python implementations, statistical modeling, and ML algorithm selection.</li>
+              <li><strong>MGT 6655</strong> (Business Data Preparation and Visualization): Graded visualization exercises and dashboard projects; supported students on Ed Discussions with Tableau, PowerBI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students. Developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">SEP 2020 - JUL 2021</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Shandong, China</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Undergraduate Teaching Assistant</div>
+          <div class="cv-org">Shandong University</div>
+          <div class="cv-desc">
+            <ul>
+              <li>Supported a 400+ student Linear Algebra course; recognized as Outstanding Teaching Assistant.</li>
+              <li>Assessed 600+ handwritten assignments with clear, actionable feedback.</li>
+              <li>Answered 30+ student questions weekly via online forums, delivering detailed explanations.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Leadership Section -->
+<div class="cv-grid scroll-reveal">
+  <div class="cv-sidebar">
+    <h2><span class="cv-sec-num">09</span>Service</h2>
+  </div>
+  <div class="cv-main">
+    <div class="cv-card">
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">JAN 2026 - MAY 2026</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Campus Academic Integrity TA Team Member</div>
+          <div class="cv-org">Georgia Institute of Technology</div>
+          <div class="cv-desc">
+            <p>Supported OMS Analytics and OMS Cybersecurity programs; reviewed academic misconduct cases and assisted with policy-consistent case evaluation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">SEP 2019 - AUG 2021</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Publicity Manager – Starlight Art Troupe</div>
+          <div class="cv-org">Shandong University</div>
+          <div class="cv-desc">
+            <p>Directed the design and production of 30+ posters, managed social media operations, and coordinated 170+ photo/video shoots, earning the Outstanding Individual Award for Student Organizations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var revealEls = document.querySelectorAll('.scroll-reveal');
+  var revealObserver = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+  revealEls.forEach(function(el) { revealObserver.observe(el); });
+</script>
