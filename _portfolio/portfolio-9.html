@@ -1,0 +1,178 @@
+---
+title: "CacheFlow: Multi-Request LLM Inference Optimization"
+excerpt: "C++17/CUDA 12 inference engine extending llama.cpp with continuous batching, paged KV cache, custom attention kernels, and trie-based prefix reuse. 9.1× throughput scaling at 16 concurrent requests, 88% peak GPU cache utilization."
+collection: portfolio
+---
+
+<style>
+.p9-metric-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.p9-metric-card {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border: 1px solid #fed7aa; border-radius: 12px;
+  padding: 1rem 1.4rem; text-align: center; min-width: 110px; flex: 1;
+}
+.p9-metric-num { font-size: 1.6rem; font-weight: 800; color: #c2410c; line-height: 1.1; }
+.p9-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.p9-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
+.p9-tag { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
+.p9-section { border-left: 3px solid #f97316; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
+.p9-section h3 { margin: 0 0 0.3rem; color: #9a3412; font-size: 1.05rem; }
+.p9-callout { background: #fff7ed; border-left: 4px solid #f97316; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
+.p9-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
+.p9-step { background: #ffedd5; border: 1px solid #fed7aa; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #9a3412; }
+.p9-arrow { color: #f97316; font-size: 1.1rem; font-weight: 700; }
+.p9-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.p9-table th { background: #ffedd5; color: #9a3412; padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #fed7aa; font-weight: 700; }
+.p9-table td { padding: 0.55rem 1rem; border-bottom: 1px solid #fff7ed; }
+.p9-table .best-row td { background: #ffedd5; font-weight: 700; }
+.p9-kernel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 1rem 0; }
+.p9-kernel-card { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 0.8rem 1rem; }
+.p9-kernel-title { font-weight: 700; color: #c2410c; font-size: 0.85rem; margin-bottom: 0.3rem; }
+.p9-kernel-desc { font-size: 0.78rem; color: #374151; line-height: 1.5; }
+code { background: #ffedd5; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #c2410c; }
+</style>
+
+<p>CacheFlow is a <strong>from-scratch inference engine</strong> built in C++17 and CUDA 12, extending llama.cpp's autoregressive decode path to handle multiple concurrent requests efficiently. Stock llama.cpp processes requests sequentially — each request occupies the full KV cache until completion. CacheFlow replaces this with a <strong>batching-aware architecture</strong> modeled after vLLM's design, implementing every core subsystem independently: a preemptable scheduler, a block-based memory manager, paged attention CUDA kernels, and a trie-based prefix cache.</p>
+
+<p>The project spans approximately <strong>5,800 lines of C++ and CUDA</strong>, with six test suites covering each subsystem. The goal was to understand precisely why naive LLM serving is inefficient and to fix both root causes: sequential request processing and contiguous KV allocation that fragments GPU memory.</p>
+
+<div class="p9-metric-grid">
+  <div class="p9-metric-card"><div class="p9-metric-num">9.1×</div><div class="p9-metric-label">Throughput @ 16 concurrent</div></div>
+  <div class="p9-metric-card"><div class="p9-metric-num">6.2×</div><div class="p9-metric-label">Throughput @ 8 concurrent</div></div>
+  <div class="p9-metric-card"><div class="p9-metric-num">1.8×</div><div class="p9-metric-label">vs. stock llama.cpp (8 req)</div></div>
+  <div class="p9-metric-card"><div class="p9-metric-num">88%</div><div class="p9-metric-label">Peak GPU cache utilization</div></div>
+  <div class="p9-metric-card"><div class="p9-metric-num">~50%</div><div class="p9-metric-label">Prefill time reduction (prefix reuse)</div></div>
+</div>
+
+<div class="p9-tags">
+  <span class="p9-tag">C++17</span><span class="p9-tag">CUDA 12</span>
+  <span class="p9-tag">llama.cpp</span><span class="p9-tag">Paged Attention</span>
+  <span class="p9-tag">Continuous Batching</span><span class="p9-tag">V100 / A100</span>
+  <span class="p9-tag">KV Cache Management</span><span class="p9-tag">Prefix Caching</span>
+</div>
+
+<hr/>
+
+<h2>Root Causes of Naive Serving Inefficiency</h2>
+
+<p>Two independent bottlenecks make stock llama.cpp unsuitable for concurrent traffic:</p>
+
+<ol>
+  <li><strong>Sequential processing.</strong> One request at a time means GPU compute idles between the prefill of one request and the next. Continuous batching eliminates this by interleaving decode steps across active requests.</li>
+  <li><strong>Contiguous KV allocation.</strong> Reserving a maximum-context-length contiguous block per request fragments GPU memory quickly — a request using 512 of 4096 reserved tokens blocks the remainder. Even when physical memory is available, the allocator cannot serve a new request. Block-based management with logical-to-physical mapping solves this entirely.</li>
+</ol>
+
+<div class="p9-callout">These are the same two problems vLLM solves in Python. CacheFlow re-implements the same ideas in C++ at the llama.cpp layer, with hand-written CUDA kernels for the non-contiguous attention access pattern.</div>
+
+<hr/>
+
+<h2>Scheduler</h2>
+
+<div class="p9-section">
+  <h3>Continuous Batching with Preemption</h3>
+</div>
+
+<p>The scheduler manages three queues: <code>waiting</code> (new requests pending prefill), <code>running</code> (active decode), and <code>swapped</code> (preempted, KV cache on CPU). At each decode step it:</p>
+
+<div class="p9-flow">
+  <div class="p9-step">Evict lowest-priority running sequences if memory is tight</div><div class="p9-arrow">→</div>
+  <div class="p9-step">Promote swapped sequences if blocks are available</div><div class="p9-arrow">→</div>
+  <div class="p9-step">Admit new requests from waiting queue</div><div class="p9-arrow">→</div>
+  <div class="p9-step">Dispatch batch to attention kernel</div>
+</div>
+
+<p>Three pluggable scheduling policies are implemented: <strong>FCFS</strong> (first-come-first-served for fairness), <strong>Shortest Remaining First</strong> (minimize average completion time), and <strong>Priority</strong> (external priority scores). All operate without synchronization barriers — sequences can be added or removed at every decode step.</p>
+
+<hr/>
+
+<h2>Block Manager: Paged KV Cache</h2>
+
+<div class="p9-section">
+  <h3>Fixed-Size Blocks with Logical-to-Physical Mapping</h3>
+</div>
+
+<p>Each sequence maintains a <strong>block table</strong> — a mapping from logical block index to physical block index in GPU memory. The block manager allocates fixed-size physical blocks (default: 16 tokens each) on demand, so a 512-token sequence uses exactly 32 blocks rather than reserving 4096 tokens worth of contiguous space.</p>
+
+<p>Two additional mechanisms handle advanced use cases:</p>
+
+<ul>
+  <li><strong>Copy-on-Write (beam search).</strong> When a sequence forks (e.g., beam search creates multiple branches), child sequences share the parent's physical blocks with reference counting. A write to a shared block triggers a copy, isolating the branches without duplicating unmodified prefixes.</li>
+  <li><strong>Reference counting for reuse.</strong> Blocks at reference count 1 can be returned to the free pool immediately on sequence completion, eliminating fragmentation over time.</li>
+</ul>
+
+<div class="p9-callout">Block-based management is what enables 88% GPU cache utilization at peak concurrency. Contiguous allocation would fragment to unusable levels well before that point.</div>
+
+<hr/>
+
+<h2>Paged Attention CUDA Kernels</h2>
+
+<p>Standard attention kernels assume KV cache is contiguous in memory. With paged allocation, keys and values for a single sequence are spread across non-contiguous physical blocks. Two custom CUDA kernels handle this:</p>
+
+<div class="p9-kernel-grid">
+  <div class="p9-kernel-card">
+    <div class="p9-kernel-title">V1 — Warp per Query Head</div>
+    <div class="p9-kernel-desc">One warp handles the full attention computation for one query head: it iterates over the block table, loads keys and values block by block, and accumulates the attention output. Effective up to ~8K context length where the per-warp iteration cost stays bounded.</div>
+  </div>
+  <div class="p9-kernel-card">
+    <div class="p9-kernel-title">V2 — Partitioned with Log-Sum-Exp Reduce</div>
+    <div class="p9-kernel-desc">Partitions the sequence dimension across multiple thread blocks. Each partition computes a partial softmax; a final reduction pass merges partial results using the log-sum-exp identity for numerically stable combination. Scales to 32K+ context lengths where V1 becomes a bottleneck.</div>
+  </div>
+</div>
+
+<p>Both kernels navigate the block table at runtime, converting logical token positions to physical memory addresses during attention computation. The switching heuristic: use V1 when sequence length &le; 8192 tokens, V2 beyond that.</p>
+
+<hr/>
+
+<h2>Prefix Cache</h2>
+
+<div class="p9-section">
+  <h3>Trie-Based KV Reuse with LRU Eviction</h3>
+</div>
+
+<p>Many LLM deployments share a common system prompt across all requests. Without prefix caching, each request re-runs the prefill computation for those tokens. The prefix cache stores completed blocks from past requests in a <strong>trie indexed by token ID sequences</strong>. On a new request:</p>
+
+<div class="p9-flow">
+  <div class="p9-step">Tokenize prompt</div><div class="p9-arrow">→</div>
+  <div class="p9-step">Walk trie to find longest cached prefix</div><div class="p9-arrow">→</div>
+  <div class="p9-step">Copy matched physical blocks into new sequence's block table</div><div class="p9-arrow">→</div>
+  <div class="p9-step">Run prefill only on uncached suffix</div>
+</div>
+
+<p>Cache eviction uses LRU policy: the least-recently-used blocks are freed first when the cache is full. In workloads with a fixed system prompt, this eliminates the full prefill for every subsequent request — measured at roughly <strong>~50% prefill time reduction</strong>.</p>
+
+<hr/>
+
+<h2>Defragmentation Kernel</h2>
+
+<p>Over time, as sequences of varying lengths complete and their blocks are freed, the active blocks of live sequences become scattered across non-contiguous physical addresses. This increases TLB miss rates and hurts memory bandwidth utilization during attention. A periodic <strong>compaction kernel</strong> migrates live blocks to a contiguous region, reducing the working set footprint and improving TLB locality without any change to the logical block tables visible to the scheduler.</p>
+
+<hr/>
+
+<h2>Performance Results</h2>
+
+<table class="p9-table">
+  <thead>
+    <tr><th>Concurrency</th><th>Throughput (tok/s)</th><th>Speedup vs. Single</th><th>P50 Latency (ms)</th><th>P99 Latency (ms)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>42.3</td><td>1.0×</td><td>23.6</td><td>26.1</td></tr>
+    <tr><td>8</td><td>261.5</td><td>6.2×</td><td>31.2</td><td>58.3</td></tr>
+    <tr class="best-row"><td><strong>16</strong></td><td><strong>385.7</strong></td><td><strong>9.1×</strong></td><td>41.3</td><td>92.4</td></tr>
+  </tbody>
+</table>
+
+<p>The 1.8× throughput improvement over stock llama.cpp at 8 concurrent requests comes entirely from eliminating sequential request processing — the same GPU compute now serves multiple requests simultaneously rather than idling between them. The 34% reduction in latency variance over 10K-token generations comes from the block manager's ability to maintain high cache utilization without fragmentation-induced stalls.</p>
+
+<div class="p9-callout">The gap between 6.2× (8 req) and 9.1× (16 req) reflects batching efficiency gains: larger batches better saturate GPU compute during each decode step, raising arithmetic intensity above the memory-bandwidth-bound threshold for attention.</div>
+
+<hr/>
+
+<h2>Profiling Infrastructure</h2>
+
+<p>A lightweight profiling layer instruments each serving component without modifying the hot path:</p>
+
+<ul>
+  <li><strong>Time-to-First-Token (TTFT):</strong> measures prefill latency from request arrival to first generated token.</li>
+  <li><strong>Time-per-Output-Token (TPOT):</strong> measures per-decode-step latency averaged across active sequences in the batch.</li>
+  <li><strong>Chrome Trace export:</strong> emits a <code>.json</code> file compatible with <code>chrome://tracing</code> and Perfetto, enabling visual inspection of scheduler decisions, block allocation events, and kernel timings across the full request lifecycle.</li>
+</ul>

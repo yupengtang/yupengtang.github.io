@@ -1722,6 +1722,7 @@ hr { border-color: var(--border); }
 .pc-slate  { &::before { background: linear-gradient(90deg, #475569, #94a3b8); } &:hover { border-color: rgba(71,85,105,0.3); } }
 .pc-rose   { &::before { background: linear-gradient(90deg, #e11d48, #fb7185); } &:hover { border-color: rgba(225,29,72,0.3); } }
 .pc-teal   { &::before { background: linear-gradient(90deg, #0d9488, #2dd4bf); } &:hover { border-color: rgba(13,148,136,0.3); } }
+.pc-orange { &::before { background: linear-gradient(90deg, #ea580c, #fb923c); } &:hover { border-color: rgba(234,88,12,0.3); } }
 
 .pc-header {
   display: flex;
@@ -1950,6 +1951,23 @@ hr { border-color: var(--border); }
   .p7-paper-banner { background: #042f2e !important; border-color: #0d9488 !important; }
   .p7-paper-banner h3 { color: #5eead4 !important; }
   .p7-paper-banner p { color: #c9d1d9 !important; }
+
+  /* — P9: Orange — */
+  .p9-metric-card { background: linear-gradient(135deg, #431407, #7c2d12) !important; border-color: #ea580c !important; }
+  .p9-metric-num  { color: #fdba74 !important; }
+  .p9-metric-label { color: #8b949e !important; }
+  .p9-tag         { background: #431407 !important; color: #fdba74 !important; border-color: #ea580c !important; }
+  .p9-section     { border-left-color: #fb923c !important; }
+  .p9-section h3  { color: #fdba74 !important; }
+  .p9-callout     { background: #431407 !important; border-left-color: #fb923c !important; color: #c9d1d9 !important; }
+  .p9-step        { background: #431407 !important; border-color: #ea580c !important; color: #fdba74 !important; }
+  .p9-arrow       { color: #fb923c !important; }
+  .p9-table th    { background: #431407 !important; color: #fdba74 !important; border-bottom-color: #ea580c !important; }
+  .p9-table td    { border-bottom-color: #7c2d12 !important; }
+  .p9-table .best-row td { background: #431407 !important; }
+  .p9-kernel-card { background: #431407 !important; border-color: #ea580c !important; }
+  .p9-kernel-title { color: #fdba74 !important; }
+  .p9-kernel-desc { color: #c9d1d9 !important; }
 
   /* — Shared: inline code in portfolio pages — */
   .page__content code {
