@@ -95,6 +95,20 @@ redirect_from:
     <div class="cv-card">
       <div class="cv-item">
         <div class="cv-item-meta">
+          <div class="cv-badge">JUL 2026 - PRESENT</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Remote &middot; Part-time</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Visiting Researcher</div>
+          <div class="cv-org">Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)</div>
+          <div class="cv-desc">
+            <p>Leading a self-directed research collaboration with Prof. Lijie Hu's PAI Lab, driving new methods in trustworthy machine learning, post-training, and multimodal AI systems.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
           <div class="cv-badge">SEP 2025 - PRESENT</div>
           <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
         </div>
@@ -102,9 +116,10 @@ redirect_from:
           <div class="cv-title">Research Assistant</div>
           <div class="cv-org">Georgia Institute of Technology</div>
           <div class="cv-desc">
-            <p>Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning LLM behavior, multimodal AI, and AI evaluation — resulting in <strong>2 NeurIPS 2026 submissions</strong> (both with positive reviews and favorable area chair meta-reviews) and <strong>2 ARR submissions</strong> (all under review).</p>
+            <p>Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning LLM behavior, multimodal AI, and AI evaluation — resulting in <strong>2 NeurIPS 2026 submissions</strong> (both with <strong>strong reviews and favorable area chair meta-reviews</strong>) and <strong>2 AAAI 2027 submissions</strong> (under review).</p>
             <ul>
-              <li>Built a self-play evaluation framework that audits LLM-generated verifiers and produces correctness-based model rankings, revealing that verifiable correctness and human preference represent substantially divergent axes of LLM capability. Manuscript complete, targeting AAAI 2027.</li>
+              <li><strong>AAAI 2027</strong> (under review) — <em>What Can LLM Judge Panels Measure?</em>: built ACT-Council, a domain-conditioned Bradley&ndash;Terry model with verifier-anchored calibration that separates three distinct panel-aggregation estimands (observed-panel, order-marginalized, nuisance-removed), and mapped the conditions under which joint calibration improves reliability over simpler domain-steelman baselines rather than claiming uniform dominance.</li>
+              <li><strong>AAAI 2027</strong> (under review) — <em>Auditing Self-Play Evaluation</em>: built VC-Play, a verifier-contract audit framework for LLM self-play evaluation, showing that deterministic checks alone miss a 37.6% verifier defect rate and that semantic cross-auditing overturns most of an apparent pooled correctness-vs-preference ranking reversal (101/69 &rarr; 22/26, no longer significant), leaving a validated family-specific reversal (Anthropic) as the main robust finding.</li>
               <li>Engineered the supporting evaluation platform from scratch: a cross-platform Electron desktop app (React/TypeScript/FastAPI) with BrowserView-based automation across 9+ LLM chat services and 100+ API models, LLM-as-a-Judge pipeline with structured outputs, SQLite persistence, and one-command packaging (PyInstaller + electron-builder).</li>
             </ul>
           </div>
@@ -121,8 +136,10 @@ redirect_from:
           <div class="cv-org">Georgia Institute of Technology</div>
           <div class="cv-desc">
             <ul>
-              <li>Running a self-directed research program on reliable reasoning in foundation models, with focus on post-training (RLVR), test-time compute, and multimodal calibration. One paper at ARR (under review; targeting EMNLP 2026), multiple additional manuscripts in progress.</li>
-              <li>Current work covers reward hacking and scaling failures in RLVR, self-correction backfire in strong reasoning models, VLM calibration under compression, and few-shot robotic manipulation. The common thread is figuring out where model reasoning breaks under deployment conditions and building fixes that don't trade away capability.</li>
+              <li>Running a self-directed research program on reliable reasoning in foundation models, with focus on post-training (RLVR), test-time compute, and multimodal calibration.</li>
+              <li>Addressed reward hacking in RLVR by enforcing transformation consistency across semantically invariant input perturbations, using a consistency gate and joint advantage formulation to make reward exploitation harder and expand the model's verified reasoning boundary, validated on math reasoning models.</li>
+              <li>Designed a belief-conditioned repair framework for frozen multimodal world models, combining type-matched repair modules with calibrated abstention to handle noisy, missing, or conflicting information without retraining the base model.</li>
+              <li>Built a confidence-trajectory distillation method that transfers uncertainty behavior from large vision-language models into compressed models via trajectory alignment and a rank-consistency loss, keeping compressed models properly calibrated under image degradation while preserving clean-data accuracy.</li>
             </ul>
           </div>
         </div>
@@ -173,14 +190,14 @@ redirect_from:
 <!-- Publications Section -->
 <div class="cv-grid scroll-reveal">
   <div class="cv-sidebar">
-    <h2><span class="cv-sec-num">04</span>Publications</h2>
+    <h2><span class="cv-sec-num">04</span>Selected Publications</h2>
   </div>
   <div class="cv-main">
     <div class="cv-card">
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">NeurIPS 2026</div>
-          <div class="cv-location"><i class="fas fa-star"></i> Positive Reviews &middot; Favorable AC Meta-Review</div>
+          <div class="cv-location"><i class="fas fa-star"></i> Strong Reviews &middot; Favorable AC Meta-Review</div>
         </div>
         <div class="cv-item-content">
           <div class="cv-title">When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines</div>
@@ -193,7 +210,7 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">NeurIPS 2026</div>
-          <div class="cv-location"><i class="fas fa-star"></i> Positive Reviews &middot; Favorable AC Meta-Review</div>
+          <div class="cv-location"><i class="fas fa-star"></i> Strong Reviews &middot; Favorable AC Meta-Review</div>
         </div>
         <div class="cv-item-content">
           <div class="cv-title">Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models</div>
@@ -205,11 +222,11 @@ redirect_from:
 
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">ARR</div>
-          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review · Target: EMNLP '26</div>
+          <div class="cv-badge">AAAI 2027</div>
+          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">When Are LLM Judges Reliable? Anchor-Calibrated Task-Conditional Peer Councils for Open-Ended Evaluation</div>
+          <div class="cv-title">What Can LLM Judge Panels Measure? Estimands, Diagnostics, and Calibrated Aggregation</div>
           <div class="cv-desc">
             <p><strong>Y. Tang</strong>, M. Lin.</p>
           </div>
@@ -218,11 +235,50 @@ redirect_from:
 
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">ARR</div>
-          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review · Target: EMNLP '26</div>
+          <div class="cv-badge">AAAI 2027</div>
+          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">EVENTBOUND-LIT: Expert-Derived Narrative Transition Diagnostics for Incremental Language Models</div>
+          <div class="cv-title">Auditing Self-Play Evaluation: Deterministic Checks Miss Semantic Defects and Overstate Ranking Reversals</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>, M. Lin.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">AAAI 2027</div>
+          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Invariance as Verifiable Reward: Suppressing Reward Hacking in RLVR through Transformation Consistency</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">AAAI 2027</div>
+          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">TRACE: Belief-Conditioned Typed Repair for Multimodal World Models</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">AAAI 2027</div>
+          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Confidence Trajectory Distillation: Teaching Compressed Vision-Language Models When to Doubt</div>
           <div class="cv-desc">
             <p><strong>Y. Tang</strong>.</p>
           </div>

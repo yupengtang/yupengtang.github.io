@@ -16,35 +16,46 @@ Education
 * **Master of Science in Computational Science and Engineering (Applied Mathematics)**, Georgia Institute of Technology, Aug. 2023 – May 2026
 * **Bachelor of Engineering in Artificial Intelligence**, Shandong University, Sep. 2019 – Jun. 2023
 
-Publications & Manuscripts
+Selected Publications & Manuscripts
 ======
 
-* **Y. Tang**, M. Lin. *When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines*. **NeurIPS 2026**, under review — positive reviews, favorable area chair meta-review.
-* **Y. Tang**, M. Lin. *Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models*. **NeurIPS 2026**, under review — positive reviews, favorable area chair meta-review.
-* **Y. Tang**, M. Lin. *When Are LLM Judges Reliable? Anchor-Calibrated Task-Conditional Peer Councils for Open-Ended Evaluation*. **ARR**, under review (targeting EMNLP 2026).
-* **Y. Tang**. *EVENTBOUND-LIT: Expert-Derived Narrative Transition Diagnostics for Incremental Language Models*. **ARR**, under review (targeting EMNLP 2026).
+* **Y. Tang**, M. Lin. *When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines*. **NeurIPS 2026**, under review — **strong reviews, favorable area chair meta-review**.
+* **Y. Tang**, M. Lin. *Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models*. **NeurIPS 2026**, under review — **strong reviews, favorable area chair meta-review**.
+* **Y. Tang**, M. Lin. *What Can LLM Judge Panels Measure? Estimands, Diagnostics, and Calibrated Aggregation*. **AAAI 2027**, under review.
+* **Y. Tang**, M. Lin. *Auditing Self-Play Evaluation: Deterministic Checks Miss Semantic Defects and Overstate Ranking Reversals*. **AAAI 2027**, under review.
+* **Y. Tang**. *Invariance as Verifiable Reward: Suppressing Reward Hacking in RLVR through Transformation Consistency*. **AAAI 2027**, under review.
+* **Y. Tang**. *TRACE: Belief-Conditioned Typed Repair for Multimodal World Models*. **AAAI 2027**, under review.
+* **Y. Tang**. *Confidence Trajectory Distillation: Teaching Compressed Vision-Language Models When to Doubt*. **AAAI 2027**, under review.
 
 Research Experience
 ======
+
+## Visiting Researcher
+
+**Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)** \| Remote \| Jul. 2026 – Present (Part-time)
+
+* Leading a self-directed research collaboration with Prof. Lijie Hu's PAI Lab, driving new methods in trustworthy machine learning, post-training, and multimodal AI systems.
 
 ## Research Assistant
 
 **Georgia Institute of Technology** \| Atlanta, GA \| Sep. 2025 – Present
 
-Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning LLM behavior, multimodal AI, and AI evaluation, resulting in **2 NeurIPS 2026 submissions** (both with positive reviews and favorable area chair meta-reviews) and **2 ARR submissions** (all under review).
+Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning LLM behavior, multimodal AI, and AI evaluation, resulting in **2 NeurIPS 2026 submissions** (both with **strong reviews and favorable area chair meta-reviews**) and **2 AAAI 2027 submissions** (under review).
 
-* **NeurIPS 2026** (positive reviews, favorable AC meta-review) — *When Expert Disagreement Hurts*: designed an audit framework examining how LLMs revise decisions under expert disagreement signals, identifying prestige-driven compliance patterns distinct from evidence-based belief updating.
-* **NeurIPS 2026** (positive reviews, favorable AC meta-review) — *Retrieved but Ignored*: identified a post-retrieval evidence-ignoring failure mode in multimodal RAG, revealing that matched retrieval success can mask sharply different evidence-use behavior across VLMs.
-* **ARR** (under review; targeting EMNLP 2026) — *When Are LLM Judges Reliable?*: developed an anchor-calibrated peer council framework for reliable open-ended LLM evaluation, establishing task-conditional reliability bounds for LLM-as-a-Judge pipelines.
-* Built a self-play evaluation framework that audits LLM-generated verifiers and produces correctness-based model rankings, revealing that verifiable correctness and human preference represent substantially divergent axes of LLM capability. Manuscript complete, targeting AAAI 2027.
+* **NeurIPS 2026** (**strong reviews, favorable AC meta-review**) — *When Expert Disagreement Hurts*: designed an audit framework examining how LLMs revise decisions under expert disagreement signals, identifying prestige-driven compliance patterns distinct from evidence-based belief updating.
+* **NeurIPS 2026** (**strong reviews, favorable AC meta-review**) — *Retrieved but Ignored*: identified a post-retrieval evidence-ignoring failure mode in multimodal RAG, revealing that matched retrieval success can mask sharply different evidence-use behavior across VLMs.
+* **AAAI 2027** (under review) — *What Can LLM Judge Panels Measure?*: built ACT-Council, a domain-conditioned Bradley–Terry model with verifier-anchored calibration that separates three distinct panel-aggregation estimands (observed-panel, order-marginalized, nuisance-removed), and mapped the conditions under which joint calibration improves reliability over simpler domain-steelman baselines rather than claiming uniform dominance.
+* **AAAI 2027** (under review) — *Auditing Self-Play Evaluation*: built VC-Play, a verifier-contract audit framework for LLM self-play evaluation, showing that deterministic checks alone miss a 37.6% verifier defect rate and that semantic cross-auditing overturns most of an apparent pooled correctness-vs-preference ranking reversal (101/69 → 22/26, no longer significant), leaving a validated family-specific reversal (Anthropic) as the main robust finding.
 * Engineered the supporting evaluation platform from scratch: a cross-platform Electron desktop app (React/TypeScript/FastAPI) with BrowserView-based automation across 9+ LLM chat services and 100+ API models, LLM-as-a-Judge pipeline with structured outputs, SQLite persistence, and one-command packaging (PyInstaller + electron-builder).
 
 ## Independent Researcher
 
 **Georgia Institute of Technology** \| Atlanta, GA \| Jan. 2026 – Present
 
-* Running a self-directed research program on reliable reasoning in foundation models, with focus on post-training (RLVR), test-time compute, and multimodal calibration. One paper under review at ARR (targeting EMNLP 2026), multiple additional manuscripts in progress.
-* Current work covers reward hacking and scaling failures in RLVR, self-correction backfire in strong reasoning models, VLM calibration under compression, and few-shot robotic manipulation. The common thread is figuring out where model reasoning breaks under deployment conditions and building fixes that don't trade away capability.
+* Running a self-directed research program on reliable reasoning in foundation models, with focus on post-training (RLVR), test-time compute, and multimodal calibration.
+* Addressed reward hacking in RLVR by enforcing transformation consistency across semantically invariant input perturbations, using a consistency gate and joint advantage formulation to make reward exploitation harder and expand the model's verified reasoning boundary, validated on math reasoning models.
+* Designed a belief-conditioned repair framework for frozen multimodal world models, combining type-matched repair modules with calibrated abstention to handle noisy, missing, or conflicting information without retraining the base model.
+* Built a confidence-trajectory distillation method that transfers uncertainty behavior from large vision-language models into compressed models via trajectory alignment and a rank-consistency loss, keeping compressed models properly calibrated under image degradation while preserving clean-data accuracy.
 
 ## Graduate Researcher
 
