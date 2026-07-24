@@ -19,8 +19,8 @@ Education
 Publications & Manuscripts
 ======
 
-* **Y. Tang**, M. Lin. *When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines*. **NeurIPS 2026**, under review.
-* **Y. Tang**, M. Lin. *Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models*. **NeurIPS 2026**, under review.
+* **Y. Tang**, M. Lin. *When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines*. **NeurIPS 2026**, under review — positive reviews, favorable area chair meta-review.
+* **Y. Tang**, M. Lin. *Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models*. **NeurIPS 2026**, under review — positive reviews, favorable area chair meta-review.
 * **Y. Tang**, M. Lin. *When Are LLM Judges Reliable? Anchor-Calibrated Task-Conditional Peer Councils for Open-Ended Evaluation*. **ARR**, under review (targeting EMNLP 2026).
 * **Y. Tang**. *EVENTBOUND-LIT: Expert-Derived Narrative Transition Diagnostics for Incremental Language Models*. **ARR**, under review (targeting EMNLP 2026).
 
@@ -31,10 +31,10 @@ Research Experience
 
 **Georgia Institute of Technology** \| Atlanta, GA \| Sep. 2025 – Present
 
-Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning LLM behavior, multimodal AI, and AI evaluation, resulting in **2 NeurIPS 2026 submissions** and **2 ARR submissions** (all under review).
+Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning LLM behavior, multimodal AI, and AI evaluation, resulting in **2 NeurIPS 2026 submissions** (both with positive reviews and favorable area chair meta-reviews) and **2 ARR submissions** (all under review).
 
-* **NeurIPS 2026** (under review) — *When Expert Disagreement Hurts*: designed an audit framework examining how LLMs revise decisions under expert disagreement signals, identifying prestige-driven compliance patterns distinct from evidence-based belief updating.
-* **NeurIPS 2026** (under review) — *Retrieved but Ignored*: identified a post-retrieval evidence-ignoring failure mode in multimodal RAG, revealing that matched retrieval success can mask sharply different evidence-use behavior across VLMs.
+* **NeurIPS 2026** (positive reviews, favorable AC meta-review) — *When Expert Disagreement Hurts*: designed an audit framework examining how LLMs revise decisions under expert disagreement signals, identifying prestige-driven compliance patterns distinct from evidence-based belief updating.
+* **NeurIPS 2026** (positive reviews, favorable AC meta-review) — *Retrieved but Ignored*: identified a post-retrieval evidence-ignoring failure mode in multimodal RAG, revealing that matched retrieval success can mask sharply different evidence-use behavior across VLMs.
 * **ARR** (under review; targeting EMNLP 2026) — *When Are LLM Judges Reliable?*: developed an anchor-calibrated peer council framework for reliable open-ended LLM evaluation, establishing task-conditional reliability bounds for LLM-as-a-Judge pipelines.
 * Built a self-play evaluation framework that audits LLM-generated verifiers and produces correctness-based model rankings, revealing that verifiable correctness and human preference represent substantially divergent axes of LLM capability. Manuscript complete, targeting AAAI 2027.
 * Engineered the supporting evaluation platform from scratch: a cross-platform Electron desktop app (React/TypeScript/FastAPI) with BrowserView-based automation across 9+ LLM chat services and 100+ API models, LLM-as-a-Judge pipeline with structured outputs, SQLite persistence, and one-command packaging (PyInstaller + electron-builder).
