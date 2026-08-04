@@ -1,6 +1,6 @@
 ---
-title: "Multi-Horizon Urban Microclimate Prediction"
-excerpt: "Two-stage hybrid framework: dual-depth parallel LSTM with variable selection and multi-head attention for 5-horizon campus forecasting, extended to 100,283 grid points at 5.9m resolution via morphology-informed Regression Kriging. Best deep learning RMSE at 360 min (3.18°C). Manuscript in preparation, targeting Building and Environment (SCI Q1, Elsevier)."
+title: "Urban Microclimate Forecasting and Spatial Transfer"
+excerpt: "Forecasting temperature and humidity hours ahead at campus locations with no sensor. First-author study with an end-to-end ML system, 7 forecasting models and 3 spatial methods benchmarked under a leakage-audited station-and-year holdout. Submitted to Building and Environment (SCI Q1, Elsevier)."
 collection: portfolio
 ---
 
@@ -9,264 +9,245 @@ collection: portfolio
 .p7-metric-card {
   background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
   border: 1px solid #5eead4; border-radius: 12px;
-  padding: 1rem 1.4rem; text-align: center; min-width: 110px; flex: 1;
+  padding: 1rem 0.8rem; text-align: center; min-width: 110px; flex: 1;
 }
-.p7-metric-num { font-size: 1.6rem; font-weight: 800; color: #0f766e; line-height: 1.1; }
+.p7-metric-num { font-size: 1.35rem; font-weight: 800; color: #0f766e; line-height: 1.1; }
 .p7-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
 .p7-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
 .p7-tag { background: #ccfbf1; color: #0f766e; border: 1px solid #5eead4; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
 .p7-section { border-left: 3px solid #14b8a6; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
 .p7-section h3 { margin: 0 0 0.3rem; color: #134e4a; font-size: 1.05rem; }
 .p7-callout { background: #f0fdfa; border-left: 4px solid #14b8a6; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
-.p7-callout-warn { background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
 .p7-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
 .p7-step { background: #ccfbf1; border: 1px solid #5eead4; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #134e4a; }
 .p7-arrow { color: #14b8a6; font-size: 1.1rem; font-weight: 700; }
+.p7-table-wrap { overflow-x: auto; }
 .p7-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
 .p7-table th { background: #ccfbf1; color: #134e4a; padding: 0.6rem 0.8rem; text-align: left; border-bottom: 2px solid #5eead4; font-weight: 700; }
 .p7-table td { padding: 0.5rem 0.8rem; border-bottom: 1px solid #f0fdfa; }
 .p7-table .best-row td { background: #ccfbf1; font-weight: 700; }
-.p7-table .our-row td { background: #f0fdfa; font-weight: 700; color: #0f766e; }
+.p7-note { font-size: 0.8rem; color: #6b7280; margin-top: -0.5rem; }
 .p7-arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 1rem 0; }
+@media (max-width: 600px) { .p7-arch-grid { grid-template-columns: 1fr; } }
 .p7-arch-block { background: #f0fdfa; border: 1px solid #5eead4; border-radius: 10px; padding: 0.8rem 1rem; }
 .p7-arch-title { font-weight: 700; color: #0f766e; font-size: 0.85rem; margin-bottom: 0.4rem; }
-.p7-arch-details { color: #374151; font-size: 0.78rem; line-height: 1.5; }
-.p7-feature-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
-.p7-feature-table th { background: #ccfbf1; color: #134e4a; padding: 0.5rem 0.8rem; text-align: left; border-bottom: 2px solid #5eead4; font-weight: 700; }
-.p7-feature-table td { padding: 0.45rem 0.8rem; border-bottom: 1px solid #f0fdfa; }
-.p7-scenarios { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 1rem 0; }
-.p7-scenario { background: #f0fdfa; border: 1px solid #5eead4; border-radius: 10px; padding: 0.8rem 1rem; }
-.p7-scenario-name { font-weight: 700; color: #0f766e; font-size: 0.88rem; }
-.p7-scenario-data { color: #374151; font-size: 0.78rem; margin-top: 0.3rem; }
+.p7-arch-details { color: #374151; font-size: 0.8rem; line-height: 1.55; }
 .p7-paper-banner { background: var(--bg-subtle, #f0fdfa); border: 1px solid #5eead4; border-radius: 12px; padding: 1rem 1.4rem; margin: 1.5rem 0; }
 .p7-paper-banner h3 { color: #0f766e; margin: 0 0 0.4rem; font-size: 1rem; }
 .p7-paper-banner p { margin: 0; font-size: 0.88rem; color: #374151; }
-code { background: #ccfbf1; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #0f766e; }
 </style>
 
-<p>This research project originated in the Georgia Tech <strong>VIP-SMUR</strong> (Vertically Integrated Projects: Sustainable Microclimate Urban Research) group. The goal was to predict air temperature and relative humidity across the entire Georgia Tech campus at roughly <strong>6-meter spacing</strong>, using only 16 weather stations and publicly available LiDAR and OpenStreetMap data — no CFD simulation, no numerical weather model.</p>
-
-<p>What makes the problem genuinely hard is that microclimate varies significantly over a few meters (a parking lot runs 3–4°C hotter than a nearby green space), and yet you only have 16 sensors spread across 1.6 km². The solution has to simultaneously handle <strong>temporal prediction</strong> (what will conditions be at each station in 10 minutes? 6 hours?) and <strong>spatial interpolation</strong> (what conditions exist between stations, at locations no sensor has ever seen?).</p>
+<p>Many data-driven microclimate models forecast a single step ahead, at locations that already have sensor history. The harder and more useful question is how well you can forecast hours ahead at a location that has no sensor at all. I built an end-to-end ML system for that setting on the Georgia Tech campus, along with the benchmark used to decide which models belong in it. The inputs were four warm seasons of 10-minute readings from 16 weather stations (865,928 observations) and nine urban-form features derived from LiDAR and OpenStreetMap. The work was done with the Georgia Tech VIP-SMUR team and is written up as a first-author paper.</p>
 
 <div class="p7-paper-banner">
-  <h3>In Preparation: Building and Environment (SCI Q1, Elsevier, IF ≈ 7.1)</h3>
-  <p><em>Multi-Horizon Urban Microclimate Forecasting and Spatial Mapping at 5.9-Meter Resolution</em>. Y. Tang, Z. Y. Jiang, I. Karadag, P. Kastner. I led the model architecture design, training pipeline, and geospatial inference system. A companion chapter is forthcoming in Springer Nature's <em>Urban Climate Resilience</em> series.</p>
+  <h3>Submitted to Building and Environment (SCI Q1, Elsevier)</h3>
+  <p><em>End-to-End Benchmarking of Urban Microclimate Forecasting and Spatial Transfer</em>. Y. Tang, Z. Y. Jiang, I. Karadag, P. Kastner. I owned the methodology, software, experiments, analysis, and the first draft. An accepted first-author companion chapter is forthcoming in Springer Nature's <em>Urban Climate Resilience</em> series. Code and trained weights: <a href="https://github.com/VIP-SMUR/25Fa-Microclimate-ML">VIP-SMUR/25Fa-Microclimate-ML</a>.</p>
 </div>
 
 <div class="p7-metric-grid">
-  <div class="p7-metric-card"><div class="p7-metric-num">5</div><div class="p7-metric-label">Forecast Horizons</div></div>
-  <div class="p7-metric-card"><div class="p7-metric-num">3.18°C</div><div class="p7-metric-label">Best DL RMSE (360 min)</div></div>
-  <div class="p7-metric-card"><div class="p7-metric-num">338K</div><div class="p7-metric-label">Model Parameters</div></div>
-  <div class="p7-metric-card"><div class="p7-metric-num">100,283</div><div class="p7-metric-label">Grid Points</div></div>
-  <div class="p7-metric-card"><div class="p7-metric-num">947K</div><div class="p7-metric-label">Training Observations</div></div>
+  <div class="p7-metric-card"><div class="p7-metric-num">865,928</div><div class="p7-metric-label">Sensor Observations</div></div>
+  <div class="p7-metric-card"><div class="p7-metric-num">7</div><div class="p7-metric-label">Forecasting Models Benchmarked</div></div>
+  <div class="p7-metric-card"><div class="p7-metric-num">6</div><div class="p7-metric-label">End-to-End Pipelines</div></div>
+  <div class="p7-metric-card"><div class="p7-metric-num">24,000</div><div class="p7-metric-label">Matched Test Cases per Pipeline</div></div>
+  <div class="p7-metric-card"><div class="p7-metric-num">100,283</div><div class="p7-metric-label">Output Grid Points</div></div>
 </div>
 
 <div class="p7-tags">
-  <span class="p7-tag">PyTorch</span><span class="p7-tag">Dual-Depth Parallel LSTM</span><span class="p7-tag">Variable Selection Network</span>
-  <span class="p7-tag">Multi-Head Attention (2 heads)</span><span class="p7-tag">Regression Kriging</span>
-  <span class="p7-tag">PyKrige</span><span class="p7-tag">GeoPandas</span><span class="p7-tag">OSMnx</span>
-  <span class="p7-tag">Random Forest</span><span class="p7-tag">SLURM / A100 GPU</span>
+  <span class="p7-tag">PyTorch</span><span class="p7-tag">LSTM</span><span class="p7-tag">Attention</span>
+  <span class="p7-tag">TCN / PatchTST / TFT</span><span class="p7-tag">scikit-learn</span><span class="p7-tag">PyKrige</span>
+  <span class="p7-tag">GeoPandas</span><span class="p7-tag">OSMnx</span><span class="p7-tag">Bootstrap Inference</span>
+  <span class="p7-tag">SLURM / A100</span>
 </div>
 
 <hr/>
 
-<h2>Framework Overview</h2>
+<h2>Research contributions</h2>
 
-<p>The framework operates in two sequential stages. Stage 1 is purely temporal: a deep learning model takes the past 24 hours of sensor readings and produces forecasts at five horizons in a single forward pass. Stage 2 is purely spatial: those 16 station forecasts are extended to the 100,283-point campus grid using morphology-informed Regression Kriging.</p>
+<ul>
+  <li><strong>Problem formulation.</strong> Framed forecasting at unmonitored locations as a joint temporal and spatial transfer problem, and scored complete pipelines instead of evaluating each stage in isolation.</li>
+  <li><strong>Evaluation protocol.</strong> Designed a 12-fold test that holds out the target station and the target year at the same time, with paired hierarchical bootstrap inference over station and date clusters, plus stress tests for network density and contiguous spatial holdout.</li>
+  <li><strong>Findings.</strong> Showed that the stage-wise winners (linear regression, IDW) still have the lowest error end-to-end, that the spatial method moves error more than the temporal model does, and that the neural model's advantage is regime-specific: in an exploratory hottest-decile analysis it lowered six-hour error with a confidence interval excluding zero.</li>
+  <li><strong>Honest limits.</strong> Separated the resolution of the output grid from the resolution the station network can validate, and showed why cross-station conformal intervals that look calibrated on average fail at individual locations.</li>
+</ul>
+
+<hr/>
+
+<h2>What I built</h2>
+
+<ul>
+  <li><strong>Data pipeline.</strong> Gap-aware segmentation and resampling of 10-minute sensor series, sliding-window construction for 24-hour inputs, and scalers fit only on the training partition.</li>
+  <li><strong>Forecasting model.</strong> A 337K-parameter PyTorch network (variable selection, parallel LSTM branches, self-attention) that predicts two variables at five horizons in one forward pass, replacing ten separately fitted models.</li>
+  <li><strong>Baseline suite.</strong> Persistence, per-target linear regression, Vanilla LSTM, TCN, PatchTST, and TFT, all on the same data pipeline, splits, and horizons.</li>
+  <li><strong>Spatial module.</strong> IDW, Ordinary Kriging, and Regression Kriging (Random Forest trend plus kriged residuals) that move station forecasts onto a 100,283-point campus grid.</li>
+  <li><strong>Evaluation harness.</strong> Held-out-year, held-out-station, 12-fold end-to-end, and spatial-block protocols, paired hierarchical bootstrap confidence intervals, and an automated leakage and provenance audit.</li>
+  <li><strong>HPC workflow.</strong> SLURM jobs for training, inference, and map generation on Georgia Tech's PACE A100 nodes, plus an onboarding guide I wrote for new team members.</li>
+</ul>
+
+<hr/>
+
+<h2>System design</h2>
 
 <div class="p7-flow">
-  <div class="p7-step">16 stations × 144 timesteps (24h)</div><div class="p7-arrow">→</div>
-  <div class="p7-step">Dual-depth LSTM + attention</div><div class="p7-arrow">→</div>
-  <div class="p7-step">5 horizon forecasts per station</div><div class="p7-arrow">→</div>
-  <div class="p7-step">Random Forest trend (9 GIS features)</div><div class="p7-arrow">→</div>
-  <div class="p7-step">Ordinary Kriging on residuals</div><div class="p7-arrow">→</div>
-  <div class="p7-step">100,283-point campus map @ 5.9 m</div>
+  <div class="p7-step">24 h of station history</div><div class="p7-arrow">&rarr;</div>
+  <div class="p7-step">Forecasting model</div><div class="p7-arrow">&rarr;</div>
+  <div class="p7-step">T and RH &times; 5 horizons per station</div><div class="p7-arrow">&rarr;</div>
+  <div class="p7-step">Spatial transfer (IDW / RK)</div><div class="p7-arrow">&rarr;</div>
+  <div class="p7-step">Forecast at any campus location</div>
 </div>
 
-<p>The key design choice was direct multi-output prediction: the model produces all five horizons (10, 30, 60, 180, and 360 minutes) for both temperature and relative humidity from one forward pass. Iterative rollout (feeding predictions back as inputs) accumulates errors across steps; direct prediction avoids that entirely and produces cleaner inputs for the spatial stage downstream.</p>
-
-<hr/>
-
-<h2>Temporal Model Architecture</h2>
+<p>A location without a sensor has no history to forecast from. The system handles this in two stages: forecast at every station that does have data, then transfer those forecasts across space. Keeping the stages separate means each can be swapped and benchmarked on its own, and every temporal model can be paired with every spatial method.</p>
 
 <div class="p7-section">
-  <h3>Core Components</h3>
+  <h3>Stage 1: forecasting model</h3>
 </div>
+
+<p>Each sample is 144 timesteps (24 hours) with eight features: temperature, humidity, and sine/cosine encodings of time of day, solar altitude, and solar azimuth. Outputs are temperature and humidity at 10, 30, 60, 180, and 360 minutes.</p>
 
 <div class="p7-arch-grid">
   <div class="p7-arch-block">
-    <div class="p7-arch-title">Variable Selection Network (VSN)</div>
-    <div class="p7-arch-details">Time-averaged input fed through Gated Residual Networks (GRN) to produce softmax feature weights, applied element-wise to every timestep. The model learns that solar azimuth matters more than minute-of-hour, and that this weighting should vary by sample rather than being fixed.</div>
+    <div class="p7-arch-title">Variable selection</div>
+    <div class="p7-arch-details">A gated residual network produces softmax feature weights from the time-averaged input and applies them at every timestep. It is lighter than TFT's per-timestep selection and keeps the weights inspectable; humidity (0.385) and temperature (0.207) receive the most weight.</div>
   </div>
   <div class="p7-arch-block">
-    <div class="p7-arch-title">Dual-Depth Parallel LSTM</div>
-    <div class="p7-arch-details">Two parallel branches: a 1-layer short-term branch (hidden_dim/2) and a 2-layer long-term branch (hidden_dim/2), concatenated back to full dimension. Captures both rapid fluctuations (a cloud passing overhead) and diurnal cycles (sunrise heating, nighttime cooling) without collapsing them into one recurrent path.</div>
+    <div class="p7-arch-title">Parallel LSTM branches</div>
+    <div class="p7-arch-details">A one-layer and a two-layer LSTM read the same sequence at half the hidden size each, and their outputs are concatenated.</div>
   </div>
   <div class="p7-arch-block">
-    <div class="p7-arch-title">Multi-Head Self-Attention (4 heads)</div>
-    <div class="p7-arch-details">Applied after the LSTM branches to model long-range dependencies across the 24-hour input window. Helps the model learn which historical thermal states are predictive for each forecast horizon — at short horizons it adds little, but at 360 minutes it makes a meaningful difference.</div>
+    <div class="p7-arch-title">Self-attention</div>
+    <div class="p7-arch-details">Two-head self-attention with a residual connection and layer norm over the full 24-hour window.</div>
   </div>
   <div class="p7-arch-block">
-    <div class="p7-arch-title">Gated Residual Networks (GRN)</div>
-    <div class="p7-arch-details">Two FC layers with sigmoid gating, learned interpolation between transformed and original input, and layer normalization. Stabilizes training and preserves gradient flow. Used inside the VSN to compute the feature importance weights.</div>
+    <div class="p7-arch-title">Training</div>
+    <div class="p7-arch-details">Joint MSE over all ten outputs, AdamW with weight decay, gradient clipping, ReduceLROnPlateau, and early stopping on validation loss. Five random seeds for the full model and each ablation.</div>
   </div>
 </div>
 
 <div class="p7-section">
-  <h3>Input Features (8 dimensions, physics-aware)</h3>
+  <h3>Stage 2: spatial transfer</h3>
 </div>
 
-<table class="p7-feature-table">
-  <thead><tr><th>Category</th><th>Features</th><th>Encoding</th></tr></thead>
-  <tbody>
-    <tr><td>Weather observations</td><td>Temperature, Relative Humidity</td><td>Raw (autoregressive signal)</td></tr>
-    <tr><td>Solar geometry</td><td>Altitude angle, Azimuth angle</td><td>Sin/cos trigonometric</td></tr>
-    <tr><td>Time of day</td><td>Minute-of-day</td><td>Sin/cos (period = 24h)</td></tr>
-  </tbody>
-</table>
+<p>Regression Kriging fits a Random Forest (50 trees, depth 10) on nine features per location: building height, ground and total elevation, distances to the nearest building, park, library, parking lot, and footway, and a monthly shadow ratio computed from building geometry and sun path. The station residuals are then interpolated with Ordinary Kriging on a fixed spherical variogram. IDW and plain Ordinary Kriging run through the same interface. A failed fit is logged as a failure instead of silently falling back to another method, so no result mixes methods.</p>
 
-<p>All cyclic features encoded as sin/cos pairs to avoid discontinuities at boundaries (hour 23 to hour 0). Solar angles encoded trigonometrically so the model receives physically meaningful sun-position signals rather than raw degree values.</p>
+<hr/>
 
-<div class="p7-section">
-  <h3>Why the Dual-Branch Design Is a Parameter-Efficiency Choice</h3>
-</div>
+<h2>Evaluation and leakage control</h2>
 
-<p>The ablation results clarify this. Replacing the two parallel LSTM branches with a single wider 2-layer LSTM uses 38% more parameters (468K vs. 338K) and achieves lower 360-minute RMSE (2.97°C vs. 3.18°C). The dual-branch design is not an unconditional accuracy improvement — a sufficiently wide single branch can actually outperform it. Its value is that it reaches 3.18°C with 338K parameters, whereas matching that absolute accuracy with a single-branch design would require roughly 468K parameters. In memory-constrained deployment, the 28% parameter reduction matters.</p>
+<p>A random split would put near-duplicate 10-minute windows in both train and test, and a test on stations the model has already seen says nothing about a location without a sensor. I set up four protocols, each closer to the real use case:</p>
+
+<ul>
+  <li><strong>Held-out year.</strong> Train on 2015&ndash;2016, validate on 2017, test on 2019.</li>
+  <li><strong>Held-out station.</strong> Run the trained model on a station excluded from training and scaling.</li>
+  <li><strong>End-to-end (12 folds).</strong> Hold out one station and the 2019 season together, refit the temporal models, forecast from the remaining stations, and transfer to the held-out location. The target station supplies no history, no training data, and no scaler statistics.</li>
+  <li><strong>Spatial blocks.</strong> Remove four neighboring stations at once to test transfer into a whole unseen region.</li>
+</ul>
+
+<p>The end-to-end run is audited automatically. For every fold, the aggregation script confirms that the held-out station is absent from training, validation, scaler fitting, and source histories; checks each target timestamp against its reference time and horizon; verifies the SHA-256 checksum of every prediction file; and confirms that the data, model, preprocessing, and spatial code hashes are identical across folds. If a fold is missing or a method has been substituted, the run stops. Differences between pipelines are reported with paired hierarchical bootstrap intervals that resample stations and then dates, since consecutive readings are strongly correlated.</p>
 
 <hr/>
 
 <h2>Results</h2>
 
 <div class="p7-section">
-  <h3>Multi-Horizon Temporal Performance (Protocol A: Temporal Generalization)</h3>
+  <h3>Forecasting at known stations</h3>
 </div>
 
+<div class="p7-table-wrap">
 <table class="p7-table">
-  <thead><tr><th>Model</th><th>10 min (°C)</th><th>60 min (°C)</th><th>180 min (°C)</th><th>360 min (°C)</th></tr></thead>
+  <thead><tr><th>Model</th><th>10 min</th><th>60 min</th><th>180 min</th><th>360 min</th></tr></thead>
   <tbody>
     <tr><td>Persistence</td><td>0.48</td><td>1.31</td><td>2.95</td><td>4.86</td></tr>
-    <tr class="best-row"><td><strong>Linear Regression</strong></td><td><strong>0.47</strong></td><td><strong>1.14</strong></td><td><strong>2.17</strong></td><td><strong>3.00</strong></td></tr>
+    <tr class="best-row"><td>Linear Regression</td><td>0.47</td><td>1.14</td><td>2.17</td><td>3.00</td></tr>
     <tr><td>Vanilla LSTM</td><td>0.91</td><td>1.57</td><td>2.65</td><td>3.49</td></tr>
     <tr><td>TCN</td><td>0.50</td><td>1.20</td><td>2.50</td><td>3.67</td></tr>
     <tr><td>PatchTST</td><td>0.97</td><td>1.63</td><td>2.67</td><td>3.38</td></tr>
-    <tr class="our-row"><td><strong>Ours</strong></td><td>0.87</td><td>1.50</td><td>2.53</td><td>3.18</td></tr>
+    <tr><td>TFT (P50)</td><td>0.86</td><td>1.42</td><td>2.52</td><td>3.44</td></tr>
+    <tr><td>My model</td><td>0.87</td><td>1.50</td><td>2.53</td><td>3.18</td></tr>
   </tbody>
 </table>
+</div>
+<p class="p7-note">Temperature RMSE (&deg;C), held-out year 2019.</p>
 
-<div class="p7-callout-warn"><strong>Linear Regression outperforms every deep learning architecture at every horizon, including ours.</strong> At 360 minutes, LR achieves 3.00°C while our model reaches 3.18°C. This is not a flaw of any single architecture — it holds across TCN, PatchTST, Vanilla LSTM, and our model. At 10-minute resolution, urban temperature is strongly autocorrelated: the most recent sensor reading carries most of the predictive information, and that relationship is largely linear. Ridge regression operating on all 1,152 input features directly exploits this; LSTMs and Transformers compress the same history through a bottleneck and lose some of the linear structure without gaining enough nonlinear advantage to compensate.</div>
-
-<p>Among deep learning architectures, our model achieves the lowest 360-minute temperature RMSE: 3.18°C, which is 13.3% below TCN (3.67°C) and 5.9% below PatchTST (3.38°C). The same pattern holds for relative humidity, where our model leads at 360 minutes (13.29%) against PatchTST (13.69%) and TCN (13.83%). The model's advantage grows with forecast horizon, which is exactly where temporal structure becomes nonlinear and where the LSTM's capacity and the attention mechanism contribute most.</p>
-
-<p>The deeper point, and what we argue in the paper, is that the DL component's value is not point-level RMSE. It produces all five horizons for both variables in a single forward pass (versus 10 separate linear models for equivalent coverage), integrates cleanly with the spatial stage, and yields physically interpretable feature importances that a linear model cannot provide.</p>
+<p>Among the neural networks, mine had the lowest six-hour error (3.18&nbsp;&deg;C against 3.38&ndash;3.67&nbsp;&deg;C). I included a per-target linear regression on the flattened 24-hour history from the start, and it had the lowest error at every horizon for both variables. At 10-minute resolution this signal is strongly autoregressive, and a linear model captures that directly. This matches Zeng et al. (2023), where simple linear models outperformed several Transformer architectures on long-horizon forecasting benchmarks, and it ended up shaping the final recommendation.</p>
 
 <div class="p7-section">
-  <h3>Architecture Ablation</h3>
+  <h3>Spatial transfer</h3>
 </div>
 
+<div class="p7-table-wrap">
 <table class="p7-table">
-  <thead><tr><th>Variant</th><th>Params</th><th>10 min (°C)</th><th>60 min (°C)</th><th>360 min (°C)</th></tr></thead>
+  <thead><tr><th>Method</th><th>Station holdout T (&deg;C)</th><th>Station holdout RH (%)</th><th>Block holdout T (&deg;C)</th><th>Block holdout RH (%)</th></tr></thead>
   <tbody>
-    <tr><td>Vanilla LSTM (baseline)</td><td>212K</td><td>0.91</td><td>1.57</td><td>3.49</td></tr>
-    <tr><td>No Variable Selection</td><td>285K</td><td>0.83</td><td>1.44</td><td>3.31</td></tr>
-    <tr><td>No Dual-Branch (single wider LSTM)</td><td>468K</td><td>0.93</td><td>1.48</td><td>2.97</td></tr>
-    <tr><td>No Attention</td><td>270K</td><td>0.81</td><td>1.48</td><td>3.28</td></tr>
-    <tr class="our-row"><td><strong>Ours (full)</strong></td><td><strong>338K</strong></td><td>0.87</td><td>1.50</td><td><strong>3.18</strong></td></tr>
+    <tr class="best-row"><td>IDW</td><td>1.13</td><td>4.62</td><td>0.721</td><td>2.711</td></tr>
+    <tr><td>Ordinary Kriging</td><td>1.26</td><td>5.03</td><td>0.817</td><td>3.164</td></tr>
+    <tr><td>Regression Kriging</td><td>1.20</td><td>4.96</td><td>0.765</td><td>2.872</td></tr>
   </tbody>
 </table>
+</div>
+<p class="p7-note">RMSE over 5,562 leave-one-station-out and 4,800 block-holdout predictions.</p>
+
+<p>IDW had the lowest error in both tests and at every network density from 5 to 16 stations. Regression Kriging beat Ordinary Kriging but not IDW: with only 9&ndash;15 stations per fold, the Random Forest trend likely has too few samples for the extra features to pay off.</p>
 
 <div class="p7-section">
-  <h3>Feature Importance (Permutation-Based)</h3>
+  <h3>End-to-end at unseen locations</h3>
 </div>
 
+<div class="p7-table-wrap">
 <table class="p7-table">
-  <thead><tr><th>Rank</th><th>Feature</th><th>Temp RMSE increase</th><th>RH RMSE increase</th></tr></thead>
+  <thead><tr><th>Pipeline</th><th>10 min T</th><th>60 min T</th><th>360 min T</th><th>360 min RH</th></tr></thead>
   <tbody>
-    <tr><td>1</td><td>Target variable (autoregressive signal)</td><td>+132.7%</td><td>+97.8%</td></tr>
-    <tr><td>2</td><td>Cross-variable (RH for T prediction, T for RH)</td><td>+14.4%</td><td>+36.3%</td></tr>
-    <tr><td>3</td><td>Solar azimuth (cos)</td><td>+18.7%</td><td>+16.5%</td></tr>
-    <tr><td>4</td><td>Solar altitude (sin)</td><td>+6.5%</td><td>+4.7%</td></tr>
+    <tr><td>Persistence + IDW</td><td>2.77</td><td>2.80</td><td>4.97</td><td>18.48</td></tr>
+    <tr class="best-row"><td>Linear Regression + IDW</td><td>2.77</td><td>2.78</td><td>3.72</td><td>14.56</td></tr>
+    <tr><td>My model + IDW</td><td>2.81</td><td>2.83</td><td>3.81</td><td>14.76</td></tr>
+    <tr><td>Linear Regression + RK</td><td>3.07</td><td>3.09</td><td>3.90</td><td>14.96</td></tr>
+    <tr><td>My model + RK</td><td>3.08</td><td>3.09</td><td>3.93</td><td>15.13</td></tr>
   </tbody>
 </table>
+</div>
+<p class="p7-note">RMSE with the target station and year both held out. T in &deg;C, RH in percentage points.</p>
 
-<p>The cross-variable coupling is asymmetric: permuting temperature degrades humidity prediction by 36.3%, but permuting humidity degrades temperature prediction by only 14.4%. This is consistent with the Clausius–Clapeyron relation, under which saturation vapor pressure (and relative humidity) depends strongly on temperature, while the reverse coupling is weaker. The model is picking up a real physical relationship without being told to look for it.</p>
+<p>Moving from a known station to an unseen one raised 10-minute temperature error from 0.47 to 2.77&nbsp;&deg;C for the best pipeline, which is why the stricter protocol matters. The spatial method drove most of the difference: replacing IDW with RK added 0.31&ndash;0.33&nbsp;&deg;C at 10&ndash;60 minutes, with bootstrap intervals above zero. Between my model and linear regression, the intervals included zero at four of five horizons for temperature and at every horizon for humidity.</p>
 
-<hr/>
-
-<h2>Spatial Stage: Stations to Campus Maps</h2>
-
-<p>The 16 station forecasts are extended to 100,283 grid points using <strong>Regression Kriging</strong>: a Random Forest trend model trained on 9 three-dimensional GIS covariates predicts the large-scale spatial pattern, and Ordinary Kriging with a spherical variogram fits the residuals.</p>
-
-<p><strong>9 spatial covariates from LiDAR and OpenStreetMap:</strong></p>
-<ul>
-  <li><em>Vertical structure:</em> building height, ground elevation, total elevation</li>
-  <li><em>Proximity metrics:</em> distance to nearest building, park, library, parking lot, and footway</li>
-  <li><em>Solar exposure:</em> monthly shadow ratio, computed from building geometry and solar angles</li>
-</ul>
+<div class="p7-callout"><strong>Where the neural model wins:</strong> six-hour temperature forecasts during heat. In the hottest decile of observed temperatures, my model + IDW cut 360-minute RMSE from 4.88 to 4.59&nbsp;&deg;C compared with linear regression + IDW (paired difference &minus;0.289&nbsp;&deg;C, 95% CI &minus;0.450 to &minus;0.103). Six hours of lead time is what planning ahead of a heat event needs, for example building precooling, although those downstream uses were not evaluated here. The subset was defined after the main analysis, so it still needs confirmation on an independent sensor network.</div>
 
 <div class="p7-section">
-  <h3>Spatial Interpolation Comparison</h3>
+  <h3>Ablations and training stability</h3>
 </div>
 
+<div class="p7-table-wrap">
 <table class="p7-table">
-  <thead><tr><th>Method</th><th>Temp RMSE (°C)</th><th>Temp MAE</th><th>RH RMSE (%)</th><th>RH MAE</th></tr></thead>
+  <thead><tr><th>Variant</th><th>Params</th><th>360 min, single run</th><th>360 min, 5 seeds</th></tr></thead>
   <tbody>
-    <tr class="best-row"><td><strong>IDW</strong></td><td><strong>1.78</strong></td><td><strong>0.87</strong></td><td><strong>5.82</strong></td><td><strong>3.26</strong></td></tr>
-    <tr><td>Ordinary Kriging</td><td>1.95</td><td>0.97</td><td>6.37</td><td>3.64</td></tr>
-    <tr class="our-row"><td>Regression Kriging (ours)</td><td>1.98</td><td>0.95</td><td>6.33</td><td>3.49</td></tr>
+    <tr><td>Without variable selection</td><td>285K</td><td>3.31</td><td>3.35 &plusmn; 0.15</td></tr>
+    <tr><td>One wider LSTM instead of two branches</td><td>468K</td><td>2.97</td><td>3.06 &plusmn; 0.30</td></tr>
+    <tr><td>Without attention</td><td>270K</td><td>3.28</td><td>3.34 &plusmn; 0.08</td></tr>
+    <tr><td>Full model</td><td>337K</td><td>3.18</td><td>3.30 &plusmn; 0.06</td></tr>
   </tbody>
 </table>
-
-<div class="p7-callout-warn"><strong>IDW beats Regression Kriging in point-level RMSE.</strong> With only 15 training stations per fold, the Random Forest trend model does not have enough spatial samples to learn morphological relationships that generalize beyond simple distance weighting. This is a straightforward consequence of sparse sensor networks, and we document it directly.</div>
-
-<p>The case for Regression Kriging is not that it wins on RMSE — it does not. Its advantage is that it generates spatially resolved fields with <strong>physically plausible heterogeneity</strong>. Total elevation is the strongest temperature predictor (importance 0.321), followed by distance to parking lots (0.172), which captures the thermal signature of impervious surfaces. On the hottest days, predictions show clear heat islands over parking areas exceeding 35°C, while green spaces stay notably cooler. IDW, which interpolates purely by distance, cannot reproduce these patterns because it has no knowledge of what is between the stations.</p>
-
-<hr/>
-
-<h2>Extreme Scenario Mapping</h2>
-
-<p>An automated scenario generator scans the full warm-season dataset, identifies extreme-condition timestamps, and runs the full inference and kriging pipeline for each:</p>
-
-<div class="p7-scenarios">
-  <div class="p7-scenario">
-    <div class="p7-scenario-name">🔥 Hottest</div>
-    <div class="p7-scenario-data">37.30°C avg, 34.6% RH (June 25, 2016 16:10)</div>
-  </div>
-  <div class="p7-scenario">
-    <div class="p7-scenario-name">❄️ Coldest</div>
-    <div class="p7-scenario-data">8.45°C avg, 89.6% RH (May 6, 2017 06:30)</div>
-  </div>
-  <div class="p7-scenario">
-    <div class="p7-scenario-name">🏜️ Driest</div>
-    <div class="p7-scenario-data">18.13°C avg, 18.0% RH (April 4, 2015 18:30)</div>
-  </div>
-  <div class="p7-scenario">
-    <div class="p7-scenario-name">💧 Most Humid</div>
-    <div class="p7-scenario-data">16.73°C avg, 99.5% RH (April 18, 2015 04:40)</div>
-  </div>
 </div>
+<p class="p7-note">Temperature RMSE (&deg;C), held-out year.</p>
 
-<p>Each map shows side-by-side temperature and humidity predictions with station observations overlaid as square markers. Output maps are 300 DPI at 4800×3600 px.</p>
-
-<hr/>
-
-<h2>HPC Integration</h2>
-
-<table class="p7-table">
-  <thead><tr><th>Stage</th><th>Time</th><th>Resources</th></tr></thead>
-  <tbody>
-    <tr><td>Training (16 stations, early stopping at epoch 23)</td><td>~26 min</td><td>A100 GPU, 34 GB RAM</td></tr>
-    <tr><td>Inference (100,283 points)</td><td>~2 min 10 sec</td><td>A100 GPU</td></tr>
-    <tr><td>Visualization (3 maps, 300 DPI)</td><td>~1 min 31 sec</td><td>CPU</td></tr>
-    <tr><td>All 4 extreme scenarios</td><td>~3 min 4 sec</td><td>A100 GPU</td></tr>
-  </tbody>
-</table>
-
-<p>Full SLURM job scripts for each stage, plus a comprehensive HPC tutorial I wrote for onboarding new VIP-SMUR team members (VPN setup, SSH key configuration, job submission, and file transfer).</p>
+<p>The full model had the lowest seed-to-seed variance at six hours (&plusmn;0.06&nbsp;&deg;C versus &plusmn;0.08&ndash;0.30&nbsp;&deg;C for the ablations). A single wider LSTM reached lower error with 39% more parameters, so the two-branch design trades a little accuracy for a smaller model. The single-run gains from variable selection and attention fall inside the seed spread, and I report them that way instead of claiming them as wins.</p>
 
 <hr/>
 
-<h2>What I Learned</h2>
+<h2>Uncertainty</h2>
 
-<p>The most uncomfortable result was discovering that a tuned Linear Regression baseline outperforms every deep learning model we tested, including our own, on point-level RMSE. We reran the experiment, checked the implementation, and reported it as a primary finding, because it is a real and reproducible property of 10-minute urban weather data. Strong autocorrelation makes linear extrapolation hard to beat, and any paper claiming DL gains without benchmarking against a tuned linear model should be read skeptically.</p>
+<p>I also tested whether cross-station conformal prediction could provide forecast intervals. Averaged over stations, coverage came in at 89&ndash;90% for a 90% target, which looks fine. Per station, though, coverage ranged from under 50% to nearly 100%, and six-hour temperature intervals were about 12.5&nbsp;&deg;C wide. An interval that only holds on average across locations is not something a user at a specific location can rely on, so I kept it as a diagnostic and left calibrated per-location uncertainty as open work.</p>
 
-<p>The other lesson was about what "value" means in a research system. The DL model's value is not its RMSE. It is the ability to produce five horizons for two variables simultaneously in one forward pass, to connect cleanly to the spatial stage, and to produce feature importances that can be physically interpreted and trusted. If you judge the model only by RMSE, you miss all of that. The framework as a whole does something no individual component could do: it takes 16 sensors and turns them into a 6-meter-resolution campus-wide map with physically consistent spatial patterns, updated at 10-minute intervals, covering forecast needs from HVAC control to day-ahead building energy planning.</p>
+<hr/>
+
+<h2>Maps and compute</h2>
+
+<p>For the hottest, coldest, driest, and most humid timestamps in the record, the system writes temperature and humidity fields to all 100,283 grid points. The 5.9&nbsp;m spacing is the output grid; with 16 stations, values between sensors can't be independently checked, so the maps are presented as model output.</p>
+
+<p>Training takes about 23 minutes on one A100 (best validation loss at epoch 3, early stop at 23). A full forecast for one reference time, covering both variables, all five horizons, and the full grid, runs in about 2 minutes 10 seconds, with kriging on CPU.</p>
+
+<hr/>
+
+<h2>Implications</h2>
+
+<p><strong>For research.</strong> Gains reported for deep models on urban microclimate should be checked against linear baselines and evaluated at locations the model has never seen, because both change the ranking here. The useful signal for neural models is regime-specific rather than average: the heat-decile result is where further work should focus. The open problems this leaves are calibrated uncertainty at individual locations, independent validation of between-station gradients (for example with mobile transects), and testing the heat result in other climates and denser urban fabric.</p>
+
+<p><strong>For deployment.</strong> If I were deploying this today, I would ship linear regression with IDW as the default forecaster: it had the lowest average error, is cheap to fit and serve, and is easy to debug. I would keep the neural model for one job, six-hour temperature forecasts during heat events, and validate it on a second network before relying on it.</p>
+
+<p>Across both, the main lesson is how much the evaluation setup decides the answer. The same pipeline looks very different at a known station than at an unseen one, and a model can lead the other neural networks and still lose to linear regression. The leakage audit and the stricter protocols are what make these conclusions trustworthy, and I would build them first on the next project.</p>

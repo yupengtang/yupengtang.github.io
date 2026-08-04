@@ -8,8 +8,77 @@ author_profile: true
 {% include base_path %}
 
 <p class="portfolio-intro">
-  Selected engineering and research projects spanning ML systems, inference infrastructure, and applied AI.
+  Selected open-source contributions and engineering projects in ML systems, inference infrastructure, and applied AI.
 </p>
+
+<section class="opensource-section" aria-labelledby="opensource-heading">
+  <div class="portfolio-section-header scroll-reveal">
+    <h2 id="opensource-heading">Open Source Contributions</h2>
+    <p>I contribute bug fixes and regression coverage to widely used open-source ML systems.</p>
+  </div>
+
+  <div class="opensource-grid">
+    <article class="opensource-card osc-pytorch scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">PT</span>
+        <div>
+          <h3>PyTorch / TorchRL</h3>
+          <a href="https://github.com/pytorch/rl" target="_blank" rel="noopener">pytorch/rl <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Fixed variant-specific SAC loss configuration, restored max-value replay-buffer writes after checkpoint reloads, repaired CrossQ key remapping after value-estimator creation, and corrected CSV logger counter handling.</p>
+        <div class="osc-prs" aria-label="PyTorch TorchRL upstream pull requests">
+          <span>Upstream PRs</span>
+          <a href="https://github.com/pytorch/rl/pull/4338" target="_blank" rel="noopener" aria-label="PyTorch TorchRL pull request 4338">#4338</a>
+          <a href="https://github.com/pytorch/rl/pull/4370" target="_blank" rel="noopener" aria-label="PyTorch TorchRL pull request 4370">#4370</a>
+          <a href="https://github.com/pytorch/rl/pull/4372" target="_blank" rel="noopener" aria-label="PyTorch TorchRL pull request 4372">#4372</a>
+          <a href="https://github.com/pytorch/rl/pull/4374" target="_blank" rel="noopener" aria-label="PyTorch TorchRL pull request 4374">#4374</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-huggingface scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">HF</span>
+        <div>
+          <h3>Hugging Face / Accelerate</h3>
+          <a href="https://github.com/huggingface/accelerate" target="_blank" rel="noopener">huggingface/accelerate <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Restored Apple MPS chip detection, fixed CPU-launch KMP runtime settings, and made MLflow nested-run environment values parse as real booleans.</p>
+        <div class="osc-prs" aria-label="Hugging Face Accelerate upstream pull requests">
+          <span>Upstream PRs</span>
+          <a href="https://github.com/huggingface/accelerate/pull/4221" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4221">#4221</a>
+          <a href="https://github.com/huggingface/accelerate/pull/4222" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4222">#4222</a>
+          <a href="https://github.com/huggingface/accelerate/pull/4223" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4223">#4223</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-liger scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">LK</span>
+        <div>
+          <h3>LinkedIn / Liger-Kernel</h3>
+          <a href="https://github.com/linkedin/Liger-Kernel" target="_blank" rel="noopener">linkedin/Liger-Kernel <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Standardized MLP monkey-patching so Gemma3, Gemma4, and Exaone4 report their Liger implementations correctly, with targeted regression coverage.</p>
+        <div class="osc-prs" aria-label="LinkedIn Liger-Kernel upstream pull requests">
+          <span>Upstream PR</span>
+          <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1444">#1444</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="portfolio-section-header projects-heading scroll-reveal">
+  <h2>Selected Projects</h2>
+</div>
 
 <div class="portfolio-grid">
 
@@ -130,14 +199,14 @@ author_profile: true
       <span class="pc-number">08</span>
       <span class="pc-type">Research</span>
     </div>
-    <h3 class="pc-title">Multi-Horizon Urban Microclimate Prediction</h3>
-    <p class="pc-excerpt">Two-stage hybrid: dual-depth LSTM with variable selection and attention for 5-horizon campus forecasting, extended to 100K+ grid points at 5.9m resolution via Regression Kriging. Manuscript in preparation, targeting Building and Environment (SCI Q1).</p>
+    <h3 class="pc-title">Urban Microclimate Forecasting and Spatial Transfer</h3>
+    <p class="pc-excerpt">First-author study and end-to-end ML system for forecasting temperature and humidity hours ahead at campus locations with no sensor, benchmarked under a leakage-audited station-and-year holdout. Submitted to Building and Environment (SCI Q1).</p>
     <div class="pc-metrics">
-      <span class="pc-metric"><strong>3.18&deg;C</strong> RMSE (360 min)</span>
-      <span class="pc-metric"><strong>Best DL</strong> at long horizons</span>
+      <span class="pc-metric"><strong>7</strong> models, <strong>3</strong> spatial methods</span>
+      <span class="pc-metric"><strong>12-fold</strong> leakage-audited holdout</span>
     </div>
     <div class="pc-tags">
-      <span>PyTorch</span><span>LSTM</span><span>Kriging</span><span>A100</span>
+      <span>PyTorch</span><span>Time Series</span><span>Kriging</span><span>HPC</span>
     </div>
   </a>
 

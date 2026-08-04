@@ -122,6 +122,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px; /* clears the fixed masthead on anchor jumps */
 
   /* 3px gradient accent bar pinned to top — the SDE calling card */
   &::before {
@@ -430,7 +431,7 @@ hr { border-color: var(--border); }
 }
 
 .author__bio {
-  font-size: 0.8rem !important;
+  font-size: 0.7rem !important;
   color: var(--text-muted) !important;
   line-height: 1.65 !important;
 }
@@ -1669,8 +1670,175 @@ hr { border-color: var(--border); }
 .portfolio-intro {
   font-size: 0.9rem;
   color: var(--text-muted);
-  margin-bottom: 1.8rem;
-  max-width: 60ch;
+  margin-bottom: 2rem;
+  max-width: 72ch;
+}
+
+.portfolio-section-header {
+  margin: 0 0 1rem;
+
+  h2 {
+    margin: 0 0 0.35rem;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+  }
+
+  p {
+    margin: 0;
+    max-width: 68ch;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+}
+
+.opensource-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 2.4rem;
+}
+
+.opensource-card {
+  display: grid;
+  grid-template-columns: minmax(185px, 0.72fr) minmax(0, 1.7fr);
+  gap: 1.15rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 1.05rem 1.15rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  transition:
+    transform 0.3s var(--spring),
+    box-shadow 0.3s var(--spring),
+    border-color 0.25s ease,
+    background 0.25s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    background: var(--card-bg-hover);
+  }
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+}
+
+.osc-pytorch {
+  &::before { background: linear-gradient(180deg, #ee4c2c, #f97316); }
+  &:hover { border-color: rgba(238, 76, 44, 0.32); }
+  .osc-mark { color: #c9381e; background: rgba(238, 76, 44, 0.11); border-color: rgba(238, 76, 44, 0.2); }
+}
+
+.osc-huggingface {
+  &::before { background: linear-gradient(180deg, #f4b400, #f59e0b); }
+  &:hover { border-color: rgba(245, 158, 11, 0.34); }
+  .osc-mark { color: #a16207; background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.24); }
+}
+
+.osc-liger {
+  &::before { background: linear-gradient(180deg, #0a66c2, #38bdf8); }
+  &:hover { border-color: rgba(10, 102, 194, 0.32); }
+  .osc-mark { color: #07579f; background: rgba(10, 102, 194, 0.11); border-color: rgba(10, 102, 194, 0.2); }
+}
+
+.osc-project {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+
+  h3 {
+    margin: 0 0 0.2rem;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+
+  a {
+    color: var(--text-faint);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.63rem;
+    text-decoration: none;
+    border-bottom: none;
+
+    &:hover { color: var(--link-hover); }
+  }
+}
+
+.osc-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 2.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid;
+  border-radius: 9px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.osc-contribution {
+  min-width: 0;
+
+  > p {
+    margin: 0 0 0.65rem;
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    line-height: 1.55;
+  }
+}
+
+.osc-prs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.38rem;
+
+  > span {
+    margin-right: 0.1rem;
+    color: var(--text-faint);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  a {
+    padding: 0.15rem 0.45rem;
+    color: var(--text-body);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-muted);
+    border-radius: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--link-hover);
+      border-color: var(--link-hover);
+      background: var(--card-bg-hover);
+    }
+  }
+}
+
+.projects-heading {
+  margin-top: 0;
 }
 
 .portfolio-grid {
@@ -1979,6 +2147,224 @@ hr { border-color: var(--border); }
 
 
 /* --------------------------------------------------------------------------
+   Section Nav — floating jump rail in the right margin (CV pages)
+   -------------------------------------------------------------------------- */
+
+.section-nav {
+  position: fixed;
+  top: 50%;
+  /* hugs the right edge of the 1280px content column, never the window edge */
+  right: #{"max(1.5rem, calc((100vw - 1280px) / 2 - 240px))"}; /* interpolated: libsass must not fold max() */
+  z-index: 15;
+  display: none;
+  padding: 0.55rem 0.6rem;
+  max-height: calc(100vh - 200px);
+  opacity: 0;
+  transform: translateY(-50%) translateX(10px);
+  transition:
+    opacity 0.55s var(--spring),
+    transform 0.55s var(--spring);
+
+  /* soft backdrop — only summoned in compact mode, where labels overlap text */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--nav-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transition: opacity 0.28s ease;
+    pointer-events: none;
+  }
+}
+
+.section-nav.is-visible {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.section-nav__heading {
+  padding-left: 1rem;
+  margin-bottom: 0.55rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.section-nav__list {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* the spine */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    bottom: 0.35rem;
+    width: 1px;
+    background: var(--border);
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.section-nav__item {
+  position: relative;
+  display: block;
+  padding: 0.3rem 0 0.3rem 1rem;
+  color: var(--text-muted);
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  transition: color 0.22s ease, transform 0.28s var(--spring);
+
+  /* tick sitting on the spine */
+  &::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 50%;
+    width: 3px;
+    height: 9px;
+    margin-top: -4.5px;
+    border-radius: 2px;
+    background: transparent;
+    transition:
+      background-color 0.25s ease,
+      height 0.3s var(--spring),
+      margin-top 0.3s var(--spring);
+  }
+
+  &:hover {
+    color: var(--text-body);
+    transform: translateX(2px);
+
+    &::before { background: var(--text-faint); }
+
+    .section-nav__num { opacity: 0.85; }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  &.is-active {
+    color: var(--text-primary);
+
+    &::before {
+      background: var(--blue);
+      height: 20px;
+      margin-top: -10px;
+    }
+
+    .section-nav__num  { color: var(--blue); opacity: 1; }
+    .section-nav__label { font-weight: 600; }
+  }
+}
+
+.section-nav__text {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+.section-nav__num {
+  flex: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+  opacity: 0.6;
+  transition: color 0.22s ease, opacity 0.22s ease;
+}
+
+.section-nav__label {
+  flex: none;
+  width: max-content;
+  max-width: 11.5rem;   /* long names wrap to a second line instead of widening the rail */
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  line-height: 1.3;
+  transition: font-weight 0.2s ease;
+}
+
+/* Full rail — only where the right margin can hold labels without crowding */
+@media (min-width: 1840px) {
+  .section-nav.is-ready { display: block; }
+}
+
+/* Compact rail — ticks only, labels unfold on hover over a blurred panel */
+@media (min-width: 1100px) and (max-width: 1839px) {
+  .section-nav.is-ready { display: block; }
+
+  .section-nav__heading {
+    max-width: 0;
+    margin-bottom: 0.35rem;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-width 0.32s var(--spring), opacity 0.2s ease;
+  }
+
+  .section-nav__text {
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 0.32s var(--spring), opacity 0.22s ease;
+  }
+
+  /* with labels furled, the ticks themselves must advertise the rail */
+  .section-nav__item::before {
+    background: var(--text-faint);
+    opacity: 0.55;
+  }
+
+  .section-nav__item:hover::before { opacity: 1; }
+
+  .section-nav__item.is-active::before {
+    background: var(--blue);
+    opacity: 1;
+  }
+
+  .section-nav:hover,
+  .section-nav:focus-within {
+    &::before { opacity: 1; }
+
+    .section-nav__heading { max-width: 15rem; opacity: 1; }
+    .section-nav__text    { max-width: 15rem; opacity: 1; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-nav,
+  .section-nav__item,
+  .section-nav__item::before,
+  .section-nav__text,
+  .section-nav__heading {
+    transition: none !important;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
    Print Stylesheet — CV-optimized
    -------------------------------------------------------------------------- */
 
@@ -1988,6 +2374,7 @@ hr { border-color: var(--border); }
   .masthead,
   .theme-toggle,
   .back-to-top,
+  .section-nav,
   .page__footer,
   .author__urls-wrapper button,
   .author__status,

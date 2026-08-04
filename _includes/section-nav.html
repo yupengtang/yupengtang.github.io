@@ -1,0 +1,158 @@
+<!-- Floating right-side section navigation (CV pages) -->
+<nav class="section-nav" id="section-nav" aria-label="Page sections">
+  <div class="section-nav__heading" aria-hidden="true">Contents</div>
+  <ul class="section-nav__list" id="section-nav-list"></ul>
+</nav>
+
+<script>
+(function () {
+  var OFFSET = 96;                 /* fixed masthead (70px) + breathing room */
+
+  function slugify(s) {
+    return s.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-') || 'section';
+  }
+
+  /* offsetTop chain: immune to the scroll-reveal translateY on un-revealed sections */
+  function topOf(el) {
+    var t = 0;
+    while (el) { t += el.offsetTop; el = el.offsetParent; }
+    return t;
+  }
+
+  function headingText(h) {
+    var c = h.cloneNode(true);
+    var n = c.querySelector('.cv-sec-num');
+    if (n) { n.parentNode.removeChild(n); }
+    return c.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function collect() {
+    var out = [];
+    var grids = document.querySelectorAll('.cv-grid');
+    if (grids.length) {
+      Array.prototype.forEach.call(grids, function (g) {
+        var h = g.querySelector('.cv-sidebar h2');
+        if (h) { out.push({ target: g, heading: h, text: headingText(h) }); }
+      });
+      return out;
+    }
+    /* Markdown CV: sections are "Title
+=====" (h1); entries inside are "## Role" (h2) */
+    var root = document.querySelector('.archive') || document.querySelector('.page__content');
+    if (!root) { return out; }
+    ['h1', 'h2'].some(function (level) {
+      Array.prototype.forEach.call(root.querySelectorAll(level), function (h) {
+        if (h.classList.contains('page__title')) { return; }
+        var t = headingText(h);
+        if (t) { out.push({ target: h, heading: h, text: t }); }
+      });
+      if (out.length >= 2) { return true; }
+      out = [];
+      return false;
+    });
+    return out;
+  }
+
+  function init() {
+    var nav = document.getElementById('section-nav');
+    var list = document.getElementById('section-nav-list');
+    if (!nav || !list) { return; }
+
+    var sections = collect();
+    if (sections.length < 2) { return; }
+
+    var seen = {};
+    sections.forEach(function (s, i) {
+      var id = s.target.id || s.heading.id;
+      if (!id) {
+        id = slugify(s.text);
+        if (seen[id]) { id = id + '-' + i; }
+        s.target.id = id;
+      }
+      seen[id] = true;
+      s.id = id;
+
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.className = 'section-nav__item';
+      a.href = '#' + id;
+      a.title = s.text;
+
+      var num = document.createElement('span');
+      num.className = 'section-nav__num';
+      num.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
+
+      var label = document.createElement('span');
+      label.className = 'section-nav__label';
+      label.textContent = s.text;
+
+      var text = document.createElement('span');
+      text.className = 'section-nav__text';
+      text.appendChild(num);
+      text.appendChild(label);
+
+      a.appendChild(text);
+      li.appendChild(a);
+      list.appendChild(li);
+      s.link = a;
+    });
+
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    list.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('.section-nav__item') : null;
+      if (!a) { return; }
+      e.preventDefault();
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (!el) { return; }
+      var top = topOf(el) - OFFSET;
+      window.scrollTo({ top: top < 0 ? 0 : top, behavior: reduce ? 'auto' : 'smooth' });
+      if (history.replaceState) { history.replaceState(null, '', a.getAttribute('href')); }
+    });
+
+    var current = -1;
+    function setActive(i) {
+      if (i === current) { return; }
+      if (current > -1) {
+        sections[current].link.classList.remove('is-active');
+        sections[current].link.removeAttribute('aria-current');
+      }
+      current = i;
+      if (current > -1) {
+        sections[current].link.classList.add('is-active');
+        sections[current].link.setAttribute('aria-current', 'true');
+      }
+    }
+
+    function update() {
+      var y = window.pageYOffset + OFFSET + 12;
+      var idx = 0;
+      for (var i = 0; i < sections.length; i++) {
+        if (topOf(sections[i].target) <= y) { idx = i; }
+        else { break; }
+      }
+      var doc = document.documentElement;
+      if (window.innerHeight + window.pageYOffset >= doc.scrollHeight - 8) { idx = sections.length - 1; }
+      setActive(idx);
+    }
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) { return; }
+      ticking = true;
+      window.requestAnimationFrame(function () { update(); ticking = false; });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+    nav.classList.add('is-ready');
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () { nav.classList.add('is-visible'); });
+    });
+  }
+
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
+  else { init(); }
+})();
+</script>
