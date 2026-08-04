@@ -21,11 +21,11 @@ Selected Publications & Manuscripts
 
 * **Y. Tang**, M. Lin. *When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines*. **NeurIPS 2026**, under review — **strong reviews, favorable area chair meta-review**.
 * **Y. Tang**, M. Lin. *Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models*. **NeurIPS 2026**, under review — **strong reviews, favorable area chair meta-review**.
-* **Y. Tang**, M. Lin. *What Can LLM Judge Panels Measure? Estimands, Diagnostics, and Calibrated Aggregation*. **AAAI 2027**, under review.
-* **Y. Tang**, M. Lin. *Auditing Self-Play Evaluation: Deterministic Checks Miss Semantic Defects and Overstate Ranking Reversals*. **AAAI 2027**, under review.
-* **Y. Tang**. *Invariance as Verifiable Reward: Suppressing Reward Hacking in RLVR through Transformation Consistency*. **AAAI 2027**, under review.
-* **Y. Tang**. *TRACE: Belief-Conditioned Typed Repair for Multimodal World Models*. **AAAI 2027**, under review.
-* **Y. Tang**. *Confidence Trajectory Distillation: Teaching Compressed Vision-Language Models When to Doubt*. **AAAI 2027**, under review.
+* **Y. Tang**, M. Lin. *Measure before You Rank: Estimand-Aware Calibration of LLM Judge Panels*. **AAAI 2027**, under review.
+* **Y. Tang**, M. Lin. *When Verifier Checks Pass but Ranking Claims Fail: Stress-Testing Self-Play Evaluation*. **AAAI 2027**, under review.
+* **Y. Tang**. *TRACE: Typed Repair with Abstention for Corrupted Evidence in Frozen Multimodal World Models*. **AAAI 2027**, under review.
+* **Y. Tang**. *No Free Surprise: Sharp Evidence Guarantees for Data-Adaptive Scientific Search*. **AAAI 2027**, under review.
+* **Y. Tang**. *Transfer, Then Correct: Constraint-Aware Geometric Priors for Visuomotor Manipulation under Layout Shift*. **ICRA 2027**, under review.
 
 Research Experience
 ======
@@ -34,7 +34,7 @@ Research Experience
 
 **Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)** \| Remote \| Jul. 2026 – Present (Part-time)
 
-* Leading a self-directed research collaboration with Prof. Lijie Hu's PAI Lab, driving new methods in trustworthy machine learning, post-training, and multimodal AI systems.
+* Leading a self-directed research collaboration with Prof. Lijie Hu's PAI Lab, researching latent reasoning and post-training for reliable foundation models, with a focus on adaptive test-time computation, recurrent-depth language models, and trustworthy multimodal AI.
 
 ## Research Assistant
 
@@ -44,8 +44,8 @@ Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning
 
 * **NeurIPS 2026** (**strong reviews, favorable AC meta-review**) — *When Expert Disagreement Hurts*: designed an audit framework examining how LLMs revise decisions under expert disagreement signals, identifying prestige-driven compliance patterns distinct from evidence-based belief updating.
 * **NeurIPS 2026** (**strong reviews, favorable AC meta-review**) — *Retrieved but Ignored*: identified a post-retrieval evidence-ignoring failure mode in multimodal RAG, revealing that matched retrieval success can mask sharply different evidence-use behavior across VLMs.
-* **AAAI 2027** (under review) — *What Can LLM Judge Panels Measure?*: built ACT-Council, a domain-conditioned Bradley–Terry model with verifier-anchored calibration that separates three distinct panel-aggregation estimands (observed-panel, order-marginalized, nuisance-removed), and mapped the conditions under which joint calibration improves reliability over simpler domain-steelman baselines rather than claiming uniform dominance.
-* **AAAI 2027** (under review) — *Auditing Self-Play Evaluation*: built VC-Play, a verifier-contract audit framework for LLM self-play evaluation, showing that deterministic checks alone miss a 37.6% verifier defect rate and that semantic cross-auditing overturns most of an apparent pooled correctness-vs-preference ranking reversal (101/69 → 22/26, no longer significant), leaving a validated family-specific reversal (Anthropic) as the main robust finding.
+* **AAAI 2027** (under review) — *Measure before You Rank*: built ACT-Council, a domain-conditioned Bradley–Terry model with verifier-anchored calibration that separates three distinct panel-aggregation estimands (observed-panel, order-marginalized, nuisance-removed), and mapped the conditions under which joint calibration improves reliability over simpler domain-steelman baselines rather than claiming uniform dominance.
+* **AAAI 2027** (under review) — *When Verifier Checks Pass but Ranking Claims Fail*: built VC-Play, a verifier-contract audit framework for LLM self-play evaluation, showing that deterministic checks alone miss a 37.6% verifier defect rate and that semantic cross-auditing overturns most of an apparent pooled correctness-vs-preference ranking reversal (101/69 → 22/26, no longer significant), leaving a validated family-specific reversal (Anthropic) as the main robust finding.
 * Engineered the supporting evaluation platform from scratch: a cross-platform Electron desktop app (React/TypeScript/FastAPI) with BrowserView-based automation across 9+ LLM chat services and 100+ API models, LLM-as-a-Judge pipeline with structured outputs, SQLite persistence, and one-command packaging (PyInstaller + electron-builder).
 
 ## Independent Researcher
@@ -56,6 +56,8 @@ Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning
 * Addressed reward hacking in RLVR by enforcing transformation consistency across semantically invariant input perturbations, using a consistency gate and joint advantage formulation to make reward exploitation harder and expand the model's verified reasoning boundary, validated on math reasoning models.
 * Designed a belief-conditioned repair framework for frozen multimodal world models, combining type-matched repair modules with calibrated abstention to handle noisy, missing, or conflicting information without retraining the base model.
 * Built a confidence-trajectory distillation method that transfers uncertainty behavior from large vision-language models into compressed models via trajectory alignment and a rank-consistency loss, keeping compressed models properly calibrated under image degradation while preserving clean-data accuracy.
+* Derived sharp evidence guarantees for data-adaptive scientific search, characterizing when adaptively collected evidence still supports statistically valid inference.
+* Developed constraint-aware geometric priors for visuomotor robotic manipulation that transfer across layout shifts and correct residual errors at deployment time.
 
 ## Graduate Researcher
 
@@ -80,6 +82,12 @@ Advised by Prof. Xianfeng Yuan. Undergraduate thesis project on autonomous vehic
 
 Work Experience
 ======
+
+## Incoming Robotics Engineer
+
+**Pudu Robotics** \| Atlanta Metropolitan Area \| Incoming (Hybrid)
+
+* Joining to lead end-to-end enterprise embodied robotics deployment, covering systems integration, technical enablement, and real-world performance optimization.
 
 ## Machine Learning Engineer Intern
 
