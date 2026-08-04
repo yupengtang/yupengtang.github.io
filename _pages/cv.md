@@ -25,7 +25,7 @@ Selected Publications & Manuscripts
 * **Y. Tang**, M. Lin. *When Verifier Checks Pass but Ranking Claims Fail: Stress-Testing Self-Play Evaluation*. **AAAI 2027**, under review.
 * **Y. Tang**. *TRACE: Typed Repair with Abstention for Corrupted Evidence in Frozen Multimodal World Models*. **AAAI 2027**, under review.
 * **Y. Tang**. *No Free Surprise: Sharp Evidence Guarantees for Data-Adaptive Scientific Search*. **AAAI 2027**, under review.
-* **Y. Tang**. *Transfer, Then Correct: Constraint-Aware Geometric Priors for Visuomotor Manipulation under Layout Shift*. **ICRA 2027**, under review.
+* **Y. Tang**. *GuardedCoMoT: Matched Evidence for Geometric-Prior Execution under Visuomotor Layout Shift*. **ICRA 2027**, under review.
 
 Research Experience
 ======
@@ -56,14 +56,14 @@ Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning
 * Addressed reward hacking in RLVR by enforcing transformation consistency across semantically invariant input perturbations, using a consistency gate and joint advantage formulation to make reward exploitation harder and expand the model's verified reasoning boundary, validated on math reasoning models.
 * Designed a belief-conditioned repair framework for frozen multimodal world models, combining type-matched repair modules with calibrated abstention to handle noisy, missing, or conflicting information without retraining the base model.
 * Built a confidence-trajectory distillation method that transfers uncertainty behavior from large vision-language models into compressed models via trajectory alignment and a rank-consistency loss, keeping compressed models properly calibrated under image degradation while preserving clean-data accuracy.
-* Derived sharp evidence guarantees for data-adaptive scientific search, characterizing when adaptively collected evidence still supports statistically valid inference.
-* Developed constraint-aware geometric priors for visuomotor robotic manipulation that transfer across layout shifts and correct residual errors at deployment time.
+* Developed an importance-sampling method that computes provably valid e-value evidence for whichever action an adaptive AI search actually selects out of a large hypothesis, prompt, or retrieval-trace space, proved its proposal-mismatch correction is information-theoretically sharp, and matched near-intractable analytic-mixture power (80.27% vs. 80.29%) using only 64 evaluations.
+* Built a matched-evidence execution framework for geometric-prior visuomotor manipulation under layout shift, combining task-frame transport with an RGB-conditioned guard that replaces infeasible paths with fixed fallbacks, improving obstacle success by 72.5 pp over supervision-matched baselines in frozen simulation.
 
 ## Graduate Researcher
 
 **Georgia Institute of Technology** \| Atlanta, GA \| Jan. 2025 – Dec. 2025
 
-Advised by Prof. Patrick Kastner. First author, manuscript targeting *Building and Environment* (SCI Q1, Elsevier).
+Advised by Prof. Patrick Kastner. Led to a first-author submission to a Q1 SCI-indexed journal, with a companion chapter forthcoming in an edited volume published by Springer Nature.
 
 * Designed a two-stage prediction framework that forecasts campus temperature and humidity at five horizons (10 min – 6 hours) from 16 sparse weather stations, then maps predictions to a 100K-point grid at 5.9 m resolution via morphology-informed Regression Kriging with nine LiDAR/OpenStreetMap features.
 * Implemented a dual-depth parallel LSTM with variable selection and attention (337K params), achieving best DL RMSE at 360 min (3.18°C, 13% below TCN) and benchmarking against six baselines to show that a tuned linear model beats all DL architectures at every horizon.
