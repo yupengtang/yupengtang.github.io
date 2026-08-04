@@ -1,6 +1,6 @@
 ---
 title: "Multi-Horizon Urban Microclimate Prediction"
-excerpt: "Two-stage hybrid framework: dual-depth parallel LSTM with variable selection and multi-head attention for 5-horizon campus forecasting, extended to 100,283 grid points at 5.9m resolution via morphology-informed Regression Kriging. Best deep learning RMSE at 360 min (3.18°C). Manuscript in preparation, targeting Building and Environment (SCI Q1, Elsevier)."
+excerpt: "Two-stage framework: a 336K-parameter dual-depth parallel LSTM for 5-horizon forecasting, extended to a 100,283-point campus grid at approximately 5.9 m spacing. Best deep-learning RMSE at 360 min (3.18°C), with a distinct extreme-heat advantage. Submitted to Building and Environment (SCI Q1, Elsevier)."
 collection: portfolio
 ---
 
@@ -49,16 +49,16 @@ code { background: #ccfbf1; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 <p>What makes the problem genuinely hard is that microclimate varies significantly over a few meters (a parking lot runs 3–4°C hotter than a nearby green space), and yet you only have 16 sensors spread across 1.6 km². The solution has to simultaneously handle <strong>temporal prediction</strong> (what will conditions be at each station in 10 minutes? 6 hours?) and <strong>spatial interpolation</strong> (what conditions exist between stations, at locations no sensor has ever seen?).</p>
 
 <div class="p7-paper-banner">
-  <h3>In Preparation: Building and Environment (SCI Q1, Elsevier, IF ≈ 7.1)</h3>
-  <p><em>Multi-Horizon Urban Microclimate Forecasting and Spatial Mapping at 5.9-Meter Resolution</em>. Y. Tang, Z. Y. Jiang, I. Karadag, P. Kastner. I led the model architecture design, training pipeline, and geospatial inference system. A companion chapter is forthcoming in Springer Nature's <em>Urban Climate Resilience</em> series.</p>
+  <h3>Submitted to Building and Environment (SCI Q1, Elsevier)</h3>
+  <p><em>Multi-Horizon Urban Microclimate Forecasting and Spatial Mapping at 5.9-Meter Resolution</em>. Y. Tang, Z. Y. Jiang, I. Karadag, P. Kastner. I led the model architecture design, training pipeline, and geospatial inference system. An accepted first-author companion chapter is forthcoming in Springer Nature's <em>Urban Climate Resilience</em> series.</p>
 </div>
 
 <div class="p7-metric-grid">
   <div class="p7-metric-card"><div class="p7-metric-num">5</div><div class="p7-metric-label">Forecast Horizons</div></div>
   <div class="p7-metric-card"><div class="p7-metric-num">3.18°C</div><div class="p7-metric-label">Best DL RMSE (360 min)</div></div>
-  <div class="p7-metric-card"><div class="p7-metric-num">338K</div><div class="p7-metric-label">Model Parameters</div></div>
+  <div class="p7-metric-card"><div class="p7-metric-num">336K</div><div class="p7-metric-label">Model Parameters</div></div>
   <div class="p7-metric-card"><div class="p7-metric-num">100,283</div><div class="p7-metric-label">Grid Points</div></div>
-  <div class="p7-metric-card"><div class="p7-metric-num">947K</div><div class="p7-metric-label">Training Observations</div></div>
+  <div class="p7-metric-card"><div class="p7-metric-num">865K+</div><div class="p7-metric-label">Warm-Season Observations</div></div>
 </div>
 
 <div class="p7-tags">
@@ -131,7 +131,7 @@ code { background: #ccfbf1; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <h3>Why the Dual-Branch Design Is a Parameter-Efficiency Choice</h3>
 </div>
 
-<p>The ablation results clarify this. Replacing the two parallel LSTM branches with a single wider 2-layer LSTM uses 38% more parameters (468K vs. 338K) and achieves lower 360-minute RMSE (2.97°C vs. 3.18°C). The dual-branch design is not an unconditional accuracy improvement — a sufficiently wide single branch can actually outperform it. Its value is that it reaches 3.18°C with 338K parameters, whereas matching that absolute accuracy with a single-branch design would require roughly 468K parameters. In memory-constrained deployment, the 28% parameter reduction matters.</p>
+<p>The ablation results clarify this. Replacing the two parallel LSTM branches with a single wider 2-layer LSTM uses 39% more parameters (468K vs. 336K) and achieves lower 360-minute RMSE (2.97°C vs. 3.18°C). The dual-branch design is not an unconditional accuracy improvement — a sufficiently wide single branch can actually outperform it. Its value is that it reaches 3.18°C with 336K parameters, whereas matching that absolute accuracy with a single-branch design would require roughly 468K parameters. In memory-constrained deployment, the 28% parameter reduction matters.</p>
 
 <hr/>
 
@@ -153,11 +153,17 @@ code { background: #ccfbf1; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   </tbody>
 </table>
 
-<div class="p7-callout-warn"><strong>Linear Regression outperforms every deep learning architecture at every horizon, including ours.</strong> At 360 minutes, LR achieves 3.00°C while our model reaches 3.18°C. This is not a flaw of any single architecture — it holds across TCN, PatchTST, Vanilla LSTM, and our model. At 10-minute resolution, urban temperature is strongly autocorrelated: the most recent sensor reading carries most of the predictive information, and that relationship is largely linear. Ridge regression operating on all 1,152 input features directly exploits this; LSTMs and Transformers compress the same history through a bottleneck and lose some of the linear structure without gaining enough nonlinear advantage to compensate.</div>
+<div class="p7-callout-warn"><strong>Under average conditions, Linear Regression outperforms every deep learning architecture at every horizon, including ours.</strong> At 360 minutes, LR achieves 3.00°C while our model reaches 3.18°C. This is not a flaw of any single architecture — it holds across TCN, PatchTST, Vanilla LSTM, and our model. At 10-minute resolution, urban temperature is strongly autocorrelated: the most recent sensor reading carries most of the predictive information, and that relationship is largely linear. Ridge regression operating on all 1,152 input features directly exploits this; LSTMs and Transformers compress the same history through a bottleneck and lose some of the linear structure without gaining enough nonlinear advantage to compensate.</div>
 
 <p>Among deep learning architectures, our model achieves the lowest 360-minute temperature RMSE: 3.18°C, which is 13.3% below TCN (3.67°C) and 5.9% below PatchTST (3.38°C). The same pattern holds for relative humidity, where our model leads at 360 minutes (13.29%) against PatchTST (13.69%) and TCN (13.83%). The model's advantage grows with forecast horizon, which is exactly where temporal structure becomes nonlinear and where the LSTM's capacity and the attention mechanism contribute most.</p>
 
-<p>The deeper point, and what we argue in the paper, is that the DL component's value is not point-level RMSE. It produces all five horizons for both variables in a single forward pass (versus 10 separate linear models for equivalent coverage), integrates cleanly with the spatial stage, and yields physically interpretable feature importances that a linear model cannot provide.</p>
+<p>The deeper point, and what we argue in the paper, is that the DL component's value extends beyond aggregate average-condition RMSE. It produces all five horizons for both variables in a single forward pass (versus 10 separate linear models for equivalent coverage), integrates cleanly with the spatial stage, and yields physically interpretable feature importances that a linear model cannot provide.</p>
+
+<div class="p7-section">
+  <h3>Robustness and Extreme-Heat Performance</h3>
+</div>
+
+<p>Validated on 865K+ warm-season observations using held-out-year and strict 12-fold unseen-station/unseen-year protocols, five-seed ablations, hierarchical bootstrap inference, and spatial holdouts. In the hottest decile, the model shows a distinct six-hour advantage over the linear baseline, reducing RMSE from 4.88°C to 4.59°C.</p>
 
 <div class="p7-section">
   <h3>Architecture Ablation</h3>
@@ -170,7 +176,7 @@ code { background: #ccfbf1; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
     <tr><td>No Variable Selection</td><td>285K</td><td>0.83</td><td>1.44</td><td>3.31</td></tr>
     <tr><td>No Dual-Branch (single wider LSTM)</td><td>468K</td><td>0.93</td><td>1.48</td><td>2.97</td></tr>
     <tr><td>No Attention</td><td>270K</td><td>0.81</td><td>1.48</td><td>3.28</td></tr>
-    <tr class="our-row"><td><strong>Ours (full)</strong></td><td><strong>338K</strong></td><td>0.87</td><td>1.50</td><td><strong>3.18</strong></td></tr>
+    <tr class="our-row"><td><strong>Ours (full)</strong></td><td><strong>336K</strong></td><td>0.87</td><td>1.50</td><td><strong>3.18</strong></td></tr>
   </tbody>
 </table>
 
