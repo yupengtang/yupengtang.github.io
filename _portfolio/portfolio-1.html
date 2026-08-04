@@ -58,7 +58,7 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <h3>Stateless Worker Architecture</h3>
 </div>
 
-<p>Each GPU node operates as a <strong>stateless worker</strong> that registers with a centralized task queue on startup, continuously polls for incoming generation requests, and reports results back via REST. No session affinity — any worker can pick up any request, so horizontal scaling is literally just launching more nodes.</p>
+<p>Each GPU node operates as a <strong>stateless worker</strong> that registers with a centralized task queue on startup, continuously polls for incoming generation requests, and reports results back via REST. There is no session affinity, so any worker can pick up any request and horizontal scaling is just launching more nodes.</p>
 
 <p>The worker lifecycle follows a clean state machine:</p>
 
@@ -78,13 +78,13 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 <p>To handle concurrent traffic, the system uses a <strong>data-parallel architecture</strong>. The model fits comfortably on a single H100, so instead of tensor parallelism, each GPU runs an independent worker that pulls from a shared async queue. The system launches via <code>torchrun</code> and initializes an NCCL process group for multi-GPU coordination and synchronization. Adding GPUs is a config change, not a code change. The distributed coordination protocol:</p>
 
 <ul>
-  <li><strong>Rank-0 handles all I/O.</strong> Queue polling, status updates, heartbeats, cloud uploads — all on the primary process. Worker GPUs don't touch the network.</li>
+  <li><strong>Rank-0 handles all I/O.</strong> Queue polling, status updates, heartbeats, and cloud uploads all run on the primary process. Worker GPUs don't touch the network.</li>
   <li><strong>Broadcast before inference.</strong> Once rank-0 pulls a request, the payload (prompt, dimensions, seed) is broadcast to all workers via NCCL <code>broadcast_object_list</code>.</li>
   <li><strong>Barrier synchronization.</strong> <code>dist.barrier()</code> before and after generation ensures lockstep so no GPU starts early or races ahead.</li>
   <li><strong>Seed consistency.</strong> Random seed broadcast from rank-0 guarantees deterministic output regardless of GPU count.</li>
 </ul>
 
-<div class="p1-callout">NCCL timeout set to 120 seconds with async error handling — prevents a single slow GPU from deadlocking the entire cluster.</div>
+<div class="p1-callout">NCCL timeout is set to 120 seconds with async error handling, which prevents a single slow GPU from deadlocking the entire cluster.</div>
 
 <div class="p1-section">
   <h3>Health Monitoring (Heartbeat)</h3>
@@ -105,7 +105,7 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <div class="p1-step">Status → Success / Failed</div>
 </div>
 
-<p>On <em>any</em> exception — bad prompt, GPU error, upload failure — the system marks the request <code>"failed"</code> and continues to the next request. No single bad input can crash the server loop.</p>
+<p>On <em>any</em> exception, whether a bad prompt, a GPU error, or a failed upload, the system marks the request <code>"failed"</code> and continues to the next request. No single bad input can crash the server loop.</p>
 
 <hr/>
 

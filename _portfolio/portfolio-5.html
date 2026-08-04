@@ -1,6 +1,6 @@
 ---
-title: "Multi-LLM Evaluation Platform"
-excerpt: "Cross-platform Electron desktop app with custom browser automation for side-by-side LLM evaluation, supporting a first-author NeurIPS 2026 submission (31K+ trials, 5 LLMs, 1,989-task benchmark)"
+title: "Multi-LLM Consistency Browser"
+excerpt: "Cross-platform Electron desktop app that broadcasts one prompt to 100+ models side by side and scores their agreement with a judge model, with SQLite persistence and one-command packaging."
 collection: portfolio
 ---
 
@@ -36,18 +36,16 @@ code { background: #fef3c7; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 .p4-research-banner p { margin: 0; font-size: 0.88rem; color: #374151; }
 </style>
 
-<p>This is a desktop application I built from scratch as the primary engineering artifact behind my first-author NeurIPS 2026 submission with Prof. Mingfeng Lin at Georgia Tech. The research investigates how LLMs revise decisions under conflicting information, specifically whether models update beliefs based on <em>evidence</em> (rational revision) or simply defer to <em>authority framing</em> (sycophantic compliance). Running that experiment at scale required a tool that didn't exist: one that can simultaneously query multiple LLMs through their <strong>native web interfaces</strong>, not just APIs, collect responses, and automatically evaluate whether they agree.</p>
+<p>A desktop application I built from scratch for comparing how different language models answer the same prompt. It fans a prompt out to many models at once, collects the responses in one place, stores them for later analysis, and can score them automatically with an LLM-as-a-Judge pipeline. I built it for my research group at Georgia Tech as general evaluation tooling.</p>
 
 <div class="p4-research-banner">
-  <h3>First-Author NeurIPS 2026 Submission</h3>
-  <p>This platform powered <strong>31,000+ experimental trials</strong> across a <strong>1,989-task benchmark</strong> spanning 5 LLMs, generating the empirical backbone of the paper. Advisor: Prof. Mingfeng Lin, Georgia Institute of Technology.</p>
+  <h3>Scope and caveat</h3>
+  <p>Built as internal evaluation tooling for my research group at Georgia Tech (advisor: Prof. Mingfeng Lin). It is not the data source for any of my papers. The browser-automation mode described below drives vendor chat UIs programmatically, which sits outside how those services are meant to be used, so I treat this as an engineering exercise rather than a research instrument.</p>
 </div>
 
 <div class="p4-metric-grid">
   <div class="p4-metric-card"><div class="p4-metric-num">9</div><div class="p4-metric-label">Native LLM Services</div></div>
   <div class="p4-metric-card"><div class="p4-metric-num">100+</div><div class="p4-metric-label">API Models via OpenRouter</div></div>
-  <div class="p4-metric-card"><div class="p4-metric-num">31K+</div><div class="p4-metric-label">Trials Collected</div></div>
-  <div class="p4-metric-card"><div class="p4-metric-num">1,989</div><div class="p4-metric-label">Benchmark Tasks</div></div>
   <div class="p4-metric-card"><div class="p4-metric-num">~195 MB</div><div class="p4-metric-label">Single Binary Installer</div></div>
 </div>
 

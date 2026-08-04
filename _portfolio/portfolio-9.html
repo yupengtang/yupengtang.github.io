@@ -32,7 +32,7 @@ collection: portfolio
 code { background: #ffedd5; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #c2410c; }
 </style>
 
-<p>CacheFlow is a <strong>from-scratch inference engine</strong> built in C++17 and CUDA 12, extending llama.cpp's autoregressive decode path to handle multiple concurrent requests efficiently. Stock llama.cpp processes requests sequentially — each request occupies the full KV cache until completion. CacheFlow replaces this with a <strong>batching-aware architecture</strong> modeled after vLLM's design, implementing every core subsystem independently: a preemptable scheduler, a block-based memory manager, paged attention CUDA kernels, and a trie-based prefix cache.</p>
+<p>CacheFlow is a <strong>from-scratch inference engine</strong> built in C++17 and CUDA 12, extending llama.cpp's autoregressive decode path to handle multiple concurrent requests efficiently. Stock llama.cpp processes requests sequentially, so each request occupies the full KV cache until completion. CacheFlow replaces this with a <strong>batching-aware architecture</strong> modeled after vLLM's design, implementing every core subsystem independently: a preemptable scheduler, a block-based memory manager, paged attention CUDA kernels, and a trie-based prefix cache.</p>
 
 <p>The project spans approximately <strong>5,800 lines of C++ and CUDA</strong>, with six test suites covering each subsystem. The goal was to understand precisely why naive LLM serving is inefficient and to fix both root causes: sequential request processing and contiguous KV allocation that fragments GPU memory.</p>
 
@@ -61,7 +61,7 @@ code { background: #ffedd5; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 
 <ol>
   <li><strong>Sequential processing.</strong> One request at a time means GPU compute idles between the prefill of one request and the next. Continuous batching eliminates this by interleaving decode steps across active requests.</li>
-  <li><strong>Contiguous KV allocation.</strong> Reserving a maximum-context-length contiguous block per request fragments GPU memory quickly — a request using 512 of 4096 reserved tokens blocks the remainder. Even when physical memory is available, the allocator cannot serve a new request. Block-based management with logical-to-physical mapping solves this entirely.</li>
+  <li><strong>Contiguous KV allocation.</strong> Reserving a maximum-context-length contiguous block per request fragments GPU memory quickly, because a request using 512 of 4096 reserved tokens blocks the remainder. Even when physical memory is available, the allocator cannot serve a new request. Block-based management with logical-to-physical mapping solves this entirely.</li>
 </ol>
 
 <div class="p9-callout">These are the same two problems vLLM solves in Python. CacheFlow re-implements the same ideas in C++ at the llama.cpp layer, with hand-written CUDA kernels for the non-contiguous attention access pattern.</div>
@@ -83,7 +83,7 @@ code { background: #ffedd5; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <div class="p9-step">Dispatch batch to attention kernel</div>
 </div>
 
-<p>Three pluggable scheduling policies are implemented: <strong>FCFS</strong> (first-come-first-served for fairness), <strong>Shortest Remaining First</strong> (minimize average completion time), and <strong>Priority</strong> (external priority scores). All operate without synchronization barriers — sequences can be added or removed at every decode step.</p>
+<p>Three pluggable scheduling policies are implemented: <strong>FCFS</strong> (first-come-first-served for fairness), <strong>Shortest Remaining First</strong> (minimize average completion time), and <strong>Priority</strong> (external priority scores). All operate without synchronization barriers, so sequences can be added or removed at every decode step.</p>
 
 <hr/>
 
@@ -93,7 +93,7 @@ code { background: #ffedd5; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <h3>Fixed-Size Blocks with Logical-to-Physical Mapping</h3>
 </div>
 
-<p>Each sequence maintains a <strong>block table</strong> — a mapping from logical block index to physical block index in GPU memory. The block manager allocates fixed-size physical blocks (default: 16 tokens each) on demand, so a 512-token sequence uses exactly 32 blocks rather than reserving 4096 tokens worth of contiguous space.</p>
+<p>Each sequence maintains a <strong>block table</strong>, a mapping from logical block index to physical block index in GPU memory. The block manager allocates fixed-size physical blocks (default: 16 tokens each) on demand, so a 512-token sequence uses exactly 32 blocks rather than reserving 4096 tokens worth of contiguous space.</p>
 
 <p>Two additional mechanisms handle advanced use cases:</p>
 
@@ -112,11 +112,11 @@ code { background: #ffedd5; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 
 <div class="p9-kernel-grid">
   <div class="p9-kernel-card">
-    <div class="p9-kernel-title">V1 — Warp per Query Head</div>
+    <div class="p9-kernel-title">V1: Warp per Query Head</div>
     <div class="p9-kernel-desc">One warp handles the full attention computation for one query head: it iterates over the block table, loads keys and values block by block, and accumulates the attention output. Effective up to ~8K context length where the per-warp iteration cost stays bounded.</div>
   </div>
   <div class="p9-kernel-card">
-    <div class="p9-kernel-title">V2 — Partitioned with Log-Sum-Exp Reduce</div>
+    <div class="p9-kernel-title">V2: Partitioned with Log-Sum-Exp Reduce</div>
     <div class="p9-kernel-desc">Partitions the sequence dimension across multiple thread blocks. Each partition computes a partial softmax; a final reduction pass merges partial results using the log-sum-exp identity for numerically stable combination. Scales to 32K+ context lengths where V1 becomes a bottleneck.</div>
   </div>
 </div>
@@ -140,7 +140,7 @@ code { background: #ffedd5; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <div class="p9-step">Run prefill only on uncached suffix</div>
 </div>
 
-<p>Cache eviction uses LRU policy: the least-recently-used blocks are freed first when the cache is full. In workloads with a fixed system prompt, this eliminates the full prefill for every subsequent request — measured at roughly <strong>~50% prefill time reduction</strong>.</p>
+<p>Cache eviction uses LRU policy: the least-recently-used blocks are freed first when the cache is full. In workloads with a fixed system prompt, this eliminates the full prefill for every subsequent request, measured at roughly <strong>50% prefill time reduction</strong>.</p>
 
 <hr/>
 
@@ -163,7 +163,7 @@ code { background: #ffedd5; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   </tbody>
 </table>
 
-<p>The 1.8× throughput improvement over stock llama.cpp at 8 concurrent requests comes entirely from eliminating sequential request processing — the same GPU compute now serves multiple requests simultaneously rather than idling between them. The 34% reduction in latency variance over 10K-token generations comes from the block manager's ability to maintain high cache utilization without fragmentation-induced stalls.</p>
+<p>The 1.8× throughput improvement over stock llama.cpp at 8 concurrent requests comes entirely from eliminating sequential request processing. The same GPU compute now serves multiple requests simultaneously rather than idling between them. The 34% reduction in latency variance over 10K-token generations comes from the block manager's ability to maintain high cache utilization without fragmentation-induced stalls.</p>
 
 <div class="p9-callout">The gap between 6.2× (8 req) and 9.1× (16 req) reflects batching efficiency gains: larger batches better saturate GPU compute during each decode step, raising arithmetic intensity above the memory-bandwidth-bound threshold for attention.</div>
 

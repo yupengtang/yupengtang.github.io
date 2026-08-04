@@ -8,14 +8,151 @@ author_profile: true
 {% include base_path %}
 
 <p class="portfolio-intro">
-  Selected engineering and research projects spanning ML systems, inference infrastructure, and applied AI.
+  Selected open-source contributions and engineering projects in ML systems, inference infrastructure, and applied AI.
 </p>
+
+<section class="opensource-section" aria-labelledby="opensource-heading">
+  <div class="portfolio-section-header scroll-reveal">
+    <h2 id="opensource-heading">Open Source Contributions</h2>
+    <p>I contribute bug fixes and regression coverage to widely used open-source ML systems.</p>
+  </div>
+
+  <div class="opensource-grid">
+    <article class="opensource-card osc-pytorch scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">PT</span>
+        <div>
+          <h3>PyTorch / TorchRL</h3>
+          <a href="https://github.com/pytorch/rl" target="_blank" rel="noopener">pytorch/rl <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Fixed variant-specific SAC loss configuration, restored max-value replay-buffer writes after checkpoint reloads, repaired CrossQ key remapping after value-estimator creation, corrected CSV logger step counting, and made shape operations on a <code>Choice</code> spec delegate to its choices instead of raising.</p>
+        <div class="osc-prs" aria-label="PyTorch TorchRL upstream pull requests">
+          <span>Upstream PRs</span>
+          <a href="https://github.com/pytorch/rl/pull/4338" target="_blank" rel="noopener" aria-label="PyTorch TorchRL pull request 4338">#4338</a>
+          <a href="https://github.com/pytorch/rl/pull/4370" target="_blank" rel="noopener" aria-label="PyTorch TorchRL pull request 4370">#4370</a>
+          <a href="https://github.com/pytorch/rl/pull/4372" target="_blank" rel="noopener" aria-label="PyTorch TorchRL pull request 4372">#4372</a>
+          <a href="https://github.com/pytorch/rl/pull/4374" target="_blank" rel="noopener" aria-label="PyTorch TorchRL pull request 4374">#4374</a>
+          <a href="https://github.com/pytorch/rl/pull/4462" target="_blank" rel="noopener" aria-label="PyTorch TorchRL pull request 4462">#4462</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-huggingface scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">HF</span>
+        <div>
+          <h3>Hugging Face / Accelerate</h3>
+          <a href="https://github.com/huggingface/accelerate" target="_blank" rel="noopener">huggingface/accelerate <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Restored Apple MPS chip detection, fixed CPU-launch KMP runtime settings and MLflow boolean parsing, preserved <code>torch.compile</code> dynamic-shape defaults, and repaired mixed-precision model unwrapping when Accelerate hooks are installed.</p>
+        <div class="osc-prs" aria-label="Hugging Face Accelerate upstream pull requests">
+          <span>Upstream PRs</span>
+          <a href="https://github.com/huggingface/accelerate/pull/4221" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4221">#4221</a>
+          <a href="https://github.com/huggingface/accelerate/pull/4222" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4222">#4222</a>
+          <a href="https://github.com/huggingface/accelerate/pull/4223" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4223">#4223</a>
+          <a href="https://github.com/huggingface/accelerate/pull/4254" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4254">#4254</a>
+          <a href="https://github.com/huggingface/accelerate/pull/4255" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4255">#4255</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-huggingface scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">TR</span>
+        <div>
+          <h3>Hugging Face / Transformers</h3>
+          <a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">huggingface/transformers <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Aligned PIL and torchvision image-processor outputs across Idefics2, Idefics3, SmolVLM, and Fuyu by fixing mask dtypes and missing image-size keys, then strengthened backend-equivalence tests across every returned output.</p>
+        <div class="osc-prs" aria-label="Hugging Face Transformers upstream pull requests">
+          <span>Upstream PR</span>
+          <a href="https://github.com/huggingface/transformers/pull/48739" target="_blank" rel="noopener" aria-label="Hugging Face Transformers pull request 48739">#48739</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-axolotl scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">AX</span>
+        <div>
+          <h3>Axolotl</h3>
+          <a href="https://github.com/axolotl-ai-cloud/axolotl" target="_blank" rel="noopener">axolotl-ai-cloud/axolotl <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage for both nonzero- and zero-decay configurations.</p>
+        <div class="osc-prs" aria-label="Axolotl upstream pull requests">
+          <span>Upstream PR</span>
+          <a href="https://github.com/axolotl-ai-cloud/axolotl/pull/4011" target="_blank" rel="noopener" aria-label="Axolotl pull request 4011">#4011</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-liger scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">LK</span>
+        <div>
+          <h3>LinkedIn / Liger-Kernel</h3>
+          <a href="https://github.com/linkedin/Liger-Kernel" target="_blank" rel="noopener">linkedin/Liger-Kernel <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Standardized MLP monkey-patching so Gemma3, Gemma4, and Exaone4 report their Liger implementations correctly, with targeted regression coverage.</p>
+        <div class="osc-prs" aria-label="LinkedIn Liger-Kernel upstream pull requests">
+          <span>Upstream PR</span>
+          <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1444">#1444</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="portfolio-section-header projects-heading scroll-reveal">
+  <h2>Selected Projects</h2>
+</div>
 
 <div class="portfolio-grid">
 
-  <a href="{{ base_path }}/portfolio/portfolio-1/" class="portfolio-card pc-indigo scroll-reveal">
+  <a href="{{ base_path }}/portfolio/portfolio-10/" class="portfolio-card pc-violet scroll-reveal">
     <div class="pc-header">
       <span class="pc-number">01</span>
+      <span class="pc-type">Research</span>
+    </div>
+    <h3 class="pc-title">MCP-AgentGym: Post-Training Gym for Tool-Using Agents</h3>
+    <p class="pc-excerpt">A real Kubernetes control plane as a verifiable RL environment: 36 typed MCP tools, 14 seeded fault families, computed rewards. Qwen3-8B trained with SFT, DPO and GRPO, served through vLLM.</p>
+    <div class="pc-metrics">
+      <span class="pc-metric"><strong>11,541</strong> verified trajectories</span>
+      <span class="pc-metric"><strong>2.4 s</strong> median episode, CPU only</span>
+    </div>
+    <div class="pc-tags">
+      <span>Post-Training</span><span>LoRA</span><span>vLLM</span><span>MCP</span>
+    </div>
+  </a>
+  <a href="{{ base_path }}/portfolio/portfolio-9/" class="portfolio-card pc-orange scroll-reveal">
+    <div class="pc-header">
+      <span class="pc-number">02</span>
+      <span class="pc-type">Systems</span>
+    </div>
+    <h3 class="pc-title">CacheFlow: Multi-Request LLM Inference Engine</h3>
+    <p class="pc-excerpt">C++17/CUDA 12 inference engine with continuous batching, paged KV cache, custom paged attention kernels, and trie-based prefix reuse. Built on llama.cpp.</p>
+    <div class="pc-metrics">
+      <span class="pc-metric"><strong>9.1&times;</strong> throughput scaling</span>
+      <span class="pc-metric"><strong>88%</strong> GPU cache util</span>
+    </div>
+    <div class="pc-tags">
+      <span>C++17</span><span>CUDA 12</span><span>Paged Attn</span><span>llama.cpp</span>
+    </div>
+  </a>
+
+  <a href="{{ base_path }}/portfolio/portfolio-1/" class="portfolio-card pc-indigo scroll-reveal">
+    <div class="pc-header">
+      <span class="pc-number">03</span>
       <span class="pc-type">Industry</span>
     </div>
     <h3 class="pc-title">High-Throughput Diffusion Inference System</h3>
@@ -31,7 +168,7 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-2/" class="portfolio-card pc-sky scroll-reveal">
     <div class="pc-header">
-      <span class="pc-number">02</span>
+      <span class="pc-number">04</span>
       <span class="pc-type">Industry</span>
     </div>
     <h3 class="pc-title">Video Super-Resolution Pipeline</h3>
@@ -47,7 +184,7 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-3/" class="portfolio-card pc-pink scroll-reveal">
     <div class="pc-header">
-      <span class="pc-number">03</span>
+      <span class="pc-number">05</span>
       <span class="pc-type">Industry</span>
     </div>
     <h3 class="pc-title">AI Virtual Try-On System</h3>
@@ -63,7 +200,7 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-4/" class="portfolio-card pc-rose scroll-reveal">
     <div class="pc-header">
-      <span class="pc-number">04</span>
+      <span class="pc-number">06</span>
       <span class="pc-type">Automation</span>
     </div>
     <h3 class="pc-title">Daily AI Trend Reporter</h3>
@@ -79,11 +216,11 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-5/" class="portfolio-card pc-amber scroll-reveal">
     <div class="pc-header">
-      <span class="pc-number">05</span>
+      <span class="pc-number">07</span>
       <span class="pc-type">Research</span>
     </div>
-    <h3 class="pc-title">Multi-LLM Evaluation Platform</h3>
-    <p class="pc-excerpt">Cross-platform Electron app with custom BrowserView automation for side-by-side LLM evaluation. Powers a first-author NeurIPS 2026 submission.</p>
+    <h3 class="pc-title">Multi-LLM Consistency Browser</h3>
+    <p class="pc-excerpt">Cross-platform desktop app that broadcasts one prompt to 100+ models side by side and scores their agreement with a judge model. SQLite persistence, one-command packaging.</p>
     <div class="pc-metrics">
       <span class="pc-metric"><strong>31K+</strong> trials</span>
       <span class="pc-metric"><strong>9</strong> LLM services</span>
@@ -95,7 +232,7 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-6/" class="portfolio-card pc-green scroll-reveal">
     <div class="pc-header">
-      <span class="pc-number">06</span>
+      <span class="pc-number">08</span>
       <span class="pc-type">Full-Stack</span>
     </div>
     <h3 class="pc-title">LLM-Powered Recommendation Platform</h3>
@@ -111,7 +248,7 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-7/" class="portfolio-card pc-slate scroll-reveal">
     <div class="pc-header">
-      <span class="pc-number">07</span>
+      <span class="pc-number">09</span>
       <span class="pc-type">Applied ML</span>
     </div>
     <h3 class="pc-title">Privacy-Preserving Ed Discussion RAG</h3>
@@ -127,33 +264,17 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-8/" class="portfolio-card pc-teal scroll-reveal">
     <div class="pc-header">
-      <span class="pc-number">08</span>
+      <span class="pc-number">10</span>
       <span class="pc-type">Research</span>
     </div>
-    <h3 class="pc-title">Multi-Horizon Urban Microclimate Prediction</h3>
-    <p class="pc-excerpt">Two-stage hybrid: dual-depth LSTM with variable selection and attention for 5-horizon campus forecasting, extended to 100K+ grid points at 5.9m resolution via Regression Kriging. Manuscript in preparation, targeting Building and Environment (SCI Q1).</p>
+    <h3 class="pc-title">Urban Microclimate Forecasting and Spatial Transfer</h3>
+    <p class="pc-excerpt">First-author study and end-to-end ML system for forecasting temperature and humidity hours ahead at campus locations with no sensor, benchmarked under a leakage-audited station-and-year holdout. Submitted to Building and Environment (SCI Q1).</p>
     <div class="pc-metrics">
-      <span class="pc-metric"><strong>3.18&deg;C</strong> RMSE (360 min)</span>
-      <span class="pc-metric"><strong>Best DL</strong> at long horizons</span>
+      <span class="pc-metric"><strong>7</strong> models, <strong>3</strong> spatial methods</span>
+      <span class="pc-metric"><strong>12-fold</strong> leakage-audited holdout</span>
     </div>
     <div class="pc-tags">
-      <span>PyTorch</span><span>LSTM</span><span>Kriging</span><span>A100</span>
-    </div>
-  </a>
-
-  <a href="{{ base_path }}/portfolio/portfolio-9/" class="portfolio-card pc-orange scroll-reveal">
-    <div class="pc-header">
-      <span class="pc-number">09</span>
-      <span class="pc-type">Systems</span>
-    </div>
-    <h3 class="pc-title">CacheFlow: Multi-Request LLM Inference Engine</h3>
-    <p class="pc-excerpt">C++17/CUDA 12 inference engine with continuous batching, paged KV cache, custom paged attention kernels, and trie-based prefix reuse. Built on llama.cpp.</p>
-    <div class="pc-metrics">
-      <span class="pc-metric"><strong>9.1&times;</strong> throughput scaling</span>
-      <span class="pc-metric"><strong>88%</strong> GPU cache util</span>
-    </div>
-    <div class="pc-tags">
-      <span>C++17</span><span>CUDA 12</span><span>Paged Attn</span><span>llama.cpp</span>
+      <span>PyTorch</span><span>Time Series</span><span>Kriging</span><span>HPC</span>
     </div>
   </a>
 

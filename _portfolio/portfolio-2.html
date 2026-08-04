@@ -54,7 +54,7 @@ code { background: #e0f2fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 
 <hr/>
 
-<h2>Network Architecture — Implemented from Scratch</h2>
+<h2>Network Architecture, Implemented from Scratch</h2>
 
 <p>Rather than using a pre-built library, I reimplemented the RRDBNet architecture directly in PyTorch for fine-grained control over the upsampling path. The architecture has three levels of hierarchy:</p>
 
@@ -75,7 +75,7 @@ code { background: #e0f2fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   </div>
 </div>
 
-<div class="p2-callout"><strong>Why reimplement?</strong> The native model does 4× upsampling (360p → 1440p), but I only needed 2× (360p → 720p). By implementing it myself, I could run the full 4× path and <strong>crop the output tensor to 2× dimensions</strong> — which produces sharper results than architecturally limiting the model. The checkpoint loader also handles three weight formats (<code>model_ema</code>, <code>params_ema</code>, raw state dict) for compatibility across official and fine-tuned variants.</div>
+<div class="p2-callout"><strong>Why reimplement?</strong> The native model does 4× upsampling (360p → 1440p), but I only needed 2× (360p → 720p). By implementing it myself, I could run the full 4× path and <strong>crop the output tensor to 2× dimensions</strong>, which produces sharper results than architecturally limiting the model. The checkpoint loader also handles three weight formats (<code>model_ema</code>, <code>params_ema</code>, raw state dict) for compatibility across official and fine-tuned variants.</div>
 
 <hr/>
 
@@ -102,7 +102,7 @@ code { background: #e0f2fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 
 <h2>Quality Evaluation System</h2>
 
-<p>I built a dedicated evaluation script computing <strong>frame-by-frame PSNR and SSIM</strong> between the upscaled output and the 720p reference — not on a sample, but on every single frame pair.</p>
+<p>I built a dedicated evaluation script computing <strong>frame-by-frame PSNR and SSIM</strong> between the upscaled output and the 720p reference, not on a sample but on every single frame pair.</p>
 
 <ul>
   <li><strong>PSNR</strong> measured in dB on full RGB and on the Y (luminance) channel per ITU-R BT.601. Y-channel PSNR is more perceptually meaningful because human vision is more sensitive to luminance than chrominance.</li>
@@ -131,7 +131,7 @@ code { background: #e0f2fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   </tbody>
 </table>
 
-<div class="p2-callout">PSNR above 30 dB on natural-scene video = <strong>good reconstruction</strong>; above 32 dB (Video D) = <strong>excellent</strong>. All five videos hit SSIM &gt; 0.89, solidly in the high-fidelity range. ~7.8 fps means a 5-second clip processes in about 10 seconds on a single GPU — practical for production post-processing.</div>
+<div class="p2-callout">PSNR above 30 dB on natural-scene video = <strong>good reconstruction</strong>; above 32 dB (Video D) = <strong>excellent</strong>. All five videos hit SSIM &gt; 0.89, solidly in the high-fidelity range. ~7.8 fps means a 5-second clip processes in about 10 seconds on a single GPU, which is practical for production post-processing.</div>
 
 <hr/>
 
@@ -151,4 +151,4 @@ code { background: #e0f2fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 
 <h2>Impact</h2>
 
-<p>This pipeline saved the team from retraining the upstream text-to-video model at 720p — a process that would have required significantly more GPU hours, training data, and iteration time. Instead, we got 720p output quality (PSNR &gt; 31 dB, SSIM &gt; 0.91) by adding a lightweight post-processing step that takes ~10 seconds per clip and runs on a single GPU, processing every incoming AI-generated video through the internal content pipeline.</p>
+<p>This pipeline saved the team from retraining the upstream text-to-video model at 720p, a process that would have required significantly more GPU hours, training data, and iteration time. Instead, we got 720p output quality (PSNR &gt; 31 dB, SSIM &gt; 0.91) by adding a lightweight post-processing step that takes ~10 seconds per clip and runs on a single GPU, processing every incoming AI-generated video through the internal content pipeline.</p>

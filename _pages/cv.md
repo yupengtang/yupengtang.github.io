@@ -9,6 +9,19 @@ redirect_from:
 
 {% include base_path %}
 
+{::nomarkdown}
+{% include section-nav.html %}
+{:/nomarkdown}
+
+Research Focus
+======
+
+Foundation models, along three connected lines of work:
+
+* **Training and post-training.** How models acquire behavior after pre-training and how to keep it: reward and supervision design that resists gaming, and adaptation to new tasks and modalities.
+* **Multimodal reasoning and reliability.** How language and vision-language models use evidence and handle uncertainty, and how agents built on them combine language, vision, and action.
+* **ML infrastructure.** What it takes to train and serve these models in practice: efficient inference, distributed training on GPU clusters, and evaluation harnesses.
+
 Education
 ======
 
@@ -19,55 +32,51 @@ Education
 Selected Publications & Manuscripts
 ======
 
-* **Y. Tang**, M. Lin. *When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines*. **NeurIPS 2026**, under review — **strong reviews, favorable area chair meta-review**.
-* **Y. Tang**, M. Lin. *Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models*. **NeurIPS 2026**, under review — **strong reviews, favorable area chair meta-review**.
-* **Y. Tang**, M. Lin. *Measure before You Rank: Estimand-Aware Calibration of LLM Judge Panels*. **AAAI 2027**, under review.
-* **Y. Tang**, M. Lin. *When Verifier Checks Pass but Ranking Claims Fail: Stress-Testing Self-Play Evaluation*. **AAAI 2027**, under review.
-* **Y. Tang**. *TRACE: Typed Repair with Abstention for Corrupted Evidence in Frozen Multimodal World Models*. **AAAI 2027**, under review.
-* **Y. Tang**. *No Free Surprise: Sharp Evidence Guarantees for Data-Adaptive Scientific Search*. **AAAI 2027**, under review.
-* **Y. Tang**. *Transfer, Then Correct: Constraint-Aware Geometric Priors for Visuomotor Manipulation under Layout Shift*. **ICRA 2027**, under review.
+* **Y. Tang**, M. Lin. *When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines*. **NeurIPS 2026, accepted**.
+* **Y. Tang**. *TRACE: Typed Repair with Abstention for Corrupted Evidence in Frozen Multimodal World Models*. **AAAI 2027**; the submission has already passed the first round of review (Phase 1).
+* **Y. Tang**. *No Free Surprise: Sharp Evidence Guarantees for Data-Adaptive Scientific Search*. **AAAI 2027**; the submission has already passed the first round of review (Phase 1).
+* **Y. Tang**, M. Lin. *Measure before You Rank: Estimand-Aware Calibration of LLM Judge Panels*. **AAAI 2027**; the submission has already passed the first round of review (Phase 1).
+* **Y. Tang**, M. Lin. *GuardedCoMoT: Matched Interventions for Geometric-Prior Execution under Visuomotor Layout Shift*. **ICRA 2027**, under review.
 
 Research Experience
 ======
 
-## Visiting Researcher
+## Research Intern
 
-**Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)** \| Remote \| Jul. 2026 – Present (Part-time)
+**Stanford University** \| Palo Alto, CA (Remote) \| Sep. 2026 – Present
 
-* Leading a self-directed research collaboration with Prof. Lijie Hu's PAI Lab, researching latent reasoning and post-training for reliable foundation models, with a focus on adaptive test-time computation, recurrent-depth language models, and trustworthy multimodal AI.
+* Selected for a Research Intern position at the CogT Lab following a formal application and interview process.
+* Conduct research on agentic AI, with a focus on LLM and VLM agents for multimodal reasoning, AI-assisted research workflows, and human–AI collaboration. Explore how agents integrate language, visual, and behavioral signals for evidence-grounded analysis and adaptive interaction.
 
-## Research Assistant
+## Research Assistant & Affiliate Researcher
 
 **Georgia Institute of Technology** \| Atlanta, GA \| Sep. 2025 – Present
 
-Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning LLM behavior, multimodal AI, and AI evaluation, resulting in **2 NeurIPS 2026 submissions** (both with **strong reviews and favorable area chair meta-reviews**) and **2 AAAI 2027 submissions** (under review).
+With Prof. Mingfeng Lin. Research Assistant through May 2026, now continuing as an affiliate researcher. Research focuses on foundation model reliability, multimodal reasoning, and embodied AI.
 
-* **NeurIPS 2026** (**strong reviews, favorable AC meta-review**) — *When Expert Disagreement Hurts*: designed an audit framework examining how LLMs revise decisions under expert disagreement signals, identifying prestige-driven compliance patterns distinct from evidence-based belief updating.
-* **NeurIPS 2026** (**strong reviews, favorable AC meta-review**) — *Retrieved but Ignored*: identified a post-retrieval evidence-ignoring failure mode in multimodal RAG, revealing that matched retrieval success can mask sharply different evidence-use behavior across VLMs.
-* **AAAI 2027** (under review) — *Measure before You Rank*: built ACT-Council, a domain-conditioned Bradley–Terry model with verifier-anchored calibration that separates three distinct panel-aggregation estimands (observed-panel, order-marginalized, nuisance-removed), and mapped the conditions under which joint calibration improves reliability over simpler domain-steelman baselines rather than claiming uniform dominance.
-* **AAAI 2027** (under review) — *When Verifier Checks Pass but Ranking Claims Fail*: built VC-Play, a verifier-contract audit framework for LLM self-play evaluation, showing that deterministic checks alone miss a 37.6% verifier defect rate and that semantic cross-auditing overturns most of an apparent pooled correctness-vs-preference ranking reversal (101/69 → 22/26, no longer significant), leaving a validated family-specific reversal (Anthropic) as the main robust finding.
-* Engineered the supporting evaluation platform from scratch: a cross-platform Electron desktop app (React/TypeScript/FastAPI) with BrowserView-based automation across 9+ LLM chat services and 100+ API models, LLM-as-a-Judge pipeline with structured outputs, SQLite persistence, and one-command packaging (PyInstaller + electron-builder).
+* Developed a controlled framework that isolates how disagreement and perceived source expertise alter LLM decisions independently of task evidence; across medical, scientific, and legal reasoning, 70.1% of expert-induced reversals changed initially correct decisions to incorrect ones.
+* Designed constraint-aware visuomotor manipulation using task-frame transport and guarded fallback execution, improving success by 87.1 percentage points under severe layout shifts and 72.5 points under obstacle interference.
+* Developed estimand-aware preference learning from heterogeneous LLM feedback by jointly modeling candidate quality, judge reliability, and systematic bias.
+* Built internal evaluation tooling for the group: a cross-platform Electron/React/FastAPI application covering 100+ API models, with structured LLM-as-a-Judge pipelines, SQLite persistence, and one-command packaging.
 
 ## Independent Researcher
 
-**Georgia Institute of Technology** \| Atlanta, GA \| Jan. 2026 – Present
+**Independent Research** \| Atlanta, GA \| Sep. 2025 – Present
 
-* Running a self-directed research program on reliable reasoning in foundation models, with focus on post-training (RLVR), test-time compute, and multimodal calibration.
-* Addressed reward hacking in RLVR by enforcing transformation consistency across semantically invariant input perturbations, using a consistency gate and joint advantage formulation to make reward exploitation harder and expand the model's verified reasoning boundary, validated on math reasoning models.
-* Designed a belief-conditioned repair framework for frozen multimodal world models, combining type-matched repair modules with calibrated abstention to handle noisy, missing, or conflicting information without retraining the base model.
-* Built a confidence-trajectory distillation method that transfers uncertainty behavior from large vision-language models into compressed models via trajectory alignment and a rank-consistency loss, keeping compressed models properly calibrated under image degradation while preserving clean-data accuracy.
-* Derived sharp evidence guarantees for data-adaptive scientific search, characterizing when adaptively collected evidence still supports statistically valid inference.
-* Developed constraint-aware geometric priors for visuomotor robotic manipulation that transfer across layout shifts and correct residual errors at deployment time.
+Three solo-authored submissions to **AAAI 2027**, all of which have already passed the first round of review (Phase 1).
 
-## Graduate Researcher
+* Designed belief-conditioned repair for frozen multimodal world models, improving future video and audio R@1 by 5.0 and 11.1 points without retraining the base model.
+* Established finite-sample guarantees for adaptive AI search, achieving near-oracle power with substantially less search while preserving rigorous statistical validity.
+* Probed narrative representations in open-weight language models, showing that apparent event understanding is driven largely by surface cues rather than structural representations.
 
-**Georgia Institute of Technology** \| Atlanta, GA \| Jan. 2025 – Dec. 2025
+## Research Assistant
 
-Advised by Prof. Patrick Kastner. First author, manuscript targeting *Building and Environment* (SCI Q1, Elsevier).
+**Georgia Institute of Technology** \| Atlanta, GA (Hybrid) \| Jan. 2025 – Apr. 2026
 
-* Designed a two-stage prediction framework that forecasts campus temperature and humidity at five horizons (10 min – 6 hours) from 16 sparse weather stations, then maps predictions to a 100K-point grid at 5.9 m resolution via morphology-informed Regression Kriging with nine LiDAR/OpenStreetMap features.
-* Implemented a dual-depth parallel LSTM with variable selection and attention (337K params), achieving best DL RMSE at 360 min (3.18°C, 13% below TCN) and benchmarking against six baselines to show that a tuned linear model beats all DL architectures at every horizon.
-* Trained on 947K warm-season observations using A100 GPU (PACE cluster), validated through rolling-origin CV, multi-seed ablation with Wilcoxon significance tests, and leave-one-station-out spatial cross-validation.
+Advised by Prof. Patrick Kastner. Led to a first-author Q1 SCI journal submission and an accepted first-author companion book chapter forthcoming in a Springer Nature edited volume.
+
+* **LLM-assisted scientific screening:** Designed exclusion-only, inclusion-only, and multi-stage pipelines for 900+ papers; evaluated Qwen2.5-72B and GPT-OSS-120B against human adjudication using precision, recall, F1, confusion matrices, and disagreement analysis. Scaled inference to 96 GPU workers across H100/H200 clusters, resolving failures involving Ollama, MXFP4 quantization, and constrained JSON decoding.
+* **Urban microclimate modeling:** Built and benchmarked a two-stage forecasting and spatial-transfer framework on 865K+ observations, with a leakage-audited protocol that holds out the target station and the target year together, five-seed ablations, and hierarchical bootstrap inference. A tuned linear baseline led under average conditions; the neural model reduced six-hour RMSE from 4.88°C to 4.59°C in the hottest decile.
 
 ## Undergraduate Researcher
 
@@ -75,19 +84,18 @@ Advised by Prof. Patrick Kastner. First author, manuscript targeting *Building a
 
 Advised by Prof. Xianfeng Yuan. Undergraduate thesis project on autonomous vehicle path planning in complex environments.
 
-* Developed an enhanced Bidirectional Rapidly-Exploring Random Tree (Bi-RRT) algorithm for autonomous vehicle path planning in complex parking lot environments.
-* Implemented adaptive probabilistic sampling and local trajectory smoothing modules, improving exploration efficiency and reducing curvature in dense obstacle fields.
-* Integrated real-time collision detection, dynamic obstacle avoidance, and kinematic feasibility validation for continuous, safe navigation under motion constraints.
-* Achieved 2× faster planning speed, ~35% smoother paths, and 15% shorter average trajectory length compared to baseline RRT and RRT*, validated across 100+ randomized test scenarios.
+* Developed an enhanced Bidirectional RRT planner with adaptive probabilistic sampling, trajectory smoothing, and kinematic feasibility checks for autonomous parking in dense obstacle fields.
+* Achieved 2× faster planning, ~35% smoother paths, and 15% shorter trajectories than RRT and RRT*, validated across 100+ randomized scenarios.
 
-Work Experience
+Industry Experience
 ======
 
-## Incoming Robotics Engineer
+## Robotics Engineer
 
-**Pudu Robotics** \| Atlanta Metropolitan Area \| Incoming (Hybrid)
+**Pudu Robotics** \| Atlanta Metropolitan Area (Hybrid) \| Sep. 2026 – Present
 
-* Joining to lead end-to-end enterprise embodied robotics deployment, covering systems integration, technical enablement, and real-world performance optimization.
+* Integrate and optimize enterprise autonomous robotic systems, spanning LiDAR/visual SLAM, localization, multi-floor navigation, fleet coordination, and system-level performance optimization.
+* Diagnose failures across hardware, software, and infrastructure through log/CAN analysis, sensor and actuator telemetry, and Docker/VM-based on-premises deployments.
 
 ## Machine Learning Engineer Intern
 
@@ -100,18 +108,14 @@ Work Experience
 * Developed an AI-powered e-commerce try-on service (ComfyUI, Flux-Kontext + Segformer), delivering under 5s per image outfit changing, background removal, and style transfer via secure RESTful APIs.
 * Synthesized research papers and open-source model documentation to produce a technical review of multimodal generation systems, covering text-to-image, text-to-video, and super-resolution model families and summarizing key benchmark findings for internal evaluation.
 
-Projects
+Open Source Contributions
 ======
 
-## AI-Powered Product Recommendation System
-
-**Independent Venture** \| Apr. 2024 – Aug. 2024
-
-* Architected an AI-powered recommendation system that analyzes millions of Amazon product reviews to help users quickly discover the most relevant and high-quality items through semantic search and LLM-based understanding.
-* Developed a PySpark ETL pipeline to clean, tokenize, and embed reviews (768-dim via text-embedding-005), storing vectors and metadata efficiently in BigQuery for hybrid semantic retrieval.
-* Designed a hybrid retrieval engine (ScaNN + metadata filters) that improved nDCG@3 by +21% (0.85 vs 0.70) and achieved MRR = 0.88, using approximate nearest neighbors (TreeAH + AVQ) with reranking via FastAPI microservice.
-* Integrated Google Gemini with LangChain for RAG-based sentiment analysis and feature summarization, achieving 88% accuracy and 4.3 / 5 relevance for explainable recommendations.
-* Provisioned scalable infrastructure on GCP (Cloud Run, BigQuery, Cloud Storage) using Terraform, sustaining ~6 s query latency and 92% product-category coverage across 500 test queries.
+* **PyTorch / TorchRL** (5 merged): Fixed SAC loss configuration, replay-buffer checkpoint recovery, CrossQ key remapping, CSV logger step counting, and a spec shape operation that raised on `Choice`, each with regression coverage ([#4338](https://github.com/pytorch/rl/pull/4338) · [#4370](https://github.com/pytorch/rl/pull/4370) · [#4372](https://github.com/pytorch/rl/pull/4372) · [#4374](https://github.com/pytorch/rl/pull/4374) · [#4462](https://github.com/pytorch/rl/pull/4462)).
+* **Hugging Face / Accelerate** (5 merged): Fixed MPS device reporting, CPU-launch runtime configuration, MLflow environment parsing, `torch.compile` dynamic-shape defaults, and hooked-model unwrapping under mixed precision, with regression coverage ([#4221](https://github.com/huggingface/accelerate/pull/4221) · [#4222](https://github.com/huggingface/accelerate/pull/4222) · [#4223](https://github.com/huggingface/accelerate/pull/4223) · [#4254](https://github.com/huggingface/accelerate/pull/4254) · [#4255](https://github.com/huggingface/accelerate/pull/4255)).
+* **Hugging Face / Transformers** (1 merged): Aligned PIL and torchvision image-processor outputs across Idefics2, Idefics3, SmolVLM, and Fuyu by fixing mask dtypes and missing image-size keys, with stronger backend-equivalence tests ([#48739](https://github.com/huggingface/transformers/pull/48739)).
+* **Axolotl** (1 merged): Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage ([#4011](https://github.com/axolotl-ai-cloud/axolotl/pull/4011)).
+* **LinkedIn / Liger-Kernel** (1 merged): Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior and regression coverage ([#1444](https://github.com/linkedin/Liger-Kernel/pull/1444)).
 
 Competition Experience
 ======
@@ -127,21 +131,25 @@ Competition Experience
 Teaching Experience
 ======
 
+## Instructional Associate
+
+**Georgia Institute of Technology** \| Atlanta, GA \| Sep. 2026 – Present
+
+* **MGT 6655** – Business Data Preparation and Visualization (with Prof. Mingfeng Lin): Support course delivery through assignment and dashboard evaluation, office hours, Ed Discussion guidance, and student assistance with Tableau, Power BI, and data preparation workflows.
+
 ## Teaching Assistant
 
 **Georgia Institute of Technology** \| Atlanta, GA \| Sep. 2025 – May 2026
 
-* **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Jarred Fountain): Designed grading rubrics and assessed weekly assignments on Python implementations, statistical modeling, and ML algorithm selection.
-* **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin): Graded visualization exercises and dashboard projects; supported students on Ed Discussions with Tableau, PowerBI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students. Developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows.
+* **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Jarred Fountain): Designed grading rubrics and graded assignments spanning Python implementations, short-answer questions, and mathematical problems on statistical modeling and ML algorithm selection.
+* **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin): Graded visualization exercises and dashboard projects; supported students through office hours and on Ed Discussions with Tableau, PowerBI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students. Developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows.
 
 ## Undergraduate Teaching Assistant
 
 **Shandong University** \| Shandong, China \| Sep. 2020 – Jul. 2021
 
-* Supported a 400+ student Linear Algebra course, driving grading, records management, and personalized learning support; recognized as Outstanding Teaching Assistant for exceptional dedication to student success.
-* Assessed 600+ handwritten assignments with clear, actionable feedback, directly boosting student understanding and measurable performance outcomes.
-* Tracked weekly attendance and maintained meticulous, audit-ready academic records, enabling accurate progress reviews and timely academic interventions.
-* Answered 30+ student questions weekly via online forums, delivering detailed explanations and real-world examples to clarify key concepts like eigenvalues, matrix operations, and vector spaces.
+* Supported a 400+ student Linear Algebra course: graded 600+ handwritten assignments with written feedback, maintained attendance and grade records, and answered 30+ student questions weekly on the course forum.
+* Recognized as Outstanding Teaching Assistant.
 
 Leadership & Service
 ======
@@ -156,18 +164,16 @@ Leadership & Service
 
 **Shandong University** \| Shandong, China \| Sep. 2019 – Aug. 2021
 
-* Directed the design and production of 30+ posters, flyers, and digital media assets to promote events, boosting audience turnout by 25% and strengthening brand recognition.
-* Managed social media operations and curated engaging content, streamlining workflows and driving a 40% increase in follower engagement over two semesters.
-* Coordinated 170+ photo/video shoots and post-production using Photoshop, Canva, Adobe Illustrator, Lightworks, and CapCut, delivering polished outputs on tight timelines.
-* Led event planning and promotion with cross-functional teams, fostering community participation and earning the Outstanding Individual Award for Student Organizations at Shandong University.
+* Directed design and production of 30+ promotional assets and 170+ photo and video shoots, and managed social media operations across two semesters.
+* Received the Outstanding Individual Award for Student Organizations at Shandong University.
 
 Skills
 ======
 
-* **Programming Languages:** Python, C/C++, Java, JavaScript, HTML/CSS, SQL, Bash/Shell, MATLAB, R, Julia
-* **Machine Learning & AI:** PyTorch, TensorFlow, scikit-learn, HuggingFace, LangChain
-* **Cloud & Infrastructure:** AWS, Azure, GCP, Docker, Kubernetes, Terraform
-* **Big Data & ETL:** Apache Spark, Apache Airflow, PySpark, Databricks
-* **Database Systems:** MySQL, PostgreSQL, MongoDB, Redis, BigQuery, Amazon Redshift
-* **Tools & Frameworks:** Git, Linux, FastAPI, Flask, React, Node.js, Express, REST APIs
-* **Data Analysis & Visualization:** Pandas, NumPy, Matplotlib, Tableau, Power BI, D3.js
+* **Foundation Models & Training:** PyTorch, TorchRL, Hugging Face (Transformers, Accelerate), Liger-Kernel, LangChain, TensorFlow, scikit-learn
+* **Inference & Serving:** CUDA, NCCL, TensorRT, ONNX, Ollama, paged-attention and quantized serving, FastAPI, Docker, Kubernetes
+* **Evaluation & Retrieval:** LLM-as-a-Judge pipelines, RAG and hybrid retrieval, vector search (ScaNN, BigQuery), constrained/structured decoding
+* **Clusters & Cloud:** SLURM on A100/H100/H200 clusters, AWS, GCP, Azure, Terraform, Apache Spark, Airflow, Databricks
+* **Languages:** Python, C/C++, Java, JavaScript, SQL, Bash/Shell, MATLAB, R, Julia
+* **Data & Storage:** Pandas, NumPy, Matplotlib, PostgreSQL, MySQL, MongoDB, Redis, SQLite, BigQuery, Redshift
+* **Other Tools:** Git, Linux, React, Node.js, REST APIs, Tableau, Power BI

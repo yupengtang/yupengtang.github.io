@@ -9,58 +9,15 @@ redirect_from:
 
 {% include base_path %}
 
+{% include section-nav.html %}
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
-
-<!-- Work Experience Section -->
-<div class="cv-grid scroll-reveal">
-  <div class="cv-sidebar">
-    <h2><span class="cv-sec-num">01</span>Work</h2>
-  </div>
-  <div class="cv-main">
-    <div class="cv-card">
-      <div class="cv-item">
-        <div class="cv-item-meta">
-          <div class="cv-badge">INCOMING</div>
-          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta Metropolitan Area &middot; Hybrid</div>
-        </div>
-        <div class="cv-item-content">
-          <div class="cv-title">Incoming Robotics Engineer</div>
-          <div class="cv-org">Pudu Robotics</div>
-          <div class="cv-desc">
-            <p>Joining to lead end-to-end enterprise embodied robotics deployment, covering systems integration, technical enablement, and real-world performance optimization.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-item-meta">
-          <div class="cv-badge">MAY 2025 - AUG 2025</div>
-          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Mountain View, CA</div>
-        </div>
-        <div class="cv-item-content">
-          <div class="cv-title">Machine Learning Engineer Intern</div>
-          <div class="cv-org"><a href="https://www.gmicloud.ai" target="_blank">GMI Cloud</a></div>
-          <div class="cv-desc">
-            <ul>
-              <li>Optimized Flux-Schnell (12B DiT) multimodal inference on H100 by implementing GPU memory persistence, offload strategies, and kernel-level tuning, achieving ~30 images/min and 1–2s latency per request on a single GPU compared to the 10–15× slower baseline.</li>
-              <li>Designed a multi-GPU–ready inference architecture (NCCL-compatible, ONNX → TensorRT conversion pipeline) and validated linear-scaling behavior on single-GPU prototypes to support future distributed deployment.</li>
-              <li>Built production-grade serving infrastructure including queueing, heartbeat monitoring, structured logging, GCS integration, and safety filtering, enabling stable long-running operations under high request volume.</li>
-              <li>Implemented a video super-resolution pipeline (Real-ESRGAN + FastAPI) with PSNR/SSIM evaluation, reducing 5s@24fps clip runtime by ~65% (284s → 100s) when integrated with Wan2.2 text-to-video.</li>
-              <li>Developed an AI-powered e-commerce try-on service (ComfyUI, Flux-Kontext + Segformer), delivering &lt;5s per image outfit changing, background removal, and style transfer via secure RESTful APIs.</li>
-              <li>Synthesized research papers and open-source model documentation to produce a technical review of multimodal generation systems, covering text-to-image, text-to-video, and super-resolution model families and summarizing key benchmark findings for internal evaluation.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Education Section -->
 <div class="cv-grid scroll-reveal">
   <div class="cv-sidebar">
-    <h2><span class="cv-sec-num">02</span>Education</h2>
+    <h2><span class="cv-sec-num">01</span>Education</h2>
   </div>
   <div class="cv-main">
     <div class="cv-card">
@@ -100,6 +57,83 @@ redirect_from:
   </div>
 </div>
 
+<!-- Publications Section -->
+<div class="cv-grid scroll-reveal">
+  <div class="cv-sidebar">
+    <h2><span class="cv-sec-num">02</span>Selected Publications</h2>
+  </div>
+  <div class="cv-main">
+    <div class="cv-card">
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">NeurIPS 2026</div>
+          <div class="cv-location"><i class="fas fa-check-circle"></i> Accepted</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>, M. Lin.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">AAAI 2027</div>
+          <div class="cv-location"><i class="fas fa-check-circle"></i> Already Passed First-Round Review (Phase 1)</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">TRACE: Typed Repair with Abstention for Corrupted Evidence in Frozen Multimodal World Models</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">AAAI 2027</div>
+          <div class="cv-location"><i class="fas fa-check-circle"></i> Already Passed First-Round Review (Phase 1)</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">No Free Surprise: Sharp Evidence Guarantees for Data-Adaptive Scientific Search</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">AAAI 2027</div>
+          <div class="cv-location"><i class="fas fa-check-circle"></i> Already Passed First-Round Review (Phase 1)</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Measure before You Rank: Estimand-Aware Calibration of LLM Judge Panels</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>, M. Lin.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">ICRA 2027</div>
+          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">GuardedCoMoT: Matched Interventions for Geometric-Prior Execution under Visuomotor Layout Shift</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>, M. Lin.</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
 <!-- Research Section -->
 <div class="cv-grid scroll-reveal">
   <div class="cv-sidebar">
@@ -109,14 +143,17 @@ redirect_from:
     <div class="cv-card">
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">JUL 2026 - PRESENT</div>
-          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Remote &middot; Part-time</div>
+          <div class="cv-badge">SEP 2026 - PRESENT</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Palo Alto, CA &middot; Remote</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Visiting Researcher</div>
-          <div class="cv-org">Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)</div>
+          <div class="cv-title">Research Intern</div>
+          <div class="cv-org">Stanford University</div>
           <div class="cv-desc">
-            <p>Leading a self-directed research collaboration with Prof. Lijie Hu's PAI Lab, researching latent reasoning and post-training for reliable foundation models, with a focus on adaptive test-time computation, recurrent-depth language models, and trustworthy multimodal AI.</p>
+            <ul>
+              <li>Selected for a Research Intern position at the CogT Lab following a formal application and interview process.</li>
+              <li>Conduct research on agentic AI, with a focus on LLM and VLM agents for multimodal reasoning, AI-assisted research workflows, and human&ndash;AI collaboration. Explore how agents integrate language, visual, and behavioral signals for evidence-grounded analysis and adaptive interaction.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -127,14 +164,15 @@ redirect_from:
           <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Research Assistant</div>
+          <div class="cv-title">Research Assistant &amp; Affiliate Researcher</div>
           <div class="cv-org">Georgia Institute of Technology</div>
           <div class="cv-desc">
-            <p>Advised by Prof. Mingfeng Lin. Collaborated on a broad research program spanning LLM behavior, multimodal AI, and AI evaluation — resulting in <strong>2 NeurIPS 2026 submissions</strong> (both with <strong>strong reviews and favorable area chair meta-reviews</strong>) and <strong>2 AAAI 2027 submissions</strong> (under review).</p>
+            <p>With Prof. Mingfeng Lin. Research Assistant through May 2026, now continuing as an affiliate researcher. Research focuses on foundation model reliability, multimodal reasoning, and embodied AI.</p>
             <ul>
-              <li><strong>AAAI 2027</strong> (under review) — <em>Measure before You Rank</em>: built ACT-Council, a domain-conditioned Bradley&ndash;Terry model with verifier-anchored calibration that separates three distinct panel-aggregation estimands (observed-panel, order-marginalized, nuisance-removed), and mapped the conditions under which joint calibration improves reliability over simpler domain-steelman baselines rather than claiming uniform dominance.</li>
-              <li><strong>AAAI 2027</strong> (under review) — <em>When Verifier Checks Pass but Ranking Claims Fail</em>: built VC-Play, a verifier-contract audit framework for LLM self-play evaluation, showing that deterministic checks alone miss a 37.6% verifier defect rate and that semantic cross-auditing overturns most of an apparent pooled correctness-vs-preference ranking reversal (101/69 &rarr; 22/26, no longer significant), leaving a validated family-specific reversal (Anthropic) as the main robust finding.</li>
-              <li>Engineered the supporting evaluation platform from scratch: a cross-platform Electron desktop app (React/TypeScript/FastAPI) with BrowserView-based automation across 9+ LLM chat services and 100+ API models, LLM-as-a-Judge pipeline with structured outputs, SQLite persistence, and one-command packaging (PyInstaller + electron-builder).</li>
+              <li>Developed a controlled framework that isolates how disagreement and perceived source expertise alter LLM decisions independently of task evidence; across medical, scientific, and legal reasoning, 70.1% of expert-induced reversals changed initially correct decisions to incorrect ones.</li>
+              <li>Designed constraint-aware visuomotor manipulation using task-frame transport and guarded fallback execution, improving success by 87.1 percentage points under severe layout shifts and 72.5 points under obstacle interference.</li>
+              <li>Developed estimand-aware preference learning from heterogeneous LLM feedback by jointly modeling candidate quality, judge reliability, and systematic bias.</li>
+              <li>Built internal evaluation tooling for the group: a cross-platform Electron/React/FastAPI application covering 100+ API models, with structured LLM-as-a-Judge pipelines, SQLite persistence, and one-command packaging.</li>
             </ul>
           </div>
         </div>
@@ -142,20 +180,18 @@ redirect_from:
 
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">JAN 2026 - PRESENT</div>
+          <div class="cv-badge">SEP 2025 - PRESENT</div>
           <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
         </div>
         <div class="cv-item-content">
           <div class="cv-title">Independent Researcher</div>
-          <div class="cv-org">Georgia Institute of Technology</div>
+          <div class="cv-org">Independent Research</div>
           <div class="cv-desc">
+            <p>Three solo-authored submissions to <strong>AAAI 2027</strong>, all of which have already passed the first round of review (Phase 1).</p>
             <ul>
-              <li>Running a self-directed research program on reliable reasoning in foundation models, with focus on post-training (RLVR), test-time compute, and multimodal calibration.</li>
-              <li>Addressed reward hacking in RLVR by enforcing transformation consistency across semantically invariant input perturbations, using a consistency gate and joint advantage formulation to make reward exploitation harder and expand the model's verified reasoning boundary, validated on math reasoning models.</li>
-              <li>Designed a belief-conditioned repair framework for frozen multimodal world models, combining type-matched repair modules with calibrated abstention to handle noisy, missing, or conflicting information without retraining the base model.</li>
-              <li>Built a confidence-trajectory distillation method that transfers uncertainty behavior from large vision-language models into compressed models via trajectory alignment and a rank-consistency loss, keeping compressed models properly calibrated under image degradation while preserving clean-data accuracy.</li>
-              <li>Derived sharp evidence guarantees for data-adaptive scientific search, characterizing when adaptively collected evidence still supports statistically valid inference.</li>
-              <li>Developed constraint-aware geometric priors for visuomotor robotic manipulation that transfer across layout shifts and correct residual errors at deployment time.</li>
+              <li>Designed belief-conditioned repair for frozen multimodal world models, improving future video and audio R@1 by 5.0 and 11.1 points without retraining the base model.</li>
+              <li>Established finite-sample guarantees for adaptive AI search, achieving near-oracle power with substantially less search while preserving rigorous statistical validity.</li>
+              <li>Probed narrative representations in open-weight language models, showing that apparent event understanding is driven largely by surface cues rather than structural representations.</li>
             </ul>
           </div>
         </div>
@@ -163,18 +199,17 @@ redirect_from:
 
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">JAN 2025 - DEC 2025</div>
-          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
+          <div class="cv-badge">JAN 2025 - APR 2026</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA &middot; Hybrid</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Graduate Researcher</div>
+          <div class="cv-title">Research Assistant</div>
           <div class="cv-org">Georgia Institute of Technology</div>
           <div class="cv-desc">
-            <p>Advised by Prof. Patrick Kastner. First author, manuscript targeting <em>Building and Environment</em> (SCI Q1, Elsevier). A companion chapter is forthcoming in Springer Nature's <em>Urban Climate Resilience</em> series.</p>
+            <p>Advised by Prof. Patrick Kastner. Led to a first-author Q1 SCI journal submission and an accepted first-author companion book chapter forthcoming in a Springer Nature edited volume.</p>
             <ul>
-              <li>Designed a two-stage prediction framework that forecasts campus temperature and humidity at five horizons (10 min &ndash; 6 hours) from 16 sparse weather stations, then maps predictions to a 100K-point grid at 5.9 m resolution via morphology-informed Regression Kriging with nine LiDAR/OpenStreetMap features.</li>
-              <li>Implemented a dual-depth parallel LSTM with variable selection and attention (337K params), achieving best DL RMSE at 360 min (3.18&deg;C, 13% below TCN) and benchmarking against six baselines to show that a tuned linear model beats all DL architectures at every horizon.</li>
-              <li>Trained on 947K warm-season observations using A100 GPU (PACE cluster), validated through rolling-origin CV, multi-seed ablation with Wilcoxon significance tests, and leave-one-station-out spatial cross-validation.</li>
+              <li><strong>LLM-assisted scientific screening:</strong> Designed exclusion-only, inclusion-only, and multi-stage pipelines for 900+ papers; evaluated Qwen2.5-72B and GPT-OSS-120B against human adjudication using precision, recall, F1, confusion matrices, and disagreement analysis. Scaled inference to 96 GPU workers across H100/H200 clusters, resolving failures involving Ollama, MXFP4 quantization, and constrained JSON decoding.</li>
+              <li><strong>Urban microclimate modeling:</strong> Built and benchmarked a two-stage forecasting and spatial-transfer framework on 865K+ observations, with a leakage-audited protocol that holds out the target station and the target year together, five-seed ablations, and hierarchical bootstrap inference. A tuned linear baseline led under average conditions; the neural model reduced six-hour RMSE from 4.88&deg;C to 4.59&deg;C in the hottest decile.</li>
             </ul>
           </div>
         </div>
@@ -203,131 +238,125 @@ redirect_from:
   </div>
 </div>
 
-<!-- Publications Section -->
+<!-- Work Experience Section -->
 <div class="cv-grid scroll-reveal">
   <div class="cv-sidebar">
-    <h2><span class="cv-sec-num">04</span>Selected Publications</h2>
+    <h2><span class="cv-sec-num">04</span>Work</h2>
   </div>
   <div class="cv-main">
     <div class="cv-card">
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">NeurIPS 2026</div>
-          <div class="cv-location"><i class="fas fa-star"></i> Strong Reviews &middot; Favorable AC Meta-Review</div>
+          <div class="cv-badge">SEP 2026 - PRESENT</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta Metropolitan Area &middot; Hybrid</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines</div>
+          <div class="cv-title">Robotics Engineer</div>
+          <div class="cv-org">Pudu Robotics</div>
           <div class="cv-desc">
-            <p><strong>Y. Tang</strong>, M. Lin.</p>
+            <ul>
+              <li>Integrate and optimize enterprise autonomous robotic systems in complex real-world environments, spanning LiDAR/visual SLAM, mapping and localization, multi-floor navigation, fleet coordination, traffic management, elevator integration, and system-level performance optimization.</li>
+              <li>Diagnose and optimize robotics systems across hardware, software, and infrastructure through log/CAN analysis, fault-code debugging, sensor and actuator telemetry, and Docker/VM-based on-premises systems to improve reliability and operational performance.</li>
+            </ul>
           </div>
         </div>
       </div>
 
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">NeurIPS 2026</div>
-          <div class="cv-location"><i class="fas fa-star"></i> Strong Reviews &middot; Favorable AC Meta-Review</div>
+          <div class="cv-badge">MAY 2025 - AUG 2025</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Mountain View, CA</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Retrieved but Ignored: Evaluating Evidence Use After Retrieval in Vision Language Models</div>
+          <div class="cv-title">Machine Learning Engineer Intern</div>
+          <div class="cv-org"><a href="https://www.gmicloud.ai" target="_blank">GMI Cloud</a></div>
           <div class="cv-desc">
-            <p><strong>Y. Tang</strong>, M. Lin.</p>
+            <ul>
+              <li>Optimized Flux-Schnell (12B DiT) multimodal inference on H100 by implementing GPU memory persistence, offload strategies, and kernel-level tuning, achieving ~30 images/min and 1–2s latency per request on a single GPU compared to the 10–15× slower baseline.</li>
+              <li>Designed a multi-GPU–ready inference architecture (NCCL-compatible, ONNX → TensorRT conversion pipeline) and validated linear-scaling behavior on single-GPU prototypes to support future distributed deployment.</li>
+              <li>Built production-grade serving infrastructure including queueing, heartbeat monitoring, structured logging, GCS integration, and safety filtering, enabling stable long-running operations under high request volume.</li>
+              <li>Implemented a video super-resolution pipeline (Real-ESRGAN + FastAPI) with PSNR/SSIM evaluation, reducing 5s@24fps clip runtime by ~65% (284s → 100s) when integrated with Wan2.2 text-to-video.</li>
+              <li>Developed an AI-powered e-commerce try-on service (ComfyUI, Flux-Kontext + Segformer), delivering &lt;5s per image outfit changing, background removal, and style transfer via secure RESTful APIs.</li>
+              <li>Synthesized research papers and open-source model documentation to produce a technical review of multimodal generation systems, covering text-to-image, text-to-video, and super-resolution model families and summarizing key benchmark findings for internal evaluation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Open Source Section -->
+<div class="cv-grid scroll-reveal">
+  <div class="cv-sidebar">
+    <h2><span class="cv-sec-num">05</span>Open Source</h2>
+  </div>
+  <div class="cv-main">
+    <div class="cv-card">
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">UPSTREAM</div>
+          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">PyTorch / TorchRL</div>
+          <div class="cv-desc">
+            <p>Fixed SAC loss configuration, replay-buffer checkpoint recovery, CrossQ key remapping, CSV logger step counting, and a spec shape operation that raised on <code>Choice</code>, each with regression coverage. See <a href="https://github.com/pytorch/rl/pull/4338" target="_blank" rel="noopener">#4338</a> &middot; <a href="https://github.com/pytorch/rl/pull/4370" target="_blank" rel="noopener">#4370</a> &middot; <a href="https://github.com/pytorch/rl/pull/4372" target="_blank" rel="noopener">#4372</a> &middot; <a href="https://github.com/pytorch/rl/pull/4374" target="_blank" rel="noopener">#4374</a> &middot; <a href="https://github.com/pytorch/rl/pull/4462" target="_blank" rel="noopener">#4462</a>.</p>
           </div>
         </div>
       </div>
 
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">AAAI 2027</div>
-          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
+          <div class="cv-badge">UPSTREAM</div>
+          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Measure before You Rank: Estimand-Aware Calibration of LLM Judge Panels</div>
+          <div class="cv-title">Hugging Face / Accelerate</div>
           <div class="cv-desc">
-            <p><strong>Y. Tang</strong>, M. Lin.</p>
+            <p>Fixed MPS device reporting, CPU-launch runtime configuration, MLflow environment parsing, <code>torch.compile</code> dynamic-shape defaults, and hooked-model unwrapping under mixed precision, with regression coverage. See <a href="https://github.com/huggingface/accelerate/pull/4221" target="_blank" rel="noopener">#4221</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4222" target="_blank" rel="noopener">#4222</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4223" target="_blank" rel="noopener">#4223</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4254" target="_blank" rel="noopener">#4254</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4255" target="_blank" rel="noopener">#4255</a>.</p>
           </div>
         </div>
       </div>
 
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">AAAI 2027</div>
-          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
+          <div class="cv-badge">UPSTREAM</div>
+          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">When Verifier Checks Pass but Ranking Claims Fail: Stress-Testing Self-Play Evaluation</div>
+          <div class="cv-title">Hugging Face / Transformers</div>
           <div class="cv-desc">
-            <p><strong>Y. Tang</strong>, M. Lin.</p>
+            <p>Aligned PIL and torchvision image-processor outputs across Idefics2, Idefics3, SmolVLM, and Fuyu by fixing mask dtypes and missing image-size keys, with stronger backend-equivalence tests. See <a href="https://github.com/huggingface/transformers/pull/48739" target="_blank" rel="noopener">#48739</a>.</p>
           </div>
         </div>
       </div>
 
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">AAAI 2027</div>
-          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
+          <div class="cv-badge">UPSTREAM</div>
+          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Invariance as Verifiable Reward: Suppressing Reward Hacking in RLVR through Transformation Consistency</div>
+          <div class="cv-title">Axolotl</div>
           <div class="cv-desc">
-            <p><strong>Y. Tang</strong>.</p>
+            <p>Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage. See <a href="https://github.com/axolotl-ai-cloud/axolotl/pull/4011" target="_blank" rel="noopener">#4011</a>.</p>
           </div>
         </div>
       </div>
 
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">AAAI 2027</div>
-          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
+          <div class="cv-badge">UPSTREAM</div>
+          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">TRACE: Typed Repair with Abstention for Corrupted Evidence in Frozen Multimodal World Models</div>
+          <div class="cv-title">LinkedIn / Liger-Kernel</div>
           <div class="cv-desc">
-            <p><strong>Y. Tang</strong>.</p>
+            <p>Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior and regression coverage. See <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener">#1444</a>.</p>
           </div>
         </div>
       </div>
-
-      <div class="cv-item">
-        <div class="cv-item-meta">
-          <div class="cv-badge">AAAI 2027</div>
-          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
-        </div>
-        <div class="cv-item-content">
-          <div class="cv-title">Confidence Trajectory Distillation: Teaching Compressed Vision-Language Models When to Doubt</div>
-          <div class="cv-desc">
-            <p><strong>Y. Tang</strong>.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-item-meta">
-          <div class="cv-badge">AAAI 2027</div>
-          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
-        </div>
-        <div class="cv-item-content">
-          <div class="cv-title">No Free Surprise: Sharp Evidence Guarantees for Data-Adaptive Scientific Search</div>
-          <div class="cv-desc">
-            <p><strong>Y. Tang</strong>.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-item-meta">
-          <div class="cv-badge">ICRA 2027</div>
-          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
-        </div>
-        <div class="cv-item-content">
-          <div class="cv-title">Transfer, Then Correct: Constraint-Aware Geometric Priors for Visuomotor Manipulation under Layout Shift</div>
-          <div class="cv-desc">
-            <p><strong>Y. Tang</strong>.</p>
-          </div>
-        </div>
-      </div>
-
-
     </div>
   </div>
 </div>
@@ -335,23 +364,44 @@ redirect_from:
 <!-- Skills Section -->
 <div class="cv-grid scroll-reveal">
   <div class="cv-sidebar">
-    <h2><span class="cv-sec-num">05</span>Skills</h2>
+    <h2><span class="cv-sec-num">06</span>Skills</h2>
   </div>
   <div class="cv-main">
     <div class="cv-card">
       <div class="tech-category cat-ml">
-        <div class="tech-category-label">Machine Learning &amp; AI</div>
+        <div class="tech-category-label">Foundation Models &amp; Training</div>
         <div class="tech-grid">
           <span class="tech-item"><i class="devicon-pytorch-original colored"></i> PyTorch</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#0f766e;">&#9679;</span> TorchRL</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#ff9a00;">&#129303;</span> Hugging Face</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#0f766e;">&#9679;</span> Liger-Kernel</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#1c3d5a;">&#129438;</span> LangChain</span>
           <span class="tech-item"><i class="devicon-tensorflow-original colored"></i> TensorFlow</span>
           <span class="tech-item"><i class="devicon-scikitlearn-plain colored"></i> scikit-learn</span>
-          <span class="tech-item"><i class="devicon-numpy-original colored"></i> NumPy</span>
-          <span class="tech-item"><i class="devicon-pandas-original colored"></i> Pandas</span>
-          <span class="tech-item"><span class="ti-plain" style="color:#ff9a00;">🤗</span> HuggingFace</span>
-          <span class="tech-item"><span class="ti-plain" style="color:#1c3d5a;">🦜</span> LangChain</span>
-          <span class="tech-item"><span class="ti-plain" style="color:#6366f1;">⚡</span> CUDA / NCCL</span>
-          <span class="tech-item"><span class="ti-plain" style="color:#10b981;">∿</span> ONNX</span>
-          <span class="tech-item"><span class="ti-plain" style="color:#76b900;">▶</span> TensorRT</span>
+        </div>
+      </div>
+
+      <div class="tech-category cat-ml">
+        <div class="tech-category-label">Inference &amp; Serving</div>
+        <div class="tech-grid">
+          <span class="tech-item"><span class="ti-plain" style="color:#6366f1;">&#9889;</span> CUDA / NCCL</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#76b900;">&#9654;</span> TensorRT</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#10b981;">&#8767;</span> ONNX</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#0f766e;">&#9679;</span> Ollama</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#0f766e;">&#9679;</span> Paged Attention</span>
+          <span class="tech-item"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
+          <span class="tech-item"><i class="devicon-docker-plain colored"></i> Docker</span>
+          <span class="tech-item"><i class="devicon-kubernetes-plain colored"></i> Kubernetes</span>
+        </div>
+      </div>
+
+      <div class="tech-category cat-data">
+        <div class="tech-category-label">Evaluation &amp; Retrieval</div>
+        <div class="tech-grid">
+          <span class="tech-item"><span class="ti-plain" style="color:#0f766e;">&#9679;</span> LLM-as-a-Judge</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#0f766e;">&#9679;</span> RAG / Hybrid Retrieval</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#0f766e;">&#9679;</span> Vector Search</span>
+          <span class="tech-item"><span class="ti-plain" style="color:#0f766e;">&#9679;</span> Structured Decoding</span>
         </div>
       </div>
 
@@ -370,64 +420,35 @@ redirect_from:
       </div>
 
       <div class="tech-category cat-cloud">
-        <div class="tech-category-label">Cloud &amp; Infrastructure</div>
+        <div class="tech-category-label">Clusters &amp; Cloud</div>
         <div class="tech-grid">
+          <span class="tech-item"><span class="ti-plain" style="color:#0f766e;">&#9679;</span> SLURM / A100 / H100</span>
           <span class="tech-item"><i class="devicon-amazonwebservices-original colored"></i> AWS</span>
           <span class="tech-item"><i class="devicon-googlecloud-plain colored"></i> GCP</span>
           <span class="tech-item"><i class="devicon-azure-plain colored"></i> Azure</span>
-          <span class="tech-item"><i class="devicon-docker-plain colored"></i> Docker</span>
-          <span class="tech-item"><i class="devicon-kubernetes-plain colored"></i> Kubernetes</span>
           <span class="tech-item"><i class="devicon-terraform-plain colored"></i> Terraform</span>
+          <span class="tech-item"><i class="devicon-apachespark-original colored"></i> Apache Spark</span>
         </div>
       </div>
 
       <div class="tech-category cat-data">
-        <div class="tech-category-label">Big Data &amp; Database Systems</div>
+        <div class="tech-category-label">Data &amp; Storage</div>
         <div class="tech-grid">
-          <span class="tech-item"><i class="devicon-apachespark-original colored"></i> Apache Spark</span>
-          <span class="tech-item"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+          <span class="tech-item"><i class="devicon-numpy-original colored"></i> NumPy</span>
+          <span class="tech-item"><i class="devicon-pandas-original colored"></i> Pandas</span>
           <span class="tech-item"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+          <span class="tech-item"><i class="devicon-mysql-plain colored"></i> MySQL</span>
           <span class="tech-item"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
           <span class="tech-item"><i class="devicon-redis-plain colored"></i> Redis</span>
         </div>
       </div>
 
       <div class="tech-category cat-tools">
-        <div class="tech-category-label">Tools &amp; Frameworks</div>
+        <div class="tech-category-label">Tools</div>
         <div class="tech-grid">
           <span class="tech-item"><i class="devicon-git-plain colored"></i> Git</span>
           <span class="tech-item"><i class="devicon-linux-plain colored"></i> Linux</span>
-          <span class="tech-item"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
           <span class="tech-item"><i class="devicon-react-original colored"></i> React</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Projects Section -->
-<div class="cv-grid scroll-reveal">
-  <div class="cv-sidebar">
-    <h2><span class="cv-sec-num">06</span>Projects</h2>
-  </div>
-  <div class="cv-main">
-    <div class="cv-card">
-      <div class="cv-item">
-        <div class="cv-item-meta">
-          <div class="cv-badge">APR 2024 - AUG 2024</div>
-        </div>
-        <div class="cv-item-content">
-          <div class="cv-title">AI-Powered Product Recommendation System</div>
-          <div class="cv-org">Independent Venture</div>
-          <div class="cv-desc">
-            <ul>
-              <li>Architected an AI-powered recommendation system that analyzes millions of Amazon product reviews using semantic search and LLM-based understanding.</li>
-              <li>Developed a PySpark ETL pipeline to clean, tokenize, and embed reviews, storing vectors in BigQuery.</li>
-              <li>Designed a hybrid retrieval engine (ScaNN + metadata filters) that improved nDCG@3 by +21% and achieved MRR = 0.88, using approximate nearest neighbors with reranking via FastAPI microservice.</li>
-              <li>Integrated Google Gemini with LangChain for RAG-based sentiment analysis and feature summarization.</li>
-              <li>Provisioned scalable infrastructure on GCP using Terraform, sustaining ~6 s query latency.</li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
@@ -471,6 +492,20 @@ redirect_from:
     <div class="cv-card">
       <div class="cv-item">
         <div class="cv-item-meta">
+          <div class="cv-badge">SEP 2026 - PRESENT</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Instructional Associate</div>
+          <div class="cv-org">Georgia Institute of Technology</div>
+          <div class="cv-desc">
+            <p><strong>MGT 6655</strong> (Business Data Preparation and Visualization, with Prof. Mingfeng Lin): Support course delivery through assignment and dashboard evaluation, office hours, Ed Discussion guidance, and student assistance with Tableau, Power BI, and data preparation workflows.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
           <div class="cv-badge">SEP 2025 - MAY 2026</div>
           <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
         </div>
@@ -479,8 +514,8 @@ redirect_from:
           <div class="cv-org">Georgia Institute of Technology</div>
           <div class="cv-desc">
             <ul>
-              <li><strong>ME 4710</strong> (Foundations in ML for Engineers): Designed grading rubrics and assessed weekly assignments on Python implementations, statistical modeling, and ML algorithm selection.</li>
-              <li><strong>MGT 6655</strong> (Business Data Preparation and Visualization): Graded visualization exercises and dashboard projects; supported students on Ed Discussions with Tableau, PowerBI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students. Developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows.</li>
+              <li><strong>ME 4710</strong> (Foundations in ML for Engineers): Designed grading rubrics and graded assignments spanning Python implementations, short-answer questions, and mathematical problems on statistical modeling and ML algorithm selection.</li>
+              <li><strong>MGT 6655</strong> (Business Data Preparation and Visualization): Graded visualization exercises and dashboard projects; supported students through office hours and on Ed Discussions with Tableau, PowerBI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students. Developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows.</li>
             </ul>
           </div>
         </div>

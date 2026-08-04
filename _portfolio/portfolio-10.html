@@ -1,0 +1,220 @@
+---
+title: "MCP-AgentGym: A Verifiable Gym for Post-Training Tool-Using Agents"
+excerpt: "A real Kubernetes control plane as a post-training environment: 36 typed MCP tools, 14 seeded fault families, and an executable verifier that computes rewards instead of grading them. Qwen3-8B trained with SFT, DPO and GRPO, served through vLLM, measured on 11,541 verified trajectories."
+collection: portfolio
+---
+
+<style>
+.p10-metric-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.p10-metric-card {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  border: 1px solid #ddd6fe; border-radius: 12px;
+  padding: 1rem 0.8rem; text-align: center; min-width: 110px; flex: 1;
+}
+.p10-metric-num { font-size: 1.35rem; font-weight: 800; color: #6d28d9; line-height: 1.1; }
+.p10-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.p10-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
+.p10-tag { background: #ede9fe; color: #6d28d9; border: 1px solid #ddd6fe; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
+.p10-section { border-left: 3px solid #8b5cf6; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
+.p10-section h3 { margin: 0 0 0.3rem; color: #5b21b6; font-size: 1.05rem; }
+.p10-callout { background: #f5f3ff; border-left: 4px solid #8b5cf6; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
+.p10-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
+.p10-step { background: #ede9fe; border: 1px solid #ddd6fe; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #5b21b6; }
+.p10-arrow { color: #8b5cf6; font-size: 1.1rem; font-weight: 700; }
+.p10-table-wrap { overflow-x: auto; }
+.p10-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+.p10-table th { background: #ede9fe; color: #5b21b6; padding: 0.6rem 0.8rem; text-align: left; border-bottom: 2px solid #ddd6fe; font-weight: 700; }
+.p10-table td { padding: 0.5rem 0.8rem; border-bottom: 1px solid #f5f3ff; }
+.p10-table .best-row td { background: #ede9fe; font-weight: 700; }
+.p10-note { font-size: 0.8rem; color: #6b7280; margin-top: -0.5rem; }
+.p10-arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 1rem 0; }
+@media (max-width: 600px) { .p10-arch-grid { grid-template-columns: 1fr; } }
+.p10-arch-block { background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 10px; padding: 0.8rem 1rem; }
+.p10-arch-title { font-weight: 700; color: #6d28d9; font-size: 0.85rem; margin-bottom: 0.4rem; }
+.p10-arch-details { color: #374151; font-size: 0.8rem; line-height: 1.55; }
+.p10-links { background: var(--bg-subtle, #f5f3ff); border: 1px solid #ddd6fe; border-radius: 12px; padding: 1rem 1.4rem; margin: 1.5rem 0; }
+.p10-links h3 { color: #6d28d9; margin: 0 0 0.4rem; font-size: 1rem; }
+.p10-links p { margin: 0; font-size: 0.88rem; color: #374151; }
+code { background: #ede9fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #6d28d9; }
+</style>
+
+<p>Post-training an agent needs thousands of episodes that reset cleanly, run in parallel, and pay out a reward you can compute rather than grade. A real Kubernetes cluster gives none of that. Episodes take minutes, never reset to the same state twice, and the same action can produce different outcomes on different runs, which breaks DPO preference pairs and GRPO advantages alike.</p>
+
+<p>MCP-AgentGym splits the stack at the API boundary, which is where an agent operates anyway. The control plane is real: etcd, apiserver, controller-manager and scheduler run as unprivileged user processes, so CRDs, RBAC, admission and the whole Deployment to ReplicaSet to Pod reconcile path behave as they do in production. The kubelet is replaced by a deterministic workload simulator, so pod status is a pure function of declared state. Incidents come from a seeded catalogue of 14 fault families, the agent works them through 36 typed MCP tools, and an executable verifier reads live cluster state to decide whether the incident was actually fixed. No model judges anything.</p>
+
+<div class="p10-links">
+  <h3>Code and results</h3>
+  <p>Full write-up with methodology: <a href="https://yupengtang.github.io/MCP-AgentGym/">yupengtang.github.io/MCP-AgentGym</a>. Source, design document, and experiment log: <a href="https://github.com/yupengtang/MCP-AgentGym">github.com/yupengtang/MCP-AgentGym</a>. Roughly 12,500 lines of Python across the environment, training, serving, and evaluation stack.</p>
+</div>
+
+<div class="p10-metric-grid">
+  <div class="p10-metric-card"><div class="p10-metric-num">11,541</div><div class="p10-metric-label">Verified Trajectories</div></div>
+  <div class="p10-metric-card"><div class="p10-metric-num">2.4 s</div><div class="p10-metric-label">Median Episode, CPU Only</div></div>
+  <div class="p10-metric-card"><div class="p10-metric-num">36</div><div class="p10-metric-label">Typed MCP Tools</div></div>
+  <div class="p10-metric-card"><div class="p10-metric-num">14</div><div class="p10-metric-label">Seeded Fault Families</div></div>
+  <div class="p10-metric-card"><div class="p10-metric-num">140</div><div class="p10-metric-label">Tests Passing</div></div>
+</div>
+
+<div class="p10-tags">
+  <span class="p10-tag">Qwen3-8B</span><span class="p10-tag">QLoRA</span><span class="p10-tag">SFT</span>
+  <span class="p10-tag">DPO</span><span class="p10-tag">GRPO</span><span class="p10-tag">vLLM</span>
+  <span class="p10-tag">Multi-LoRA</span><span class="p10-tag">MCP</span><span class="p10-tag">Kubernetes</span>
+  <span class="p10-tag">Prefix Caching</span><span class="p10-tag">SLURM / L40S</span>
+</div>
+
+<hr/>
+
+<h2>The environment</h2>
+
+<div class="p10-flow">
+  <div class="p10-step">Seeded incident generator</div><div class="p10-arrow">&rarr;</div>
+  <div class="p10-step">Real control plane, simulated kubelet</div><div class="p10-arrow">&rarr;</div>
+  <div class="p10-step">36 typed MCP tools</div><div class="p10-arrow">&rarr;</div>
+  <div class="p10-step">Agent: plan, act, verify, recover</div><div class="p10-arrow">&rarr;</div>
+  <div class="p10-step">Executable verifier and reward</div>
+</div>
+
+<div class="p10-table-wrap">
+<table class="p10-table">
+  <thead><tr><th>Layer</th><th>Real or simulated</th><th>Why it matters</th></tr></thead>
+  <tbody>
+    <tr><td>etcd, apiserver, controller-manager, scheduler</td><td>Real (v1.31.4, user processes)</td><td>Genuine CRDs, RBAC, admission, watch and reconcile, scheduling and taints</td></tr>
+    <tr><td>MCP protocol</td><td>Real (reference library, JSON-RPC)</td><td>A standard MCP client drives the environment unchanged</td></tr>
+    <tr><td>Kubelet and container runtime</td><td>Simulated</td><td>Pod status computed from declared workload physics, so resets are instant and deterministic</td></tr>
+    <tr><td>Traffic, health, metrics, logs</td><td>Simulated</td><td>Health is a pure function of cluster state, so the verifier is exact</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>The result is what post-training actually needs: sub-second resets, hundreds of parallel episodes per node, zero GPU cost for the environment itself, and rewards that are computed from cluster state rather than assigned by a judge model. Correctness is not assumed. For all 14 fault families there is a test asserting that the injected fault provably breaks the cluster and the known-correct remediation provably fixes it, with the verifier recognizing both states.</p>
+
+<hr/>
+
+<h2>What post-training bought, and what it cost</h2>
+
+<p>Evaluation uses 5,000 incidents with zero id overlap with training, 2,200 episodes per arm, and a Bonferroni threshold of z &gt; 3.0 for the comparisons reported.</p>
+
+<div class="p10-table-wrap">
+<table class="p10-table">
+  <thead><tr><th>Variant</th><th>In-distribution</th><th>Held-out faults</th><th>Unseen topology</th><th>Compositional</th><th>All</th><th>Invalid calls</th></tr></thead>
+  <tbody>
+    <tr><td>Base, untrained</td><td>33.4%</td><td>65.8%</td><td>24.6%</td><td>22.4%</td><td>36.3%</td><td>26.3%</td></tr>
+    <tr><td>SFT, 2 epochs</td><td>59.4%</td><td>40.6%</td><td>28.2%</td><td>33.4%</td><td>42.1%</td><td>0.35%</td></tr>
+    <tr class="best-row"><td>SFT 3 epochs + DPO</td><td>71.3%</td><td>38.2%</td><td>52.0%</td><td>40.8%</td><td>52.5%</td><td>0.32%</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="p10-note">Incident resolution rate. n = 2,200 per arm.</p>
+
+<p>Training bought 16.2 points of resolution (z = 10.96), 14.2 points of root-cause accuracy (z = 9.57), and cut invalid tool calls from 26.3% to 0.3%, a factor of about 100. It cost 27.6 points on fault families never seen in training (z = 19.06). Both sides clear significance by a wide margin, and both are far larger than any difference between the post-training methods themselves. The untrained model is the best agent in this project on families it was never trained for, and the worst everywhere else.</p>
+
+<div class="p10-callout"><strong>The mechanism is measurable, and it decides the fix.</strong> Fine-tuning drives the two never-demonstrated diagnosis labels to 0 emissions across 599 submissions, against 25 of 501 for the base model. Both labels sit in the <code>submit_diagnosis</code> enum and in the system prompt on every episode, so the models are not blind to them. They can no longer reach them, and what they emit instead is confidently wrong and drawn from the training catalogue. That is label-prior collapse rather than degraded reasoning. Degraded reasoning would call for better data; a collapsed prior calls for attenuating the update.</div>
+
+<hr/>
+
+<h2>Reversing the trade at serving time</h2>
+
+<p>A LoRA update enters each layer as <code>&Delta;W = (&alpha;/r)&middot;B@A</code>, so scaling <code>lora_B</code> by <code>s</code> scales the update exactly. At <code>s = 0</code> the model is the base; at <code>s = 1</code> it is the trained one; everything in between is servable from a single engine by multi-LoRA.</p>
+
+<div class="p10-table-wrap">
+<table class="p10-table">
+  <thead><tr><th>Scale</th><th>Held-out resolved</th><th>Root cause</th><th>Held-out labels emitted</th></tr></thead>
+  <tbody>
+    <tr><td>1.00 (trained)</td><td>36.7%</td><td>0.0%</td><td>0 / 114</td></tr>
+    <tr><td>0.75</td><td>50.8%</td><td>6.7%</td><td>8 / 112</td></tr>
+    <tr class="best-row"><td>0.50</td><td>72.5%</td><td>20.0%</td><td>24 / 56</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>The recovery is monotone at every step, both adjacent comparisons are significant (z = 3.55 and z = 2.22), the end-to-end effect is z = 5.97, and there is no measurable in-distribution cost (67.2% against 65.6%, z = 0.27). It also replicates on a second, independently trained adapter family to within 1.6 points: the SFT adapter recovers from 35.8% to 70.0% (z = 5.65). Two policies trained with different objectives on different data collapse the same way and recover the same way, which points at update magnitude rather than anything specific to one checkpoint. One knob, applied after training has finished, moves a served model along the specialization axis.</p>
+
+<hr/>
+
+<h2>The variance budget</h2>
+
+<p>Before any method comparison can mean anything, the noise floor has to be measured. Same evaluation pool, same n.</p>
+
+<div class="p10-table-wrap">
+<table class="p10-table">
+  <thead><tr><th>Source of variation</th><th>&Delta; resolution</th><th>z</th></tr></thead>
+  <tbody>
+    <tr class="best-row"><td>Learning rate, 5e-5 to 1e-4</td><td>+14.23 pp</td><td>+9.54</td></tr>
+    <tr><td>DPO on baseline A</td><td>+4.18 pp</td><td>+2.83</td></tr>
+    <tr><td>Training seed, 11 to 12</td><td>&minus;3.09 pp</td><td>&minus;2.06</td></tr>
+    <tr><td>DPO on baseline B</td><td>&minus;0.27 pp</td><td>&minus;0.18</td></tr>
+    <tr><td>Nondeterminism, same seed</td><td>&minus;0.18 pp</td><td>&minus;0.12</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Tuning the learning rate mattered more than every post-training method tested, by a margin nothing else approaches. The seed floor is 3.1 points, which is the same size as DPO's measured effect, and that is why the same DPO recipe helped substantially on one baseline and did nothing on another when both were identically configured and scored within 0.2 points of each other. There are two floors here: 0.2 points between two runs of the same configuration, and 3.1 points between independently trained models. Method comparisons are the second case, and using the first understates the relevant noise by a factor of sixteen.</p>
+
+<p>The best agent in the whole grid is a plain supervised fine-tune that happened to train at the better learning rate, at 57.7% resolution and 0.01% invalid calls. It beats every post-trained variant. That top row is not a post-training result, it is the absence of one.</p>
+
+<hr/>
+
+<h2>Serving</h2>
+
+<p>One L40S, Qwen3-8B, with the real 36-tool system prompt. The synthetic conversation deepens exactly as an episode does, so the shared prefix grows while new tokens per turn stay small.</p>
+
+<div class="p10-table-wrap">
+<table class="p10-table">
+  <thead><tr><th>Turns</th><th>Prompt tokens</th><th>p50 without prefix cache</th><th>p50 with</th><th>Speedup</th></tr></thead>
+  <tbody>
+    <tr><td>2</td><td>3,735</td><td>14,123 ms</td><td>3,250 ms</td><td>4.3&times;</td></tr>
+    <tr><td>5</td><td>6,768</td><td>27,511 ms</td><td>3,833 ms</td><td>7.2&times;</td></tr>
+    <tr><td>10</td><td>11,823</td><td>49,239 ms</td><td>4,687 ms</td><td>10.5&times;</td></tr>
+    <tr class="best-row"><td>20</td><td>21,943</td><td>84,418 ms</td><td>6,576 ms</td><td>12.8&times;</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="p10-note">32 concurrent requests. Throughput at 20 turns goes from 0.26 to 4.67 req/s, an 18&times; gain.</p>
+
+<p>Cost per unit of prompt tells the same story: uncached, milliseconds per 1k prompt tokens stays flat at about 3,800 because every turn re-reads the whole conversation, while cached it falls from 870 to 300. Prefix caching does not merely help an agent workload, its benefit compounds with conversation depth, which is the defining property of one. On multi-LoRA, the SFT adapter serves at 1,075 ms p50 against the base model's 2,292 ms, and that 2.1&times; gap comes from behavior rather than the engine: the adapter emits a short tool call where the base emits a long thinking block.</p>
+
+<hr/>
+
+<h2>Guardrails</h2>
+
+<p>The same discipline that produced the results above retracted five of this project's earlier claims, including one that had been published, was contradicted by a later run, and was withdrawn with its trajectories quarantined rather than deleted.</p>
+
+<div class="p10-arch-grid">
+  <div class="p10-arch-block">
+    <div class="p10-arch-title">"DPO +8.2 pp"</div>
+    <div class="p10-arch-details">Was +2.1 pp under power and never significance-tested when first published. Winner's curse.</div>
+  </div>
+  <div class="p10-arch-block">
+    <div class="p10-arch-title">"Preference pair count matters"</div>
+    <div class="p10-arch-details">A 437-pair replication scored identically to the 88-pair run.</div>
+  </div>
+  <div class="p10-arch-block">
+    <div class="p10-arch-title">"Episode-GRPO damages tool-call format"</div>
+    <div class="p10-arch-details">The adapter had been initialised two versions behind its own training data.</div>
+  </div>
+  <div class="p10-arch-block">
+    <div class="p10-arch-title">"Seed variance is 15.6 pp"</div>
+    <div class="p10-arch-details">It was the learning rate. No launcher ever forwarded <code>--seed</code>, so every adapter the project produced had trained at seed 0.</div>
+  </div>
+</div>
+
+<p>Those defects are now asserted against in code rather than described in prose. The report script refuses to render a partial grid. One test checks that every tool count quoted in the documentation matches the registry, another that the serving numbers are recomputable from their raw artifacts, and another that every result-bearing argument a trainer accepts is actually reachable from its launcher, which is the test that would have caught the seed bug. Training records a weight digest of its base adapter so lineage is checkable, which is how the withdrawn GRPO run was found. The dataset builder refuses to overwrite the corpora the published results were trained on.</p>
+
+<p>The worst bug in the project is why a prompt-contract suite exists at all: tool schemas were being passed as an API field that the project's own chat template ignored, so the model was asked to call tools it had never been shown, and nothing raised. It would have silently voided both the base-model comparison and the entire schema-shift result. The invariant is now asserted: whatever the gateway presents must be literally present in the text the model receives.</p>
+
+<hr/>
+
+<h2>What this does not establish</h2>
+
+<ul>
+  <li><strong>Whether DPO helps, as a number.</strong> With the learning rate matched and the floor measured, two identically configured baselines gave +4.18 pp (z = 2.83) and &minus;0.27 pp (z = &minus;0.18). The floor is 0.2 pp and the first effect is twenty times that, so the variability is in training rather than measurement. DPO can help by a wide margin; a number cannot be quoted.</li>
+  <li><strong>Any ordering among SFT, DPO, episode-GRPO and action-GRPO.</strong> Each was trained once, so their differences sit inside the spread one recipe produces by reseeding.</li>
+  <li><strong>Anything about a second base model.</strong> Everything here is Qwen3-8B.</li>
+  <li><strong>Live cloud behavior.</strong> The S3 artifact store is asserted against <code>moto</code> and the Helm EKS overlay renders and is diffed in tests, but neither has been run against a real account.</li>
+</ul>
+
+<hr/>
+
+<h2>What I took away</h2>
+
+<p>Two things transfer beyond this environment. The first is that a closed training catalogue buys in-distribution skill and sells out-of-distribution coverage, and that the exchange rate is measurable, mechanistic, and reversible at serving time rather than a vague risk to warn about. The second is that most of what looked like method effects was infrastructure: a learning rate, a seed that no launcher forwarded, a chat template that silently dropped the tool schema. Measuring the noise floor before comparing methods is not extra rigour, it is the difference between a result and a coin flip.</p>
