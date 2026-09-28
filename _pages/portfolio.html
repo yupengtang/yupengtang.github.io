@@ -60,7 +60,7 @@ author_profile: true
       </div>
     </article>
 
-    <article class="opensource-card osc-huggingface scroll-reveal">
+    <article class="opensource-card osc-transformers scroll-reveal">
       <div class="osc-project">
         <span class="osc-mark" aria-hidden="true">TR</span>
         <div>
@@ -73,6 +73,41 @@ author_profile: true
         <div class="osc-prs" aria-label="Hugging Face Transformers upstream pull requests">
           <span>Upstream PR</span>
           <a href="https://github.com/huggingface/transformers/pull/48739" target="_blank" rel="noopener" aria-label="Hugging Face Transformers pull request 48739">#48739</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-timm scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">TM</span>
+        <div>
+          <h3>Hugging Face / timm</h3>
+          <a href="https://github.com/huggingface/pytorch-image-models" target="_blank" rel="noopener">huggingface/<wbr><span class="osc-nowrap">pytorch-image-models&nbsp;<span aria-hidden="true">&nearr;</span></span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Fixed two <code>forward_intermediates</code> bugs that kept EfficientViT (MIT) from serving as a feature backbone: a crash under gradient checkpointing, where every stage was re-run on each iteration, and a failure when pruning the head.</p>
+        <div class="osc-prs" aria-label="Hugging Face timm upstream pull requests">
+          <span>Upstream PR</span>
+          <a href="https://github.com/huggingface/pytorch-image-models/pull/2810" target="_blank" rel="noopener" aria-label="Hugging Face timm pull request 2810">#2810</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-liger scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">LK</span>
+        <div>
+          <h3>LinkedIn / Liger-Kernel</h3>
+          <a href="https://github.com/linkedin/Liger-Kernel" target="_blank" rel="noopener">linkedin/Liger-Kernel <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Standardized MLP monkey-patching so Gemma3, Gemma4, and Exaone4 report their Liger implementations correctly, and made the Llama4 fused-loss forward honour <code>skip_logits</code>, which it had silently ignored, with targeted regression coverage.</p>
+        <div class="osc-prs" aria-label="LinkedIn Liger-Kernel upstream pull requests">
+          <span>Upstream PRs</span>
+          <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1444">#1444</a>
+          <a href="https://github.com/linkedin/Liger-Kernel/pull/1445" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1445">#1445</a>
         </div>
       </div>
     </article>
@@ -90,23 +125,6 @@ author_profile: true
         <div class="osc-prs" aria-label="Axolotl upstream pull requests">
           <span>Upstream PR</span>
           <a href="https://github.com/axolotl-ai-cloud/axolotl/pull/4011" target="_blank" rel="noopener" aria-label="Axolotl pull request 4011">#4011</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="opensource-card osc-liger scroll-reveal">
-      <div class="osc-project">
-        <span class="osc-mark" aria-hidden="true">LK</span>
-        <div>
-          <h3>LinkedIn / Liger-Kernel</h3>
-          <a href="https://github.com/linkedin/Liger-Kernel" target="_blank" rel="noopener">linkedin/Liger-Kernel <span aria-hidden="true">&nearr;</span></a>
-        </div>
-      </div>
-      <div class="osc-contribution">
-        <p>Standardized MLP monkey-patching so Gemma3, Gemma4, and Exaone4 report their Liger implementations correctly, with targeted regression coverage.</p>
-        <div class="osc-prs" aria-label="LinkedIn Liger-Kernel upstream pull requests">
-          <span>Upstream PR</span>
-          <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1444">#1444</a>
         </div>
       </div>
     </article>

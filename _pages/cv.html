@@ -170,7 +170,8 @@ redirect_from:
           <div class="cv-desc">
             <p>With Prof. Mingfeng Lin. Research Assistant through May 2026, now continuing as an affiliate researcher. Research focuses on foundation model reliability, multimodal reasoning, and embodied AI.</p>
             <ul>
-              <li>Developed a controlled framework that isolates how disagreement and perceived source expertise alter LLM decisions independently of task evidence; across medical, scientific, and legal reasoning, 70.1% of expert-induced reversals changed initially correct decisions to incorrect ones.</li>
+              <li>Developed a controlled framework that isolates how disagreement and perceived source expertise alter LLM decisions independently of task evidence; across medical, scientific, and legal reasoning, 70.1% of expert-induced reversals changed initially correct decisions to incorrect ones (<a href="https://yupengtang.github.io/when-expert-disagreement-hurts/" target="_blank" rel="noopener">Project page</a>).</li>
+              <li>Diagnosed evidence neglect in multimodal RAG through retrieval-conditioned counterfactual audits; inference-time reranking and cropping raised evidence use in 22 of 30 VLM configurations, complemented by evidence-reliant LoRA fine-tuning.</li>
               <li>Designed constraint-aware visuomotor manipulation using task-frame transport and guarded fallback execution, improving success by 87.1 percentage points under severe layout shifts and 72.5 points under obstacle interference.</li>
               <li>Developed estimand-aware preference learning from heterogeneous LLM feedback by jointly modeling candidate quality, judge reliability, and systematic bias.</li>
               <li>Built internal evaluation tooling for the group: a cross-platform Electron/React/FastAPI application covering 100+ API models, with structured LLM-as-a-Judge pipelines, SQLite persistence, and one-command packaging.</li>
@@ -188,7 +189,6 @@ redirect_from:
           <div class="cv-title">Independent Researcher</div>
           <div class="cv-org">Independent Research</div>
           <div class="cv-desc">
-            <p>Three solo-authored submissions to <strong>AAAI 2027</strong>, all of which have already passed the first round of review (Phase 1).</p>
             <ul>
               <li>Designed belief-conditioned repair for frozen multimodal world models, improving future video and audio R@1 by 5.0 and 11.1 points without retraining the base model.</li>
               <li>Established finite-sample guarantees for adaptive AI search, achieving near-oracle power with substantially less search while preserving rigorous statistical validity.</li>
@@ -201,16 +201,16 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">JAN 2025 - APR 2026</div>
-          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA &middot; Hybrid</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
         </div>
         <div class="cv-item-content">
           <div class="cv-title">Research Assistant</div>
           <div class="cv-org">Georgia Institute of Technology</div>
           <div class="cv-desc">
-            <p>Advised by Prof. Patrick Kastner. Led to a first-author Q1 SCI journal submission and an accepted first-author companion book chapter forthcoming in a Springer Nature edited volume.</p>
+            <p>Advised by Prof. Patrick Kastner.</p>
             <ul>
               <li><strong>LLM-assisted scientific screening:</strong> Designed exclusion-only, inclusion-only, and multi-stage pipelines for 900+ papers; evaluated Qwen2.5-72B and GPT-OSS-120B against human adjudication using precision, recall, F1, confusion matrices, and disagreement analysis. Scaled inference to 96 GPU workers across H100/H200 clusters, resolving failures involving Ollama, MXFP4 quantization, and constrained JSON decoding.</li>
-              <li><strong>Urban microclimate modeling:</strong> Built and benchmarked a two-stage forecasting and spatial-transfer framework on 865K+ observations, with a leakage-audited protocol that holds out the target station and the target year together, five-seed ablations, and hierarchical bootstrap inference. A tuned linear baseline led under average conditions; the neural model reduced six-hour RMSE from 4.88&deg;C to 4.59&deg;C in the hottest decile.</li>
+              <li><strong>Urban microclimate modeling:</strong> Built and benchmarked a two-stage forecasting and spatial-transfer framework on 865K+ observations, with a leakage-audited protocol that holds out the target station and the target year together, five-seed ablations, and hierarchical bootstrap inference. A tuned linear baseline led under average conditions; the neural model reduced six-hour RMSE from 4.88&deg;C to 4.59&deg;C in the hottest decile. This work led to a first-author Q1 SCI journal submission and an accepted first-author companion book chapter forthcoming in a Springer Nature edited volume.</li>
             </ul>
           </div>
         </div>
@@ -339,9 +339,9 @@ redirect_from:
           <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Axolotl</div>
+          <div class="cv-title">Hugging Face / timm</div>
           <div class="cv-desc">
-            <p>Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage. See <a href="https://github.com/axolotl-ai-cloud/axolotl/pull/4011" target="_blank" rel="noopener">#4011</a>.</p>
+            <p>Fixed two <code>forward_intermediates</code> bugs that kept EfficientViT (MIT) from serving as a feature backbone: a crash under gradient checkpointing, where every stage was re-run on each iteration, and a failure when pruning the head. See <a href="https://github.com/huggingface/pytorch-image-models/pull/2810" target="_blank" rel="noopener">#2810</a>.</p>
           </div>
         </div>
       </div>
@@ -354,7 +354,20 @@ redirect_from:
         <div class="cv-item-content">
           <div class="cv-title">LinkedIn / Liger-Kernel</div>
           <div class="cv-desc">
-            <p>Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior and regression coverage. See <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener">#1444</a>.</p>
+            <p>Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior, and made the Llama4 fused-loss forward honour <code>skip_logits</code>, which it had silently ignored, with regression coverage. See <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener">#1444</a> &middot; <a href="https://github.com/linkedin/Liger-Kernel/pull/1445" target="_blank" rel="noopener">#1445</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">UPSTREAM</div>
+          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Axolotl</div>
+          <div class="cv-desc">
+            <p>Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage. See <a href="https://github.com/axolotl-ai-cloud/axolotl/pull/4011" target="_blank" rel="noopener">#4011</a>.</p>
           </div>
         </div>
       </div>

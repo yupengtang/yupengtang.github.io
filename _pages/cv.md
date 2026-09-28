@@ -54,7 +54,8 @@ Research Experience
 
 With Prof. Mingfeng Lin. Research Assistant through May 2026, now continuing as an affiliate researcher. Research focuses on foundation model reliability, multimodal reasoning, and embodied AI.
 
-* Developed a controlled framework that isolates how disagreement and perceived source expertise alter LLM decisions independently of task evidence; across medical, scientific, and legal reasoning, 70.1% of expert-induced reversals changed initially correct decisions to incorrect ones.
+* Developed a controlled framework that isolates how disagreement and perceived source expertise alter LLM decisions independently of task evidence; across medical, scientific, and legal reasoning, 70.1% of expert-induced reversals changed initially correct decisions to incorrect ones ([Project page](https://yupengtang.github.io/when-expert-disagreement-hurts/)).
+* Diagnosed evidence neglect in multimodal RAG through retrieval-conditioned counterfactual audits; inference-time reranking and cropping raised evidence use in 22 of 30 VLM configurations, complemented by evidence-reliant LoRA fine-tuning.
 * Designed constraint-aware visuomotor manipulation using task-frame transport and guarded fallback execution, improving success by 87.1 percentage points under severe layout shifts and 72.5 points under obstacle interference.
 * Developed estimand-aware preference learning from heterogeneous LLM feedback by jointly modeling candidate quality, judge reliability, and systematic bias.
 * Built internal evaluation tooling for the group: a cross-platform Electron/React/FastAPI application covering 100+ API models, with structured LLM-as-a-Judge pipelines, SQLite persistence, and one-command packaging.
@@ -63,20 +64,18 @@ With Prof. Mingfeng Lin. Research Assistant through May 2026, now continuing as 
 
 **Independent Research** \| Atlanta, GA \| Sep. 2025 – Present
 
-Three solo-authored submissions to **AAAI 2027**, all of which have already passed the first round of review (Phase 1).
-
 * Designed belief-conditioned repair for frozen multimodal world models, improving future video and audio R@1 by 5.0 and 11.1 points without retraining the base model.
 * Established finite-sample guarantees for adaptive AI search, achieving near-oracle power with substantially less search while preserving rigorous statistical validity.
 * Probed narrative representations in open-weight language models, showing that apparent event understanding is driven largely by surface cues rather than structural representations.
 
 ## Research Assistant
 
-**Georgia Institute of Technology** \| Atlanta, GA (Hybrid) \| Jan. 2025 – Apr. 2026
+**Georgia Institute of Technology** \| Atlanta, GA \| Jan. 2025 – Apr. 2026
 
-Advised by Prof. Patrick Kastner. Led to a first-author Q1 SCI journal submission and an accepted first-author companion book chapter forthcoming in a Springer Nature edited volume.
+Advised by Prof. Patrick Kastner.
 
 * **LLM-assisted scientific screening:** Designed exclusion-only, inclusion-only, and multi-stage pipelines for 900+ papers; evaluated Qwen2.5-72B and GPT-OSS-120B against human adjudication using precision, recall, F1, confusion matrices, and disagreement analysis. Scaled inference to 96 GPU workers across H100/H200 clusters, resolving failures involving Ollama, MXFP4 quantization, and constrained JSON decoding.
-* **Urban microclimate modeling:** Built and benchmarked a two-stage forecasting and spatial-transfer framework on 865K+ observations, with a leakage-audited protocol that holds out the target station and the target year together, five-seed ablations, and hierarchical bootstrap inference. A tuned linear baseline led under average conditions; the neural model reduced six-hour RMSE from 4.88°C to 4.59°C in the hottest decile.
+* **Urban microclimate modeling:** Built and benchmarked a two-stage forecasting and spatial-transfer framework on 865K+ observations, with a leakage-audited protocol that holds out the target station and the target year together, five-seed ablations, and hierarchical bootstrap inference. A tuned linear baseline led under average conditions; the neural model reduced six-hour RMSE from 4.88°C to 4.59°C in the hottest decile. This work led to a first-author Q1 SCI journal submission and an accepted first-author companion book chapter forthcoming in a Springer Nature edited volume.
 
 ## Undergraduate Researcher
 
@@ -114,8 +113,9 @@ Open Source Contributions
 * **PyTorch / TorchRL** (5 merged): Fixed SAC loss configuration, replay-buffer checkpoint recovery, CrossQ key remapping, CSV logger step counting, and a spec shape operation that raised on `Choice`, each with regression coverage ([#4338](https://github.com/pytorch/rl/pull/4338) · [#4370](https://github.com/pytorch/rl/pull/4370) · [#4372](https://github.com/pytorch/rl/pull/4372) · [#4374](https://github.com/pytorch/rl/pull/4374) · [#4462](https://github.com/pytorch/rl/pull/4462)).
 * **Hugging Face / Accelerate** (5 merged): Fixed MPS device reporting, CPU-launch runtime configuration, MLflow environment parsing, `torch.compile` dynamic-shape defaults, and hooked-model unwrapping under mixed precision, with regression coverage ([#4221](https://github.com/huggingface/accelerate/pull/4221) · [#4222](https://github.com/huggingface/accelerate/pull/4222) · [#4223](https://github.com/huggingface/accelerate/pull/4223) · [#4254](https://github.com/huggingface/accelerate/pull/4254) · [#4255](https://github.com/huggingface/accelerate/pull/4255)).
 * **Hugging Face / Transformers** (1 merged): Aligned PIL and torchvision image-processor outputs across Idefics2, Idefics3, SmolVLM, and Fuyu by fixing mask dtypes and missing image-size keys, with stronger backend-equivalence tests ([#48739](https://github.com/huggingface/transformers/pull/48739)).
+* **Hugging Face / timm** (1 merged): Fixed two `forward_intermediates` bugs that kept EfficientViT (MIT) from serving as a feature backbone: a crash under gradient checkpointing, where every stage was re-run on each iteration, and a failure when pruning the head ([#2810](https://github.com/huggingface/pytorch-image-models/pull/2810)).
+* **LinkedIn / Liger-Kernel** (2 merged): Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior, and made the Llama4 fused-loss forward honour `skip_logits`, which it had silently ignored, with regression coverage ([#1444](https://github.com/linkedin/Liger-Kernel/pull/1444) · [#1445](https://github.com/linkedin/Liger-Kernel/pull/1445)).
 * **Axolotl** (1 merged): Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage ([#4011](https://github.com/axolotl-ai-cloud/axolotl/pull/4011)).
-* **LinkedIn / Liger-Kernel** (1 merged): Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior and regression coverage ([#1444](https://github.com/linkedin/Liger-Kernel/pull/1444)).
 
 Competition Experience
 ======

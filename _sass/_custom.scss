@@ -1752,11 +1752,25 @@ hr { border-color: var(--border); }
   .osc-mark { color: #6d28d9; background: rgba(124, 58, 237, 0.1); border-color: rgba(124, 58, 237, 0.2); }
 }
 
+.osc-transformers {
+  &::before { background: linear-gradient(180deg, #db2777, #f472b6); }
+  &:hover { border-color: rgba(219, 39, 119, 0.32); }
+  .osc-mark { color: #be185d; background: rgba(219, 39, 119, 0.1); border-color: rgba(219, 39, 119, 0.2); }
+}
+
+.osc-timm {
+  &::before { background: linear-gradient(180deg, #0d9488, #2dd4bf); }
+  &:hover { border-color: rgba(13, 148, 136, 0.32); }
+  .osc-mark { color: #0f766e; background: rgba(13, 148, 136, 0.11); border-color: rgba(13, 148, 136, 0.2); }
+}
+
 .osc-liger {
   &::before { background: linear-gradient(180deg, #0a66c2, #38bdf8); }
   &:hover { border-color: rgba(10, 102, 194, 0.32); }
   .osc-mark { color: #07579f; background: rgba(10, 102, 194, 0.11); border-color: rgba(10, 102, 194, 0.2); }
 }
+
+.osc-nowrap { white-space: nowrap; }
 
 .osc-project {
   display: flex;
