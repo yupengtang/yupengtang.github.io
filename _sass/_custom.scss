@@ -1764,6 +1764,12 @@ hr { border-color: var(--border); }
   .osc-mark { color: #0f766e; background: rgba(13, 148, 136, 0.11); border-color: rgba(13, 148, 136, 0.2); }
 }
 
+.osc-gemma {
+  &::before { background: linear-gradient(180deg, #16a34a, #4ade80); }
+  &:hover { border-color: rgba(22, 163, 74, 0.32); }
+  .osc-mark { color: #15803d; background: rgba(22, 163, 74, 0.1); border-color: rgba(22, 163, 74, 0.2); }
+}
+
 .osc-liger {
   &::before { background: linear-gradient(180deg, #0a66c2, #38bdf8); }
   &:hover { border-color: rgba(10, 102, 194, 0.32); }

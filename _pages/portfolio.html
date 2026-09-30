@@ -48,7 +48,7 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p>Restored Apple MPS chip detection, fixed CPU-launch KMP runtime settings and MLflow boolean parsing, preserved <code>torch.compile</code> dynamic-shape defaults, and repaired mixed-precision model unwrapping when Accelerate hooks are installed.</p>
+        <p>Restored Apple MPS chip detection, fixed CPU-launch KMP runtime settings and MLflow boolean parsing, preserved <code>torch.compile</code> dynamic-shape defaults, repaired mixed-precision model unwrapping when Accelerate hooks are installed, and made disk-offloaded checkpoint loading keep module buffers such as BatchNorm running statistics instead of silently producing wrong outputs.</p>
         <div class="osc-prs" aria-label="Hugging Face Accelerate upstream pull requests">
           <span>Upstream PRs</span>
           <a href="https://github.com/huggingface/accelerate/pull/4221" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4221">#4221</a>
@@ -56,6 +56,7 @@ author_profile: true
           <a href="https://github.com/huggingface/accelerate/pull/4223" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4223">#4223</a>
           <a href="https://github.com/huggingface/accelerate/pull/4254" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4254">#4254</a>
           <a href="https://github.com/huggingface/accelerate/pull/4255" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4255">#4255</a>
+          <a href="https://github.com/huggingface/accelerate/pull/4352" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4352">#4352</a>
         </div>
       </div>
     </article>
@@ -90,6 +91,23 @@ author_profile: true
         <div class="osc-prs" aria-label="Hugging Face timm upstream pull requests">
           <span>Upstream PR</span>
           <a href="https://github.com/huggingface/pytorch-image-models/pull/2810" target="_blank" rel="noopener" aria-label="Hugging Face timm pull request 2810">#2810</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-gemma scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">GM</span>
+        <div>
+          <h3>Google / gemma.cpp</h3>
+          <a href="https://github.com/google/gemma.cpp" target="_blank" rel="noopener">google/gemma.cpp <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Made the test suite configure under CMake alongside Highway: resolved three test-target name collisions that had silently kept those tests from ever being built, and linked gmock for the threading test.</p>
+        <div class="osc-prs" aria-label="Google gemma.cpp upstream pull requests">
+          <span>Upstream PR</span>
+          <a href="https://github.com/google/gemma.cpp/pull/1042" target="_blank" rel="noopener" aria-label="Google gemma.cpp pull request 1042">#1042</a>
         </div>
       </div>
     </article>

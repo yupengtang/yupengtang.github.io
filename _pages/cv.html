@@ -315,7 +315,7 @@ redirect_from:
         <div class="cv-item-content">
           <div class="cv-title">Hugging Face / Accelerate</div>
           <div class="cv-desc">
-            <p>Fixed MPS device reporting, CPU-launch runtime configuration, MLflow environment parsing, <code>torch.compile</code> dynamic-shape defaults, and hooked-model unwrapping under mixed precision, with regression coverage. See <a href="https://github.com/huggingface/accelerate/pull/4221" target="_blank" rel="noopener">#4221</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4222" target="_blank" rel="noopener">#4222</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4223" target="_blank" rel="noopener">#4223</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4254" target="_blank" rel="noopener">#4254</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4255" target="_blank" rel="noopener">#4255</a>.</p>
+            <p>Fixed MPS device reporting, CPU-launch runtime configuration, MLflow environment parsing, <code>torch.compile</code> dynamic-shape defaults, hooked-model unwrapping under mixed precision, and disk-offloaded checkpoint loading that silently dropped buffers such as BatchNorm statistics, with regression coverage. See <a href="https://github.com/huggingface/accelerate/pull/4221" target="_blank" rel="noopener">#4221</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4222" target="_blank" rel="noopener">#4222</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4223" target="_blank" rel="noopener">#4223</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4254" target="_blank" rel="noopener">#4254</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4255" target="_blank" rel="noopener">#4255</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4352" target="_blank" rel="noopener">#4352</a>.</p>
           </div>
         </div>
       </div>
@@ -342,6 +342,19 @@ redirect_from:
           <div class="cv-title">Hugging Face / timm</div>
           <div class="cv-desc">
             <p>Fixed two <code>forward_intermediates</code> bugs that kept EfficientViT (MIT) from serving as a feature backbone: a crash under gradient checkpointing, where every stage was re-run on each iteration, and a failure when pruning the head. See <a href="https://github.com/huggingface/pytorch-image-models/pull/2810" target="_blank" rel="noopener">#2810</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">UPSTREAM</div>
+          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Google / gemma.cpp</div>
+          <div class="cv-desc">
+            <p>Fixed the CMake test configuration alongside Highway by resolving test-target name collisions, which had kept three tests from ever being built, and linking gmock for the threading test. See <a href="https://github.com/google/gemma.cpp/pull/1042" target="_blank" rel="noopener">#1042</a>.</p>
           </div>
         </div>
       </div>
