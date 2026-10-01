@@ -87,10 +87,29 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p>Fixed two <code>forward_intermediates</code> bugs that kept EfficientViT (MIT) from serving as a feature backbone: a crash under gradient checkpointing, where every stage was re-run on each iteration, and a failure when pruning the head.</p>
+        <p>Fixed <code>forward_intermediates</code> under gradient checkpointing and head pruning in EfficientViT (MIT), <code>set_input_size</code> for SwinV2-CR when a new resolution changes the window size, and SwinV2 attention-mask reinitialization, which had produced NaN or silently wrong logits when the model was loaded through Transformers. The two SwinV2 fixes landed through maintainer PR <a href="https://github.com/huggingface/pytorch-image-models/pull/2820" target="_blank" rel="noopener">#2820</a>.</p>
         <div class="osc-prs" aria-label="Hugging Face timm upstream pull requests">
-          <span>Upstream PR</span>
+          <span>Upstream PRs</span>
           <a href="https://github.com/huggingface/pytorch-image-models/pull/2810" target="_blank" rel="noopener" aria-label="Hugging Face timm pull request 2810">#2810</a>
+          <a href="https://github.com/huggingface/pytorch-image-models/pull/2811" target="_blank" rel="noopener" aria-label="Hugging Face timm pull request 2811">#2811</a>
+          <a href="https://github.com/huggingface/pytorch-image-models/pull/2812" target="_blank" rel="noopener" aria-label="Hugging Face timm pull request 2812">#2812</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-adk scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">ADK</span>
+        <div>
+          <h3>Google / Agent Development Kit</h3>
+          <a href="https://github.com/google/adk-python" target="_blank" rel="noopener">google/adk-python <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p>Separated internal GCS bookkeeping from user-supplied artifact metadata on reads and writes, preventing stale markers from changing how saved artifacts are loaded. Added regression coverage across GCS, file, and in-memory storage backends. Integrated into the main branch via Copybara.</p>
+        <div class="osc-prs" aria-label="Google ADK upstream pull requests">
+          <span>Upstream PR</span>
+          <a href="https://github.com/google/adk-python/pull/7222" target="_blank" rel="noopener" aria-label="Google ADK pull request 7222">#7222</a>
         </div>
       </div>
     </article>
