@@ -1,4 +1,7 @@
 <!-- start custom footer snippets -->
+{% if site.visitor_counter.enabled %}
+  {% include visitor-counter.html %}
+{% endif %}
 <div class="site-footer-inner">
   <div class="footer-left">
     <span class="footer-copyright">&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}</span>
