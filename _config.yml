@@ -27,7 +27,7 @@ author:
   bio              : |
     Foundation Models · LLMs · VLMs<br/>
     Post-Training · Evaluation · Inference<br/>
-    M.S. CS &amp; CSE, Georgia Tech '26
+    M.S. CS &amp; CSE, Georgia&nbsp;Tech&nbsp;'26
   location         : "Atlanta, GA"
   employer         : # "Red Brick University"
   uri              : # URL
@@ -152,6 +152,13 @@ analytics:
   google:
     tracking_id          :
 
+
+# Public visitor statistics. No account or secret key is required.
+# Provider API: https://github.com/soxft/busuanzi/wiki/api
+visitor_counter:
+  enabled: true
+  api: "https://busuanzi.9420.ltd/api"
+  since: "2026-10-03"
 
 # Reading Files
 include:

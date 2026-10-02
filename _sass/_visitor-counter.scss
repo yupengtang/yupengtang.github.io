@@ -1,0 +1,44 @@
+/* A small footer line; expanded explanations stay in normal document flow. */
+.visitor-counter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1rem;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  line-height: 1.6;
+}
+.visitor-heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+.visitor-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 0;
+  > div { display: flex; flex-direction: row-reverse; align-items: baseline; gap: 0.3rem; }
+  dt { font-size: inherit; font-weight: 400; margin: 0; }
+  dd { margin: 0; color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+}
+.visitor-since { white-space: nowrap; }
+.visitor-state { font-size: 0.6rem; color: var(--text-muted); }
+.visitor-counter[data-state="ready"] .visitor-state { display: none; }
+.visitor-explainer {
+  summary { cursor: pointer; color: var(--link); width: fit-content; }
+  &[open] { flex-basis: 100%; }
+  p { max-width: 76ch; font-size: 0.65rem; line-height: 1.7; color: var(--text-muted); margin: 0.6rem 0 0; }
+  a { color: var(--link); }
+}
+.visitor-noscript { font-size: 0.65rem; margin: 0; }
+@media print {
+  .visitor-counter { display: none !important; }
+  body { display: block; min-height: 0; }
+}

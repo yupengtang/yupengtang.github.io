@@ -1,177 +1,176 @@
 ---
-title: "Multi-LLM Consistency Browser"
-excerpt: "Cross-platform Electron desktop app that broadcasts one prompt to 100+ models side by side and scores their agreement with a judge model, with SQLite persistence and one-command packaging."
+title: "AI Virtual Try-On System"
+excerpt: "Automated diffusion-based garment-swap pipeline with async task orchestration, smart polling, and batch processing across model x garment combinations"
 collection: portfolio
 ---
 
 <style>
-.p4-metric-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 1.5rem 0; }
-.p4-metric-card {
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-  border: 1px solid #fcd34d; border-radius: 12px;
+.p3-metric-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.p3-metric-card {
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+  border: 1px solid #f9a8d4; border-radius: 12px;
   padding: 1rem 1.4rem; text-align: center; min-width: 110px; flex: 1;
 }
-.p4-metric-num { font-size: 1.6rem; font-weight: 800; color: #b45309; line-height: 1.1; }
-.p4-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
-.p4-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
-.p4-tag { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
-.p4-section { border-left: 3px solid #f59e0b; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
-.p4-section h3 { margin: 0 0 0.3rem; color: #78350f; font-size: 1.05rem; }
-.p4-callout { background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
-.p4-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
-.p4-step { background: #fef3c7; border: 1px solid #fcd34d; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #78350f; }
-.p4-arrow { color: #f59e0b; font-size: 1.1rem; font-weight: 700; }
-.p4-arch-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; margin: 1rem 0; }
-.p4-arch-block { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 10px; padding: 0.8rem 1rem; }
-.p4-arch-title { font-weight: 700; color: #b45309; font-size: 0.85rem; margin-bottom: 0.4rem; }
-.p4-arch-details { color: #374151; font-size: 0.78rem; line-height: 1.5; }
-.p4-service-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.8rem 0; }
-.p4-service { background: #78350f; color: #fef3c7; border-radius: 6px; padding: 0.25rem 0.65rem; font-size: 0.75rem; font-weight: 700; }
-.p4-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
-.p4-table th { background: #fef3c7; color: #78350f; padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #fcd34d; font-weight: 700; }
-.p4-table td { padding: 0.55rem 1rem; border-bottom: 1px solid #fffbeb; vertical-align: top; }
-code { background: #fef3c7; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #b45309; }
-.p4-research-banner { background: #fffbeb; border: 1px solid #f59e0b; border-radius: 12px; padding: 1rem 1.4rem; margin: 1.5rem 0; }
-.p4-research-banner h3 { color: #92400e; margin: 0 0 0.4rem; font-size: 1rem; }
-.p4-research-banner p { margin: 0; font-size: 0.88rem; color: #374151; }
+.p3-metric-num { font-size: 1.6rem; font-weight: 800; color: #be185d; line-height: 1.1; }
+.p3-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.p3-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
+.p3-tag { background: #fce7f3; color: #be185d; border: 1px solid #f9a8d4; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
+.p3-section { border-left: 3px solid #ec4899; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
+.p3-section h3 { margin: 0 0 0.3rem; color: #831843; font-size: 1.05rem; }
+.p3-callout { background: #fdf2f8; border-left: 4px solid #ec4899; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
+.p3-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
+.p3-step { background: #fce7f3; border: 1px solid #f9a8d4; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #831843; }
+.p3-arrow { color: #ec4899; font-size: 1.1rem; font-weight: 700; }
+.p3-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.p3-table th { background: #fce7f3; color: #831843; padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #f9a8d4; font-weight: 700; }
+.p3-table td { padding: 0.55rem 1rem; border-bottom: 1px solid #fdf2f8; }
+code { background: #fce7f3; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #be185d; }
+.p3-params { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 1rem 0; }
+.p3-param { background: #fdf2f8; border: 1px solid #f9a8d4; border-radius: 8px; padding: 0.6rem 0.9rem; }
+.p3-param-name { font-weight: 700; color: #be185d; font-size: 0.85rem; }
+.p3-param-desc { color: #374151; font-size: 0.8rem; margin-top: 0.2rem; }
+.p3-poll-table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.85rem; }
+.p3-poll-table th { background: #fce7f3; color: #831843; padding: 0.5rem 0.8rem; text-align: left; border-bottom: 2px solid #f9a8d4; font-weight: 700; }
+.p3-poll-table td { padding: 0.45rem 0.8rem; border-bottom: 1px solid #fdf2f8; }
+.p3-poll-table .hit { background: #fce7f3; font-weight: 700; }
 </style>
 
-<p>A desktop application I built from scratch for comparing how different language models answer the same prompt. It fans a prompt out to many models at once, collects the responses in one place, stores them for later analysis, and can score them automatically with an LLM-as-a-Judge pipeline. I built it for my research group at Georgia Tech as general evaluation tooling.</p>
+<p>As a Machine Learning Engineer intern at <strong>GMI Cloud</strong>, I developed an <strong>automated AI virtual try-on pipeline</strong> that enables photorealistic garment swaps on e-commerce model images using a diffusion-based image generation API. The system takes a model photograph and a garment image, and produces a result where the model is wearing the target garment, with natural fabric draping, body-consistent proportions, and preserved facial identity.</p>
 
-<div class="p4-research-banner">
-  <h3>Scope and caveat</h3>
-  <p>Built as internal evaluation tooling for my research group at Georgia Tech (advisor: Prof. Mingfeng Lin). It is not the data source for any of my papers. The browser-automation mode described below drives vendor chat UIs programmatically, which sits outside how those services are meant to be used, so I treat this as an engineering exercise rather than a research instrument.</p>
+<p>This is not a single API call wrapped in a script. It's a <strong>batch orchestration system</strong> built to handle real production workloads: 2 model images × 9 garment items = <strong>18 combinations</strong> per run, with asynchronous task tracking, empirically-tuned polling intervals, multi-format image handling, retry logic, and fault isolation so one API timeout doesn't kill the remaining 17 jobs.</p>
+
+<div class="p3-metric-grid">
+  <div class="p3-metric-card"><div class="p3-metric-num">18</div><div class="p3-metric-label">Combinations / Run</div></div>
+  <div class="p3-metric-card"><div class="p3-metric-num">~27s</div><div class="p3-metric-label">Typical Completion</div></div>
+  <div class="p3-metric-card"><div class="p3-metric-num">~4</div><div class="p3-metric-label">Avg Polls to Done</div></div>
+  <div class="p3-metric-card"><div class="p3-metric-num">3</div><div class="p3-metric-label">Retry Attempts</div></div>
+  <div class="p3-metric-card"><div class="p3-metric-num">0</div><div class="p3-metric-label">Disk Writes at Submission</div></div>
 </div>
 
-<div class="p4-metric-grid">
-  <div class="p4-metric-card"><div class="p4-metric-num">9</div><div class="p4-metric-label">Native LLM Services</div></div>
-  <div class="p4-metric-card"><div class="p4-metric-num">100+</div><div class="p4-metric-label">API Models via OpenRouter</div></div>
-  <div class="p4-metric-card"><div class="p4-metric-num">~195 MB</div><div class="p4-metric-label">Single Binary Installer</div></div>
-</div>
-
-<div class="p4-tags">
-  <span class="p4-tag">Electron 28</span><span class="p4-tag">React 18 + TypeScript</span><span class="p4-tag">Vite</span>
-  <span class="p4-tag">BrowserView API</span><span class="p4-tag">FastAPI</span><span class="p4-tag">SQLite</span>
-  <span class="p4-tag">OpenRouter API</span><span class="p4-tag">PyInstaller</span><span class="p4-tag">electron-builder</span>
-  <span class="p4-tag">LLM-as-a-Judge</span>
-</div>
-
-<hr/>
-
-<h2>Why Build a Custom Browser, Not Just Use APIs?</h2>
-
-<p>Most LLM evaluation frameworks operate through APIs. That works for standardized benchmarks, but my research required testing models <strong>through the same interface end users interact with</strong>: the web chat UI. Model behavior can differ between API calls and web interfaces: the web versions have system prompts, guardrails, context-window management, and post-processing layers that raw APIs don't expose. If you're studying how models respond to adversarial framings, you need to test the version users actually encounter.</p>
-
-<p>APIs also don't cover every model. Meta AI has no public API. Duck.ai is browser-only. Amazon Nova through the Bedrock console is a different product than its API variant.</p>
-
-<div class="p4-callout"><strong>Solution: Electron's native BrowserView API.</strong> Each tab is a real Chromium process sharing Electron's runtime (with no additional browser install), running in a sandboxed context-isolated environment indistinguishable from a regular session. Each service gets its own persistent session partition, so login credentials survive across restarts. Login once, never reauthenticate.</div>
-
-<p>Supported browser services:</p>
-<div class="p4-service-grid">
-  <span class="p4-service">ChatGPT</span><span class="p4-service">Claude</span><span class="p4-service">Gemini</span>
-  <span class="p4-service">Mistral</span><span class="p4-service">DeepSeek</span><span class="p4-service">Meta AI</span>
-  <span class="p4-service">Duck.ai</span><span class="p4-service">Perplexity</span><span class="p4-service">Amazon Nova</span>
+<div class="p3-tags">
+  <span class="p3-tag">Diffusion Inpainting API</span><span class="p3-tag">Async Task Orchestration</span>
+  <span class="p3-tag">Base64 Encoding</span><span class="p3-tag">Chunked Download</span>
+  <span class="p3-tag">HMAC-SHA256 (SigV4)</span><span class="p3-tag">Python SDK</span><span class="p3-tag">Batch Processing</span>
 </div>
 
 <hr/>
 
-<h2>The BrowserView Automation Engine</h2>
+<h2>How Diffusion-Based Try-On Works</h2>
 
-<p>Unlike Playwright, BrowserView provides no built-in selectors, waits, or assertions. I built all of that from scratch.</p>
+<p>The underlying model is a diffusion-based virtual dressing system (v2) operating in three stages:</p>
 
-<div class="p4-section">
-  <h3>Message Injection: Three Phases</h3>
+<div class="p3-flow">
+  <div class="p3-step">1. Body Segmentation</div><div class="p3-arrow">→</div>
+  <div class="p3-step">2. Conditioned Inpainting</div><div class="p3-arrow">→</div>
+  <div class="p3-step">3. Post-processing &amp; Blend</div>
 </div>
 
-<ol>
-  <li><strong>Focus acquisition</strong>: locate the input element using service-specific CSS selectors (with a generic fallback that scans for visible textareas by bounding-box dimensions), then click and focus it.</li>
-  <li><strong>Text insertion</strong>: two strategies:
-    <ul>
-      <li><em>React-controlled inputs (ChatGPT, Meta AI):</em> Directly mutate DOM value and dispatch synthetic <code>InputEvent</code> + <code>change</code> events to trigger React's reconciliation.</li>
-      <li><em>All others:</em> Simulate character-by-character keyboard input via <code>webContents.sendInputEvent()</code>, which is framework-agnostic and triggers all native handlers.</li>
-    </ul>
-  </li>
-  <li><strong>Submission: cascade of 3 strategies:</strong>
-    <ul>
-      <li>Service-specific button click (e.g., <code>button[data-testid="send-button"]</code> for ChatGPT, <code>button[aria-label="发送"]</code> for Duck.ai)</li>
-      <li>Keyword-based generic fallback (textContent / aria-label / data-testid / className matching: send, submit, ask, 发送…)</li>
-      <li>Icon-button heuristic: buttons containing only SVG/icon elements. The "last icon button" default targets the send button on virtually every chat UI.</li>
-    </ul>
-  </li>
-</ol>
+<p>The model automatically segments the input image to identify body regions (head, torso, arms, hands, legs, feet), masks the target region, and fills it with the garment, conditioned on the reference garment image. The diffusion model learns to respect fabric texture, color, draping physics, and body pose. Unmasked regions (face, background) are seamlessly blended back.</p>
 
-<div class="p4-section">
-  <h3>Response Extraction: Service-Specific Selectors</h3>
+<div class="p3-section">
+  <h3>Generation Parameters I Tuned</h3>
 </div>
 
-<table class="p4-table">
-  <thead><tr><th>Service</th><th>Extraction Strategy</th></tr></thead>
+<div class="p3-params">
+  <div class="p3-param">
+    <div class="p3-param-name">✓ Super-resolution enabled</div>
+    <div class="p3-param-desc">Output upsampled after generation for sharper fabric texture detail.</div>
+  </div>
+  <div class="p3-param">
+    <div class="p3-param-name">✓ Head preservation on</div>
+    <div class="p3-param-desc">Model's face and hair locked (eliminates identity drift between input and output).</div>
+  </div>
+  <div class="p3-param">
+    <div class="p3-param-name">✓ Hand regeneration allowed</div>
+    <div class="p3-param-desc">Hands re-generated to fit naturally with new sleeve length/style, not forced to original positions.</div>
+  </div>
+  <div class="p3-param">
+    <div class="p3-param-name">✓ Loose mask boundary</div>
+    <div class="p3-param-desc">Relaxed segmentation mask → natural transitions at collars and hemlines; avoids visible seams.</div>
+  </div>
+</div>
+
+<p>Garment type is configurable per-job: <code>"upper"</code>, <code>"lower"</code>, or <code>"full"</code>. I built separate test workflows for each mode before running full-outfit batch sweeps.</p>
+
+<hr/>
+
+<h2>Async Task Architecture</h2>
+
+<p>Because the diffusion model takes 20–30 seconds per image, the API uses an <strong>asynchronous task model</strong> (submit → task_id → poll → result) rather than synchronous request-response.</p>
+
+<div class="p3-section">
+  <h3>Task Submission</h3>
+</div>
+
+<p>Model and garment images are base64-encoded <strong>in memory</strong> and sent as a single JSON payload. The server queues the diffusion job and immediately returns a <code>task_id</code>. No image data touches disk during this step; everything stays in-process until the result comes back.</p>
+
+<div class="p3-section">
+  <h3>Smart Polling Strategy</h3>
+</div>
+
+<p>My first version polled every 5 seconds uniformly, resulting in several wasted polls per task. The calibrated version cuts that to ~4 average polls to completion:</p>
+
+<table class="p3-poll-table">
+  <thead><tr><th>Poll</th><th>Wait Before</th><th>Cumulative</th><th>Notes</th></tr></thead>
   <tbody>
-    <tr><td><strong>ChatGPT</strong></td><td><code>[data-message-author-role="assistant"]</code> (last element's text)</td></tr>
-    <tr><td><strong>Claude</strong></td><td><code>[class*="font-claude-response"]</code> (selects longest text, skipping model-name badges like "Sonnet 4.5")</td></tr>
-    <tr><td><strong>Gemini</strong></td><td><code>message-content[class*="model-response-text"]</code></td></tr>
-    <tr><td><strong>Mistral / DeepSeek</strong></td><td>Author-role attributes similar to ChatGPT</td></tr>
-    <tr><td><strong>Meta AI</strong></td><td>Traverse <code>.html-div</code> bottom-up, filter navigation text, strip locale prefixes</td></tr>
-    <tr><td><strong>Duck.ai</strong></td><td>Parse <code>document.body.textContent</code> by locating model-name markers ("GPT-4o mini," "Claude"…) and extracting text between marker and trailing UI elements</td></tr>
+    <tr><td>1</td><td>5s</td><td>~5s</td><td>Early check (unlikely done)</td></tr>
+    <tr><td>2–4</td><td>10s</td><td>~15s–35s</td><td>Primary expected completion window (usually finishes here)</td></tr>
+    <tr><td>5–7</td><td>20s</td><td>~55s–95s</td><td>Long-tail stragglers (catching slow jobs)</td></tr>
+    <tr><td>8+</td><td>30s</td><td>~125s+</td><td>Safety net (system overload fallback)</td></tr>
   </tbody>
 </table>
 
-<p>Every extraction includes a <strong>validity filter</strong> rejecting JSON payloads, navigation strings, and UI artifacts. A <strong>stability check</strong> (text unchanged across 2+ consecutive polls) determines response completion. There is no minimum length, so short answers like "Yes" or "Vatican City" are captured correctly.</p>
+<p>Each poll returns one of four states: <code>"in_queue"</code> or <code>"generating"</code> (continue), <code>"done"</code> (extract URLs), or <code>"not_found"</code>/<code>"expired"</code> (log and skip).</p>
 
-<hr/>
-
-<h2>LLM-as-a-Judge Pipeline</h2>
-
-<p>Once all bot responses are collected, they go to a <strong>coordinator model</strong> for consistency evaluation, either API-based (default: <code>gpt-4o-mini</code> via OpenRouter) or browser-based (a designated non-bot tab that receives the evaluation prompt directly).</p>
-
-<div class="p4-callout"><strong>Judge prompt design:</strong> The prompt enforces <em>substance-level</em> comparison, not surface similarity. "Two responses are the same if, after normalizing synonyms and surface form, they assert the same main proposition(s) with the same stance and material parameters (action, object/subject, quantities, thresholds, time frame, scope, conditions)." Structured JSON output enforced: <code>consistent</code> (bool) · <code>verdict</code> (string) · <code>unclear_responses</code> (array) · <code>main_differences</code> (array, max 3 bullets).</div>
-
-<div class="p4-flow">
-  <div class="p4-step">Broadcast prompt</div><div class="p4-arrow">→</div>
-  <div class="p4-step">All bots respond (2s poll, 2min timeout)</div><div class="p4-arrow">→</div>
-  <div class="p4-step">POST /api/check-consistency</div><div class="p4-arrow">→</div>
-  <div class="p4-step">Coordinator judges</div><div class="p4-arrow">→</div>
-  <div class="p4-step">🟢 / 🔴 indicator</div><div class="p4-arrow">→</div>
-  <div class="p4-step">Save to SQLite</div>
+<div class="p3-section">
+  <h3>Result Download with Retry</h3>
 </div>
 
+<ul>
+  <li><strong>Chunked streaming</strong> at 8 KB per chunk, to avoid loading large images entirely into memory</li>
+  <li><strong>30-second timeout</strong> per download to handle slow CDN responses</li>
+  <li><strong>3 retries with delay</strong> to recover from transient network errors</li>
+  <li><strong>Descriptive filenames</strong> that encode model ID, garment index, and result number for full QA traceability</li>
+</ul>
+
 <hr/>
 
-<h2>System Architecture</h2>
+<h2>Batch Orchestration</h2>
 
-<div class="p4-arch-grid">
-  <div class="p4-arch-block">
-    <div class="p4-arch-title">Electron Main Process</div>
-    <div class="p4-arch-details">TypeScript · Manages lifecycle, spawns Python backend, creates BrowserViews, routes all IPC. Platform-aware: detects server.exe (Win) vs server (macOS), falls back to python script in dev mode.</div>
-  </div>
-  <div class="p4-arch-block">
-    <div class="p4-arch-title">React Renderer (Vite)</div>
-    <div class="p4-arch-details">React 18 + TypeScript · 5 components: BrowserWindow (tab bar) · ServiceSelector · ConsistencyIndicator · MessageInput · SettingsPanel. useRef for immediate stop-signal propagation without re-render cycles.</div>
-  </div>
-  <div class="p4-arch-block">
-    <div class="p4-arch-title">Python Backend (FastAPI)</div>
-    <div class="p4-arch-details">15+ REST endpoints · Consistency checking (via OpenRouter) · API bot chat relay · Settings persistence (JSON) · Run storage (SQLite). Zero browser automation, cleanly separated to the Electron layer.</div>
-  </div>
+<p>The batch processor iterates the full cross-product of model images × garment images:</p>
+
+<div class="p3-flow">
+  <div class="p3-step">Submit task → get task_id</div><div class="p3-arrow">→</div>
+  <div class="p3-step">Smart poll → wait for done</div><div class="p3-arrow">→</div>
+  <div class="p3-step">Download results</div><div class="p3-arrow">→</div>
+  <div class="p3-step">Log success / failure</div><div class="p3-arrow">→</div>
+  <div class="p3-step">2s rate-limit delay</div><div class="p3-arrow">→</div>
+  <div class="p3-step">Next combination</div>
 </div>
 
-<hr/>
-
-<h2>Build &amp; Distribution</h2>
-
-<p>Delivers as a <strong>single installable binary</strong> with no Python, no Node.js, and no browser install required by the end user:</p>
-
-<div class="p4-flow">
-  <div class="p4-step">PyInstaller bundles Python backend (~130 MB .exe)</div><div class="p4-arrow">→</div>
-  <div class="p4-step">Vite builds React → static assets</div><div class="p4-arrow">→</div>
-  <div class="p4-step">electron-builder packages everything → .exe / .dmg (~195–230 MB)</div>
-</div>
+<div class="p3-callout"><strong>Fault tolerance:</strong> If a single task fails (whether from an API error, timeout, or download failure), the system logs and moves to the next combination. The final summary reports total successes vs. failures so I can immediately identify which combinations need retrying without parsing through logs.</div>
 
 <hr/>
 
-<h2>What Made This Difficult</h2>
+<h2>Authentication &amp; Security</h2>
 
-<p><strong>DOM fragility.</strong> Every LLM service updates their UI every 2–4 weeks. CSS classes change, data attributes get renamed, React components re-render differently. The solution: layered selectors (service-specific primary → keyword-based generic → icon-button heuristic) that survive most UI refreshes, plus graceful failure (broken selector returns empty text rather than crashing).</p>
+<p>I implemented two authentication approaches:</p>
 
-<p><strong>React synthetic events.</strong> ChatGPT and Meta AI use React-controlled inputs. Setting <code>.value</code> directly doesn't work because React doesn't see the DOM mutation. You need synthetic <code>InputEvent</code> with <code>bubbles: true</code> + a <code>change</code> event to trigger reconciliation. Only discoverable through trial and error.</p>
+<ol>
+  <li><strong>Signature-based (SigV4)</strong>: low-level API where each request is cryptographically signed with HMAC-SHA256 over request method, host, path, query parameters, headers, and body. Same protocol as AWS. Proved valuable when debugging a signing bug that only appeared with certain garment image sizes (content hash computation sensitive to base64 padding).</li>
+  <li><strong>SDK-based</strong>: production batch orchestrator uses the platform's official SDK, which handles signing internally and provides a higher-level interface (<code>submit_task</code> / <code>get_result</code>). I implemented both: low-level first to understand the auth mechanism, SDK second for production reliability.</li>
+</ol>
 
-<p><strong>Cross-platform session persistence.</strong> Each service needs its own Electron session partition (<code>persist:chatgpt</code>, <code>persist:claude</code>, etc.) to maintain authentication state independently. Stale sessions cause authentication loops; some services' CSRF protections conflict with BrowserView's security model. Getting all 9 services to maintain stable login state across restarts took significant iteration.</p>
+<hr/>
+
+<h2>Results &amp; Impact</h2>
+
+<p>The system successfully processed all 18 model × garment combinations in a single automated run, producing photorealistic try-on images with consistent facial identity and natural garment appearance. The orchestration eliminated what would otherwise be a tedious 2-hour manual process of submitting images one-by-one through a web interface.</p>
+
+<p>The pipeline was later adapted for internal A/B testing of garment presentation quality. The ability to quickly generate try-on images across model-garment pairings let the team evaluate visual consistency at scale rather than one-off spot checks.</p>
+
+<hr/>
+
+<h2>What I Learned</h2>
+
+<p>The most interesting engineering challenge wasn't the ML model, but rather <strong>designing robust orchestration around an asynchronous API I didn't control</strong>. Unlike the inference server where I owned the entire stack, here the model was behind someone else's API with its own queue, its own rate limits, and its own failure modes. Learning to build reliable orchestration on top of a service with variable latency and no SLA guarantees was a skill I hadn't developed in any academic project.</p>

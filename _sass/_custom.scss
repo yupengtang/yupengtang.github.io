@@ -431,9 +431,14 @@ hr { border-color: var(--border); }
 }
 
 .author__bio {
-  font-size: 0.7rem !important;
+  font-size: 12px !important;
   color: var(--text-muted) !important;
   line-height: 1.65 !important;
+}
+
+@include breakpoint($large) {
+  .sidebar { width: 220px; margin-right: 0; }
+  .page, .archive { width: calc(100% - 240px); padding-left: 1.5rem; }
 }
 
 .author__urls {
