@@ -93,7 +93,7 @@ Industry Experience
 
 **Pudu Robotics** \| Atlanta Metropolitan Area (Hybrid) \| Sep. 2026 – Present
 
-* Integrate and optimize enterprise autonomous robotic systems, spanning LiDAR/visual SLAM, localization, multi-floor navigation, fleet coordination, and system-level performance optimization.
+* Integrate and optimize enterprise autonomous robotic systems, with a focus on LiDAR/visual SLAM, localization, multi-floor navigation, fleet coordination, and system-level performance optimization.
 * Diagnose failures across hardware, software, and infrastructure through log/CAN analysis, sensor and actuator telemetry, and Docker/VM-based on-premises deployments.
 
 ## Machine Learning Engineer Intern
@@ -114,7 +114,7 @@ Open Source Contributions
 * **Hugging Face / Accelerate** (6 merged): Fixed MPS device reporting, CPU-launch runtime configuration, MLflow environment parsing, `torch.compile` dynamic-shape defaults, hooked-model unwrapping under mixed precision, and disk-offloaded checkpoint loading that silently dropped buffers such as BatchNorm statistics, with regression coverage ([#4221](https://github.com/huggingface/accelerate/pull/4221) · [#4222](https://github.com/huggingface/accelerate/pull/4222) · [#4223](https://github.com/huggingface/accelerate/pull/4223) · [#4254](https://github.com/huggingface/accelerate/pull/4254) · [#4255](https://github.com/huggingface/accelerate/pull/4255) · [#4352](https://github.com/huggingface/accelerate/pull/4352)).
 * **Hugging Face / Transformers** (1 merged): Aligned PIL and torchvision image-processor outputs across Idefics2, Idefics3, SmolVLM, and Fuyu by fixing mask dtypes and missing image-size keys, with stronger backend-equivalence tests ([#48739](https://github.com/huggingface/transformers/pull/48739)).
 * **Hugging Face / timm** (3 merged): Fixed `forward_intermediates` under gradient checkpointing and head pruning in EfficientViT (MIT), `set_input_size` for SwinV2-CR when a new resolution changes the window size, and SwinV2 attention-mask reinitialization, which had produced NaN or silently wrong logits when the model was loaded through Transformers ([#2810](https://github.com/huggingface/pytorch-image-models/pull/2810) · [#2811](https://github.com/huggingface/pytorch-image-models/pull/2811) · [#2812](https://github.com/huggingface/pytorch-image-models/pull/2812); the two SwinV2 fixes landed through maintainer PR [#2820](https://github.com/huggingface/pytorch-image-models/pull/2820)).
-* **Google / Agent Development Kit**: Fixed GCS artifact metadata handling to isolate internal bookkeeping and preserve correct loading behavior, with regression coverage across storage backends ([#7222](https://github.com/google/adk-python/pull/7222), integrated into the main branch via Copybara).
+* **Google / Agent Development Kit** (1 merged): Fixed GCS artifact metadata handling to isolate internal bookkeeping and preserve correct loading behavior, with regression coverage across storage backends ([#7222](https://github.com/google/adk-python/pull/7222), integrated into the main branch via Copybara).
 * **Google / gemma.cpp** (1 merged): Fixed the CMake test configuration alongside Highway by resolving test-target name collisions, which had kept three tests from ever being built, and linking gmock for the threading test ([#1042](https://github.com/google/gemma.cpp/pull/1042)).
 * **LinkedIn / Liger-Kernel** (2 merged): Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior, and made the Llama4 fused-loss forward honour `skip_logits`, which it had silently ignored, with regression coverage ([#1444](https://github.com/linkedin/Liger-Kernel/pull/1444) · [#1445](https://github.com/linkedin/Liger-Kernel/pull/1445)).
 * **Axolotl** (1 merged): Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage ([#4011](https://github.com/axolotl-ai-cloud/axolotl/pull/4011)).
@@ -143,15 +143,8 @@ Teaching Experience
 
 **Georgia Institute of Technology** \| Atlanta, GA \| Sep. 2025 – May 2026
 
-* **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Jarred Fountain): Designed grading rubrics and graded assignments spanning Python implementations, short-answer questions, and mathematical problems on statistical modeling and ML algorithm selection.
+* **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Jarred Fountain): Designed grading rubrics and graded assignments combining Python implementations, short-answer questions, and mathematical problems on statistical modeling and ML algorithm selection.
 * **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin): Graded visualization exercises and dashboard projects; supported students through office hours and on Ed Discussions with Tableau, PowerBI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students. Developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows.
-
-## Undergraduate Teaching Assistant
-
-**Shandong University** \| Shandong, China \| Sep. 2020 – Jul. 2021
-
-* Supported a 400+ student Linear Algebra course: graded 600+ handwritten assignments with written feedback, maintained attendance and grade records, and answered 30+ student questions weekly on the course forum.
-* Recognized as Outstanding Teaching Assistant.
 
 Leadership & Service
 ======

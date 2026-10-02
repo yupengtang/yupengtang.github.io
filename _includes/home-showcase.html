@@ -1,0 +1,53 @@
+<section class="home-overview" aria-label="Explore my work and background">
+  <div class="hero-actions">
+    <a class="showcase-button primary" href="{{ '/portfolio/' | relative_url }}">Explore my work <span aria-hidden="true">&nearr;</span></a>
+    <a class="showcase-button" href="{{ '/cv/' | relative_url }}">View CV <span aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="hero-affiliations" aria-label="Research, industry, open source, and education">
+    <div><span>Research</span><strong>Stanford CogT Lab</strong></div>
+    <div><span>Industry</span><strong>Pudu Robotics</strong></div>
+    <div><span>Open Source</span><strong><a href="{{ '/portfolio/#opensource-heading' | relative_url }}">PyTorch &middot; Hugging Face</a></strong></div>
+    <div><span>Education</span><strong>Georgia Tech &middot; M.S. CS &amp; CSE</strong></div>
+  </div>
+</section>
+
+<section class="home-selected" aria-labelledby="selected-heading">
+  <div class="showcase-heading">
+    <div><span class="eyebrow">From model behavior to working systems</span><h2 id="selected-heading">Selected work</h2></div>
+    <a href="{{ '/portfolio/' | relative_url }}">All projects <span aria-hidden="true">&nearr;</span></a>
+  </div>
+  <a class="research-feature" href="{{ '/when-expert-disagreement-hurts/' | relative_url }}">
+    <div class="research-feature-copy">
+      <span class="feature-label">NeurIPS 2026 <span class="accepted-label">Accepted</span></span>
+      <h3>When Expert Disagreement Hurts</h3>
+      <p>How perceived expertise changes LLM decisions, even when the evidence stays the same.</p>
+      <span class="feature-link">Explore the research <span aria-hidden="true">&nearr;</span></span>
+    </div>
+    <div class="evidence-visual" aria-hidden="true">
+      <span class="evidence-caption">Same evidence</span>
+      <span class="evidence-line"></span>
+      <div><span>Source expertise</span><i>&darr;</i><strong>Decision revision</strong></div>
+    </div>
+  </a>
+  <div class="home-projects">
+    <a class="home-project" href="{{ '/portfolio/portfolio-1/' | relative_url }}">
+      {% include project-schematic.html kind="agent" %}
+      <span class="feature-label">Post-training &amp; evaluation</span>
+      <h3>MCP-AgentGym</h3>
+      <p>A real Kubernetes environment for training tool-using agents with verifiable rewards.</p>
+      <span class="feature-link">View project <span aria-hidden="true">&nearr;</span></span>
+    </a>
+    <a class="home-project" href="{{ '/portfolio/portfolio-2/' | relative_url }}">
+      {% include project-schematic.html kind="inference" %}
+      <span class="feature-label">Inference infrastructure</span>
+      <h3>CacheFlow</h3>
+      <p>A C++/CUDA inference engine with continuous batching, paged attention, and prefix reuse.</p>
+      <span class="feature-link">View project <span aria-hidden="true">&nearr;</span></span>
+    </a>
+  </div>
+  <a class="upstream-strip" href="{{ '/portfolio/#opensource-heading' | relative_url }}">
+    <span class="eyebrow">Contributing upstream</span>
+    <span>PyTorch <i>&middot;</i> Hugging Face <i>&middot;</i> Google <i>&middot;</i> Liger-Kernel <i>&middot;</i> Axolotl</span>
+    <span aria-hidden="true">&nearr;</span>
+  </a>
+</section>

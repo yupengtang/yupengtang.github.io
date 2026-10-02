@@ -1,0 +1,16 @@
+<section class="visitor-counter" data-visitor-counter aria-labelledby="visitor-heading">
+  <span class="visitor-heading" id="visitor-heading">Visitor statistics</span>
+  <dl class="visitor-metrics">
+    <div><dt>Visitors <span class="visitor-estimate">(est.)</span></dt><dd data-counter-value="site_uv">&mdash;</dd></div>
+    <div><dt>Views</dt><dd data-counter-value="site_pv">&mdash;</dd></div>
+  </dl>
+  <span class="visitor-since">Since <time datetime="{{ site.visitor_counter.since }}">{{ site.visitor_counter.since | date: '%b %Y' }}</time></span>
+  <details class="visitor-explainer">
+    <summary>About these counts</summary>
+    <p>Visitors are estimated using network and browser information, with an identifier stored in your browser to reduce duplicate counting. Page views count visits to pages with this counter. Totals start on {{ site.visitor_counter.since | date: '%B %-d, %Y' }}; earlier traffic is not included. Browser privacy settings and blockers may affect these numbers.</p>
+    <p>Powered by <a href="https://github.com/soxft/busuanzi" target="_blank" rel="noopener">Busuanzi</a>, a third-party counting service. Do Not Track and Global Privacy Control preferences are respected.</p>
+  </details>
+  <span class="visitor-state" data-counter-status role="status" aria-live="polite">Statistics load automatically</span>
+  <noscript><p class="visitor-noscript">JavaScript is required to load visitor statistics.</p></noscript>
+</section>
+<script src="{{ '/assets/js/visitor-counter.js' | relative_url }}" data-site-url="{{ site.url }}" data-api="{{ site.visitor_counter.api }}" defer></script>

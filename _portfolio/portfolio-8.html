@@ -1,253 +1,200 @@
 ---
-title: "Urban Microclimate Forecasting and Spatial Transfer"
-excerpt: "Forecasting temperature and humidity hours ahead at campus locations with no sensor. First-author study with an end-to-end ML system, 7 forecasting models and 3 spatial methods benchmarked under a leakage-audited station-and-year holdout. Submitted to Building and Environment (SCI Q1, Elsevier)."
+title: "LLM-Powered Recommendation Platform"
+excerpt: "Full-stack RAG chatbot on GCP with BigQuery vector search (ScaNN), Gemini 2.0 Flash, and LangChain. Achieved MRR 0.88 and nDCG@3 0.85 across 500 queries on 571M Amazon reviews."
 collection: portfolio
 ---
 
 <style>
-.p7-metric-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 1.5rem 0; }
-.p7-metric-card {
-  background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
-  border: 1px solid #5eead4; border-radius: 12px;
-  padding: 1rem 0.8rem; text-align: center; min-width: 110px; flex: 1;
+.p5-metric-grid { display: flex; gap: 0.9rem; flex-wrap: wrap; margin: 1.5rem 0; }
+.p5-metric-card {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1px solid #86efac; border-radius: 12px;
+  padding: 1rem 1.4rem; text-align: center; min-width: 110px; flex: 1;
 }
-.p7-metric-num { font-size: 1.35rem; font-weight: 800; color: #0f766e; line-height: 1.1; }
-.p7-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
-.p7-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
-.p7-tag { background: #ccfbf1; color: #0f766e; border: 1px solid #5eead4; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
-.p7-section { border-left: 3px solid #14b8a6; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
-.p7-section h3 { margin: 0 0 0.3rem; color: #134e4a; font-size: 1.05rem; }
-.p7-callout { background: #f0fdfa; border-left: 4px solid #14b8a6; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
-.p7-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
-.p7-step { background: #ccfbf1; border: 1px solid #5eead4; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #134e4a; }
-.p7-arrow { color: #14b8a6; font-size: 1.1rem; font-weight: 700; }
-.p7-table-wrap { overflow-x: auto; }
-.p7-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
-.p7-table th { background: #ccfbf1; color: #134e4a; padding: 0.6rem 0.8rem; text-align: left; border-bottom: 2px solid #5eead4; font-weight: 700; }
-.p7-table td { padding: 0.5rem 0.8rem; border-bottom: 1px solid #f0fdfa; }
-.p7-table .best-row td { background: #ccfbf1; font-weight: 700; }
-.p7-note { font-size: 0.8rem; color: #6b7280; margin-top: -0.5rem; }
-.p7-arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 1rem 0; }
-@media (max-width: 600px) { .p7-arch-grid { grid-template-columns: 1fr; } }
-.p7-arch-block { background: #f0fdfa; border: 1px solid #5eead4; border-radius: 10px; padding: 0.8rem 1rem; }
-.p7-arch-title { font-weight: 700; color: #0f766e; font-size: 0.85rem; margin-bottom: 0.4rem; }
-.p7-arch-details { color: #374151; font-size: 0.8rem; line-height: 1.55; }
-.p7-paper-banner { background: var(--bg-subtle, #f0fdfa); border: 1px solid #5eead4; border-radius: 12px; padding: 1rem 1.4rem; margin: 1.5rem 0; }
-.p7-paper-banner h3 { color: #0f766e; margin: 0 0 0.4rem; font-size: 1rem; }
-.p7-paper-banner p { margin: 0; font-size: 0.88rem; color: #374151; }
+.p5-metric-num { font-size: 1.6rem; font-weight: 800; color: #15803d; line-height: 1.1; }
+.p5-metric-label { font-size: 0.7rem; color: #6b7280; margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.p5-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
+.p5-tag { background: #dcfce7; color: #15803d; border: 1px solid #86efac; border-radius: 20px; padding: 0.2rem 0.75rem; font-size: 0.78rem; font-weight: 600; }
+.p5-section { border-left: 3px solid #10b981; padding-left: 1.1rem; margin: 1.8rem 0 0.8rem; }
+.p5-section h3 { margin: 0 0 0.3rem; color: #064e3b; font-size: 1.05rem; }
+.p5-callout { background: #f0fdf4; border-left: 4px solid #10b981; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.9rem; color: #374151; }
+.p5-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; margin: 1rem 0; }
+.p5-step { background: #dcfce7; border: 1px solid #86efac; border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: #064e3b; }
+.p5-arrow { color: #10b981; font-size: 1.1rem; font-weight: 700; }
+.p5-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.p5-table th { background: #dcfce7; color: #064e3b; padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #86efac; font-weight: 700; }
+.p5-table td { padding: 0.55rem 1rem; border-bottom: 1px solid #f0fdf4; }
+.p5-table .best-row td { background: #dcfce7; font-weight: 700; }
+.p5-infra { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 1rem 0; }
+.p5-infra-row { display: flex; gap: 0.6rem; align-items: flex-start; background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 0.6rem 0.9rem; }
+.p5-infra-service { font-weight: 700; color: #15803d; font-size: 0.82rem; min-width: 100px; }
+.p5-infra-role { color: #374151; font-size: 0.78rem; }
+.p5-math { background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 0.8rem 1rem; margin: 0.8rem 0; font-family: 'Courier New', monospace; font-size: 0.85rem; color: #064e3b; }
+code { background: #dcfce7; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #15803d; }
 </style>
 
-<p>Many data-driven microclimate models forecast a single step ahead, at locations that already have sensor history. The harder and more useful question is how well you can forecast hours ahead at a location that has no sensor at all. I built an end-to-end ML system for that setting on the Georgia Tech campus, along with the benchmark used to decide which models belong in it. The inputs were four warm seasons of 10-minute readings from 16 weather stations (865,928 observations) and nine urban-form features derived from LiDAR and OpenStreetMap. The work was done with the Georgia Tech VIP-SMUR team and is written up as a first-author paper.</p>
+<p>I built a <strong>near-production-grade AI shopping assistant</strong> fully deployed on Google Cloud Platform, combining <strong>Retrieval-Augmented Generation (RAG)</strong>, <strong>BigQuery vector search (ScaNN)</strong>, and <strong>Gemini 2.0 Flash</strong> to deliver semantic product recommendations and sentiment-aware review summaries from millions of Amazon reviews.</p>
 
-<div class="p7-paper-banner">
-  <h3>Submitted to Building and Environment (SCI Q1, Elsevier)</h3>
-  <p><em>End-to-End Benchmarking of Urban Microclimate Forecasting and Spatial Transfer</em>. Y. Tang, Z. Y. Jiang, I. Karadag, P. Kastner. I owned the methodology, software, experiments, analysis, and the first draft. An accepted first-author companion chapter is forthcoming in Springer Nature's <em>Urban Climate Resilience</em> series. Code and trained weights: <a href="https://github.com/VIP-SMUR/25Fa-Microclimate-ML">VIP-SMUR/25Fa-Microclimate-ML</a>.</p>
+<p>Live demo: <a href="https://smartfindai.vercel.app/" target="_blank"><strong>smartfind-ai-five.vercel.app</strong></a></p>
+
+<p>The system addresses critical limitations of traditional approaches: keyword-based search fails on natural language queries, and collaborative filtering collapses on the cold-start problem. By grounding every response in dense semantic retrieval and LLM-synthesized insights, the system handles queries like "gentle face wash for sensitive skin" even when products are described as "mild cleanser for delicate complexions."</p>
+
+<div class="p5-metric-grid">
+  <div class="p5-metric-card"><div class="p5-metric-num">0.88</div><div class="p5-metric-label">MRR</div></div>
+  <div class="p5-metric-card"><div class="p5-metric-num">0.85</div><div class="p5-metric-label">nDCG@3</div></div>
+  <div class="p5-metric-card"><div class="p5-metric-num">88%</div><div class="p5-metric-label">Sentiment Accuracy</div></div>
+  <div class="p5-metric-card"><div class="p5-metric-num">+21%</div><div class="p5-metric-label">nDCG@3 vs Baseline</div></div>
+  <div class="p5-metric-card"><div class="p5-metric-num">571M</div><div class="p5-metric-label">Amazon Reviews</div></div>
 </div>
 
-<div class="p7-metric-grid">
-  <div class="p7-metric-card"><div class="p7-metric-num">865,928</div><div class="p7-metric-label">Sensor Observations</div></div>
-  <div class="p7-metric-card"><div class="p7-metric-num">7</div><div class="p7-metric-label">Forecasting Models Benchmarked</div></div>
-  <div class="p7-metric-card"><div class="p7-metric-num">6</div><div class="p7-metric-label">End-to-End Pipelines</div></div>
-  <div class="p7-metric-card"><div class="p7-metric-num">24,000</div><div class="p7-metric-label">Matched Test Cases per Pipeline</div></div>
-  <div class="p7-metric-card"><div class="p7-metric-num">100,283</div><div class="p7-metric-label">Output Grid Points</div></div>
-</div>
-
-<div class="p7-tags">
-  <span class="p7-tag">PyTorch</span><span class="p7-tag">LSTM</span><span class="p7-tag">Attention</span>
-  <span class="p7-tag">TCN / PatchTST / TFT</span><span class="p7-tag">scikit-learn</span><span class="p7-tag">PyKrige</span>
-  <span class="p7-tag">GeoPandas</span><span class="p7-tag">OSMnx</span><span class="p7-tag">Bootstrap Inference</span>
-  <span class="p7-tag">SLURM / A100</span>
+<div class="p5-tags">
+  <span class="p5-tag">PySpark</span><span class="p5-tag">BigQuery</span><span class="p5-tag">ScaNN (AVQ + TreeAH)</span>
+  <span class="p5-tag">Vertex AI text-embedding-005</span><span class="p5-tag">Gemini 2.0 Flash</span>
+  <span class="p5-tag">LangChain</span><span class="p5-tag">FastAPI</span><span class="p5-tag">React / Next.js</span>
+  <span class="p5-tag">Terraform</span><span class="p5-tag">Cloud Run</span><span class="p5-tag">GCS</span>
 </div>
 
 <hr/>
 
-<h2>Research contributions</h2>
+<h2>System Architecture</h2>
+
+<div class="p5-section">
+  <h3>Data Pipeline</h3>
+</div>
+
+<p>Starting from the Amazon Reviews 2023 dataset (McAuley Lab, UCSD), which includes 571.54M review rows and 54.51M product metadata records across three categories (All_Beauty, Software, Baby_Products):</p>
+
+<div class="p5-flow">
+  <div class="p5-step">PySpark ETL (typed schemas, null imputation, string normalization)</div><div class="p5-arrow">→</div>
+  <div class="p5-step">Partitioned Parquet → GCS (by main_category)</div><div class="p5-arrow">→</div>
+  <div class="p5-step">BigQuery warehouse</div><div class="p5-arrow">→</div>
+  <div class="p5-step">Vertex AI text-embedding-005 (768-dim, normalized)</div><div class="p5-arrow">→</div>
+  <div class="p5-step">BigQuery Vector Index (Product + Review)</div>
+</div>
+
+<div class="p5-section">
+  <h3>Backend: Request Flow</h3>
+</div>
+
+<div class="p5-flow">
+  <div class="p5-step">User query</div><div class="p5-arrow">→</div>
+  <div class="p5-step">Generate query embedding (Vertex AI)</div><div class="p5-arrow">→</div>
+  <div class="p5-step">BigQuery ANN search (ScaNN)</div><div class="p5-arrow">→</div>
+  <div class="p5-step">LangChain context assembly</div><div class="p5-arrow">→</div>
+  <div class="p5-step">Gemini 2.0 Flash → JSON response</div><div class="p5-arrow">→</div>
+  <div class="p5-step">React ProductCard</div>
+</div>
+
+<p>FastAPI backend with auth middleware (API-key validation), CORS, and rate limiting. The LLM generates structured JSON with <code>product_title</code>, <code>features</code> (Markdown bullets), <code>sentiment_summary</code>, and <code>recommendation_rationale</code>, which is prompt-engineered for consistent rendering.</p>
+
+<div class="p5-section">
+  <h3>GCP Infrastructure (Terraform IaC)</h3>
+</div>
+
+<div class="p5-infra">
+  <div class="p5-infra-row"><div class="p5-infra-service">Cloud Run</div><div class="p5-infra-role">FastAPI backend (auto-scaling, containerized)</div></div>
+  <div class="p5-infra-row"><div class="p5-infra-service">Cloud Functions</div><div class="p5-infra-role">On-demand embedding generation</div></div>
+  <div class="p5-infra-row"><div class="p5-infra-service">BigQuery</div><div class="p5-infra-role">Structured storage + ScaNN vector indexes</div></div>
+  <div class="p5-infra-row"><div class="p5-infra-service">Cloud Storage</div><div class="p5-infra-role">Parquet data lake (partitioned by category)</div></div>
+  <div class="p5-infra-row"><div class="p5-infra-service">Vertex AI</div><div class="p5-infra-role">text-embedding-005 + Gemini 2.0 Flash serving</div></div>
+  <div class="p5-infra-row"><div class="p5-infra-service">Cloud Monitoring</div><div class="p5-infra-role">Health dashboards and alerting</div></div>
+</div>
+
+<hr/>
+
+<h2>Technical Deep Dive: ScaNN Vector Search</h2>
+
+<p>BigQuery's vector search backend uses <strong>ScaNN (Scalable Nearest Neighbors)</strong> (Google's production-grade ANN library) by combining two innovations:</p>
+
+<div class="p5-section">
+  <h3>Anisotropic Vector Quantization (AVQ)</h3>
+</div>
+
+<p>Traditional Product Quantization minimizes reconstruction error uniformly. AVQ applies a learned diagonal scaling matrix <strong>S</strong> to transform vectors before quantization: <strong>v' = Sv</strong>. This rescaling prioritizes dimensions that matter most for cosine similarity, reducing false-negative retrievals. AVQ consistently outperforms standard PQ in recall at equivalent compression ratios.</p>
+
+<div class="p5-section">
+  <h3>Tree-AH (Asymmetric Hashing with Clustering)</h3>
+</div>
+
+<p>Vectors are partitioned into a hierarchical k-means tree. At query time, only the most relevant partitions are explored: <strong>d'(q,v) = d(q, Cᵢ) + d_quantized(q,v)</strong> where Cᵢ is the cluster centroid. Result: index construction O(N log N), query search O(log N).</p>
+
+<div class="p5-callout">The hybrid retrieval approach merges <strong>semantic vector similarity</strong> with <strong>metadata filtering</strong> (category, price range, average rating), providing a relevance ranking that is both semantically grounded and structured-data-aware. This is what drove the +21% nDCG@3 improvement over pure vector search.</div>
+
+<hr/>
+
+<h2>Evaluation Results</h2>
+
+<p>Ground-truth evaluation on <strong>500 test queries</strong> covering specific products, comparisons, gift recommendations, and open-ended discovery:</p>
+
+<table class="p5-table">
+  <thead><tr><th>Metric</th><th>Our System</th><th>Baseline (vector-only)</th><th>Industry Benchmark</th></tr></thead>
+  <tbody>
+    <tr class="best-row"><td><strong>MRR</strong></td><td><strong>0.88</strong></td><td>0.76</td><td>~0.80</td></tr>
+    <tr class="best-row"><td><strong>nDCG@3</strong></td><td><strong>0.85</strong></td><td>0.70</td><td>~0.78</td></tr>
+    <tr><td>Category Coverage</td><td><strong>92%</strong></td><td>84%</td><td>~88%</td></tr>
+    <tr><td>Avg. Search Latency</td><td>~6s</td><td>~1s</td><td>~2s</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Performance by query type:</strong></p>
+
+<table class="p5-table">
+  <thead><tr><th>Query Type</th><th>MRR</th><th>nDCG@3</th><th>Feature Relevance</th></tr></thead>
+  <tbody>
+    <tr><td>Specific product queries</td><td>0.93</td><td>0.91</td><td>4.5/5</td></tr>
+    <tr><td>Comparison queries</td><td>0.89</td><td>0.87</td><td>4.4/5</td></tr>
+    <tr><td>Gift recommendations</td><td>0.83</td><td>0.79</td><td>4.1/5</td></tr>
+    <tr><td>Open-ended discovery</td><td>0.78</td><td>0.74</td><td>3.9/5</td></tr>
+  </tbody>
+</table>
+
+<p><strong>RAG quality on 200 sampled recommendations:</strong> Extraction Precision 87% · Extraction Recall 82% · Feature Relevance to Query 4.3/5</p>
+
+<p><strong>Sentiment analysis on 500 labeled reviews:</strong> Classification Accuracy 88% · Review Selection Relevance 4.2/5 · Review Insight Quality 4.1/5</p>
+
+<div class="p5-callout">+21% nDCG@3 improvement (0.85 vs. 0.70 baseline) attributable to review-integrated relevance reranking. Latency overhead (~5s from Gemini API call) is acceptable given the substantial quality gain. Future mitigation: async processing and semantic response caching.</div>
+
+<hr/>
+
+<h2>ML Evaluation Harness</h2>
+
+<p>A standalone evaluation framework (<code>evaluation/</code>) for reproducible offline measurement of retrieval quality, independent of the serving stack:</p>
 
 <ul>
-  <li><strong>Problem formulation.</strong> Framed forecasting at unmonitored locations as a joint temporal and spatial transfer problem, and scored complete pipelines instead of evaluating each stage in isolation.</li>
-  <li><strong>Evaluation protocol.</strong> Designed a 12-fold test that holds out the target station and the target year at the same time, with paired hierarchical bootstrap inference over station and date clusters, plus stress tests for network density and contiguous spatial holdout.</li>
-  <li><strong>Findings.</strong> Showed that the stage-wise winners (linear regression, IDW) still have the lowest error end-to-end, that the spatial method moves error more than the temporal model does, and that the neural model's advantage is regime-specific: in an exploratory hottest-decile analysis it lowered six-hour error with a confidence interval excluding zero.</li>
-  <li><strong>Honest limits.</strong> Separated the resolution of the output grid from the resolution the station network can validate, and showed why cross-station conformal intervals that look calibrated on average fail at individual locations.</li>
+  <li><strong>Metrics</strong>: nDCG@k, MRR, Precision@k, Recall@k computed against 20 hand-labeled queries with graded relevance judgments across all five product categories.</li>
+  <li><strong>Ablation modes</strong>: config-driven toggling between <code>bm25_only</code>, <code>dense_only</code>, <code>hybrid_no_rerank</code>, <code>hybrid_rerank</code>, and <code>full_system</code> to isolate each component's contribution.</li>
+  <li><strong>Weight tuning</strong>: grid search over the hybrid scoring coefficients (vector_sim, review_sim, rating) with early stopping, producing the final 0.7/0.2/0.1 split.</li>
+  <li><strong>Data quality validation</strong>: a <code>DataQualityChecker</code> that runs pre-training checks on raw reviews (null rate, language distribution), cleaned text (token length distribution), embeddings (dimensionality, norm), and join coverage between reviews and metadata.</li>
+</ul>
+
+<div class="p5-section">
+  <h3>Embedding Cache &amp; Pipeline Metrics</h3>
+</div>
+
+<p>Production-oriented optimizations in the serving backend:</p>
+
+<ul>
+  <li><strong>LRU Embedding Cache</strong>: thread-safe in-memory cache with SHA-256 key normalization and TTL-based eviction. Eliminates redundant Vertex AI embedding calls for repeated or near-duplicate queries. Exposes hit-rate statistics for monitoring.</li>
+  <li><strong>Per-stage latency tracking</strong>: a <code>LatencyTracker</code> context manager records wall-clock time for each pipeline stage (embedding, retrieval, reranking, LLM). Sliding-window aggregation computes p50/p90/p99, exposed via a <code>/metrics</code> endpoint for operational dashboards.</li>
 </ul>
 
 <hr/>
 
-<h2>What I built</h2>
+<h2>Frontend: React + Next.js</h2>
 
 <ul>
-  <li><strong>Data pipeline.</strong> Gap-aware segmentation and resampling of 10-minute sensor series, sliding-window construction for 24-hour inputs, and scalers fit only on the training partition.</li>
-  <li><strong>Forecasting model.</strong> A 337K-parameter PyTorch network (variable selection, parallel LSTM branches, self-attention) that predicts two variables at five horizons in one forward pass, replacing ten separately fitted models.</li>
-  <li><strong>Baseline suite.</strong> Persistence, per-target linear regression, Vanilla LSTM, TCN, PatchTST, and TFT, all on the same data pipeline, splits, and horizons.</li>
-  <li><strong>Spatial module.</strong> IDW, Ordinary Kriging, and Regression Kriging (Random Forest trend plus kriged residuals) that move station forecasts onto a 100,283-point campus grid.</li>
-  <li><strong>Evaluation harness.</strong> Held-out-year, held-out-station, 12-fold end-to-end, and spatial-block protocols, paired hierarchical bootstrap confidence intervals, and an automated leakage and provenance audit.</li>
-  <li><strong>HPC workflow.</strong> SLURM jobs for training, inference, and map generation on Georgia Tech's PACE A100 nodes, plus an onboarding guide I wrote for new team members.</li>
+  <li>A <strong>chat interface</strong> with minimized/maximized states. The maximized view shows search history and a settings panel.</li>
+  <li>Queries are dispatched via <strong>Axios</strong> POST to <code>/search</code>, and responses render as dynamic <strong>ProductCard</strong> components.</li>
+  <li><code>ProductCard.tsx</code> uses ReactMarkdown for bullet-formatted feature extraction, <code>useMemo</code> for client-side rating calculations, and <code>useEffect</code> for async image fetching via an ASIN-based image scraper API route.</li>
 </ul>
 
 <hr/>
 
-<h2>System design</h2>
+<h2>Future Work</h2>
 
-<div class="p7-flow">
-  <div class="p7-step">24 h of station history</div><div class="p7-arrow">&rarr;</div>
-  <div class="p7-step">Forecasting model</div><div class="p7-arrow">&rarr;</div>
-  <div class="p7-step">T and RH &times; 5 horizons per station</div><div class="p7-arrow">&rarr;</div>
-  <div class="p7-step">Spatial transfer (IDW / RK)</div><div class="p7-arrow">&rarr;</div>
-  <div class="p7-step">Forecast at any campus location</div>
-</div>
-
-<p>A location without a sensor has no history to forecast from. The system handles this in two stages: forecast at every station that does have data, then transfer those forecasts across space. Keeping the stages separate means each can be swapped and benchmarked on its own, and every temporal model can be paired with every spatial method.</p>
-
-<div class="p7-section">
-  <h3>Stage 1: forecasting model</h3>
-</div>
-
-<p>Each sample is 144 timesteps (24 hours) with eight features: temperature, humidity, and sine/cosine encodings of time of day, solar altitude, and solar azimuth. Outputs are temperature and humidity at 10, 30, 60, 180, and 360 minutes.</p>
-
-<div class="p7-arch-grid">
-  <div class="p7-arch-block">
-    <div class="p7-arch-title">Variable selection</div>
-    <div class="p7-arch-details">A gated residual network produces softmax feature weights from the time-averaged input and applies them at every timestep. It is lighter than TFT's per-timestep selection and keeps the weights inspectable; humidity (0.385) and temperature (0.207) receive the most weight.</div>
-  </div>
-  <div class="p7-arch-block">
-    <div class="p7-arch-title">Parallel LSTM branches</div>
-    <div class="p7-arch-details">A one-layer and a two-layer LSTM read the same sequence at half the hidden size each, and their outputs are concatenated.</div>
-  </div>
-  <div class="p7-arch-block">
-    <div class="p7-arch-title">Self-attention</div>
-    <div class="p7-arch-details">Two-head self-attention with a residual connection and layer norm over the full 24-hour window.</div>
-  </div>
-  <div class="p7-arch-block">
-    <div class="p7-arch-title">Training</div>
-    <div class="p7-arch-details">Joint MSE over all ten outputs, AdamW with weight decay, gradient clipping, ReduceLROnPlateau, and early stopping on validation loss. Five random seeds for the full model and each ablation.</div>
-  </div>
-</div>
-
-<div class="p7-section">
-  <h3>Stage 2: spatial transfer</h3>
-</div>
-
-<p>Regression Kriging fits a Random Forest (50 trees, depth 10) on nine features per location: building height, ground and total elevation, distances to the nearest building, park, library, parking lot, and footway, and a monthly shadow ratio computed from building geometry and sun path. The station residuals are then interpolated with Ordinary Kriging on a fixed spherical variogram. IDW and plain Ordinary Kriging run through the same interface. A failed fit is logged as a failure instead of silently falling back to another method, so no result mixes methods.</p>
-
-<hr/>
-
-<h2>Evaluation and leakage control</h2>
-
-<p>A random split would put near-duplicate 10-minute windows in both train and test, and a test on stations the model has already seen says nothing about a location without a sensor. I set up four protocols, each closer to the real use case:</p>
-
-<ul>
-  <li><strong>Held-out year.</strong> Train on 2015&ndash;2016, validate on 2017, test on 2019.</li>
-  <li><strong>Held-out station.</strong> Run the trained model on a station excluded from training and scaling.</li>
-  <li><strong>End-to-end (12 folds).</strong> Hold out one station and the 2019 season together, refit the temporal models, forecast from the remaining stations, and transfer to the held-out location. The target station supplies no history, no training data, and no scaler statistics.</li>
-  <li><strong>Spatial blocks.</strong> Remove four neighboring stations at once to test transfer into a whole unseen region.</li>
-</ul>
-
-<p>The end-to-end run is audited automatically. For every fold, the aggregation script confirms that the held-out station is absent from training, validation, scaler fitting, and source histories; checks each target timestamp against its reference time and horizon; verifies the SHA-256 checksum of every prediction file; and confirms that the data, model, preprocessing, and spatial code hashes are identical across folds. If a fold is missing or a method has been substituted, the run stops. Differences between pipelines are reported with paired hierarchical bootstrap intervals that resample stations and then dates, since consecutive readings are strongly correlated.</p>
-
-<hr/>
-
-<h2>Results</h2>
-
-<div class="p7-section">
-  <h3>Forecasting at known stations</h3>
-</div>
-
-<div class="p7-table-wrap">
-<table class="p7-table">
-  <thead><tr><th>Model</th><th>10 min</th><th>60 min</th><th>180 min</th><th>360 min</th></tr></thead>
-  <tbody>
-    <tr><td>Persistence</td><td>0.48</td><td>1.31</td><td>2.95</td><td>4.86</td></tr>
-    <tr class="best-row"><td>Linear Regression</td><td>0.47</td><td>1.14</td><td>2.17</td><td>3.00</td></tr>
-    <tr><td>Vanilla LSTM</td><td>0.91</td><td>1.57</td><td>2.65</td><td>3.49</td></tr>
-    <tr><td>TCN</td><td>0.50</td><td>1.20</td><td>2.50</td><td>3.67</td></tr>
-    <tr><td>PatchTST</td><td>0.97</td><td>1.63</td><td>2.67</td><td>3.38</td></tr>
-    <tr><td>TFT (P50)</td><td>0.86</td><td>1.42</td><td>2.52</td><td>3.44</td></tr>
-    <tr><td>My model</td><td>0.87</td><td>1.50</td><td>2.53</td><td>3.18</td></tr>
-  </tbody>
-</table>
-</div>
-<p class="p7-note">Temperature RMSE (&deg;C), held-out year 2019.</p>
-
-<p>Among the neural networks, mine had the lowest six-hour error (3.18&nbsp;&deg;C against 3.38&ndash;3.67&nbsp;&deg;C). I included a per-target linear regression on the flattened 24-hour history from the start, and it had the lowest error at every horizon for both variables. At 10-minute resolution this signal is strongly autoregressive, and a linear model captures that directly. This matches Zeng et al. (2023), where simple linear models outperformed several Transformer architectures on long-horizon forecasting benchmarks, and it ended up shaping the final recommendation.</p>
-
-<div class="p7-section">
-  <h3>Spatial transfer</h3>
-</div>
-
-<div class="p7-table-wrap">
-<table class="p7-table">
-  <thead><tr><th>Method</th><th>Station holdout T (&deg;C)</th><th>Station holdout RH (%)</th><th>Block holdout T (&deg;C)</th><th>Block holdout RH (%)</th></tr></thead>
-  <tbody>
-    <tr class="best-row"><td>IDW</td><td>1.13</td><td>4.62</td><td>0.721</td><td>2.711</td></tr>
-    <tr><td>Ordinary Kriging</td><td>1.26</td><td>5.03</td><td>0.817</td><td>3.164</td></tr>
-    <tr><td>Regression Kriging</td><td>1.20</td><td>4.96</td><td>0.765</td><td>2.872</td></tr>
-  </tbody>
-</table>
-</div>
-<p class="p7-note">RMSE over 5,562 leave-one-station-out and 4,800 block-holdout predictions.</p>
-
-<p>IDW had the lowest error in both tests and at every network density from 5 to 16 stations. Regression Kriging beat Ordinary Kriging but not IDW: with only 9&ndash;15 stations per fold, the Random Forest trend likely has too few samples for the extra features to pay off.</p>
-
-<div class="p7-section">
-  <h3>End-to-end at unseen locations</h3>
-</div>
-
-<div class="p7-table-wrap">
-<table class="p7-table">
-  <thead><tr><th>Pipeline</th><th>10 min T</th><th>60 min T</th><th>360 min T</th><th>360 min RH</th></tr></thead>
-  <tbody>
-    <tr><td>Persistence + IDW</td><td>2.77</td><td>2.80</td><td>4.97</td><td>18.48</td></tr>
-    <tr class="best-row"><td>Linear Regression + IDW</td><td>2.77</td><td>2.78</td><td>3.72</td><td>14.56</td></tr>
-    <tr><td>My model + IDW</td><td>2.81</td><td>2.83</td><td>3.81</td><td>14.76</td></tr>
-    <tr><td>Linear Regression + RK</td><td>3.07</td><td>3.09</td><td>3.90</td><td>14.96</td></tr>
-    <tr><td>My model + RK</td><td>3.08</td><td>3.09</td><td>3.93</td><td>15.13</td></tr>
-  </tbody>
-</table>
-</div>
-<p class="p7-note">RMSE with the target station and year both held out. T in &deg;C, RH in percentage points.</p>
-
-<p>Moving from a known station to an unseen one raised 10-minute temperature error from 0.47 to 2.77&nbsp;&deg;C for the best pipeline, which is why the stricter protocol matters. The spatial method drove most of the difference: replacing IDW with RK added 0.31&ndash;0.33&nbsp;&deg;C at 10&ndash;60 minutes, with bootstrap intervals above zero. Between my model and linear regression, the intervals included zero at four of five horizons for temperature and at every horizon for humidity.</p>
-
-<div class="p7-callout"><strong>Where the neural model wins:</strong> six-hour temperature forecasts during heat. In the hottest decile of observed temperatures, my model + IDW cut 360-minute RMSE from 4.88 to 4.59&nbsp;&deg;C compared with linear regression + IDW (paired difference &minus;0.289&nbsp;&deg;C, 95% CI &minus;0.450 to &minus;0.103). Six hours of lead time is what planning ahead of a heat event needs, for example building precooling, although those downstream uses were not evaluated here. The subset was defined after the main analysis, so it still needs confirmation on an independent sensor network.</div>
-
-<div class="p7-section">
-  <h3>Ablations and training stability</h3>
-</div>
-
-<div class="p7-table-wrap">
-<table class="p7-table">
-  <thead><tr><th>Variant</th><th>Params</th><th>360 min, single run</th><th>360 min, 5 seeds</th></tr></thead>
-  <tbody>
-    <tr><td>Without variable selection</td><td>285K</td><td>3.31</td><td>3.35 &plusmn; 0.15</td></tr>
-    <tr><td>One wider LSTM instead of two branches</td><td>468K</td><td>2.97</td><td>3.06 &plusmn; 0.30</td></tr>
-    <tr><td>Without attention</td><td>270K</td><td>3.28</td><td>3.34 &plusmn; 0.08</td></tr>
-    <tr><td>Full model</td><td>337K</td><td>3.18</td><td>3.30 &plusmn; 0.06</td></tr>
-  </tbody>
-</table>
-</div>
-<p class="p7-note">Temperature RMSE (&deg;C), held-out year.</p>
-
-<p>The full model had the lowest seed-to-seed variance at six hours (&plusmn;0.06&nbsp;&deg;C versus &plusmn;0.08&ndash;0.30&nbsp;&deg;C for the ablations). A single wider LSTM reached lower error with 39% more parameters, so the two-branch design trades a little accuracy for a smaller model. The single-run gains from variable selection and attention fall inside the seed spread, and I report them that way instead of claiming them as wins.</p>
-
-<hr/>
-
-<h2>Uncertainty</h2>
-
-<p>I also tested whether cross-station conformal prediction could provide forecast intervals. Averaged over stations, coverage came in at 89&ndash;90% for a 90% target, which looks fine. Per station, though, coverage ranged from under 50% to nearly 100%, and six-hour temperature intervals were about 12.5&nbsp;&deg;C wide. An interval that only holds on average across locations is not something a user at a specific location can rely on, so I kept it as a diagnostic and left calibrated per-location uncertainty as open work.</p>
-
-<hr/>
-
-<h2>Maps and compute</h2>
-
-<p>For the hottest, coldest, driest, and most humid timestamps in the record, the system writes temperature and humidity fields to all 100,283 grid points. The 5.9&nbsp;m spacing is the output grid; with 16 stations, values between sensors can't be independently checked, so the maps are presented as model output.</p>
-
-<p>Training takes about 23 minutes on one A100 (best validation loss at epoch 3, early stop at 23). A full forecast for one reference time, covering both variables, all five horizons, and the full grid, runs in about 2 minutes 10 seconds, with kriging on CPU.</p>
-
-<hr/>
-
-<h2>Implications</h2>
-
-<p><strong>For research.</strong> Gains reported for deep models on urban microclimate should be checked against linear baselines and evaluated at locations the model has never seen, because both change the ranking here. The useful signal for neural models is regime-specific rather than average: the heat-decile result is where further work should focus. The open problems this leaves are calibrated uncertainty at individual locations, independent validation of between-station gradients (for example with mobile transects), and testing the heat result in other climates and denser urban fabric.</p>
-
-<p><strong>For deployment.</strong> If I were deploying this today, I would ship linear regression with IDW as the default forecaster: it had the lowest average error, is cheap to fit and serve, and is easy to debug. I would keep the neural model for one job, six-hour temperature forecasts during heat events, and validate it on a second network before relying on it.</p>
-
-<p>Across both, the main lesson is how much the evaluation setup decides the answer. The same pipeline looks very different at a known station than at an unseen one, and a model can lead the other neural networks and still lose to linear regression. The leakage audit and the stricter protocols are what make these conclusions trustworthy, and I would build them first on the next project.</p>
+<ol>
+  <li><strong>Long-tail categories</strong> show ~15% lower retrieval accuracy. Addressing this with category-specific embedding fine-tuning.</li>
+  <li><strong>Multimodal retrieval</strong>: integrating Vertex AI Vision image embeddings to handle aesthetic and design queries.</li>
+  <li><strong>Mixed-sentiment handling</strong> currently sits at ~73% accuracy on passages that contain both praise and criticism. Aspect-based sentiment analysis (ABSA) with labels tied to specific text segments is the planned fix.</li>
+  <li><strong>Latency</strong>: async Gemini calls combined with semantic caching should bring P95 down from ~6s to &lt;2s.</li>
+</ol>

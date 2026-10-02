@@ -1,0 +1,14 @@
+{% if include.kind == 'agent' %}
+<div class="project-schematic schematic-agent" aria-hidden="true">
+  <span class="schematic-caption">An executable training loop</span>
+  <div class="schematic-nodes"><span>Agent</span><i>&rarr;</i><span>MCP tools</span><i>&rarr;</i><span>Kubernetes</span></div>
+  <div class="schematic-return"><span>&larr; Verifier &amp; reward</span></div>
+</div>
+{% else %}
+<div class="project-schematic schematic-inference" aria-hidden="true">
+  <span class="schematic-caption">Shared prefixes. Reused memory.</span>
+  <div class="cache-row"><span>Request A</span><b></b><b></b><b></b><i></i><i></i></div>
+  <div class="cache-row"><span>Request B</span><b></b><b></b><b></b><i></i><i></i></div>
+  <div class="cache-legend"><span></span> Shared KV prefix <em>Schematic</em></div>
+</div>
+{% endif %}

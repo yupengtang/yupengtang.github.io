@@ -11,6 +11,11 @@ author_profile: true
   Selected open-source contributions and engineering projects in ML systems, inference infrastructure, and applied AI.
 </p>
 
+<nav class="portfolio-jumps" aria-label="Portfolio sections">
+  <a href="#opensource-heading">Open source <span aria-hidden="true">&darr;</span></a>
+  <a href="#projects-heading">Selected projects <span aria-hidden="true">&darr;</span></a>
+</nav>
+
 <section class="opensource-section" aria-labelledby="opensource-heading">
   <div class="portfolio-section-header scroll-reveal">
     <h2 id="opensource-heading">Open Source Contributions</h2>
@@ -27,7 +32,11 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p>Fixed variant-specific SAC loss configuration, restored max-value replay-buffer writes after checkpoint reloads, repaired CrossQ key remapping after value-estimator creation, corrected CSV logger step counting, and made shape operations on a <code>Choice</code> spec delegate to its choices instead of raising.</p>
+        <p class="osc-summary">Reinforcement learning losses, replay-buffer persistence, and runtime correctness.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>Fixed variant-specific SAC loss configuration, restored max-value replay-buffer writes after checkpoint reloads, repaired CrossQ key remapping after value-estimator creation, corrected CSV logger step counting, and made shape operations on a <code>Choice</code> spec delegate to its choices instead of raising.</p>
+        </details>
         <div class="osc-prs" aria-label="PyTorch TorchRL upstream pull requests">
           <span>Upstream PRs</span>
           <a href="https://github.com/pytorch/rl/pull/4338" target="_blank" rel="noopener" aria-label="PyTorch TorchRL pull request 4338">#4338</a>
@@ -48,7 +57,11 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p>Restored Apple MPS chip detection, fixed CPU-launch KMP runtime settings and MLflow boolean parsing, preserved <code>torch.compile</code> dynamic-shape defaults, repaired mixed-precision model unwrapping when Accelerate hooks are installed, and made disk-offloaded checkpoint loading keep module buffers such as BatchNorm running statistics instead of silently producing wrong outputs.</p>
+        <p class="osc-summary">Reliable distributed launch, compilation, mixed precision, and checkpoint loading.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>Restored Apple MPS chip detection, fixed CPU-launch KMP runtime settings and MLflow boolean parsing, preserved <code>torch.compile</code> dynamic-shape defaults, repaired mixed-precision model unwrapping when Accelerate hooks are installed, and made disk-offloaded checkpoint loading keep module buffers such as BatchNorm running statistics instead of silently producing wrong outputs.</p>
+        </details>
         <div class="osc-prs" aria-label="Hugging Face Accelerate upstream pull requests">
           <span>Upstream PRs</span>
           <a href="https://github.com/huggingface/accelerate/pull/4221" target="_blank" rel="noopener" aria-label="Hugging Face Accelerate pull request 4221">#4221</a>
@@ -70,7 +83,11 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p>Aligned PIL and torchvision image-processor outputs across Idefics2, Idefics3, SmolVLM, and Fuyu by fixing mask dtypes and missing image-size keys, then strengthened backend-equivalence tests across every returned output.</p>
+        <p class="osc-summary">Consistent image preprocessing across multimodal model backends.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>Aligned PIL and torchvision image-processor outputs across Idefics2, Idefics3, SmolVLM, and Fuyu by fixing mask dtypes and missing image-size keys, then strengthened backend-equivalence tests across every returned output.</p>
+        </details>
         <div class="osc-prs" aria-label="Hugging Face Transformers upstream pull requests">
           <span>Upstream PR</span>
           <a href="https://github.com/huggingface/transformers/pull/48739" target="_blank" rel="noopener" aria-label="Hugging Face Transformers pull request 48739">#48739</a>
@@ -87,7 +104,11 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p>Fixed <code>forward_intermediates</code> under gradient checkpointing and head pruning in EfficientViT (MIT), <code>set_input_size</code> for SwinV2-CR when a new resolution changes the window size, and SwinV2 attention-mask reinitialization, which had produced NaN or silently wrong logits when the model was loaded through Transformers. The two SwinV2 fixes landed through maintainer PR <a href="https://github.com/huggingface/pytorch-image-models/pull/2820" target="_blank" rel="noopener">#2820</a>.</p>
+        <p class="osc-summary">Vision model checkpointing, dynamic resolution, and attention initialization.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>Fixed <code>forward_intermediates</code> under gradient checkpointing and head pruning in EfficientViT (MIT), <code>set_input_size</code> for SwinV2-CR when a new resolution changes the window size, and SwinV2 attention-mask reinitialization, which had produced NaN or silently wrong logits when the model was loaded through Transformers. The two SwinV2 fixes landed through maintainer PR <a href="https://github.com/huggingface/pytorch-image-models/pull/2820" target="_blank" rel="noopener">#2820</a>.</p>
+        </details>
         <div class="osc-prs" aria-label="Hugging Face timm upstream pull requests">
           <span>Upstream PRs</span>
           <a href="https://github.com/huggingface/pytorch-image-models/pull/2810" target="_blank" rel="noopener" aria-label="Hugging Face timm pull request 2810">#2810</a>
@@ -106,7 +127,11 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p>Separated internal GCS bookkeeping from user-supplied artifact metadata on reads and writes, preventing stale markers from changing how saved artifacts are loaded. Added regression coverage across GCS, file, and in-memory storage backends. Integrated into the main branch via Copybara.</p>
+        <p class="osc-summary">Correct artifact metadata and storage behavior for AI agents.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>Separated internal GCS bookkeeping from user-supplied artifact metadata on reads and writes, preventing stale markers from changing how saved artifacts are loaded. Added regression coverage across GCS, file, and in-memory storage backends. Integrated into the main branch via Copybara.</p>
+        </details>
         <div class="osc-prs" aria-label="Google ADK upstream pull requests">
           <span>Upstream PR</span>
           <a href="https://github.com/google/adk-python/pull/7222" target="_blank" rel="noopener" aria-label="Google ADK pull request 7222">#7222</a>
@@ -123,7 +148,11 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p>Made the test suite configure under CMake alongside Highway: resolved three test-target name collisions that had silently kept those tests from ever being built, and linked gmock for the threading test.</p>
+        <p class="osc-summary">CMake and test infrastructure for portable model inference.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>Made the test suite configure under CMake alongside Highway: resolved three test-target name collisions that had silently kept those tests from ever being built, and linked gmock for the threading test.</p>
+        </details>
         <div class="osc-prs" aria-label="Google gemma.cpp upstream pull requests">
           <span>Upstream PR</span>
           <a href="https://github.com/google/gemma.cpp/pull/1042" target="_blank" rel="noopener" aria-label="Google gemma.cpp pull request 1042">#1042</a>
@@ -140,7 +169,11 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p>Standardized MLP monkey-patching so Gemma3, Gemma4, and Exaone4 report their Liger implementations correctly, and made the Llama4 fused-loss forward honour <code>skip_logits</code>, which it had silently ignored, with targeted regression coverage.</p>
+        <p class="osc-summary">Transformer integration and fused-loss correctness.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>Standardized MLP monkey-patching so Gemma3, Gemma4, and Exaone4 report their Liger implementations correctly, and made the Llama4 fused-loss forward honour <code>skip_logits</code>, which it had silently ignored, with targeted regression coverage.</p>
+        </details>
         <div class="osc-prs" aria-label="LinkedIn Liger-Kernel upstream pull requests">
           <span>Upstream PRs</span>
           <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1444">#1444</a>
@@ -158,7 +191,11 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p>Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage for both nonzero- and zero-decay configurations.</p>
+        <p class="osc-summary">Correct optimizer configuration for LoRA+ fine-tuning.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage for both nonzero- and zero-decay configurations.</p>
+        </details>
         <div class="osc-prs" aria-label="Axolotl upstream pull requests">
           <span>Upstream PR</span>
           <a href="https://github.com/axolotl-ai-cloud/axolotl/pull/4011" target="_blank" rel="noopener" aria-label="Axolotl pull request 4011">#4011</a>
@@ -169,16 +206,26 @@ author_profile: true
 </section>
 
 <div class="portfolio-section-header projects-heading scroll-reveal">
-  <h2>Selected Projects</h2>
+  <h2 id="projects-heading">Selected Projects</h2>
+  <p>Research prototypes, production systems, and the engineering in between.</p>
 </div>
 
-<div class="portfolio-grid">
+<div class="project-filters" role="group" aria-label="Filter projects" hidden>
+  <button type="button" data-filter="all" aria-pressed="true" aria-controls="project-grid">All projects</button>
+  <button type="button" data-filter="research" aria-pressed="false" aria-controls="project-grid">Research</button>
+  <button type="button" data-filter="systems" aria-pressed="false" aria-controls="project-grid">ML systems</button>
+  <button type="button" data-filter="industry" aria-pressed="false" aria-controls="project-grid">Industry</button>
+  <button type="button" data-filter="applied" aria-pressed="false" aria-controls="project-grid">Applied AI</button>
+</div>
+<p class="project-count" role="status" aria-live="polite" hidden></p>
+<div class="portfolio-grid" id="project-grid">
 
-  <a href="{{ base_path }}/portfolio/portfolio-10/" class="portfolio-card pc-violet scroll-reveal">
+  <a href="{{ base_path }}/portfolio/portfolio-1/" class="portfolio-card pc-violet scroll-reveal" data-categories="research systems">
     <div class="pc-header">
       <span class="pc-number">01</span>
       <span class="pc-type">Research</span>
     </div>
+    {% include project-schematic.html kind="agent" %}
     <h3 class="pc-title">MCP-AgentGym: Post-Training Gym for Tool-Using Agents</h3>
     <p class="pc-excerpt">A real Kubernetes control plane as a verifiable RL environment: 36 typed MCP tools, 14 seeded fault families, computed rewards. Qwen3-8B trained with SFT, DPO and GRPO, served through vLLM.</p>
     <div class="pc-metrics">
@@ -189,11 +236,12 @@ author_profile: true
       <span>Post-Training</span><span>LoRA</span><span>vLLM</span><span>MCP</span>
     </div>
   </a>
-  <a href="{{ base_path }}/portfolio/portfolio-9/" class="portfolio-card pc-orange scroll-reveal">
+  <a href="{{ base_path }}/portfolio/portfolio-2/" class="portfolio-card pc-orange scroll-reveal" data-categories="systems">
     <div class="pc-header">
       <span class="pc-number">02</span>
       <span class="pc-type">Systems</span>
     </div>
+    {% include project-schematic.html kind="inference" %}
     <h3 class="pc-title">CacheFlow: Multi-Request LLM Inference Engine</h3>
     <p class="pc-excerpt">C++17/CUDA 12 inference engine with continuous batching, paged KV cache, custom paged attention kernels, and trie-based prefix reuse. Built on llama.cpp.</p>
     <div class="pc-metrics">
@@ -205,7 +253,7 @@ author_profile: true
     </div>
   </a>
 
-  <a href="{{ base_path }}/portfolio/portfolio-1/" class="portfolio-card pc-indigo scroll-reveal">
+  <a href="{{ base_path }}/portfolio/portfolio-3/" class="portfolio-card pc-indigo scroll-reveal" data-categories="industry systems">
     <div class="pc-header">
       <span class="pc-number">03</span>
       <span class="pc-type">Industry</span>
@@ -221,7 +269,7 @@ author_profile: true
     </div>
   </a>
 
-  <a href="{{ base_path }}/portfolio/portfolio-2/" class="portfolio-card pc-sky scroll-reveal">
+  <a href="{{ base_path }}/portfolio/portfolio-4/" class="portfolio-card pc-sky scroll-reveal" data-categories="industry applied">
     <div class="pc-header">
       <span class="pc-number">04</span>
       <span class="pc-type">Industry</span>
@@ -237,7 +285,7 @@ author_profile: true
     </div>
   </a>
 
-  <a href="{{ base_path }}/portfolio/portfolio-3/" class="portfolio-card pc-pink scroll-reveal">
+  <a href="{{ base_path }}/portfolio/portfolio-5/" class="portfolio-card pc-pink scroll-reveal" data-categories="industry applied">
     <div class="pc-header">
       <span class="pc-number">05</span>
       <span class="pc-type">Industry</span>
@@ -253,7 +301,7 @@ author_profile: true
     </div>
   </a>
 
-  <a href="{{ base_path }}/portfolio/portfolio-4/" class="portfolio-card pc-rose scroll-reveal">
+  <a href="{{ base_path }}/portfolio/portfolio-6/" class="portfolio-card pc-rose scroll-reveal" data-categories="applied systems">
     <div class="pc-header">
       <span class="pc-number">06</span>
       <span class="pc-type">Automation</span>
@@ -269,7 +317,7 @@ author_profile: true
     </div>
   </a>
 
-  <a href="{{ base_path }}/portfolio/portfolio-5/" class="portfolio-card pc-amber scroll-reveal">
+  <a href="{{ base_path }}/portfolio/portfolio-7/" class="portfolio-card pc-amber scroll-reveal" data-categories="research systems">
     <div class="pc-header">
       <span class="pc-number">07</span>
       <span class="pc-type">Research</span>
@@ -285,7 +333,7 @@ author_profile: true
     </div>
   </a>
 
-  <a href="{{ base_path }}/portfolio/portfolio-6/" class="portfolio-card pc-green scroll-reveal">
+  <a href="{{ base_path }}/portfolio/portfolio-8/" class="portfolio-card pc-green scroll-reveal" data-categories="applied systems">
     <div class="pc-header">
       <span class="pc-number">08</span>
       <span class="pc-type">Full-Stack</span>
@@ -301,7 +349,7 @@ author_profile: true
     </div>
   </a>
 
-  <a href="{{ base_path }}/portfolio/portfolio-7/" class="portfolio-card pc-slate scroll-reveal">
+  <a href="{{ base_path }}/portfolio/portfolio-9/" class="portfolio-card pc-slate scroll-reveal" data-categories="applied">
     <div class="pc-header">
       <span class="pc-number">09</span>
       <span class="pc-type">Applied ML</span>
@@ -317,7 +365,7 @@ author_profile: true
     </div>
   </a>
 
-  <a href="{{ base_path }}/portfolio/portfolio-8/" class="portfolio-card pc-teal scroll-reveal">
+  <a href="{{ base_path }}/portfolio/portfolio-10/" class="portfolio-card pc-teal scroll-reveal" data-categories="research applied">
     <div class="pc-header">
       <span class="pc-number">10</span>
       <span class="pc-type">Research</span>
@@ -335,21 +383,4 @@ author_profile: true
 
 </div>
 
-<script>
-(function () {
-  var revealEls = document.querySelectorAll('.scroll-reveal');
-  if (!('IntersectionObserver' in window)) {
-    revealEls.forEach(function (el) { el.classList.add('revealed'); });
-    return;
-  }
-  var obs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      var idx = Array.prototype.indexOf.call(revealEls, entry.target);
-      setTimeout(function () { entry.target.classList.add('revealed'); }, Math.min(idx * 60, 350));
-      obs.unobserve(entry.target);
-    });
-  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
-  revealEls.forEach(function (el) { obs.observe(el); });
-})();
-</script>
+<script src="{{ base_path }}/assets/js/portfolio.js" defer></script>

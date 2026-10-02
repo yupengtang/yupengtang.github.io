@@ -40,4 +40,6 @@
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
 
-@import "custom"; // custom visual overrides — must be last
+@import "custom";
+@import "showcase"; // homepage and portfolio refinements
+@import "visitor-counter";
