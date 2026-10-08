@@ -118,6 +118,27 @@ author_profile: true
       </div>
     </article>
 
+    <article class="opensource-card osc-datasets scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">DS</span>
+        <div>
+          <h3>Hugging Face / Datasets</h3>
+          <a href="https://github.com/huggingface/datasets" target="_blank" rel="noopener">huggingface/datasets <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p class="osc-summary">Streaming split correctness under multi-worker data loading.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>With more DataLoader workers than shards, <code>IterableDataset.take(n)</code> yielded fewer than <code>n</code> examples and <code>skip(n)</code> skipped fewer, so a validation split held out from a stream could silently flow back into training. Fixed the per-worker counts and added regression tests.</p>
+        </details>
+        <div class="osc-prs" aria-label="Hugging Face Datasets upstream pull requests">
+          <span>Upstream PR</span>
+          <a href="https://github.com/huggingface/datasets/pull/8695" target="_blank" rel="noopener" aria-label="Hugging Face Datasets pull request 8695">#8695</a>
+        </div>
+      </div>
+    </article>
+
     <article class="opensource-card osc-adk scroll-reveal">
       <div class="osc-project">
         <span class="osc-mark" aria-hidden="true">ADK</span>
@@ -127,13 +148,14 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p class="osc-summary">Correct artifact metadata and storage behavior for AI agents.</p>
+        <p class="osc-summary">Correct artifact metadata and per-user session isolation for AI agents.</p>
         <details class="osc-details">
           <summary>Technical details</summary>
-          <p>Separated internal GCS bookkeeping from user-supplied artifact metadata on reads and writes, preventing stale markers from changing how saved artifacts are loaded. Added regression coverage across GCS, file, and in-memory storage backends. Integrated into the main branch via Copybara.</p>
+          <p>Separated internal GCS bookkeeping from user-supplied artifact metadata on reads and writes, preventing stale markers from changing how saved artifacts are loaded. Added regression coverage across GCS, file, and in-memory storage backends. Separately, <code>SqliteSessionService.list_sessions</code> treated an empty user ID as no user and returned every user’s sessions; it now checks for <code>None</code>, with a contract test that runs on every session backend. Both integrated into the main branch via Copybara.</p>
         </details>
         <div class="osc-prs" aria-label="Google ADK upstream pull requests">
-          <span>Upstream PR</span>
+          <span>Upstream PRs</span>
+          <a href="https://github.com/google/adk-python/pull/7171" target="_blank" rel="noopener" aria-label="Google ADK pull request 7171">#7171</a>
           <a href="https://github.com/google/adk-python/pull/7222" target="_blank" rel="noopener" aria-label="Google ADK pull request 7222">#7222</a>
         </div>
       </div>
@@ -169,13 +191,14 @@ author_profile: true
         </div>
       </div>
       <div class="osc-contribution">
-        <p class="osc-summary">Transformer integration and fused-loss correctness.</p>
+        <p class="osc-summary">Transformer integration, vision-tower norm patching, and fused-loss correctness.</p>
         <details class="osc-details">
           <summary>Technical details</summary>
-          <p>Standardized MLP monkey-patching so Gemma3, Gemma4, and Exaone4 report their Liger implementations correctly, and made the Llama4 fused-loss forward honour <code>skip_logits</code>, which it had silently ignored, with targeted regression coverage.</p>
+          <p>Standardized MLP monkey-patching so Gemma3, Gemma4, and Exaone4 report their Liger implementations correctly, made the <code>layer_norm</code> and <code>rms_norm</code> flags cover a vision tower’s own norms in the Llama4, MLlama, Gemma3, PaliGemma, and GLM-4V-MoE patchers, which had been swapped in even when the caller opted out, and made the Llama4 fused-loss forward honour <code>skip_logits</code>, which it had silently ignored, with targeted regression coverage.</p>
         </details>
         <div class="osc-prs" aria-label="LinkedIn Liger-Kernel upstream pull requests">
           <span>Upstream PRs</span>
+          <a href="https://github.com/linkedin/Liger-Kernel/pull/1443" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1443">#1443</a>
           <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1444">#1444</a>
           <a href="https://github.com/linkedin/Liger-Kernel/pull/1445" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1445">#1445</a>
         </div>
