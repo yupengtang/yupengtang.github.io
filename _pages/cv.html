@@ -352,9 +352,22 @@ redirect_from:
           <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Google / Agent Development Kit (1 merged)</div>
+          <div class="cv-title">Hugging Face / Datasets</div>
           <div class="cv-desc">
-            <p>Fixed GCS artifact metadata handling to isolate internal bookkeeping and preserve correct loading behavior, with regression coverage across storage backends. See <a href="https://github.com/google/adk-python/pull/7222" target="_blank" rel="noopener">#7222</a>, integrated into the main branch via Copybara.</p>
+            <p>Fixed <code>take</code> and <code>skip</code> on streaming datasets returning the wrong number of examples when a DataLoader has more workers than shards, which could silently leak a held-out split back into training, with regression coverage. See <a href="https://github.com/huggingface/datasets/pull/8695" target="_blank" rel="noopener">#8695</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">UPSTREAM</div>
+          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Google / Agent Development Kit (2 merged)</div>
+          <div class="cv-desc">
+            <p>Fixed GCS artifact metadata handling to isolate internal bookkeeping and preserve correct loading behavior, and stopped the SQLite session service from returning every user’s sessions when asked for an empty user ID, with regression coverage across storage and session backends. See <a href="https://github.com/google/adk-python/pull/7171" target="_blank" rel="noopener">#7171</a> &middot; <a href="https://github.com/google/adk-python/pull/7222" target="_blank" rel="noopener">#7222</a>, both integrated into the main branch via Copybara.</p>
           </div>
         </div>
       </div>
@@ -380,7 +393,7 @@ redirect_from:
         <div class="cv-item-content">
           <div class="cv-title">LinkedIn / Liger-Kernel</div>
           <div class="cv-desc">
-            <p>Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior, and made the Llama4 fused-loss forward honour <code>skip_logits</code>, which it had silently ignored, with regression coverage. See <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener">#1444</a> &middot; <a href="https://github.com/linkedin/Liger-Kernel/pull/1445" target="_blank" rel="noopener">#1445</a>.</p>
+            <p>Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior, made the norm opt-out flags cover the whole vision tower in five multimodal patchers, and made the Llama4 fused-loss forward honour <code>skip_logits</code>, which it had silently ignored, with regression coverage. See <a href="https://github.com/linkedin/Liger-Kernel/pull/1443" target="_blank" rel="noopener">#1443</a> &middot; <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener">#1444</a> &middot; <a href="https://github.com/linkedin/Liger-Kernel/pull/1445" target="_blank" rel="noopener">#1445</a>.</p>
           </div>
         </div>
       </div>
