@@ -151,9 +151,11 @@ redirect_from:
           <div class="cv-title">Research Intern</div>
           <div class="cv-org">Stanford University</div>
           <div class="cv-desc">
+            <p>With Dr. Yang M. Liu and Prof. F. Vankee Lin at the CogT Lab.</p>
             <ul>
-              <li>Selected for a Research Intern position at the CogT Lab following a formal application and interview process.</li>
-              <li>Conduct research on agentic AI, with a focus on LLM and VLM agents for multimodal reasoning, AI-assisted research workflows, and human&ndash;AI collaboration. Explore how agents integrate language, visual, and behavioral signals for evidence-grounded analysis and adaptive interaction.</li>
+              <li>Selected for a Research Intern position through a formal application and interview process.</li>
+              <li>Developing multimodal distillation methods to improve the reliability and efficiency of vision-language models under distribution shift.</li>
+              <li>Researching foundation model robustness and generalization across few-lead, wearable, and cross-dataset ECG settings.</li>
             </ul>
           </div>
         </div>
@@ -207,7 +209,7 @@ redirect_from:
           <div class="cv-title">Research Assistant</div>
           <div class="cv-org">Georgia Institute of Technology</div>
           <div class="cv-desc">
-            <p>Advised by Prof. Patrick Kastner.</p>
+            <p>With Prof. Patrick Kastner.</p>
             <ul>
               <li><strong>LLM-assisted scientific screening:</strong> Designed exclusion-only, inclusion-only, and multi-stage pipelines for 900+ papers; evaluated Qwen2.5-72B and GPT-OSS-120B against human adjudication using precision, recall, F1, confusion matrices, and disagreement analysis. Scaled inference to 96 GPU workers across H100/H200 clusters, resolving failures involving Ollama, MXFP4 quantization, and constrained JSON decoding.</li>
               <li><strong>Urban microclimate modeling:</strong> Built and benchmarked a two-stage forecasting and spatial-transfer framework on 865K+ observations, with a leakage-audited protocol that holds out the target station and the target year together, five-seed ablations, and hierarchical bootstrap inference. A tuned linear baseline led under average conditions; the neural model reduced six-hour RMSE from 4.88&deg;C to 4.59&deg;C in the hottest decile. This work led to a first-author Q1 SCI journal submission and an accepted first-author companion book chapter forthcoming in a Springer Nature edited volume.</li>
@@ -313,6 +315,19 @@ redirect_from:
           <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
         </div>
         <div class="cv-item-content">
+          <div class="cv-title">PyTorch / TensorDict</div>
+          <div class="cv-desc">
+            <p>Made <code>gather</code> and shape operations such as <code>flip</code>, <code>roll</code>, and <code>reshape</code> keep the values of non-tensor stacks, which had come back as empty containers, with regression coverage. See <a href="https://github.com/pytorch/tensordict/pull/1794" target="_blank" rel="noopener">#1794</a> &middot; <a href="https://github.com/pytorch/tensordict/pull/1796" target="_blank" rel="noopener">#1796</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">UPSTREAM</div>
+          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+        </div>
+        <div class="cv-item-content">
           <div class="cv-title">Hugging Face / Accelerate</div>
           <div class="cv-desc">
             <p>Fixed MPS device reporting, CPU-launch runtime configuration, MLflow environment parsing, <code>torch.compile</code> dynamic-shape defaults, hooked-model unwrapping under mixed precision, and disk-offloaded checkpoint loading that silently dropped buffers such as BatchNorm statistics, with regression coverage. See <a href="https://github.com/huggingface/accelerate/pull/4221" target="_blank" rel="noopener">#4221</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4222" target="_blank" rel="noopener">#4222</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4223" target="_blank" rel="noopener">#4223</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4254" target="_blank" rel="noopener">#4254</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4255" target="_blank" rel="noopener">#4255</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4352" target="_blank" rel="noopener">#4352</a>.</p>
@@ -394,6 +409,19 @@ redirect_from:
           <div class="cv-title">LinkedIn / Liger-Kernel</div>
           <div class="cv-desc">
             <p>Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior, made the norm opt-out flags cover the whole vision tower in five multimodal patchers, and made the Llama4 fused-loss forward honour <code>skip_logits</code>, which it had silently ignored, with regression coverage. See <a href="https://github.com/linkedin/Liger-Kernel/pull/1443" target="_blank" rel="noopener">#1443</a> &middot; <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener">#1444</a> &middot; <a href="https://github.com/linkedin/Liger-Kernel/pull/1445" target="_blank" rel="noopener">#1445</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">UPSTREAM</div>
+          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Pyro / NumPyro</div>
+          <div class="cv-desc">
+            <p>Fixed <code>BernoulliLogits</code> entropy returning NaN for large negative logits by evaluating it in a numerically stable form, restoring finite values and gradients for near-deterministic distributions. See <a href="https://github.com/pyro-ppl/numpyro/pull/2331" target="_blank" rel="noopener">#2331</a>.</p>
           </div>
         </div>
       </div>

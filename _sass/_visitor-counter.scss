@@ -10,6 +10,9 @@
   font-size: 0.65rem;
   line-height: 1.6;
 }
+/* Shown by the script once real figures are available; display:flex would otherwise override [hidden]. */
+.visitor-counter[hidden],
+.visitor-metrics > div[hidden] { display: none; }
 .visitor-heading {
   position: absolute;
   width: 1px;

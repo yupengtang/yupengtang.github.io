@@ -1,5 +1,5 @@
 <!-- start custom footer snippets -->
-{% if site.visitor_counter.enabled %}
+{% if site.visitor_counter.enabled and site.visitor_counter.code and site.visitor_counter.code != "" %}
   {% include visitor-counter.html %}
 {% endif %}
 <div class="site-footer-inner">

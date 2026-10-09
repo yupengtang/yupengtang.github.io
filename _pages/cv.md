@@ -45,8 +45,11 @@ Research Experience
 
 **Stanford University** \| Palo Alto, CA (Remote) \| Sep. 2026 – Present
 
-* Selected for a Research Intern position at the CogT Lab following a formal application and interview process.
-* Conduct research on agentic AI, with a focus on LLM and VLM agents for multimodal reasoning, AI-assisted research workflows, and human–AI collaboration. Explore how agents integrate language, visual, and behavioral signals for evidence-grounded analysis and adaptive interaction.
+With Dr. Yang M. Liu and Prof. F. Vankee Lin at the CogT Lab.
+
+* Selected for a Research Intern position through a formal application and interview process.
+* Developing multimodal distillation methods to improve the reliability and efficiency of vision-language models under distribution shift.
+* Researching foundation model robustness and generalization across few-lead, wearable, and cross-dataset ECG settings.
 
 ## Research Assistant & Affiliate Researcher
 
@@ -72,7 +75,7 @@ With Prof. Mingfeng Lin. Research Assistant through May 2026, now continuing as 
 
 **Georgia Institute of Technology** \| Atlanta, GA \| Jan. 2025 – Apr. 2026
 
-Advised by Prof. Patrick Kastner.
+With Prof. Patrick Kastner.
 
 * **LLM-assisted scientific screening:** Designed exclusion-only, inclusion-only, and multi-stage pipelines for 900+ papers; evaluated Qwen2.5-72B and GPT-OSS-120B against human adjudication using precision, recall, F1, confusion matrices, and disagreement analysis. Scaled inference to 96 GPU workers across H100/H200 clusters, resolving failures involving Ollama, MXFP4 quantization, and constrained JSON decoding.
 * **Urban microclimate modeling:** Built and benchmarked a two-stage forecasting and spatial-transfer framework on 865K+ observations, with a leakage-audited protocol that holds out the target station and the target year together, five-seed ablations, and hierarchical bootstrap inference. A tuned linear baseline led under average conditions; the neural model reduced six-hour RMSE from 4.88°C to 4.59°C in the hottest decile. This work led to a first-author Q1 SCI journal submission and an accepted first-author companion book chapter forthcoming in a Springer Nature edited volume.
@@ -111,6 +114,7 @@ Open Source Contributions
 ======
 
 * **PyTorch / TorchRL** (5 merged): Fixed SAC loss configuration, replay-buffer checkpoint recovery, CrossQ key remapping, CSV logger step counting, and a spec shape operation that raised on `Choice`, each with regression coverage ([#4338](https://github.com/pytorch/rl/pull/4338) · [#4370](https://github.com/pytorch/rl/pull/4370) · [#4372](https://github.com/pytorch/rl/pull/4372) · [#4374](https://github.com/pytorch/rl/pull/4374) · [#4462](https://github.com/pytorch/rl/pull/4462)).
+* **PyTorch / TensorDict** (2 merged): Made `gather` and shape operations such as `flip`, `roll`, and `reshape` keep the values of non-tensor stacks, which had come back as empty containers, with regression coverage ([#1794](https://github.com/pytorch/tensordict/pull/1794) · [#1796](https://github.com/pytorch/tensordict/pull/1796)).
 * **Hugging Face / Accelerate** (6 merged): Fixed MPS device reporting, CPU-launch runtime configuration, MLflow environment parsing, `torch.compile` dynamic-shape defaults, hooked-model unwrapping under mixed precision, and disk-offloaded checkpoint loading that silently dropped buffers such as BatchNorm statistics, with regression coverage ([#4221](https://github.com/huggingface/accelerate/pull/4221) · [#4222](https://github.com/huggingface/accelerate/pull/4222) · [#4223](https://github.com/huggingface/accelerate/pull/4223) · [#4254](https://github.com/huggingface/accelerate/pull/4254) · [#4255](https://github.com/huggingface/accelerate/pull/4255) · [#4352](https://github.com/huggingface/accelerate/pull/4352)).
 * **Hugging Face / Transformers** (1 merged): Aligned PIL and torchvision image-processor outputs across Idefics2, Idefics3, SmolVLM, and Fuyu by fixing mask dtypes and missing image-size keys, with stronger backend-equivalence tests ([#48739](https://github.com/huggingface/transformers/pull/48739)).
 * **Hugging Face / timm** (3 merged): Fixed `forward_intermediates` under gradient checkpointing and head pruning in EfficientViT (MIT), `set_input_size` for SwinV2-CR when a new resolution changes the window size, and SwinV2 attention-mask reinitialization, which had produced NaN or silently wrong logits when the model was loaded through Transformers ([#2810](https://github.com/huggingface/pytorch-image-models/pull/2810) · [#2811](https://github.com/huggingface/pytorch-image-models/pull/2811) · [#2812](https://github.com/huggingface/pytorch-image-models/pull/2812); the two SwinV2 fixes landed through maintainer PR [#2820](https://github.com/huggingface/pytorch-image-models/pull/2820)).
@@ -118,6 +122,7 @@ Open Source Contributions
 * **Google / Agent Development Kit** (2 merged): Fixed GCS artifact metadata handling to isolate internal bookkeeping and preserve correct loading behavior, and stopped the SQLite session service from returning every user’s sessions when asked for an empty user ID, with regression coverage across storage and session backends ([#7171](https://github.com/google/adk-python/pull/7171) · [#7222](https://github.com/google/adk-python/pull/7222), both integrated into the main branch via Copybara).
 * **Google / gemma.cpp** (1 merged): Fixed the CMake test configuration alongside Highway by resolving test-target name collisions, which had kept three tests from ever being built, and linking gmock for the threading test ([#1042](https://github.com/google/gemma.cpp/pull/1042)).
 * **LinkedIn / Liger-Kernel** (3 merged): Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior, made the norm opt-out flags cover the whole vision tower in five multimodal patchers, and made the Llama4 fused-loss forward honour `skip_logits`, which it had silently ignored, with regression coverage ([#1443](https://github.com/linkedin/Liger-Kernel/pull/1443) · [#1444](https://github.com/linkedin/Liger-Kernel/pull/1444) · [#1445](https://github.com/linkedin/Liger-Kernel/pull/1445)).
+* **Pyro / NumPyro** (1 merged): Fixed `BernoulliLogits` entropy returning NaN for large negative logits by evaluating it in a numerically stable form, restoring finite values and gradients for near-deterministic distributions ([#2331](https://github.com/pyro-ppl/numpyro/pull/2331)).
 * **Axolotl** (1 merged): Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage ([#4011](https://github.com/axolotl-ai-cloud/axolotl/pull/4011)).
 
 Competition Experience

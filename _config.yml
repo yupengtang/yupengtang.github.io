@@ -153,12 +153,14 @@ analytics:
     tracking_id          :
 
 
-# Public visitor statistics. No account or secret key is required.
-# Provider API: https://github.com/soxft/busuanzi/wiki/api
+# Public visitor statistics, provided by GoatCounter (https://www.goatcounter.com).
+# `code` is the site code from https://CODE.goatcounter.com; the footer counter stays
+# hidden until it is set. In the GoatCounter site settings, "Allow adding visitor
+# counts on your website" must be enabled. `since` is the day counting started.
 visitor_counter:
   enabled: true
-  api: "https://busuanzi.9420.ltd/api"
-  since: "2026-10-03"
+  code: ""
+  since: "2026-10-09"
 
 # Reading Files
 include:

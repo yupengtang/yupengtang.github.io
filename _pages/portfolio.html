@@ -48,6 +48,28 @@ author_profile: true
       </div>
     </article>
 
+    <article class="opensource-card osc-tensordict scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">TD</span>
+        <div>
+          <h3>PyTorch / TensorDict</h3>
+          <a href="https://github.com/pytorch/tensordict" target="_blank" rel="noopener">pytorch/tensordict <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p class="osc-summary">Non-tensor data preserved through gather and shape operations.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>A <code>NonTensorStack</code> has no tensor leaves, so <code>gather</code> and shape operations such as <code>flip</code>, <code>roll</code>, <code>rot90</code>, <code>narrow</code>, <code>tile</code>, <code>broadcast_to</code>, and <code>reshape</code> rebuilt it as an empty container and the field lost its values. Both now run the operation on a tensor of entry positions and select the stored values from the result, with regression tests.</p>
+        </details>
+        <div class="osc-prs" aria-label="PyTorch TensorDict upstream pull requests">
+          <span>Upstream PRs</span>
+          <a href="https://github.com/pytorch/tensordict/pull/1794" target="_blank" rel="noopener" aria-label="PyTorch TensorDict pull request 1794">#1794</a>
+          <a href="https://github.com/pytorch/tensordict/pull/1796" target="_blank" rel="noopener" aria-label="PyTorch TensorDict pull request 1796">#1796</a>
+        </div>
+      </div>
+    </article>
+
     <article class="opensource-card osc-huggingface scroll-reveal">
       <div class="osc-project">
         <span class="osc-mark" aria-hidden="true">HF</span>
@@ -201,6 +223,27 @@ author_profile: true
           <a href="https://github.com/linkedin/Liger-Kernel/pull/1443" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1443">#1443</a>
           <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1444">#1444</a>
           <a href="https://github.com/linkedin/Liger-Kernel/pull/1445" target="_blank" rel="noopener" aria-label="LinkedIn Liger-Kernel pull request 1445">#1445</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-numpyro scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">NP</span>
+        <div>
+          <h3>Pyro / NumPyro</h3>
+          <a href="https://github.com/pyro-ppl/numpyro" target="_blank" rel="noopener">pyro-ppl/numpyro <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p class="osc-summary">Numerically stable entropy for probabilistic programming.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p><code>BernoulliLogits.entropy</code> evaluated <code>exp(-logits)</code> directly, so for logits below about &minus;88 in float32 the result and its gradient were NaN for a nearly deterministic distribution. The entropy is even in the logits, so it is now computed at their absolute value in a form that stays finite across the full range.</p>
+        </details>
+        <div class="osc-prs" aria-label="Pyro NumPyro upstream pull requests">
+          <span>Upstream PR</span>
+          <a href="https://github.com/pyro-ppl/numpyro/pull/2331" target="_blank" rel="noopener" aria-label="Pyro NumPyro pull request 2331">#2331</a>
         </div>
       </div>
     </article>

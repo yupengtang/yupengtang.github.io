@@ -1,16 +1,15 @@
-<section class="visitor-counter" data-visitor-counter aria-labelledby="visitor-heading">
+<section class="visitor-counter" data-visitor-counter aria-labelledby="visitor-heading" hidden>
   <span class="visitor-heading" id="visitor-heading">Visitor statistics</span>
   <dl class="visitor-metrics">
-    <div><dt>Visitors <span class="visitor-estimate">(est.)</span></dt><dd data-counter-value="site_uv">&mdash;</dd></div>
-    <div><dt>Views</dt><dd data-counter-value="site_pv">&mdash;</dd></div>
+    <div><dt>Visitors <span class="visitor-estimate">(est.)</span></dt><dd data-counter-value="total">&mdash;</dd></div>
+    <div><dt>This page</dt><dd data-counter-value="page">&mdash;</dd></div>
   </dl>
   <span class="visitor-since">Since <time datetime="{{ site.visitor_counter.since }}">{{ site.visitor_counter.since | date: '%b %Y' }}</time></span>
   <details class="visitor-explainer">
     <summary>About these counts</summary>
-    <p>Visitors are estimated using network and browser information, with an identifier stored in your browser to reduce duplicate counting. Page views count visits to pages with this counter. Totals start on {{ site.visitor_counter.since | date: '%B %-d, %Y' }}; earlier traffic is not included. Browser privacy settings and blockers may affect these numbers.</p>
-    <p>Powered by <a href="https://github.com/soxft/busuanzi" target="_blank" rel="noopener">Busuanzi</a>, a third-party counting service. Do Not Track and Global Privacy Control preferences are respected.</p>
+    <p>Visitors are unique visits estimated from network and browser information, without cookies: repeat views of a page in the same session count once. &ldquo;This page&rdquo; is the same measure for the page you are on. Totals start on {{ site.visitor_counter.since | date: '%B %-d, %Y' }}; earlier traffic is not included. Figures refresh every few hours, and browser privacy settings and blockers may affect them.</p>
+    <p>Powered by <a href="https://www.goatcounter.com/" target="_blank" rel="noopener">GoatCounter</a>, an open-source analytics service. Do Not Track and Global Privacy Control preferences are respected. If the service cannot be reached, the last figures your browser received are shown.</p>
   </details>
-  <span class="visitor-state" data-counter-status role="status" aria-live="polite">Statistics load automatically</span>
-  <noscript><p class="visitor-noscript">JavaScript is required to load visitor statistics.</p></noscript>
+  <span class="visitor-state" data-counter-status role="status" aria-live="polite"></span>
 </section>
-<script src="{{ '/assets/js/visitor-counter.js' | relative_url }}" data-site-url="{{ site.url }}" data-api="{{ site.visitor_counter.api }}" defer></script>
+<script src="{{ '/assets/js/visitor-counter.js' | relative_url }}" data-site-url="{{ site.url }}" data-goatcounter-code="{{ site.visitor_counter.code }}" defer></script>
