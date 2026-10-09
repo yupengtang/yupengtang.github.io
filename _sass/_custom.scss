@@ -1775,6 +1775,18 @@ hr { border-color: var(--border); }
   .osc-mark { color: #3730a3; background: rgba(67, 56, 202, 0.1); border-color: rgba(67, 56, 202, 0.2); }
 }
 
+.osc-tensordict {
+  &::before { background: linear-gradient(180deg, #475569, #94a3b8); }
+  &:hover { border-color: rgba(71, 85, 105, 0.32); }
+  .osc-mark { color: #334155; background: rgba(71, 85, 105, 0.1); border-color: rgba(71, 85, 105, 0.2); }
+}
+
+.osc-numpyro {
+  &::before { background: linear-gradient(180deg, #65a30d, #a3e635); }
+  &:hover { border-color: rgba(101, 163, 13, 0.32); }
+  .osc-mark { color: #4d7c0f; background: rgba(101, 163, 13, 0.1); border-color: rgba(101, 163, 13, 0.2); }
+}
+
 .osc-gemma,
 .osc-adk {
   &::before { background: linear-gradient(180deg, #16a34a, #4ade80); }

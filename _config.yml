@@ -153,12 +153,13 @@ analytics:
     tracking_id          :
 
 
-# Public visitor statistics. No account or secret key is required.
-# Provider API: https://github.com/soxft/busuanzi/wiki/api
+# Public visitor statistics, counted by the site's own Cloudflare Worker.
+# Source and deployment notes: _worker/visitor-counter. `api` is the Worker's URL;
+# the footer counter stays hidden while it is empty. `since` is the day counting started.
 visitor_counter:
   enabled: true
-  api: "https://busuanzi.9420.ltd/api"
-  since: "2026-10-03"
+  api: "https://visitor-counter.yupengtang.workers.dev"
+  since: "2026-10-10"
 
 # Reading Files
 include:
