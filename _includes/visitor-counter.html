@@ -1,16 +1,15 @@
-<section class="visitor-counter" data-visitor-counter aria-labelledby="visitor-heading">
+<section class="visitor-counter" data-visitor-counter aria-labelledby="visitor-heading" hidden>
   <span class="visitor-heading" id="visitor-heading">Visitor statistics</span>
   <dl class="visitor-metrics">
     <div><dt>Visitors <span class="visitor-estimate">(est.)</span></dt><dd data-counter-value="site_uv">&mdash;</dd></div>
     <div><dt>Views</dt><dd data-counter-value="site_pv">&mdash;</dd></div>
   </dl>
-  <span class="visitor-since">Since <time datetime="{{ site.visitor_counter.since }}">{{ site.visitor_counter.since | date: '%b %Y' }}</time></span>
+  <span class="visitor-since">Since <time datetime="{{ site.visitor_counter.since }}">{{ site.visitor_counter.since | date: '%b %-d, %Y' }}</time></span>
   <details class="visitor-explainer">
     <summary>About these counts</summary>
-    <p>Visitors are estimated using network and browser information, with an identifier stored in your browser to reduce duplicate counting. Page views count visits to pages with this counter. Totals start on {{ site.visitor_counter.since | date: '%B %-d, %Y' }}; earlier traffic is not included. Browser privacy settings and blockers may affect these numbers.</p>
-    <p>Powered by <a href="https://github.com/soxft/busuanzi" target="_blank" rel="noopener">Busuanzi</a>, a third-party counting service. Do Not Track and Global Privacy Control preferences are respected.</p>
+    <p>Views count every load of a page on this site. Visitors are estimated from network and browser information and counted once per day, so someone who returns on another day is counted again. Only a salted hash is kept to tell visitors apart, for at most two days; no IP address is stored and no cookie is set. Totals start on {{ site.visitor_counter.since | date: '%B %-d, %Y' }}; earlier traffic is not included. Automated traffic is excluded where it can be recognized, and browser privacy settings and blockers may affect these numbers.</p>
+    <p>Counted by this site&rsquo;s own service on Cloudflare Workers, with no third-party analytics. If your browser sends Do Not Track or Global Privacy Control, your visit is not counted. If the service cannot be reached, the last figures your browser received are shown.</p>
   </details>
-  <span class="visitor-state" data-counter-status role="status" aria-live="polite">Statistics load automatically</span>
-  <noscript><p class="visitor-noscript">JavaScript is required to load visitor statistics.</p></noscript>
+  <span class="visitor-state" data-counter-status role="status" aria-live="polite"></span>
 </section>
 <script src="{{ '/assets/js/visitor-counter.js' | relative_url }}" data-site-url="{{ site.url }}" data-api="{{ site.visitor_counter.api }}" defer></script>

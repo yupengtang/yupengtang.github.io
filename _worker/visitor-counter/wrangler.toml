@@ -1,0 +1,9 @@
+name = "visitor-counter"
+main = "src/index.js"
+compatibility_date = "2025-10-01"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "visitor-counter"
+database_id = "327497e8-f360-454f-9929-adfb942ff446"

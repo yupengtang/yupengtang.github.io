@@ -48,6 +48,28 @@ author_profile: true
       </div>
     </article>
 
+    <article class="opensource-card osc-tensordict scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">TD</span>
+        <div>
+          <h3>PyTorch / TensorDict</h3>
+          <a href="https://github.com/pytorch/tensordict" target="_blank" rel="noopener">pytorch/tensordict <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p class="osc-summary">Non-tensor data preserved through gather and shape operations.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>A <code>NonTensorStack</code> has no tensor leaves, so <code>gather</code> and shape operations such as <code>flip</code>, <code>roll</code>, <code>rot90</code>, <code>narrow</code>, <code>tile</code>, <code>broadcast_to</code>, and <code>reshape</code> rebuilt it as an empty container and the field lost its values. Both now run the operation on a tensor of entry positions and select the stored values from the result, with regression tests.</p>
+        </details>
+        <div class="osc-prs" aria-label="PyTorch TensorDict upstream pull requests">
+          <span>Upstream PRs</span>
+          <a href="https://github.com/pytorch/tensordict/pull/1794" target="_blank" rel="noopener" aria-label="PyTorch TensorDict pull request 1794">#1794</a>
+          <a href="https://github.com/pytorch/tensordict/pull/1796" target="_blank" rel="noopener" aria-label="PyTorch TensorDict pull request 1796">#1796</a>
+        </div>
+      </div>
+    </article>
+
     <article class="opensource-card osc-huggingface scroll-reveal">
       <div class="osc-project">
         <span class="osc-mark" aria-hidden="true">HF</span>
@@ -91,6 +113,27 @@ author_profile: true
         <div class="osc-prs" aria-label="Hugging Face Transformers upstream pull requests">
           <span>Upstream PR</span>
           <a href="https://github.com/huggingface/transformers/pull/48739" target="_blank" rel="noopener" aria-label="Hugging Face Transformers pull request 48739">#48739</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-peft scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">PF</span>
+        <div>
+          <h3>Hugging Face / PEFT</h3>
+          <a href="https://github.com/huggingface/peft" target="_blank" rel="noopener">huggingface/peft <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p class="osc-summary">Safe adapter merging for parameter-efficient fine-tuning.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p><code>safe_merge=True</code> is meant to raise before anything is written to the base layer, but several layers wrote the merged weight first or skipped the check: BOFT Conv2d, AdaMSS, RoAd, the LoRA bitsandbytes layers, and LoRA on torchao, where the check ran before the adapter delta was added. All now validate first. The fix also applies adapter scaling to the LoRA bias in 8-bit merges, and lets torchao merge several adapters at once, with regression tests.</p>
+        </details>
+        <div class="osc-prs" aria-label="Hugging Face PEFT upstream pull requests">
+          <span>Upstream PR</span>
+          <a href="https://github.com/huggingface/peft/pull/3779" target="_blank" rel="noopener" aria-label="Hugging Face PEFT pull request 3779">#3779</a>
         </div>
       </div>
     </article>
@@ -205,6 +248,28 @@ author_profile: true
       </div>
     </article>
 
+    <article class="opensource-card osc-numpyro scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">NP</span>
+        <div>
+          <h3>Pyro / NumPyro</h3>
+          <a href="https://github.com/pyro-ppl/numpyro" target="_blank" rel="noopener">pyro-ppl/numpyro <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p class="osc-summary">Numerically stable entropies and log-densities for probabilistic programming.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p><code>BernoulliLogits.entropy</code> evaluated <code>exp(-logits)</code> directly, so for logits below about &minus;88 in float32 the result and its gradient were NaN for a nearly deterministic distribution. The entropy is even in the logits, so it is now computed at their absolute value in a form that stays finite across the full range. Separately, <code>PowerTransform</code> took the log of a ratio that overflows long before its log does, so <code>InverseGamma</code> returned a log-density of <code>+inf</code> or <code>-inf</code> deep in the tails; the log-determinant is now computed in log space.</p>
+        </details>
+        <div class="osc-prs" aria-label="Pyro NumPyro upstream pull requests">
+          <span>Upstream PRs</span>
+          <a href="https://github.com/pyro-ppl/numpyro/pull/2331" target="_blank" rel="noopener" aria-label="Pyro NumPyro pull request 2331">#2331</a>
+          <a href="https://github.com/pyro-ppl/numpyro/pull/2332" target="_blank" rel="noopener" aria-label="Pyro NumPyro pull request 2332">#2332</a>
+        </div>
+      </div>
+    </article>
+
     <article class="opensource-card osc-axolotl scroll-reveal">
       <div class="osc-project">
         <span class="osc-mark" aria-hidden="true">AX</span>
@@ -222,6 +287,27 @@ author_profile: true
         <div class="osc-prs" aria-label="Axolotl upstream pull requests">
           <span>Upstream PR</span>
           <a href="https://github.com/axolotl-ai-cloud/axolotl/pull/4011" target="_blank" rel="noopener" aria-label="Axolotl pull request 4011">#4011</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="opensource-card osc-villa scroll-reveal">
+      <div class="osc-project">
+        <span class="osc-mark" aria-hidden="true">VC</span>
+        <div>
+          <h3>Vesuvius Challenge / Volume Cartographer</h3>
+          <a href="https://github.com/ScrollPrize/villa" target="_blank" rel="noopener">ScrollPrize/villa <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <div class="osc-contribution">
+        <p class="osc-summary">Reproducible surface tracing for virtually unwrapping the Herculaneum scrolls.</p>
+        <details class="osc-details">
+          <summary>Technical details</summary>
+          <p>In random seed mode, <code>vc_grow_seg_from_seed</code> picked its start point, expansion order and point collection from clock-seeded generators, so a run could not be repeated even with the existing seed variable. The new <code>--rng-seed</code> option seeds all of them; on six test runs over a PHerc0814 surface prediction, runs with the same seed started at the same point and produced byte-identical surfaces.</p>
+        </details>
+        <div class="osc-prs" aria-label="Vesuvius Challenge Volume Cartographer upstream pull requests">
+          <span>Upstream PR</span>
+          <a href="https://github.com/ScrollPrize/villa/pull/2145" target="_blank" rel="noopener" aria-label="Vesuvius Challenge Volume Cartographer pull request 2145">#2145</a>
         </div>
       </div>
     </article>
