@@ -29,7 +29,7 @@
         <p class="authors"><a href="https://yupengtang.github.io/">Yupeng Tang</a><span aria-hidden="true">,</span> <a href="https://mlin.scheller.gatech.edu/">Mingfeng Lin</a></p>
         <p class="affiliation">Georgia Institute of Technology</p>
         <div class="publication-links" aria-label="Research resources">
-          <a class="resource-link" href="assets/paper.pdf?v=20261104r2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper</a>
+          <a class="resource-link" href="assets/paper.pdf?v=20261105"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper</a>
           <a class="resource-link" href="https://github.com/yupengtang/when-expert-disagreement-hurts"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4m8-8 4 4-4 4M14 4l-4 16"/></svg>Code</a>
           <a class="resource-link" href="https://github.com/yupengtang/when-expert-disagreement-hurts/tree/main/reproducibility/data-repair"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 4 16 4 16 0V5M4 12v7c0 4 16 4 16 0v-7"/></svg>Data</a>
           <a class="resource-link" href="https://github.com/yupengtang/when-expert-disagreement-hurts/releases/latest"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 17v4h16v-4"/></svg>Release</a>
@@ -138,12 +138,12 @@
         <figure class="result-figure">
           <h3>When revision helps—and when it hurts</h3>
           <img src="assets/transitions.svg" width="980" height="490" alt="Harmful reversals extend left and beneficial reversals right, with net accuracy change and valid sample counts for nine models in two protocol groups" loading="lazy">
-          <figcaption><strong>Reversal direction.</strong> Both bars use all valid expert-labeled trials as the denominator. Beneficial minus harmful reversal gives the accuracy change; unchanged decisions are not plotted. The five full-benchmark models use 1,989 items. The four additional endpoints use a 250-item pool and a different prompt protocol, so these are not cross-generation rankings. <a href="assets/paper.pdf?v=20261104r2#page=6">Paper, p. 6</a> · <a href="assets/transitions.svg">Vector figure</a>.</figcaption>
+          <figcaption><strong>Reversal direction.</strong> Both bars use all valid expert-labeled trials as the denominator. Beneficial minus harmful reversal gives the accuracy change; unchanged decisions are not plotted. The five full-benchmark models use 1,989 items. The four additional endpoints use a 250-item pool and a different prompt protocol, so these are not cross-generation rankings. <a href="assets/paper.pdf?v=20261105#page=6">Paper, p. 6</a> · <a href="assets/transitions.svg">Vector figure</a>.</figcaption>
         </figure>
         <figure class="result-figure">
           <h3>How selective must revision be?</h3>
           <img src="assets/selectivity.svg?v=20261104" width="680" height="310" alt="Revision selectivity relative to break-even for nine models. Values above one indicate an accuracy gain; arrows connect anonymous and expert-labeled disagreement." loading="lazy">
-          <figcaption><strong>Selectivity relative to break-even.</strong> At 90% initial accuracy, a model must revise wrong answers nine times as often as correct ones to break even. Each model’s observed ratio is divided by its own break-even value; values above 1 indicate an accuracy gain. Arrows run from anonymous to expert-labeled disagreement. Gemini-3.6-Flash has no anonymous point because it corrected no initial errors in that condition. The shaded group uses a different sample and prompt protocol. <a href="assets/paper.pdf?v=20261104r2#page=7">Paper, p. 7</a> · <a href="assets/selectivity.svg?v=20261104">Vector figure</a>.</figcaption>
+          <figcaption><strong>Selectivity relative to break-even.</strong> At 90% initial accuracy, a model must revise wrong answers nine times as often as correct ones to break even. Each model’s observed ratio is divided by its own break-even value; values above 1 indicate an accuracy gain. Arrows run from anonymous to expert-labeled disagreement. Gemini-3.6-Flash has no anonymous point because it corrected no initial errors in that condition. The shaded group uses a different sample and prompt protocol. <a href="assets/paper.pdf?v=20261105#page=7">Paper, p. 7</a> · <a href="assets/selectivity.svg?v=20261104">Vector figure</a>.</figcaption>
         </figure>
         <figure class="result-figure">
           <h3>The additional effect of an expert label</h3>
@@ -154,7 +154,7 @@
             <div class="model-detail" data-model-detail aria-live="polite" aria-atomic="true"><p>Points show paired effects; whiskers show 95% item-bootstrap intervals. The vertical line marks zero effect.</p></div>
           </div>
           <img class="reversal-static" src="assets/reversal.svg?v=20261104" width="980" height="490" alt="Expert-minus-anonymous effects on reversal and accuracy with paired confidence intervals" loading="lazy">
-          <figcaption><strong>Reversal and accuracy are distinct.</strong> Both source-label effects use compatible anonymous/expert pairs; positive reversal effects do not necessarily imply accuracy loss. The figure shows both effects with 95% paired item-bootstrap intervals. The groups differ in items and prompt protocol. <a href="assets/paper.pdf?v=20261104r2#page=8">Paper, p. 8</a> · <a href="assets/reversal.svg?v=20261104">Full vector figure</a> · <a href="assets/results.json">Plotted data</a>.</figcaption>
+          <figcaption><strong>Reversal and accuracy are distinct.</strong> Both source-label effects use compatible anonymous/expert pairs; positive reversal effects do not necessarily imply accuracy loss. The figure shows both effects with 95% paired item-bootstrap intervals. The groups differ in items and prompt protocol. <a href="assets/paper.pdf?v=20261105#page=8">Paper, p. 8</a> · <a href="assets/reversal.svg?v=20261104">Full vector figure</a> · <a href="assets/results.json">Plotted data</a>.</figcaption>
         </figure>
       </div>
     </section>
@@ -165,7 +165,7 @@
         <p class="section-intro">Anonymous and expert-labeled opponents receive the same saved rationale. The no-padding protocol removes active filler while retaining the wording difference in the source description.</p>
         <figure class="result-figure control-figure">
           <img src="assets/rationale.svg" width="1282" height="529" alt="Paired expert-label and evidence-gate effects in the no-padding rationale control across seven models" loading="lazy">
-          <figcaption><strong>Source-label and evidence-gate effects.</strong> Points show paired estimates with 95% item-bootstrap intervals under the no-padding protocol. <a href="assets/paper.pdf?v=20261104r2#page=8">Rationale results, p. 8</a> · <a href="assets/paper.pdf?v=20261104r2#page=9">Evidence gating, p. 9</a>.</figcaption>
+          <figcaption><strong>Source-label and evidence-gate effects.</strong> Points show paired estimates with 95% item-bootstrap intervals under the no-padding protocol. <a href="assets/paper.pdf?v=20261105#page=8">Rationale results, p. 8</a> · <a href="assets/paper.pdf?v=20261105#page=9">Evidence gating, p. 9</a>.</figcaption>
         </figure>
         <div class="prose control-summary">
           <p><strong>The source label still matters when the argument is held fixed.</strong> GPT-4o-mini, Claude-Sonnet-4, and Gemini-2.5-Flash show additional reversals of +4.4 to +5.6 percentage points, with each exact paired test giving <em>p</em> &lt; .03. The four September endpoints show smaller positive estimates of +1.2 to +2.4 points, without per-model statistical significance. Their pooled effect is +2.0 points (95% CI [0.7, 3.3]), with questions resampled as clusters to retain dependence across models. This estimate uses 953 paired model–item observations from 249 questions; the September and July protocols are not pooled together.</p>
@@ -209,7 +209,7 @@ python reanalysis/render.py</code></pre>
       </div>
     </section>
   </main>
-  <footer><div class="container"><p>Yupeng Tang and Mingfeng Lin · Georgia Institute of Technology</p><p><a href="assets/paper.pdf?v=20261104r2">Paper</a><span aria-hidden="true">·</span><a href="https://github.com/yupengtang/when-expert-disagreement-hurts">Code</a><span aria-hidden="true">·</span><a href="mailto:ytang454@gatech.edu">Contact</a><span aria-hidden="true">·</span><a href="#top">Back to top ↑</a></p></div></footer>
+  <footer><div class="container"><p>Yupeng Tang and Mingfeng Lin · Georgia Institute of Technology</p><p><a href="assets/paper.pdf?v=20261105">Paper</a><span aria-hidden="true">·</span><a href="https://github.com/yupengtang/when-expert-disagreement-hurts">Code</a><span aria-hidden="true">·</span><a href="mailto:yupengtang@gatech.edu">Contact</a><span aria-hidden="true">·</span><a href="#top">Back to top ↑</a></p></div></footer>
 
   <dialog class="figure-dialog" aria-labelledby="figure-dialog-title">
     <div class="dialog-toolbar"><h2 id="figure-dialog-title">Figure</h2><div><a data-figure-original href="assets/methodology.svg" target="_blank" rel="noopener">Open original</a><button type="button" data-close-figure aria-label="Close figure">Close <span aria-hidden="true">×</span></button></div></div>
