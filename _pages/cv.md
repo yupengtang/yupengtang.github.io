@@ -43,13 +43,14 @@ Research Experience
 
 ## Research Intern
 
-**Stanford University** \| Palo Alto, CA (Remote) \| Sep. 2026 – Present
+**Stanford University** \| Stanford, CA (Hybrid) \| Oct. 2026 – Present
 
 With Dr. Yang M. Liu and Prof. F. Vankee Lin at the CogT Lab.
 
 * Selected for a Research Intern position through a formal application and interview process.
 * Developing multimodal distillation methods to improve the reliability and efficiency of vision-language models under distribution shift.
-* Researching foundation model robustness and generalization across few-lead, wearable, and cross-dataset ECG settings.
+* Adapting the ST-MEM ECG Transformer to single-lead input with LoRA and a contrastive (InfoNCE) loss that aligns each single-lead embedding to the frozen 12-lead embedding of the same record; on lead III this beats tuned 12-lead logit distillation by 0.045 AUROC on PTB-XL and holds on two unseen cohorts (Georgia, CPSC2018).
+* Across 12 leads, two backbones and five seeds, the gain grows with each lead's headroom to the 12-lead teacher (Spearman 0.56, permutation p = 0.007), while a same-label teacher from a different patient gives no gain, so the benefit comes from record-specific 12-lead signal.
 
 ## Research Assistant & Affiliate Researcher
 
@@ -57,8 +58,8 @@ With Dr. Yang M. Liu and Prof. F. Vankee Lin at the CogT Lab.
 
 With Prof. Mingfeng Lin. Research Assistant through May 2026, now continuing as an affiliate researcher. Research focuses on foundation model reliability, multimodal reasoning, and embodied AI.
 
-* Developed a controlled framework that isolates how disagreement and perceived source expertise alter LLM decisions independently of task evidence; across medical, scientific, and legal reasoning, 70.1% of expert-induced reversals changed initially correct decisions to incorrect ones ([Project page](https://yupengtang.github.io/when-expert-disagreement-hurts/)).
-* Developed a retrieval-conditioned auditing protocol that separates retrieval success from evidence use in multimodal RAG; under matched retrieval on DocVQA, the retrieved-but-unused rate ranged from 0% to 48.0% across three VLMs, and citation-aware reranking recovered part of the gap.
+* Built a branch-paired audit that isolates how disagreement and perceived source expertise change LLM decisions with the evidence held fixed; across 1,989 medical, scientific, and legal items (about 30K trials), the expert label alone added 2.6 to 6.9 points of answer reversals in four of five models ([Project page](https://yupengtang.github.io/when-expert-disagreement-hurts/)).
+* Evaluated whether vision-language models use evidence after it is retrieved, across 10 VLMs from 2B to 38B on VLMBias, DocVQA, and MRAG-Bench: models take the cheapest evidence channel, ignore image-only evidence unless it is redundant, and three pre-registered inference-time remedies do not close the gap.
 * Developed estimand-aware preference learning from heterogeneous LLM feedback by jointly modeling candidate quality, judge reliability, and systematic bias.
 * Designed constraint-aware visuomotor manipulation using task-frame transport and guarded fallback execution, improving success by 87.1 percentage points under severe layout shifts and 72.5 points under obstacle interference.
 * Built internal evaluation tooling for the group: a cross-platform Electron/React/FastAPI application covering 100+ API models, with structured LLM-as-a-Judge pipelines, SQLite persistence, and one-command packaging.
@@ -67,7 +68,7 @@ With Prof. Mingfeng Lin. Research Assistant through May 2026, now continuing as 
 
 **Independent Research** \| Atlanta, GA \| Sep. 2025 – Present
 
-* Designed belief-conditioned repair for frozen multimodal world models, improving future video and audio R@1 by 5.0 and 11.1 points without retraining the base model.
+* Designed belief-conditioned repair for frozen multimodal world models; under a source-disjoint evaluation it raised future video R@1 from 73.0% to 77.4% and audio R@1 from 39.6% to 51.8% without retraining the base model.
 * Established finite-sample guarantees for adaptive AI search, achieving near-oracle power with substantially less search while preserving rigorous statistical validity.
 * Probed narrative representations in open-weight language models, showing that apparent event understanding is driven largely by surface cues rather than structural representations.
 
@@ -96,11 +97,11 @@ Industry Experience
 
 **GMI Cloud** \| Mountain View, California \| May 2025 – Aug. 2025
 
-* Optimized Flux-Schnell (12B DiT) multimodal inference on H100 by implementing GPU memory persistence, offload strategies, and kernel-level tuning, achieving ~30 images/min and 1–2s latency per request on a single GPU compared to the 10–15× slower baseline.
-* Designed a multi-GPU–ready inference architecture (NCCL-compatible, ONNX to TensorRT conversion pipeline) and validated linear-scaling behavior on single-GPU prototypes to support future distributed deployment.
-* Built production-grade serving infrastructure including queueing, heartbeat monitoring, structured logging, GCS integration, and safety filtering, enabling stable long-running operations under high request volume.
-* Implemented a video super-resolution pipeline (Real-ESRGAN + FastAPI) with PSNR/SSIM evaluation, reducing 5s@24fps clip runtime by ~65% (284s to 100s) when integrated with Wan2.2 text-to-video.
-* Developed an AI-powered e-commerce try-on service (ComfyUI, Flux-Kontext + Segformer), delivering under 5s per image outfit changing, background removal, and style transfer via secure RESTful APIs.
+* Shipped FLUX.1-schnell (12B DiT) to production on H100 and cut latency about 19× (about 30 s to 1.6 s per image) by removing per-request CPU-GPU offloading and keeping the text encoders, Transformer, and VAE resident on the GPU (37 GB peak).
+* Engineered the serving loop: queue-pull workers, a heartbeat thread with retry, toxicity and NSFW filters, and GCS upload with backoff; scaled it to multi-GPU with torchrun, with rank 0 broadcasting each request and seed over NCCL; Dockerized for Kubernetes.
+* Unblocked the launch by root-causing a model-initialization hang in the autoencoder loading path and fixing heartbeat and billing integration failures with the platform team.
+* Built a Real-ESRGAN video super-resolution service (FastAPI, PSNR/SSIM evaluation); generating Wan2.2 at 360p and upscaling to 720p cut a 5 s clip from 284 s to about 100 s at 31 to 32 dB PSNR.
+* Built a batch virtual try-on pipeline on a diffusion try-on API: asynchronous submit and poll with tuned intervals, retries, and per-job fault isolation across model × garment sweeps.
 * Synthesized research papers and open-source model documentation to produce a technical review of multimodal generation systems, covering text-to-image, text-to-video, and super-resolution model families and summarizing key benchmark findings for internal evaluation.
 
 Open Source Contributions
@@ -118,7 +119,7 @@ Open Source Contributions
 * **LinkedIn / Liger-Kernel** (3 merged): Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior, made the norm opt-out flags cover the whole vision tower in five multimodal patchers, and made the Llama4 fused-loss forward honour `skip_logits`, which it had silently ignored, with regression coverage ([#1443](https://github.com/linkedin/Liger-Kernel/pull/1443) · [#1444](https://github.com/linkedin/Liger-Kernel/pull/1444) · [#1445](https://github.com/linkedin/Liger-Kernel/pull/1445)).
 * **Pyro / NumPyro** (2 merged): Fixed `BernoulliLogits` entropy returning NaN for large negative logits, and `PowerTransform` log-determinants overflowing to infinity in the tails, which had given `InverseGamma` infinite log-densities, by evaluating both in numerically stable forms ([#2331](https://github.com/pyro-ppl/numpyro/pull/2331) · [#2332](https://github.com/pyro-ppl/numpyro/pull/2332)).
 * **Axolotl** (1 merged): Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage ([#4011](https://github.com/axolotl-ai-cloud/axolotl/pull/4011)).
-* **Vesuvius Challenge / Volume Cartographer** (1 merged): Added an `--rng-seed` option to the `vc_grow_seg_from_seed` surface tracer so that a single-threaded run, including random start-point selection, reproduces byte-identical output ([#2145](https://github.com/ScrollPrize/villa/pull/2145)).
+* **Vesuvius Challenge / Volume Cartographer** (3 merged): Added an `--rng-seed` option to the `vc_grow_seg_from_seed` surface tracer so that a single-threaded run, including random start-point selection, reproduces byte-identical output, added `--blend_in_memory` to `vesuvius.predict` so patches blend in RAM instead of writing per-patch logits (one H100 region run: 3:34 to 2:45, 8.9 GB of logits to none), and extended it to `--num_parts` so a large region splits into Z-slab jobs that reproduce the single-process output exactly ([#2145](https://github.com/ScrollPrize/villa/pull/2145), [#2410](https://github.com/ScrollPrize/villa/pull/2410), [#2441](https://github.com/ScrollPrize/villa/pull/2441)).
 
 Competition Experience
 ======
@@ -167,7 +168,7 @@ Skills
 ======
 
 * **Foundation Models & Training:** PyTorch, TorchRL, Hugging Face (Transformers, Accelerate), Liger-Kernel, LangChain, TensorFlow, scikit-learn
-* **Inference & Serving:** CUDA, NCCL, TensorRT, ONNX, Ollama, paged-attention and quantized serving, FastAPI, Docker, Kubernetes
+* **Inference & Serving:** CUDA, NCCL, Ollama, paged-attention and quantized serving, FastAPI, Docker, Kubernetes
 * **Evaluation & Retrieval:** LLM-as-a-Judge pipelines, RAG and hybrid retrieval, vector search (ScaNN, BigQuery), constrained/structured decoding
 * **Clusters & Cloud:** SLURM on A100/H100/H200 clusters, AWS, GCP, Azure, Terraform, Apache Spark, Airflow, Databricks
 * **Languages:** Python, C/C++, Java, JavaScript, SQL, Bash/Shell, MATLAB, R, Julia

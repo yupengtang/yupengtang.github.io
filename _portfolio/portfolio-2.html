@@ -1,6 +1,6 @@
 ---
 title: "CacheFlow: Multi-Request LLM Inference Optimization"
-excerpt: "C++17/CUDA 12 inference engine extending llama.cpp with continuous batching, paged KV cache, custom attention kernels, and trie-based prefix reuse. 9.1× throughput scaling at 16 concurrent requests, 88% peak GPU cache utilization."
+excerpt: "C++17/CUDA 12 serving core with continuous batching, paged KV cache, custom attention kernels, and trie-based prefix reuse. On synthetic decode steps: 9.1× scheduler throughput at 16 concurrent requests, 88% peak KV-cache utilization."
 collection: portfolio
 ---
 
@@ -32,21 +32,20 @@ collection: portfolio
 code { background: #ffedd5; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #c2410c; }
 </style>
 
-<p>CacheFlow is a <strong>from-scratch inference engine</strong> built in C++17 and CUDA 12, extending llama.cpp's autoregressive decode path to handle multiple concurrent requests efficiently. Stock llama.cpp processes requests sequentially, so each request occupies the full KV cache until completion. CacheFlow replaces this with a <strong>batching-aware architecture</strong> modeled after vLLM's design, implementing every core subsystem independently: a preemptable scheduler, a block-based memory manager, paged attention CUDA kernels, and a trie-based prefix cache.</p>
+<p>CacheFlow is a <strong>from-scratch serving core</strong> built in C++17 and CUDA 12 for running many decode requests at once. A naive serving loop processes requests one at a time, so each request holds a full-length KV reservation until it finishes. CacheFlow replaces this with a <strong>batching-aware architecture</strong> modeled after vLLM's design, implementing every core subsystem independently: a preemptable scheduler, a block-based memory manager, paged attention CUDA kernels, and a trie-based prefix cache.</p>
 
-<p>The project contains approximately <strong>5,800 lines of C++ and CUDA</strong>, with six test suites covering each subsystem. The goal was to understand precisely why naive LLM serving is inefficient and to fix both root causes: sequential request processing and contiguous KV allocation that fragments GPU memory.</p>
+<p>The project contains approximately <strong>5,300 lines of C++ and CUDA</strong>, with six test suites covering each subsystem. The decode step does not yet call a model: it produces placeholder logits, so every number below measures the scheduler, KV-cache manager and attention path, not end-to-end model throughput. A llama.cpp backend is wired into the build but not yet integrated. The goal was to understand precisely why naive LLM serving is inefficient and to fix both root causes: sequential request processing and contiguous KV allocation that fragments GPU memory.</p>
 
 <div class="p9-metric-grid">
   <div class="p9-metric-card"><div class="p9-metric-num">9.1×</div><div class="p9-metric-label">Throughput @ 16 concurrent</div></div>
   <div class="p9-metric-card"><div class="p9-metric-num">6.2×</div><div class="p9-metric-label">Throughput @ 8 concurrent</div></div>
-  <div class="p9-metric-card"><div class="p9-metric-num">1.8×</div><div class="p9-metric-label">vs. stock llama.cpp (8 req)</div></div>
   <div class="p9-metric-card"><div class="p9-metric-num">88%</div><div class="p9-metric-label">Peak GPU cache utilization</div></div>
   <div class="p9-metric-card"><div class="p9-metric-num">~50%</div><div class="p9-metric-label">Prefill time reduction (prefix reuse)</div></div>
 </div>
 
 <div class="p9-tags">
   <span class="p9-tag">C++17</span><span class="p9-tag">CUDA 12</span>
-  <span class="p9-tag">llama.cpp</span><span class="p9-tag">Paged Attention</span>
+  <span class="p9-tag">Paged Attention</span>
   <span class="p9-tag">Continuous Batching</span><span class="p9-tag">V100 / A100</span>
   <span class="p9-tag">KV Cache Management</span><span class="p9-tag">Prefix Caching</span>
 </div>
@@ -57,14 +56,14 @@ code { background: #ffedd5; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 
 <h2>Root Causes of Naive Serving Inefficiency</h2>
 
-<p>Two independent bottlenecks make stock llama.cpp unsuitable for concurrent traffic:</p>
+<p>Two independent bottlenecks make naive serving unsuitable for concurrent traffic:</p>
 
 <ol>
   <li><strong>Sequential processing.</strong> One request at a time means GPU compute idles between the prefill of one request and the next. Continuous batching eliminates this by interleaving decode steps across active requests.</li>
   <li><strong>Contiguous KV allocation.</strong> Reserving a maximum-context-length contiguous block per request fragments GPU memory quickly, because a request using 512 of 4096 reserved tokens blocks the remainder. Even when physical memory is available, the allocator cannot serve a new request. Block-based management with logical-to-physical mapping solves this entirely.</li>
 </ol>
 
-<div class="p9-callout">These are the same two problems vLLM solves in Python. CacheFlow re-implements the same ideas in C++ at the llama.cpp layer, with hand-written CUDA kernels for the non-contiguous attention access pattern.</div>
+<div class="p9-callout">These are the same two problems vLLM solves in Python. CacheFlow re-implements the same ideas in C++, with hand-written CUDA kernels for the non-contiguous attention access pattern.</div>
 
 <hr/>
 
@@ -163,9 +162,9 @@ code { background: #ffedd5; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   </tbody>
 </table>
 
-<p>The 1.8× throughput improvement over stock llama.cpp at 8 concurrent requests comes entirely from eliminating sequential request processing. The same GPU compute now serves multiple requests simultaneously rather than idling between them. The 34% reduction in latency variance over 10K-token generations comes from the block manager's ability to maintain high cache utilization without fragmentation-induced stalls.</p>
+<p>These runs use synthetic decode steps with no model weights, so the speedups show how much scheduling and memory-management overhead the batching design removes. They are not a comparison against llama.cpp or vLLM; that needs the model backend connected first.</p>
 
-<div class="p9-callout">The gap between 6.2× (8 req) and 9.1× (16 req) reflects batching efficiency gains: larger batches better saturate GPU compute during each decode step, raising arithmetic intensity above the memory-bandwidth-bound threshold for attention.</div>
+<div class="p9-callout">The gap between 6.2× (8 req) and 9.1× (16 req) comes from amortizing per-step scheduling and attention-launch overhead over more requests. With real model weights, the decode step would add compute that these numbers do not include.</div>
 
 <hr/>
 

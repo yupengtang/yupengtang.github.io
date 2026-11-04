@@ -1,6 +1,6 @@
 ---
 title: "High-Throughput Diffusion Inference System"
-excerpt: "Production inference system for a 12B-parameter Diffusion Transformer on H100 clusters, achieving 20-30 images/min/GPU at 1-3s latency with multi-GPU NCCL coordination"
+excerpt: "Production inference for a 12B-parameter Diffusion Transformer on H100: about 30 s to 1.6 s per image by keeping every model stage resident on the GPU, with a torchrun worker that broadcasts requests over NCCL"
 collection: portfolio
 ---
 
@@ -36,11 +36,11 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
 <p>What made this project challenging wasn't running the model once. It was making it run <strong>thousands of times a day</strong> without dropping a request, leaking memory, or going silent. I built the entire production wrapper from scratch: distributed multi-GPU coordination, request lifecycle management, cloud storage integration, health monitoring, and prompt safety checking. Importantly, while the company platform already supported LLMs and video models, this was their <strong>first image generation model deployment</strong>, setting the foundation for the broader Flux series and other state-of-the-art open-source image models.</p>
 
 <div class="p1-metric-grid">
-  <div class="p1-metric-card"><div class="p1-metric-num">20–30</div><div class="p1-metric-label">Images / Min / GPU</div></div>
-  <div class="p1-metric-card"><div class="p1-metric-num">1–3s</div><div class="p1-metric-label">Per-Image Latency</div></div>
+  <div class="p1-metric-card"><div class="p1-metric-num">37 GB</div><div class="p1-metric-label">Peak GPU Memory</div></div>
+  <div class="p1-metric-card"><div class="p1-metric-num">1.6 s</div><div class="p1-metric-label">Per-Image Latency</div></div>
   <div class="p1-metric-card"><div class="p1-metric-num">12B</div><div class="p1-metric-label">Model Parameters</div></div>
   <div class="p1-metric-card"><div class="p1-metric-num">4</div><div class="p1-metric-label">Denoising Steps</div></div>
-  <div class="p1-metric-card"><div class="p1-metric-num">10–15×</div><div class="p1-metric-label">Throughput Gain</div></div>
+  <div class="p1-metric-card"><div class="p1-metric-num">~19×</div><div class="p1-metric-label">Latency Reduction</div></div>
 </div>
 
 <div class="p1-tags">
@@ -69,13 +69,13 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <div class="p1-step">4. Infinite Serve Loop</div>
 </div>
 
-<p>The biggest initial bottleneck was the I/O overhead. The original implementation was designed for offline batch jobs, loading the model from CPU to GPU for every request, which resulted in a ~30-second generation time. By implementing <strong>GPU memory persistence</strong>, all four model components (FLUX DiT, T5 encoder, CLIP encoder, VAE decoder) are loaded to the GPU at startup and stay resident permanently. The total footprint is around 30–40GB, which fits comfortably on an H100 without swapping. Combined with pre-allocated tensors, 4-step sampling, and <code>torch.inference_mode()</code> for faster forward passes, this eliminated the I/O bottleneck and slashed per-request latency from <strong>~30 seconds to 1–2 seconds</strong>.</p>
+<p>The biggest initial bottleneck was the I/O overhead. The original implementation was designed for offline batch jobs, loading the model from CPU to GPU for every request, which resulted in a ~30-second generation time. By implementing <strong>GPU memory persistence</strong>, all four model components (FLUX DiT, T5 encoder, CLIP encoder, VAE decoder) are loaded to the GPU at startup and stay resident permanently. The measured peak is about 37 GB, which fits comfortably on an H100 without swapping. Combined with 4-step sampling and <code>torch.inference_mode()</code>, this removed the transfer bottleneck and cut per-request latency from <strong>about 30 seconds to 1.6 seconds</strong>.</p>
 
 <div class="p1-section">
   <h3>Data-Parallel Distributed Inference (NCCL)</h3>
 </div>
 
-<p>To handle concurrent traffic, the system uses a <strong>data-parallel architecture</strong>. The model fits comfortably on a single H100, so instead of tensor parallelism, each GPU runs an independent worker that pulls from a shared async queue. The system launches via <code>torchrun</code> and initializes an NCCL process group for multi-GPU coordination and synchronization. Adding GPUs is a config change, not a code change. The distributed coordination protocol:</p>
+<p>The model fits on a single H100, so the worker needs no tensor parallelism. It launches via <code>torchrun</code> with one process per GPU and an NCCL process group; rank 0 owns all network I/O and every rank stays in lockstep on the same request. More capacity comes from running more worker replicas behind the queue. The coordination protocol:</p>
 
 <ul>
   <li><strong>Rank-0 handles all I/O.</strong> Queue polling, status updates, heartbeats, and cloud uploads all run on the primary process. Worker GPUs don't touch the network.</li>
@@ -90,7 +90,7 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <h3>Health Monitoring (Heartbeat)</h3>
 </div>
 
-<p>A daemon thread sends a periodic heartbeat POST to the queue scheduler every 30 seconds. The heartbeat reports worker status (<code>"ready"</code> / <code>"occupied"</code>), GPU memory usage, generation latency, and error rates. The system automatically alerts if latency exceeds 5 seconds or error rates exceed 1%. If a heartbeat is missing, the system flags the worker as unhealthy and removes it from the pool. Without this, a silently-dead node (OOM kill, GPU hang, network partition) would cause in-flight jobs to disappear permanently.</p>
+<p>A daemon thread sends a periodic heartbeat POST to the queue scheduler every 30 seconds. The heartbeat reports the worker ID, available GPUs, status (<code>"ready"</code> / <code>"occupied"</code>) and a timestamp, retrying with exponential backoff. The queue scheduler uses missing heartbeats to mark a worker unhealthy and stop dispatching to it. Without this, a silently-dead node (OOM kill, GPU hang, network partition) would cause in-flight jobs to disappear permanently.</p>
 
 <div class="p1-section">
   <h3>Request Lifecycle</h3>
@@ -122,13 +122,13 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <div class="p1-step">VAE Decode → Pixels</div>
 </div>
 
-<p>An optional <code>--offload</code> flag supports CPU offload for memory-constrained environments, but trades ~3–5× latency increase for lower VRAM usage.</p>
+<p>An optional <code>--offload</code> flag supports CPU offload for memory-constrained environments, but at about 19× the latency (about 30 s per image instead of 1.6 s).</p>
 
 <h3>Content Safety Pipeline</h3>
 <p>Every request passes a two-stage safety check before the model processes it:</p>
 <ol>
   <li><strong>Text-level filtering</strong>: Hugging Face's <code>toxic-bert</code> scans the prompt and rejects flagged inputs before any GPU compute is spent.</li>
-  <li><strong>Image-level classification</strong>: a custom NSFW image classifier runs on every generated image before the upload step. Both stages run on rank-0 only, with zero distributed overhead.</li>
+  <li><strong>Image-level classification</strong>: an NSFW image classifier (Falconsai/nsfw_image_detection) runs on every generated image before the upload step. Both stages run on rank-0 only, with zero distributed overhead.</li>
 </ol>
 
 <hr/>
@@ -140,18 +140,16 @@ code { background: #f0edff; padding: 0.1rem 0.45rem; border-radius: 4px; font-si
   <tbody>
     <tr><td>Output resolution</td><td>1360 × 768</td></tr>
     <tr><td>Denoising steps</td><td>4 (Flux-Schnell)</td></tr>
-    <tr><td>Per-image latency</td><td><strong>~1–3 seconds</strong></td></tr>
-    <tr><td>Throughput per GPU</td><td><strong>20–30 images / minute</strong></td></tr>
-    <tr><td>VRAM usage</td><td>~8–12 GB (model-dependent)</td></tr>
-    <tr><td>Multi-GPU scaling</td><td>Linear (tested up to multi-node)</td></tr>
+    <tr><td>Per-image latency</td><td><strong>~1.6 seconds</strong> (about 30 s with offloading)</td></tr>
+    <tr><td>VRAM usage</td><td>~37 GB peak (all stages resident)</td></tr>
   </tbody>
 </table>
 
 <hr/>
 
-<h2>Scalability &amp; TensorRT Optimization</h2>
+<h2>Scaling and Next Steps</h2>
 
-<p>The stateless worker design makes horizontal scaling straightforward: handling 10× more traffic simply means adding more GPU nodes and placing a Redis cache in front of the queue. To optimize single-card performance further, the next phase of the project involves <strong>ONNX export and TensorRT optimization</strong>. By fusing operations, minimizing kernel overhead, and executing in FP16, TensorRT is expected to reduce inference latency by another 30–50%.</p>
+<p>The stateless worker design makes horizontal scaling straightforward: more traffic means more worker replicas pulling from the same queue. The forked FLUX repository ships ONNX and TensorRT export code; I did not get to building engines from it before the internship ended, so the 1.6 s figure is plain PyTorch in bf16.</p>
 
 <hr/>
 

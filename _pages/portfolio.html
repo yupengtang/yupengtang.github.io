@@ -308,6 +308,8 @@ author_profile: true
         <div class="osc-prs" aria-label="Vesuvius Challenge Volume Cartographer upstream pull requests">
           <span>Upstream PR</span>
           <a href="https://github.com/ScrollPrize/villa/pull/2145" target="_blank" rel="noopener" aria-label="Vesuvius Challenge Volume Cartographer pull request 2145">#2145</a>
+          <a href="https://github.com/ScrollPrize/villa/pull/2410" target="_blank" rel="noopener" aria-label="Vesuvius Challenge pull request 2410">#2410</a>
+          <a href="https://github.com/ScrollPrize/villa/pull/2441" target="_blank" rel="noopener" aria-label="Vesuvius Challenge pull request 2441">#2441</a>
         </div>
       </div>
     </article>
@@ -352,13 +354,13 @@ author_profile: true
     </div>
     {% include project-schematic.html kind="inference" %}
     <h3 class="pc-title">CacheFlow: Multi-Request LLM Inference Engine</h3>
-    <p class="pc-excerpt">C++17/CUDA 12 inference engine with continuous batching, paged KV cache, custom paged attention kernels, and trie-based prefix reuse. Built on llama.cpp.</p>
+    <p class="pc-excerpt">C++17/CUDA 12 serving core with continuous batching, a paged KV cache, paged attention kernels, and trie-based prefix reuse, benchmarked on synthetic decode steps.</p>
     <div class="pc-metrics">
       <span class="pc-metric"><strong>9.1&times;</strong> throughput scaling</span>
       <span class="pc-metric"><strong>88%</strong> GPU cache util</span>
     </div>
     <div class="pc-tags">
-      <span>C++17</span><span>CUDA 12</span><span>Paged Attn</span><span>llama.cpp</span>
+      <span>C++17</span><span>CUDA 12</span><span>Paged Attn</span><span>Scheduling</span>
     </div>
   </a>
 
@@ -368,13 +370,13 @@ author_profile: true
       <span class="pc-type">Industry</span>
     </div>
     <h3 class="pc-title">High-Throughput Diffusion Inference System</h3>
-    <p class="pc-excerpt">Production inference for a 12B DiT on H100 clusters. GPU memory persistence, NCCL multi-GPU coordination, and full production lifecycle.</p>
+    <p class="pc-excerpt">Production inference for a 12B DiT on H100. Resident models instead of per-request offloading, NCCL request broadcast under torchrun, and the full request lifecycle.</p>
     <div class="pc-metrics">
-      <span class="pc-metric"><strong>10-15&times;</strong> speedup</span>
-      <span class="pc-metric"><strong>1-3s</strong> latency</span>
+      <span class="pc-metric"><strong>~19&times;</strong> speedup</span>
+      <span class="pc-metric"><strong>1.6 s</strong> per image</span>
     </div>
     <div class="pc-tags">
-      <span>PyTorch</span><span>NCCL</span><span>H100</span><span>TensorRT</span>
+      <span>PyTorch</span><span>NCCL</span><span>H100</span><span>Docker</span>
     </div>
   </a>
 

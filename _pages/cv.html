@@ -144,8 +144,8 @@ redirect_from:
     <div class="cv-card">
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">SEP 2026 - PRESENT</div>
-          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Palo Alto, CA &middot; Remote</div>
+          <div class="cv-badge">OCT 2026 - PRESENT</div>
+          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Stanford, CA &middot; Hybrid</div>
         </div>
         <div class="cv-item-content">
           <div class="cv-title">Research Intern</div>
@@ -155,7 +155,8 @@ redirect_from:
             <ul>
               <li>Selected for a Research Intern position through a formal application and interview process.</li>
               <li>Developing multimodal distillation methods to improve the reliability and efficiency of vision-language models under distribution shift.</li>
-              <li>Researching foundation model robustness and generalization across few-lead, wearable, and cross-dataset ECG settings.</li>
+              <li>Adapting the ST-MEM ECG Transformer to single-lead input with LoRA and a contrastive (InfoNCE) loss that aligns each single-lead embedding to the frozen 12-lead embedding of the same record; on lead III this beats tuned 12-lead logit distillation by 0.045 AUROC on PTB-XL and holds on two unseen cohorts (Georgia, CPSC2018).</li>
+              <li>Across 12 leads, two backbones and five seeds, the gain grows with each lead's headroom to the 12-lead teacher (Spearman 0.56, permutation p = 0.007), while a same-label teacher from a different patient gives no gain, so the benefit comes from record-specific 12-lead signal.</li>
             </ul>
           </div>
         </div>
@@ -172,8 +173,8 @@ redirect_from:
           <div class="cv-desc">
             <p>With Prof. Mingfeng Lin. Research Assistant through May 2026, now continuing as an affiliate researcher. Research focuses on foundation model reliability, multimodal reasoning, and embodied AI.</p>
             <ul>
-              <li>Developed a controlled framework that isolates how disagreement and perceived source expertise alter LLM decisions independently of task evidence; across medical, scientific, and legal reasoning, 70.1% of expert-induced reversals changed initially correct decisions to incorrect ones (<a href="https://yupengtang.github.io/when-expert-disagreement-hurts/" target="_blank" rel="noopener">Project page</a>).</li>
-              <li>Developed a retrieval-conditioned auditing protocol that separates retrieval success from evidence use in multimodal RAG; under matched retrieval on DocVQA, the retrieved-but-unused rate ranged from 0% to 48.0% across three VLMs, and citation-aware reranking recovered part of the gap.</li>
+              <li>Built a branch-paired audit that isolates how disagreement and perceived source expertise change LLM decisions with the evidence held fixed; across 1,989 medical, scientific, and legal items (about 30K trials), the expert label alone added 2.6 to 6.9 points of answer reversals in four of five models (<a href="https://yupengtang.github.io/when-expert-disagreement-hurts/" target="_blank" rel="noopener">Project page</a>).</li>
+              <li>Evaluated whether vision-language models use evidence after it is retrieved, across 10 VLMs from 2B to 38B on VLMBias, DocVQA, and MRAG-Bench: models take the cheapest evidence channel, ignore image-only evidence unless it is redundant, and three pre-registered inference-time remedies do not close the gap.</li>
               <li>Developed estimand-aware preference learning from heterogeneous LLM feedback by jointly modeling candidate quality, judge reliability, and systematic bias.</li>
               <li>Designed constraint-aware visuomotor manipulation using task-frame transport and guarded fallback execution, improving success by 87.1 percentage points under severe layout shifts and 72.5 points under obstacle interference.</li>
               <li>Built internal evaluation tooling for the group: a cross-platform Electron/React/FastAPI application covering 100+ API models, with structured LLM-as-a-Judge pipelines, SQLite persistence, and one-command packaging.</li>
@@ -192,7 +193,7 @@ redirect_from:
           <div class="cv-org">Independent Research</div>
           <div class="cv-desc">
             <ul>
-              <li>Designed belief-conditioned repair for frozen multimodal world models, improving future video and audio R@1 by 5.0 and 11.1 points without retraining the base model.</li>
+              <li>Designed belief-conditioned repair for frozen multimodal world models; under a source-disjoint evaluation it raised future video R@1 from 73.0% to 77.4% and audio R@1 from 39.6% to 51.8% without retraining the base model.</li>
               <li>Established finite-sample guarantees for adaptive AI search, achieving near-oracle power with substantially less search while preserving rigorous statistical validity.</li>
               <li>Probed narrative representations in open-weight language models, showing that apparent event understanding is driven largely by surface cues rather than structural representations.</li>
             </ul>
@@ -258,11 +259,11 @@ redirect_from:
           <div class="cv-org"><a href="https://www.gmicloud.ai" target="_blank">GMI Cloud</a></div>
           <div class="cv-desc">
             <ul>
-              <li>Optimized Flux-Schnell (12B DiT) multimodal inference on H100 by implementing GPU memory persistence, offload strategies, and kernel-level tuning, achieving ~30 images/min and 1–2s latency per request on a single GPU compared to the 10–15× slower baseline.</li>
-              <li>Designed a multi-GPU–ready inference architecture (NCCL-compatible, ONNX → TensorRT conversion pipeline) and validated linear-scaling behavior on single-GPU prototypes to support future distributed deployment.</li>
-              <li>Built production-grade serving infrastructure including queueing, heartbeat monitoring, structured logging, GCS integration, and safety filtering, enabling stable long-running operations under high request volume.</li>
-              <li>Implemented a video super-resolution pipeline (Real-ESRGAN + FastAPI) with PSNR/SSIM evaluation, reducing 5s@24fps clip runtime by ~65% (284s → 100s) when integrated with Wan2.2 text-to-video.</li>
-              <li>Developed an AI-powered e-commerce try-on service (ComfyUI, Flux-Kontext + Segformer), delivering &lt;5s per image outfit changing, background removal, and style transfer via secure RESTful APIs.</li>
+              <li>Shipped FLUX.1-schnell (12B DiT) to production on H100 and cut latency about 19× (about 30 s to 1.6 s per image) by removing per-request CPU-GPU offloading and keeping the text encoders, Transformer, and VAE resident on the GPU (37 GB peak).</li>
+              <li>Engineered the serving loop: queue-pull workers, a heartbeat thread with retry, toxicity and NSFW filters, and GCS upload with backoff; scaled it to multi-GPU with torchrun, with rank 0 broadcasting each request and seed over NCCL; Dockerized for Kubernetes.</li>
+              <li>Unblocked the launch by root-causing a model-initialization hang in the autoencoder loading path and fixing heartbeat and billing integration failures with the platform team.</li>
+              <li>Built a Real-ESRGAN video super-resolution service (FastAPI, PSNR/SSIM evaluation); generating Wan2.2 at 360p and upscaling to 720p cut a 5 s clip from 284 s to about 100 s at 31 to 32 dB PSNR.</li>
+              <li>Built a batch virtual try-on pipeline on a diffusion try-on API: asynchronous submit and poll with tuned intervals, retries, and per-job fault isolation across model × garment sweeps.</li>
               <li>Synthesized research papers and open-source model documentation to produce a technical review of multimodal generation systems, covering text-to-image, text-to-video, and super-resolution model families and summarizing key benchmark findings for internal evaluation.</li>
             </ul>
           </div>
@@ -443,7 +444,7 @@ redirect_from:
         <div class="cv-item-content">
           <div class="cv-title">Vesuvius Challenge / Volume Cartographer</div>
           <div class="cv-desc">
-            <p>Added an <code>--rng-seed</code> option to the <code>vc_grow_seg_from_seed</code> surface tracer so that a single-threaded run, including random start-point selection, reproduces byte-identical output. See <a href="https://github.com/ScrollPrize/villa/pull/2145" target="_blank" rel="noopener">#2145</a>.</p>
+            <p>Added an <code>--rng-seed</code> option to the <code>vc_grow_seg_from_seed</code> surface tracer so that a single-threaded run, including random start-point selection, reproduces byte-identical output. Added <code>--blend_in_memory</code> to <code>vesuvius.predict</code>, which blends patches in RAM instead of writing per-patch logits (one H100 region run: 3:34 to 2:45, 8.9 GB of logits to none, 1 voxel in 719 million different), and extended it to <code>--num_parts</code> so a large region splits into independent Z-slab jobs that reproduce the single-process output exactly. See <a href="https://github.com/ScrollPrize/villa/pull/2145" target="_blank" rel="noopener">#2145</a> &middot; <a href="https://github.com/ScrollPrize/villa/pull/2410" target="_blank" rel="noopener">#2410</a> &middot; <a href="https://github.com/ScrollPrize/villa/pull/2441" target="_blank" rel="noopener">#2441</a>.</p>
           </div>
         </div>
       </div>
@@ -475,8 +476,6 @@ redirect_from:
         <div class="tech-category-label">Inference &amp; Serving</div>
         <div class="tech-grid">
           <span class="tech-item"><span class="ti-plain" style="color:#6366f1;">&#9889;</span> CUDA / NCCL</span>
-          <span class="tech-item"><span class="ti-plain" style="color:#76b900;">&#9654;</span> TensorRT</span>
-          <span class="tech-item"><span class="ti-plain" style="color:#10b981;">&#8767;</span> ONNX</span>
           <span class="tech-item"><span class="ti-plain" style="color:#0f766e;">&#9679;</span> Ollama</span>
           <span class="tech-item"><span class="ti-plain" style="color:#0f766e;">&#9679;</span> Paged Attention</span>
           <span class="tech-item"><i class="devicon-fastapi-plain colored"></i> FastAPI</span>
