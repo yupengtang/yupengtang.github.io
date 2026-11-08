@@ -84,32 +84,6 @@ redirect_from:
           <div class="cv-location"><i class="fas fa-check-circle"></i> Already Passed First-Round Review (Phase 1)</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">TRACE: Typed Repair with Abstention for Corrupted Evidence in Frozen Multimodal World Models</div>
-          <div class="cv-desc">
-            <p><strong>Y. Tang</strong>.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-item-meta">
-          <div class="cv-badge">AAAI 2027</div>
-          <div class="cv-location"><i class="fas fa-check-circle"></i> Already Passed First-Round Review (Phase 1)</div>
-        </div>
-        <div class="cv-item-content">
-          <div class="cv-title">No Free Surprise: Sharp Evidence Guarantees for Data-Adaptive Scientific Search</div>
-          <div class="cv-desc">
-            <p><strong>Y. Tang</strong>.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-item-meta">
-          <div class="cv-badge">AAAI 2027</div>
-          <div class="cv-location"><i class="fas fa-check-circle"></i> Already Passed First-Round Review (Phase 1)</div>
-        </div>
-        <div class="cv-item-content">
           <div class="cv-title">Measure before You Rank: Estimand-Aware Calibration of LLM Judge Panels</div>
           <div class="cv-desc">
             <p><strong>Y. Tang</strong>, M. Lin.</p>
@@ -119,16 +93,43 @@ redirect_from:
 
       <div class="cv-item">
         <div class="cv-item-meta">
-          <div class="cv-badge">ICRA 2027</div>
+          <div class="cv-badge">AAAI 2027</div>
+          <div class="cv-location"><i class="fas fa-check-circle"></i> Already Passed First-Round Review (Phase 1)</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">TRACE: Typed Repair with Abstention for Corrupted Evidence in Frozen Multimodal World Models</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">CVPR 2027</div>
           <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">GuardedCoMoT: Matched Interventions for Geometric-Prior Execution under Visuomotor Layout Shift</div>
+          <div class="cv-title">Group-Relative Post-Training Erases Rare Futures: Distribution-Correct Reinforcement Learning for World Models</div>
+          <div class="cv-desc">
+            <p><strong>Y. Tang</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-item-meta">
+          <div class="cv-badge">CVPR 2027</div>
+          <div class="cv-location"><i class="fas fa-file-alt"></i> Under Review</div>
+        </div>
+        <div class="cv-item-content">
+          <div class="cv-title">Retrieved but Ignored: How Vision-Language Models Use Images and Text in Multimodal RAG</div>
           <div class="cv-desc">
             <p><strong>Y. Tang</strong>, M. Lin.</p>
           </div>
         </div>
       </div>
+
 
 
     </div>
@@ -153,10 +154,8 @@ redirect_from:
           <div class="cv-desc">
             <p>With Dr. Yang M. Liu and Prof. F. Vankee Lin at the CogT Lab.</p>
             <ul>
-              <li>Selected for a Research Intern position through a formal application and interview process.</li>
-              <li>Developing multimodal distillation methods to improve the reliability and efficiency of vision-language models under distribution shift.</li>
-              <li>Adapting the ST-MEM ECG Transformer to single-lead input with LoRA and a contrastive (InfoNCE) loss that aligns each single-lead embedding to the frozen 12-lead embedding of the same record; on lead III this beats tuned 12-lead logit distillation by 0.045 AUROC on PTB-XL and holds on two unseen cohorts (Georgia, CPSC2018).</li>
-              <li>Across 12 leads, two backbones and five seeds, the gain grows with each lead's headroom to the 12-lead teacher (Spearman 0.56, permutation p = 0.007), while a same-label teacher from a different patient gives no gain, so the benefit comes from record-specific 12-lead signal.</li>
+              <li>Proposed same-record representation alignment, a distillation method for foundation models that see richer input in training than at deployment: a LoRA-adapted student that receives a single ECG lead is aligned to a frozen teacher's 12-lead embedding of the same record, at no added inference cost. It outperforms tuned logit distillation on two unseen external cohorts and raises macro AUROC by 0.084 on real handheld-device recordings.</li>
+              <li>Demonstrated through pre-specified controls that the gain comes from record-specific teacher representations rather than shared labels, since a teacher taken from a different patient with identical labels gives no gain, and that it grows with the student's headroom to the teacher across 12 leads and two backbones (Spearman 0.56, permutation p = 0.007).</li>
             </ul>
           </div>
         </div>
@@ -171,31 +170,11 @@ redirect_from:
           <div class="cv-title">Research Assistant &amp; Affiliate Researcher</div>
           <div class="cv-org">Georgia Institute of Technology</div>
           <div class="cv-desc">
-            <p>With Prof. Mingfeng Lin. Research Assistant through May 2026, now continuing as an affiliate researcher. Research focuses on foundation model reliability, multimodal reasoning, and embodied AI.</p>
+            <p>With Prof. Mingfeng Lin, alongside several independent projects. Research Assistant through May 2026, now continuing as an affiliate researcher.</p>
             <ul>
-              <li>Built a branch-paired audit that isolates how disagreement and perceived source expertise change LLM decisions with the evidence held fixed; across 1,989 medical, scientific, and legal items (about 30K trials), the expert label alone added 2.6 to 6.9 points of answer reversals in four of five models (<a href="https://yupengtang.github.io/when-expert-disagreement-hurts/" target="_blank" rel="noopener">Project page</a>).</li>
-              <li>Evaluated whether vision-language models use evidence after it is retrieved, across 10 VLMs from 2B to 38B on VLMBias, DocVQA, and MRAG-Bench: models take the cheapest evidence channel, ignore image-only evidence unless it is redundant, and three pre-registered inference-time remedies do not close the gap.</li>
-              <li>Developed estimand-aware preference learning from heterogeneous LLM feedback by jointly modeling candidate quality, judge reliability, and systematic bias.</li>
-              <li>Designed constraint-aware visuomotor manipulation using task-frame transport and guarded fallback execution, improving success by 87.1 percentage points under severe layout shifts and 72.5 points under obstacle interference.</li>
-              <li>Built internal evaluation tooling for the group: a cross-platform Electron/React/FastAPI application covering 100+ API models, with structured LLM-as-a-Judge pipelines, SQLite persistence, and one-command packaging.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="cv-item">
-        <div class="cv-item-meta">
-          <div class="cv-badge">SEP 2025 - PRESENT</div>
-          <div class="cv-location"><i class="fas fa-map-marker-alt"></i> Atlanta, GA</div>
-        </div>
-        <div class="cv-item-content">
-          <div class="cv-title">Independent Researcher</div>
-          <div class="cv-org">Independent Research</div>
-          <div class="cv-desc">
-            <ul>
-              <li>Designed belief-conditioned repair for frozen multimodal world models; under a source-disjoint evaluation it raised future video R@1 from 73.0% to 77.4% and audio R@1 from 39.6% to 51.8% without retraining the base model.</li>
-              <li>Established finite-sample guarantees for adaptive AI search, achieving near-oracle power with substantially less search while preserving rigorous statistical validity.</li>
-              <li>Probed narrative representations in open-weight language models, showing that apparent event understanding is driven largely by surface cues rather than structural representations.</li>
+              <li><strong>Reliability and evaluation:</strong> Designed a controlled audit of how LLMs revise answers under disagreement with the evidence held fixed: across 1,989 medical, scientific, and legal decisions, expert disagreement cut accuracy by up to 16.1 points (NeurIPS 2026; <a href="https://yupengtang.github.io/when-expert-disagreement-hurts/" target="_blank" rel="noopener">Project page</a>). Developed ACT-Council, a Bradley-Terry aggregator that learns each LLM judge's reliability by domain; its domain-conditioned probabilities halved the Brier score on RewardBench (0.142 to 0.071) and flagged injected adversarial judges as least reliable in 93% of task cells.</li>
+              <li><strong>Post-training and test-time scaling:</strong> Demonstrated that GRPO post-training narrows the predictive distribution of video world models and erases rare outcomes, and derived DCPT, a one-line correction that was the only proper-score variant to keep the distribution intact on four pretrained world models up to 4B parameters. Proved that pass@K, the standard test-time scaling metric, can rank systems opposite to the majority-vote accuracy they deliver in deployment, and derived sharp bounds that predict deployed accuracy from a fraction of the sampling budget.</li>
+              <li><strong>Multimodal reasoning:</strong> Developed TRACE, a repair layer for frozen multimodal world models that identifies the type of evidence corruption and either repairs it or abstains; without retraining the base model, it raised future-audio retrieval R@1 from 39.6% to 51.8% and video R@1 from 73.0% to 77.4%. Benchmarked 10 vision-language models (2B to 38B) on whether they use retrieved evidence, and found that they rely on whichever channel is cheapest to read and ignore image-only evidence unless the same information also appears in text.</li>
             </ul>
           </div>
         </div>
@@ -256,7 +235,7 @@ redirect_from:
         </div>
         <div class="cv-item-content">
           <div class="cv-title">Machine Learning Engineer Intern</div>
-          <div class="cv-org"><a href="https://www.gmicloud.ai" target="_blank">GMI Cloud</a></div>
+          <div class="cv-org"><a href="https://www.gmicloud.ai/" target="_blank" rel="noopener">GMI Cloud</a></div>
           <div class="cv-desc">
             <ul>
               <li>Shipped FLUX.1-schnell (12B DiT) to production on H100 and cut latency about 19× (about 30 s to 1.6 s per image) by removing per-request CPU-GPU offloading and keeping the text encoders, Transformer, and VAE resident on the GPU (37 GB peak).</li>
@@ -283,12 +262,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/pytorch/rl/pulls?q=is:pr+is:merged+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 5 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">PyTorch / TorchRL</div>
+          <div class="cv-title"><a href="https://github.com/pytorch/rl" target="_blank" rel="noopener">PyTorch / TorchRL</a></div>
           <div class="cv-desc">
-            <p>Fixed SAC loss configuration, replay-buffer checkpoint recovery, CrossQ key remapping, CSV logger step counting, and a spec shape operation that raised on <code>Choice</code>, each with regression coverage. See <a href="https://github.com/pytorch/rl/pull/4338" target="_blank" rel="noopener">#4338</a> &middot; <a href="https://github.com/pytorch/rl/pull/4370" target="_blank" rel="noopener">#4370</a> &middot; <a href="https://github.com/pytorch/rl/pull/4372" target="_blank" rel="noopener">#4372</a> &middot; <a href="https://github.com/pytorch/rl/pull/4374" target="_blank" rel="noopener">#4374</a> &middot; <a href="https://github.com/pytorch/rl/pull/4462" target="_blank" rel="noopener">#4462</a>.</p>
+            <p>SAC and CrossQ loss configuration, replay-buffer checkpoint recovery, and logging fixes.</p>
           </div>
         </div>
       </div>
@@ -296,12 +275,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/pytorch/tensordict/pulls?q=is:pr+is:merged+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 2 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">PyTorch / TensorDict</div>
+          <div class="cv-title"><a href="https://github.com/pytorch/tensordict" target="_blank" rel="noopener">PyTorch / TensorDict</a></div>
           <div class="cv-desc">
-            <p>Made <code>gather</code> and shape operations such as <code>flip</code>, <code>roll</code>, and <code>reshape</code> keep the values of non-tensor stacks, which had come back as empty containers, with regression coverage. See <a href="https://github.com/pytorch/tensordict/pull/1794" target="_blank" rel="noopener">#1794</a> &middot; <a href="https://github.com/pytorch/tensordict/pull/1796" target="_blank" rel="noopener">#1796</a>.</p>
+            <p>Non-tensor values lost in <code>gather</code> and shape operations.</p>
           </div>
         </div>
       </div>
@@ -309,12 +288,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/huggingface/accelerate/pulls?q=is:pr+is:merged+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 6 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Hugging Face / Accelerate</div>
+          <div class="cv-title"><a href="https://github.com/huggingface/accelerate" target="_blank" rel="noopener">Hugging Face / Accelerate</a></div>
           <div class="cv-desc">
-            <p>Fixed MPS device reporting, CPU-launch runtime configuration, MLflow environment parsing, <code>torch.compile</code> dynamic-shape defaults, hooked-model unwrapping under mixed precision, and disk-offloaded checkpoint loading that silently dropped buffers such as BatchNorm statistics, with regression coverage. See <a href="https://github.com/huggingface/accelerate/pull/4221" target="_blank" rel="noopener">#4221</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4222" target="_blank" rel="noopener">#4222</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4223" target="_blank" rel="noopener">#4223</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4254" target="_blank" rel="noopener">#4254</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4255" target="_blank" rel="noopener">#4255</a> &middot; <a href="https://github.com/huggingface/accelerate/pull/4352" target="_blank" rel="noopener">#4352</a>.</p>
+            <p>Device reporting, <code>torch.compile</code> defaults, mixed-precision unwrapping, and offloaded checkpoints that silently dropped buffers.</p>
           </div>
         </div>
       </div>
@@ -322,12 +301,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/huggingface/transformers/pulls?q=is:pr+is:merged+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 1 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Hugging Face / Transformers</div>
+          <div class="cv-title"><a href="https://github.com/huggingface/transformers" target="_blank" rel="noopener">Hugging Face / Transformers</a></div>
           <div class="cv-desc">
-            <p>Aligned PIL and torchvision image-processor outputs across Idefics2, Idefics3, SmolVLM, and Fuyu by fixing mask dtypes and missing image-size keys, with stronger backend-equivalence tests. See <a href="https://github.com/huggingface/transformers/pull/48739" target="_blank" rel="noopener">#48739</a>.</p>
+            <p>Consistent PIL and torchvision image-processor outputs across four vision-language models.</p>
           </div>
         </div>
       </div>
@@ -335,12 +314,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/huggingface/peft/pulls?q=is:pr+is:merged+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 1 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Hugging Face / PEFT</div>
+          <div class="cv-title"><a href="https://github.com/huggingface/peft" target="_blank" rel="noopener">Hugging Face / PEFT</a></div>
           <div class="cv-desc">
-            <p>Made <code>safe_merge</code> check merged weights before writing them across BOFT, AdaMSS, RoAd, and quantized LoRA layers, corrected adapter-bias scaling in 8-bit LoRA merges, and fixed merging several adapters at once on torchao, with regression coverage. See <a href="https://github.com/huggingface/peft/pull/3779" target="_blank" rel="noopener">#3779</a>.</p>
+            <p>Safer adapter merging for quantized LoRA, 8-bit, and torchao layers.</p>
           </div>
         </div>
       </div>
@@ -348,12 +327,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/huggingface/pytorch-image-models/pull/2820" target="_blank" rel="noopener"><i class="fab fa-github"></i> 3 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Hugging Face / timm</div>
+          <div class="cv-title"><a href="https://github.com/huggingface/pytorch-image-models" target="_blank" rel="noopener">Hugging Face / timm</a></div>
           <div class="cv-desc">
-            <p>Fixed <code>forward_intermediates</code> under gradient checkpointing and head pruning in EfficientViT (MIT), <code>set_input_size</code> for SwinV2-CR when a new resolution changes the window size, and SwinV2 attention-mask reinitialization, which had produced NaN or silently wrong logits when the model was loaded through Transformers. See <a href="https://github.com/huggingface/pytorch-image-models/pull/2810" target="_blank" rel="noopener">#2810</a> &middot; <a href="https://github.com/huggingface/pytorch-image-models/pull/2811" target="_blank" rel="noopener">#2811</a> &middot; <a href="https://github.com/huggingface/pytorch-image-models/pull/2812" target="_blank" rel="noopener">#2812</a>; the two SwinV2 fixes landed through maintainer PR <a href="https://github.com/huggingface/pytorch-image-models/pull/2820" target="_blank" rel="noopener">#2820</a>.</p>
+            <p>EfficientViT and SwinV2 fixes, including NaN or wrong logits when loaded through Transformers; two landed via maintainer PR #2820.</p>
           </div>
         </div>
       </div>
@@ -361,12 +340,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/huggingface/datasets/pulls?q=is:pr+is:merged+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 1 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Hugging Face / Datasets</div>
+          <div class="cv-title"><a href="https://github.com/huggingface/datasets" target="_blank" rel="noopener">Hugging Face / Datasets</a></div>
           <div class="cv-desc">
-            <p>Fixed <code>take</code> and <code>skip</code> on streaming datasets returning the wrong number of examples when a DataLoader has more workers than shards, which could silently leak a held-out split back into training, with regression coverage. See <a href="https://github.com/huggingface/datasets/pull/8695" target="_blank" rel="noopener">#8695</a>.</p>
+            <p>Streaming <code>take</code> and <code>skip</code> that could leak a held-out split into training.</p>
           </div>
         </div>
       </div>
@@ -374,12 +353,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/google/adk-python/pulls?q=is:pr+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 2 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Google / Agent Development Kit (2 merged)</div>
+          <div class="cv-title"><a href="https://github.com/google/adk-python" target="_blank" rel="noopener">Google / Agent Development Kit</a></div>
           <div class="cv-desc">
-            <p>Fixed GCS artifact metadata handling to isolate internal bookkeeping and preserve correct loading behavior, and stopped the SQLite session service from returning every user’s sessions when asked for an empty user ID, with regression coverage across storage and session backends. See <a href="https://github.com/google/adk-python/pull/7171" target="_blank" rel="noopener">#7171</a> &middot; <a href="https://github.com/google/adk-python/pull/7222" target="_blank" rel="noopener">#7222</a>, both integrated into the main branch via Copybara.</p>
+            <p>GCS artifact metadata and SQLite sessions leaking across users; both landed via Copybara.</p>
           </div>
         </div>
       </div>
@@ -387,12 +366,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/google/gemma.cpp/pulls?q=is:pr+is:merged+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 1 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Google / gemma.cpp</div>
+          <div class="cv-title"><a href="https://github.com/google/gemma.cpp" target="_blank" rel="noopener">Google / gemma.cpp</a></div>
           <div class="cv-desc">
-            <p>Fixed the CMake test configuration alongside Highway by resolving test-target name collisions, which had kept three tests from ever being built, and linking gmock for the threading test. See <a href="https://github.com/google/gemma.cpp/pull/1042" target="_blank" rel="noopener">#1042</a>.</p>
+            <p>A CMake configuration that had kept three tests from ever being built.</p>
           </div>
         </div>
       </div>
@@ -400,12 +379,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/linkedin/Liger-Kernel/pulls?q=is:pr+is:merged+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 3 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">LinkedIn / Liger-Kernel</div>
+          <div class="cv-title"><a href="https://github.com/linkedin/Liger-Kernel" target="_blank" rel="noopener">LinkedIn / Liger-Kernel</a></div>
           <div class="cv-desc">
-            <p>Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior, made the norm opt-out flags cover the whole vision tower in five multimodal patchers, and made the Llama4 fused-loss forward honour <code>skip_logits</code>, which it had silently ignored, with regression coverage. See <a href="https://github.com/linkedin/Liger-Kernel/pull/1443" target="_blank" rel="noopener">#1443</a> &middot; <a href="https://github.com/linkedin/Liger-Kernel/pull/1444" target="_blank" rel="noopener">#1444</a> &middot; <a href="https://github.com/linkedin/Liger-Kernel/pull/1445" target="_blank" rel="noopener">#1445</a>.</p>
+            <p>Gemma3, Gemma4, and Exaone4 patching, vision-tower norm flags, and the Llama4 fused loss.</p>
           </div>
         </div>
       </div>
@@ -413,12 +392,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/pyro-ppl/numpyro/pulls?q=is:pr+is:merged+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 2 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Pyro / NumPyro</div>
+          <div class="cv-title"><a href="https://github.com/pyro-ppl/numpyro" target="_blank" rel="noopener">Pyro / NumPyro</a></div>
           <div class="cv-desc">
-            <p>Fixed <code>BernoulliLogits</code> entropy returning NaN for large negative logits, and <code>PowerTransform</code> log-determinants overflowing to infinity in the tails, which had given <code>InverseGamma</code> infinite log-densities, by evaluating both in numerically stable forms. See <a href="https://github.com/pyro-ppl/numpyro/pull/2331" target="_blank" rel="noopener">#2331</a> &middot; <a href="https://github.com/pyro-ppl/numpyro/pull/2332" target="_blank" rel="noopener">#2332</a>.</p>
+            <p>Numerically stable entropy and log-determinants for two distributions.</p>
           </div>
         </div>
       </div>
@@ -426,12 +405,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/axolotl-ai-cloud/axolotl/pulls?q=is:pr+is:merged+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 1 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Axolotl</div>
+          <div class="cv-title"><a href="https://github.com/axolotl-ai-cloud/axolotl" target="_blank" rel="noopener">Axolotl</a></div>
           <div class="cv-desc">
-            <p>Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage. See <a href="https://github.com/axolotl-ai-cloud/axolotl/pull/4011" target="_blank" rel="noopener">#4011</a>.</p>
+            <p>Weight decay for the LoRA+ optimizer.</p>
           </div>
         </div>
       </div>
@@ -439,12 +418,12 @@ redirect_from:
       <div class="cv-item">
         <div class="cv-item-meta">
           <div class="cv-badge">UPSTREAM</div>
-          <div class="cv-location"><i class="fab fa-github"></i> Merged</div>
+          <div class="cv-location"><a href="https://github.com/ScrollPrize/villa/pulls?q=is:pr+is:merged+author:yupengtang" target="_blank" rel="noopener"><i class="fab fa-github"></i> 3 merged</a></div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title">Vesuvius Challenge / Volume Cartographer</div>
+          <div class="cv-title"><a href="https://github.com/ScrollPrize/villa" target="_blank" rel="noopener">Vesuvius Challenge / Volume Cartographer</a></div>
           <div class="cv-desc">
-            <p>Added an <code>--rng-seed</code> option to the <code>vc_grow_seg_from_seed</code> surface tracer so that a single-threaded run, including random start-point selection, reproduces byte-identical output. Added <code>--blend_in_memory</code> to <code>vesuvius.predict</code>, which blends patches in RAM instead of writing per-patch logits (one H100 region run: 3:34 to 2:45, 8.9 GB of logits to none, 1 voxel in 719 million different), and extended it to <code>--num_parts</code> so a large region splits into independent Z-slab jobs that reproduce the single-process output exactly. See <a href="https://github.com/ScrollPrize/villa/pull/2145" target="_blank" rel="noopener">#2145</a> &middot; <a href="https://github.com/ScrollPrize/villa/pull/2410" target="_blank" rel="noopener">#2410</a> &middot; <a href="https://github.com/ScrollPrize/villa/pull/2441" target="_blank" rel="noopener">#2441</a>.</p>
+            <p>Reproducible surface tracing and in-memory blending that cut an H100 inference run from 3:34 to 2:45.</p>
           </div>
         </div>
       </div>
@@ -547,7 +526,7 @@ redirect_from:
 <!-- Competitions Section -->
 <div class="cv-grid scroll-reveal">
   <div class="cv-sidebar">
-    <h2><span class="cv-sec-num">07</span>Awards</h2>
+    <h2><span class="cv-sec-num">07</span>Selected Competitions</h2>
   </div>
   <div class="cv-main">
     <div class="cv-card">
@@ -604,7 +583,7 @@ redirect_from:
           <div class="cv-desc">
             <ul>
               <li><strong>ME 4710</strong> (Foundations in ML for Engineers): Designed grading rubrics and graded assignments combining Python implementations, short-answer questions, and mathematical problems on statistical modeling and ML algorithm selection.</li>
-              <li><strong>MGT 6655</strong> (Business Data Preparation and Visualization): Graded visualization exercises and dashboard projects; supported students through office hours and on Ed Discussions with Tableau, PowerBI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students. Developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows.</li>
+              <li><strong>MGT 6655</strong> (Business Data Preparation and Visualization): Graded visualization exercises and dashboard projects; supported students through office hours and on Ed Discussions with Tableau, Power BI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students. Developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows.</li>
             </ul>
           </div>
         </div>

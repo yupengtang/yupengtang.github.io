@@ -1,5 +1,5 @@
 {
-  "source": "reproducibility/reanalysis/outputs/web_models.csv",
+  "source": "reproducibility/results/analysis/core_nine_models.csv",
   "paired_source": "reproducibility/reanalysis/outputs/accuracy_decomposition.csv",
   "interval": "95% paired item-bootstrap interval; 20,000 draws",
   "models": [

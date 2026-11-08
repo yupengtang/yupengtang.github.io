@@ -18,8 +18,8 @@ Research Focus
 
 Foundation models, along three connected lines of work:
 
-* **Training and post-training.** How models acquire behavior after pre-training and how to keep it: reward and supervision design that resists gaming, and adaptation to new tasks and modalities.
-* **Multimodal reasoning and reliability.** How language and vision-language models use evidence and handle uncertainty, and how agents built on them combine language, vision, and action.
+* **Training and post-training.** How models acquire behavior after pre-training and how to keep it: reward and supervision design that resists gaming, test-time scaling, and adaptation to new tasks and modalities.
+* **Multimodal reasoning and reliability.** How language and vision-language models use evidence and handle uncertainty, and how to evaluate them reliably, including with LLM judges.
 * **ML infrastructure.** What it takes to train and serve these models in practice: efficient inference, distributed training on GPU clusters, and evaluation harnesses.
 
 Education
@@ -33,10 +33,10 @@ Selected Publications & Manuscripts
 ======
 
 * **Y. Tang**, M. Lin. “[When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines](https://yupengtang.github.io/when-expert-disagreement-hurts/assets/paper.pdf).” Conference on Neural Information Processing Systems (**NeurIPS**), 2026. Accepted.
-* **Y. Tang**. *TRACE: Typed Repair with Abstention for Corrupted Evidence in Frozen Multimodal World Models*. **AAAI 2027**; the submission has already passed the first round of review (Phase 1).
-* **Y. Tang**. *No Free Surprise: Sharp Evidence Guarantees for Data-Adaptive Scientific Search*. **AAAI 2027**; the submission has already passed the first round of review (Phase 1).
 * **Y. Tang**, M. Lin. *Measure before You Rank: Estimand-Aware Calibration of LLM Judge Panels*. **AAAI 2027**; the submission has already passed the first round of review (Phase 1).
-* **Y. Tang**, M. Lin. *GuardedCoMoT: Matched Interventions for Geometric-Prior Execution under Visuomotor Layout Shift*. **ICRA 2027**, under review.
+* **Y. Tang**. *TRACE: Typed Repair with Abstention for Corrupted Evidence in Frozen Multimodal World Models*. **AAAI 2027**; the submission has already passed the first round of review (Phase 1).
+* **Y. Tang**. *Group-Relative Post-Training Erases Rare Futures: Distribution-Correct Reinforcement Learning for World Models*. **CVPR 2027**, under review.
+* **Y. Tang**, M. Lin. *Retrieved but Ignored: How Vision-Language Models Use Images and Text in Multimodal RAG*. **CVPR 2027**, under review.
 
 Research Experience
 ======
@@ -47,30 +47,18 @@ Research Experience
 
 With Dr. Yang M. Liu and Prof. F. Vankee Lin at the CogT Lab.
 
-* Selected for a Research Intern position through a formal application and interview process.
-* Developing multimodal distillation methods to improve the reliability and efficiency of vision-language models under distribution shift.
-* Adapting the ST-MEM ECG Transformer to single-lead input with LoRA and a contrastive (InfoNCE) loss that aligns each single-lead embedding to the frozen 12-lead embedding of the same record; on lead III this beats tuned 12-lead logit distillation by 0.045 AUROC on PTB-XL and holds on two unseen cohorts (Georgia, CPSC2018).
-* Across 12 leads, two backbones and five seeds, the gain grows with each lead's headroom to the 12-lead teacher (Spearman 0.56, permutation p = 0.007), while a same-label teacher from a different patient gives no gain, so the benefit comes from record-specific 12-lead signal.
+* Proposed same-record representation alignment, a distillation method for foundation models that see richer input in training than at deployment: a LoRA-adapted student that receives a single ECG lead is aligned to a frozen teacher's 12-lead embedding of the same record, at no added inference cost. It outperforms tuned logit distillation on two unseen external cohorts and raises macro AUROC by 0.084 on real handheld-device recordings.
+* Demonstrated through pre-specified controls that the gain comes from record-specific teacher representations rather than shared labels, since a teacher taken from a different patient with identical labels gives no gain, and that it grows with the student's headroom to the teacher across 12 leads and two backbones (Spearman 0.56, permutation p = 0.007).
 
 ## Research Assistant & Affiliate Researcher
 
 **Georgia Institute of Technology** \| Atlanta, GA \| Sep. 2025 – Present
 
-With Prof. Mingfeng Lin. Research Assistant through May 2026, now continuing as an affiliate researcher. Research focuses on foundation model reliability, multimodal reasoning, and embodied AI.
+With Prof. Mingfeng Lin, alongside several independent projects. Research Assistant through May 2026, now continuing as an affiliate researcher.
 
-* Built a branch-paired audit that isolates how disagreement and perceived source expertise change LLM decisions with the evidence held fixed; across 1,989 medical, scientific, and legal items (about 30K trials), the expert label alone added 2.6 to 6.9 points of answer reversals in four of five models ([Project page](https://yupengtang.github.io/when-expert-disagreement-hurts/)).
-* Evaluated whether vision-language models use evidence after it is retrieved, across 10 VLMs from 2B to 38B on VLMBias, DocVQA, and MRAG-Bench: models take the cheapest evidence channel, ignore image-only evidence unless it is redundant, and three pre-registered inference-time remedies do not close the gap.
-* Developed estimand-aware preference learning from heterogeneous LLM feedback by jointly modeling candidate quality, judge reliability, and systematic bias.
-* Designed constraint-aware visuomotor manipulation using task-frame transport and guarded fallback execution, improving success by 87.1 percentage points under severe layout shifts and 72.5 points under obstacle interference.
-* Built internal evaluation tooling for the group: a cross-platform Electron/React/FastAPI application covering 100+ API models, with structured LLM-as-a-Judge pipelines, SQLite persistence, and one-command packaging.
-
-## Independent Researcher
-
-**Independent Research** \| Atlanta, GA \| Sep. 2025 – Present
-
-* Designed belief-conditioned repair for frozen multimodal world models; under a source-disjoint evaluation it raised future video R@1 from 73.0% to 77.4% and audio R@1 from 39.6% to 51.8% without retraining the base model.
-* Established finite-sample guarantees for adaptive AI search, achieving near-oracle power with substantially less search while preserving rigorous statistical validity.
-* Probed narrative representations in open-weight language models, showing that apparent event understanding is driven largely by surface cues rather than structural representations.
+* **Reliability and evaluation:** Designed a controlled audit of how LLMs revise answers under disagreement with the evidence held fixed: across 1,989 medical, scientific, and legal decisions, expert disagreement cut accuracy by up to 16.1 points (NeurIPS 2026; [Project page](https://yupengtang.github.io/when-expert-disagreement-hurts/)). Developed ACT-Council, a Bradley-Terry aggregator that learns each LLM judge's reliability by domain; its domain-conditioned probabilities halved the Brier score on RewardBench (0.142 to 0.071) and flagged injected adversarial judges as least reliable in 93% of task cells.
+* **Post-training and test-time scaling:** Demonstrated that GRPO post-training narrows the predictive distribution of video world models and erases rare outcomes, and derived DCPT, a one-line correction that was the only proper-score variant to keep the distribution intact on four pretrained world models up to 4B parameters. Proved that pass@K, the standard test-time scaling metric, can rank systems opposite to the majority-vote accuracy they deliver in deployment, and derived sharp bounds that predict deployed accuracy from a fraction of the sampling budget.
+* **Multimodal reasoning:** Developed TRACE, a repair layer for frozen multimodal world models that identifies the type of evidence corruption and either repairs it or abstains; without retraining the base model, it raised future-audio retrieval R@1 from 39.6% to 51.8% and video R@1 from 73.0% to 77.4%. Benchmarked 10 vision-language models (2B to 38B) on whether they use retrieved evidence, and found that they rely on whichever channel is cheapest to read and ignore image-only evidence unless the same information also appears in text.
 
 ## Research Assistant
 
@@ -95,7 +83,7 @@ Industry Experience
 
 ## Machine Learning Engineer Intern
 
-**GMI Cloud** \| Mountain View, California \| May 2025 – Aug. 2025
+**[GMI Cloud](https://www.gmicloud.ai/)** \| Mountain View, CA \| May 2025 – Aug. 2025
 
 * Shipped FLUX.1-schnell (12B DiT) to production on H100 and cut latency about 19× (about 30 s to 1.6 s per image) by removing per-request CPU-GPU offloading and keeping the text encoders, Transformer, and VAE resident on the GPU (37 GB peak).
 * Engineered the serving loop: queue-pull workers, a heartbeat thread with retry, toxicity and NSFW filters, and GCS upload with backoff; scaled it to multi-GPU with torchrun, with rank 0 broadcasting each request and seed over NCCL; Dockerized for Kubernetes.
@@ -107,21 +95,23 @@ Industry Experience
 Open Source Contributions
 ======
 
-* **PyTorch / TorchRL** (5 merged): Fixed SAC loss configuration, replay-buffer checkpoint recovery, CrossQ key remapping, CSV logger step counting, and a spec shape operation that raised on `Choice`, each with regression coverage ([#4338](https://github.com/pytorch/rl/pull/4338) · [#4370](https://github.com/pytorch/rl/pull/4370) · [#4372](https://github.com/pytorch/rl/pull/4372) · [#4374](https://github.com/pytorch/rl/pull/4374) · [#4462](https://github.com/pytorch/rl/pull/4462)).
-* **PyTorch / TensorDict** (2 merged): Made `gather` and shape operations such as `flip`, `roll`, and `reshape` keep the values of non-tensor stacks, which had come back as empty containers, with regression coverage ([#1794](https://github.com/pytorch/tensordict/pull/1794) · [#1796](https://github.com/pytorch/tensordict/pull/1796)).
-* **Hugging Face / Accelerate** (6 merged): Fixed MPS device reporting, CPU-launch runtime configuration, MLflow environment parsing, `torch.compile` dynamic-shape defaults, hooked-model unwrapping under mixed precision, and disk-offloaded checkpoint loading that silently dropped buffers such as BatchNorm statistics, with regression coverage ([#4221](https://github.com/huggingface/accelerate/pull/4221) · [#4222](https://github.com/huggingface/accelerate/pull/4222) · [#4223](https://github.com/huggingface/accelerate/pull/4223) · [#4254](https://github.com/huggingface/accelerate/pull/4254) · [#4255](https://github.com/huggingface/accelerate/pull/4255) · [#4352](https://github.com/huggingface/accelerate/pull/4352)).
-* **Hugging Face / Transformers** (1 merged): Aligned PIL and torchvision image-processor outputs across Idefics2, Idefics3, SmolVLM, and Fuyu by fixing mask dtypes and missing image-size keys, with stronger backend-equivalence tests ([#48739](https://github.com/huggingface/transformers/pull/48739)).
-* **Hugging Face / PEFT** (1 merged): Made `safe_merge` check merged weights before writing them across BOFT, AdaMSS, RoAd, and quantized LoRA layers, corrected adapter-bias scaling in 8-bit LoRA merges, and fixed merging several adapters at once on torchao, with regression coverage ([#3779](https://github.com/huggingface/peft/pull/3779)).
-* **Hugging Face / timm** (3 merged): Fixed `forward_intermediates` under gradient checkpointing and head pruning in EfficientViT (MIT), `set_input_size` for SwinV2-CR when a new resolution changes the window size, and SwinV2 attention-mask reinitialization, which had produced NaN or silently wrong logits when the model was loaded through Transformers ([#2810](https://github.com/huggingface/pytorch-image-models/pull/2810) · [#2811](https://github.com/huggingface/pytorch-image-models/pull/2811) · [#2812](https://github.com/huggingface/pytorch-image-models/pull/2812); the two SwinV2 fixes landed through maintainer PR [#2820](https://github.com/huggingface/pytorch-image-models/pull/2820)).
-* **Hugging Face / Datasets** (1 merged): Fixed `take` and `skip` on streaming datasets returning the wrong number of examples when a DataLoader has more workers than shards, which could silently leak a held-out split back into training, with regression coverage ([#8695](https://github.com/huggingface/datasets/pull/8695)).
-* **Google / Agent Development Kit** (2 merged): Fixed GCS artifact metadata handling to isolate internal bookkeeping and preserve correct loading behavior, and stopped the SQLite session service from returning every user’s sessions when asked for an empty user ID, with regression coverage across storage and session backends ([#7171](https://github.com/google/adk-python/pull/7171) · [#7222](https://github.com/google/adk-python/pull/7222), both integrated into the main branch via Copybara).
-* **Google / gemma.cpp** (1 merged): Fixed the CMake test configuration alongside Highway by resolving test-target name collisions, which had kept three tests from ever being built, and linking gmock for the threading test ([#1042](https://github.com/google/gemma.cpp/pull/1042)).
-* **LinkedIn / Liger-Kernel** (3 merged): Improved Gemma3, Gemma4, and Exaone4 transformer monkey-patching behavior, made the norm opt-out flags cover the whole vision tower in five multimodal patchers, and made the Llama4 fused-loss forward honour `skip_logits`, which it had silently ignored, with regression coverage ([#1443](https://github.com/linkedin/Liger-Kernel/pull/1443) · [#1444](https://github.com/linkedin/Liger-Kernel/pull/1444) · [#1445](https://github.com/linkedin/Liger-Kernel/pull/1445)).
-* **Pyro / NumPyro** (2 merged): Fixed `BernoulliLogits` entropy returning NaN for large negative logits, and `PowerTransform` log-determinants overflowing to infinity in the tails, which had given `InverseGamma` infinite log-densities, by evaluating both in numerically stable forms ([#2331](https://github.com/pyro-ppl/numpyro/pull/2331) · [#2332](https://github.com/pyro-ppl/numpyro/pull/2332)).
-* **Axolotl** (1 merged): Fixed LoRA+ optimizer construction so configured weight decay reaches the intended PEFT parameter groups, with regression coverage ([#4011](https://github.com/axolotl-ai-cloud/axolotl/pull/4011)).
-* **Vesuvius Challenge / Volume Cartographer** (3 merged): Added an `--rng-seed` option to the `vc_grow_seg_from_seed` surface tracer so that a single-threaded run, including random start-point selection, reproduces byte-identical output, added `--blend_in_memory` to `vesuvius.predict` so patches blend in RAM instead of writing per-patch logits (one H100 region run: 3:34 to 2:45, 8.9 GB of logits to none), and extended it to `--num_parts` so a large region splits into Z-slab jobs that reproduce the single-process output exactly ([#2145](https://github.com/ScrollPrize/villa/pull/2145), [#2410](https://github.com/ScrollPrize/villa/pull/2410), [#2441](https://github.com/ScrollPrize/villa/pull/2441)).
+31 merged contributions across 13 projects. Technical details are on the [Portfolio](/portfolio/#opensource-heading) page.
 
-Competition Experience
+* **[PyTorch / TorchRL](https://github.com/pytorch/rl)** ([5 merged](https://github.com/pytorch/rl/pulls?q=is:pr+is:merged+author:yupengtang)): SAC and CrossQ loss configuration, replay-buffer checkpoint recovery, and logging fixes.
+* **[PyTorch / TensorDict](https://github.com/pytorch/tensordict)** ([2 merged](https://github.com/pytorch/tensordict/pulls?q=is:pr+is:merged+author:yupengtang)): Non-tensor values lost in `gather` and shape operations.
+* **[Hugging Face / Accelerate](https://github.com/huggingface/accelerate)** ([6 merged](https://github.com/huggingface/accelerate/pulls?q=is:pr+is:merged+author:yupengtang)): Device reporting, `torch.compile` defaults, mixed-precision unwrapping, and offloaded checkpoints that silently dropped buffers.
+* **[Hugging Face / Transformers](https://github.com/huggingface/transformers)** ([1 merged](https://github.com/huggingface/transformers/pulls?q=is:pr+is:merged+author:yupengtang)): Consistent PIL and torchvision image-processor outputs across four vision-language models.
+* **[Hugging Face / PEFT](https://github.com/huggingface/peft)** ([1 merged](https://github.com/huggingface/peft/pulls?q=is:pr+is:merged+author:yupengtang)): Safer adapter merging for quantized LoRA, 8-bit, and torchao layers.
+* **[Hugging Face / timm](https://github.com/huggingface/pytorch-image-models)** ([3 merged](https://github.com/huggingface/pytorch-image-models/pull/2820)): EfficientViT and SwinV2 fixes, including NaN or wrong logits when loaded through Transformers; two landed via maintainer PR #2820.
+* **[Hugging Face / Datasets](https://github.com/huggingface/datasets)** ([1 merged](https://github.com/huggingface/datasets/pulls?q=is:pr+is:merged+author:yupengtang)): Streaming `take` and `skip` that could leak a held-out split into training.
+* **[Google / Agent Development Kit](https://github.com/google/adk-python)** ([2 merged](https://github.com/google/adk-python/pulls?q=is:pr+author:yupengtang)): GCS artifact metadata and SQLite sessions leaking across users; both landed via Copybara.
+* **[Google / gemma.cpp](https://github.com/google/gemma.cpp)** ([1 merged](https://github.com/google/gemma.cpp/pulls?q=is:pr+is:merged+author:yupengtang)): A CMake configuration that had kept three tests from ever being built.
+* **[LinkedIn / Liger-Kernel](https://github.com/linkedin/Liger-Kernel)** ([3 merged](https://github.com/linkedin/Liger-Kernel/pulls?q=is:pr+is:merged+author:yupengtang)): Gemma3, Gemma4, and Exaone4 patching, vision-tower norm flags, and the Llama4 fused loss.
+* **[Pyro / NumPyro](https://github.com/pyro-ppl/numpyro)** ([2 merged](https://github.com/pyro-ppl/numpyro/pulls?q=is:pr+is:merged+author:yupengtang)): Numerically stable entropy and log-determinants for two distributions.
+* **[Axolotl](https://github.com/axolotl-ai-cloud/axolotl)** ([1 merged](https://github.com/axolotl-ai-cloud/axolotl/pulls?q=is:pr+is:merged+author:yupengtang)): Weight decay for the LoRA+ optimizer.
+* **[Vesuvius Challenge / Volume Cartographer](https://github.com/ScrollPrize/villa)** ([3 merged](https://github.com/ScrollPrize/villa/pulls?q=is:pr+is:merged+author:yupengtang)): Reproducible surface tracing and in-memory blending that cut an H100 inference run from 3:34 to 2:45.
+
+Selected Competition Experience
 ======
 
 ## American Express Default Prediction
@@ -146,7 +136,7 @@ Teaching Experience
 **Georgia Institute of Technology** \| Atlanta, GA \| Sep. 2025 – May 2026
 
 * **ME 4710** – Foundations in Machine Learning for Engineers (Sep. 2025 – Dec. 2025, with Jarred Fountain): Designed grading rubrics and graded assignments combining Python implementations, short-answer questions, and mathematical problems on statistical modeling and ML algorithm selection.
-* **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin): Graded visualization exercises and dashboard projects; supported students through office hours and on Ed Discussions with Tableau, PowerBI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students. Developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows.
+* **MGT 6655** – Business Data Preparation and Visualization (Jan. 2026 – May 2026, with Prof. Mingfeng Lin): Graded visualization exercises and dashboard projects; supported students through office hours and on Ed Discussions with Tableau, Power BI, and data preparation techniques; built a privacy-preserving LLM-based Q&A assistant for 100+ students. Developed an end-to-end Python pipeline to transform Ed Discussion data into RAG and SFT datasets (JSONL) with schema-tolerant parsing and metadata traceability, and deployed a grounded retrieval-augmented assistant with configurable embedding backends and GPU-ready evaluation workflows.
 
 Leadership & Service
 ======
