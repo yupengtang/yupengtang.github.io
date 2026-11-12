@@ -32,7 +32,7 @@ Education
 Selected Publications & Manuscripts
 ======
 
-* **Y. Tang**, M. Lin. “[When Expert Disagreement Hurts: Auditing Prestige-Sensitive Revision in LLM Decision Pipelines](https://yupengtang.github.io/when-expert-disagreement-hurts/assets/paper.pdf).” Conference on Neural Information Processing Systems (**NeurIPS**), 2026. Accepted.
+* **Y. Tang**, M. Lin. “[When Expert Disagreement Hurts: Prestige and Selectivity in LLM Decision Revision](https://yupengtang.github.io/when-expert-disagreement-hurts/assets/paper.pdf).” Conference on Neural Information Processing Systems (**NeurIPS**), 2026. Accepted.
 * **Y. Tang**, M. Lin. *Measure before You Rank: Estimand-Aware Calibration of LLM Judge Panels*. **AAAI 2027**; the submission has already passed the first round of review (Phase 1).
 * **Y. Tang**. *TRACE: Typed Repair with Abstention for Corrupted Evidence in Frozen Multimodal World Models*. **AAAI 2027**; the submission has already passed the first round of review (Phase 1).
 * **Y. Tang**. *Group-Relative Post-Training Erases Rare Futures: Distribution-Correct Reinforcement Learning for World Models*. **CVPR 2027**, under review.
