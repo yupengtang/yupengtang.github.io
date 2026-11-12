@@ -29,10 +29,9 @@
         <p class="authors"><a href="https://yupengtang.github.io/">Yupeng Tang</a><span aria-hidden="true">,</span> <a href="https://mlin.scheller.gatech.edu/">Mingfeng Lin</a></p>
         <p class="affiliation">Georgia Institute of Technology</p>
         <div class="publication-links" aria-label="Research resources">
-          <a class="resource-link" href="assets/paper.pdf?v=20261112b"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper</a>
+          <a class="resource-link" href="assets/paper.pdf?v=20261112d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper</a>
           <a class="resource-link" href="https://github.com/yupengtang/when-expert-disagreement-hurts"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4m8-8 4 4-4 4M14 4l-4 16"/></svg>Code</a>
           <a class="resource-link" href="https://github.com/yupengtang/when-expert-disagreement-hurts/tree/main/reproducibility/data-repair"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 4 16 4 16 0V5M4 12v7c0 4 16 4 16 0v-7"/></svg>Data</a>
-          <a class="resource-link" href="https://github.com/yupengtang/when-expert-disagreement-hurts/releases/latest"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 17v4h16v-4"/></svg>Release</a>
         </div>
       </div>
     </header>
@@ -77,7 +76,7 @@
     <section class="section section-muted" id="abstract">
       <div class="container prose">
         <h2>Abstract</h2>
-        <p>Language models are increasingly used in decision pipelines where an initial answer is revised after another agent disagrees. Such revision is usually judged by how often answers change or by final accuracy, but neither shows whether a model is fixing its mistakes or abandoning correct answers. We introduce a controlled two-pass audit that holds the question, the evidence, and the model's initial answer fixed and varies only the revision context: neutral reflection, anonymous disagreement, or disagreement attributed to a domain expert. For binary decisions the accounting is exact: revision raises accuracy only if it is selective enough, reversing wrong answers more than <i>a</i>/(1 − <i>a</i>) times as often as correct ones, where <i>a</i> is initial accuracy; at 90% accuracy, that means more than nine times as often. Across five instruction-tuned models and 1,989 evidence-grounded decisions in medicine, science, and law, no model clears this bar under expert disagreement, and accuracy falls by up to 16.1 points. The expert label, a prestige cue, adds reversals for four of the five models, yet its effect on accuracy ranges from a 5.2-point loss to a 2.4-point gain, so reversal counts are a poor proxy for harm. With identical arguments from both sources, the expert label still raises reversal for three proprietary models and has a positive pooled effect across four more recent models. Models also respond to stated source reliability. A prompt that asks the model to revise only on evidence cuts harmful reversals against bare disagreement but helps less once the disagreement carries an argument. Revision pipelines should therefore be evaluated with paired, conditional metrics, per model and protocol.</p>
+        <p>When language models revise a decision after another agent disagrees, neither reversal counts nor final accuracy shows whether they are fixing mistakes or abandoning correct answers. We introduce a controlled two-pass audit that holds the question, the evidence, and the model's initial answer fixed and varies only the revision context: neutral reflection, anonymous disagreement, or disagreement attributed to a domain expert. For binary decisions the accounting is exact: revision raises accuracy only if it is selective enough, reversing wrong answers more than <i>a</i>/(1 − <i>a</i>) times as often as correct ones, where <i>a</i> is initial accuracy (nine times at 90%). Across five models and 1,989 evidence-grounded decisions in medicine, science, and law, no model clears this bar under expert disagreement, and accuracy falls by up to 16.1 points. The expert label, a prestige cue, adds reversals for four of the five models, yet its effect on accuracy ranges from a 5.2-point loss to a 2.4-point gain, so reversal counts are a poor proxy for harm. With identical arguments from both sources, the label still raises reversal for three proprietary models and in a pooled analysis of four newer models. Models also respond to stated source reliability. Revision pipelines should therefore be evaluated with paired, conditional metrics, per model and protocol.</p>
       </div>
     </section>
 
@@ -138,12 +137,12 @@
         <figure class="result-figure">
           <h3>When revision helps and when it hurts</h3>
           <img src="assets/transitions.svg?v=20261108" width="980" height="490" alt="Harmful reversals extend left and beneficial reversals right, with net accuracy change and valid sample counts for nine models in two protocol groups" loading="lazy">
-          <figcaption><strong>Reversal direction.</strong> Both bars use all valid expert-labeled trials as the denominator. Beneficial minus harmful reversal gives the accuracy change; unchanged decisions are not plotted. The five full-benchmark models use 1,989 items. The four newer models use a 250-item pool and a different prompt protocol, so the two groups are not ranked against each other. <a href="assets/paper.pdf?v=20261112b#page=6">Paper, p. 6</a> · <a href="assets/transitions.svg?v=20261108">Vector figure</a>.</figcaption>
+          <figcaption><strong>Reversal direction.</strong> Both bars use all valid expert-labeled trials as the denominator. Beneficial minus harmful reversal gives the accuracy change; unchanged decisions are not plotted. The five full-benchmark models use 1,989 items. The four newer models use a 250-item pool and a different prompt protocol, so the two groups are not ranked against each other. <a href="assets/paper.pdf?v=20261112d#page=6">Paper, p. 6</a> · <a href="assets/transitions.svg?v=20261108">Vector figure</a>.</figcaption>
         </figure>
         <figure class="result-figure">
           <h3>How selective must revision be?</h3>
           <img src="assets/selectivity.svg?v=20261104" width="680" height="310" alt="Revision selectivity relative to break-even for nine models. Values above one indicate an accuracy gain; arrows connect anonymous and expert-labeled disagreement." loading="lazy">
-          <figcaption><strong>Selectivity relative to break-even.</strong> At 90% initial accuracy, a model must revise wrong answers nine times as often as correct ones to break even. Each model’s observed ratio is divided by its own break-even value; values above 1 indicate an accuracy gain. Arrows run from anonymous to expert-labeled disagreement. Gemini-3.6-Flash has no anonymous point because it corrected no initial errors in that condition. The shaded group uses a different sample and prompt protocol. <a href="assets/paper.pdf?v=20261112b#page=7">Paper, p. 7</a> · <a href="assets/selectivity.svg?v=20261104">Vector figure</a>.</figcaption>
+          <figcaption><strong>Selectivity relative to break-even.</strong> At 90% initial accuracy, a model must revise wrong answers nine times as often as correct ones to break even. Each model’s observed ratio is divided by its own break-even value; values above 1 indicate an accuracy gain. Arrows run from anonymous to expert-labeled disagreement. Gemini-3.6-Flash has no anonymous point because it corrected no initial errors in that condition. The shaded group uses a different sample and prompt protocol. <a href="assets/paper.pdf?v=20261112d#page=7">Paper, p. 7</a> · <a href="assets/selectivity.svg?v=20261104">Vector figure</a>.</figcaption>
         </figure>
         <figure class="result-figure">
           <h3>The additional effect of an expert label</h3>
@@ -154,7 +153,7 @@
             <div class="model-detail" data-model-detail aria-live="polite" aria-atomic="true"><p>Points show paired effects; whiskers show 95% item-bootstrap intervals. The vertical line marks zero effect.</p></div>
           </div>
           <img class="reversal-static" src="assets/reversal.svg?v=20261104" width="980" height="490" alt="Expert-minus-anonymous effects on reversal and accuracy with paired confidence intervals" loading="lazy">
-          <figcaption><strong>Reversal and accuracy are distinct.</strong> Both source-label effects use compatible anonymous/expert pairs; positive reversal effects do not necessarily imply accuracy loss. The figure shows both effects with 95% paired item-bootstrap intervals. The groups differ in items and prompt protocol. <a href="assets/paper.pdf?v=20261112b#page=7">Paper, p. 7</a> · <a href="assets/reversal.svg?v=20261104">Full vector figure</a> · <a href="assets/results.json">Plotted data</a>.</figcaption>
+          <figcaption><strong>Reversal and accuracy are distinct.</strong> Both source-label effects use compatible anonymous/expert pairs; positive reversal effects do not necessarily imply accuracy loss. The figure shows both effects with 95% paired item-bootstrap intervals. The groups differ in items and prompt protocol. <a href="assets/paper.pdf?v=20261112d#page=7">Paper, p. 7</a> · <a href="assets/reversal.svg?v=20261104">Full vector figure</a> · <a href="assets/results.json">Plotted data</a>.</figcaption>
         </figure>
       </div>
     </section>
@@ -165,7 +164,7 @@
         <p class="section-intro">Anonymous and expert-labeled opponents receive the same saved rationale. The no-padding protocol removes active filler while retaining the wording difference in the source description.</p>
         <figure class="result-figure control-figure">
           <img src="assets/rationale.svg" width="1282" height="529" alt="Paired expert-label and evidence-gate effects in the no-padding rationale control across seven models" loading="lazy">
-          <figcaption><strong>Source-label and evidence-gate effects.</strong> Points show paired estimates with 95% item-bootstrap intervals under the no-padding protocol. <a href="assets/paper.pdf?v=20261112b#page=7">Rationale results, p. 7</a> · <a href="assets/paper.pdf?v=20261112b#page=8">Evidence gating, p. 8</a>.</figcaption>
+          <figcaption><strong>Source-label and evidence-gate effects.</strong> Points show paired estimates with 95% item-bootstrap intervals under the no-padding protocol. <a href="assets/paper.pdf?v=20261112d#page=7">Rationale results, p. 7</a> · <a href="assets/paper.pdf?v=20261112d#page=8">Evidence gating, p. 8</a>.</figcaption>
         </figure>
         <div class="prose control-summary">
           <p><strong>The source label still matters when the argument is held fixed.</strong> GPT-4o-mini, Claude-Sonnet-4, and Gemini-2.5-Flash show additional reversals of +4.4 to +5.6 percentage points, with each exact paired test giving <em>p</em> &lt; 0.03. In a separate run with the same stimuli, the four newer models show smaller positive estimates of +1.2 to +2.4 points, without per-model statistical significance. Their pooled effect is +2.0 points (95% CI [0.7, 3.3]), with questions resampled as clusters to retain dependence across models. This estimate uses 953 paired model–item observations from 249 questions and pools only the four newer models.</p>
@@ -191,7 +190,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python reanalysis/audit.py
 python reanalysis/render.py</code></pre>
         </div>
         <p class="data-note">The 1,989 benchmark inputs are reconstructed offline from the official dataset releases and verified against the hashes recorded when the experiments ran (<a href="https://github.com/yupengtang/when-expert-disagreement-hurts/tree/main/reproducibility/data-repair">data-repair</a>). The same directory provides evidence-complete versions of 48 Law excerpts of the benchmark and 16 Law excerpts of the control pool for new experiments; the reported results use the original inputs.</p>
-        <p class="resource-text-links"><a href="https://github.com/yupengtang/when-expert-disagreement-hurts/tree/main/reproducibility">Analysis code and records</a><span aria-hidden="true">·</span><a href="https://github.com/yupengtang/when-expert-disagreement-hurts/releases/latest">Paper sources and downloads</a></p>
+        <p class="resource-text-links"><a href="https://github.com/yupengtang/when-expert-disagreement-hurts/tree/main/reproducibility">Analysis code and records</a></p>
       </div>
     </section>
 
@@ -211,7 +210,7 @@ python reanalysis/render.py</code></pre>
       </div>
     </section>
   </main>
-  <footer><div class="container"><p>Yupeng Tang and Mingfeng Lin · Georgia Institute of Technology</p><p><a href="assets/paper.pdf?v=20261112b">Paper</a><span aria-hidden="true">·</span><a href="https://github.com/yupengtang/when-expert-disagreement-hurts">Code</a><span aria-hidden="true">·</span><a href="mailto:yupengtang@gatech.edu">Contact</a><span aria-hidden="true">·</span><a href="#top">Back to top ↑</a></p></div></footer>
+  <footer><div class="container"><p>Yupeng Tang and Mingfeng Lin · Georgia Institute of Technology</p><p><a href="assets/paper.pdf?v=20261112d">Paper</a><span aria-hidden="true">·</span><a href="https://github.com/yupengtang/when-expert-disagreement-hurts">Code</a><span aria-hidden="true">·</span><a href="mailto:yupengtang@gatech.edu">Contact</a><span aria-hidden="true">·</span><a href="#top">Back to top ↑</a></p></div></footer>
 
   <dialog class="figure-dialog" aria-labelledby="figure-dialog-title">
     <div class="dialog-toolbar"><h2 id="figure-dialog-title">Figure</h2><div><a data-figure-original href="assets/methodology.svg" target="_blank" rel="noopener">Open original</a><button type="button" data-close-figure aria-label="Close figure">Close <span aria-hidden="true">×</span></button></div></div>
