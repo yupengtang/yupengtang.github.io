@@ -30,15 +30,15 @@
     </div>
   </a>
   <div class="home-projects">
-    <a class="home-project" href="{{ '/portfolio/portfolio-1/' | relative_url }}">
-      {% include project-schematic.html kind="agent" %}
-      <span class="feature-label">Post-training &amp; evaluation</span>
-      <h3>MCP-AgentGym</h3>
-      <p>A real Kubernetes environment for training tool-using agents with verifiable rewards.</p>
+    <a class="home-project" href="{{ '/portfolio/portfolio-4/' | relative_url }}">
+      {% include project-schematic.html kind="video" %}
+      <span class="feature-label">Distributed inference</span>
+      <h3>Wan2.2 Video on 8&times;H100</h3>
+      <p>Multi-GPU video generation with FSDP and Ulysses sequence parallelism; generating at 360p and upscaling cut a 5 s 720p clip from 284 s to about 100 s.</p>
       <span class="feature-link">View project <span aria-hidden="true">&nearr;</span></span>
     </a>
     <a class="home-project" href="{{ '/portfolio/portfolio-3/' | relative_url }}">
-      {% include project-schematic.html kind="inference" %}
+      {% include project-schematic.html kind="serving" %}
       <span class="feature-label">Production inference</span>
       <h3>FLUX.1-schnell on H100</h3>
       <p>A 12B diffusion transformer in production at GMI Cloud: about 30 s to 1.6 s per image.</p>

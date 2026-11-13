@@ -331,42 +331,9 @@ author_profile: true
 <p class="project-count" role="status" aria-live="polite" hidden></p>
 <div class="portfolio-grid" id="project-grid">
 
-  <a href="{{ base_path }}/portfolio/portfolio-1/" class="portfolio-card pc-violet scroll-reveal" data-categories="research systems">
-    <div class="pc-header">
-      <span class="pc-number">01</span>
-      <span class="pc-type">Research</span>
-    </div>
-    {% include project-schematic.html kind="agent" %}
-    <h3 class="pc-title">MCP-AgentGym: Post-Training Gym for Tool-Using Agents</h3>
-    <p class="pc-excerpt">A real Kubernetes control plane as a verifiable RL environment: 36 typed MCP tools, 14 seeded fault families, computed rewards. Qwen3-8B trained with SFT, DPO and GRPO, served through vLLM.</p>
-    <div class="pc-metrics">
-      <span class="pc-metric"><strong>11,541</strong> verified trajectories</span>
-      <span class="pc-metric"><strong>2.4 s</strong> median episode, CPU only</span>
-    </div>
-    <div class="pc-tags">
-      <span>Post-Training</span><span>LoRA</span><span>vLLM</span><span>MCP</span>
-    </div>
-  </a>
-  <a href="{{ base_path }}/portfolio/portfolio-2/" class="portfolio-card pc-orange scroll-reveal" data-categories="systems">
-    <div class="pc-header">
-      <span class="pc-number">02</span>
-      <span class="pc-type">Systems</span>
-    </div>
-    {% include project-schematic.html kind="inference" %}
-    <h3 class="pc-title">CacheFlow: Multi-Request LLM Inference Engine</h3>
-    <p class="pc-excerpt">C++17/CUDA 12 serving core with continuous batching, a paged KV cache, paged attention kernels, and trie-based prefix reuse, benchmarked on synthetic decode steps.</p>
-    <div class="pc-metrics">
-      <span class="pc-metric"><strong>9.1&times;</strong> throughput scaling</span>
-      <span class="pc-metric"><strong>88%</strong> GPU cache util</span>
-    </div>
-    <div class="pc-tags">
-      <span>C++17</span><span>CUDA 12</span><span>Paged Attn</span><span>Scheduling</span>
-    </div>
-  </a>
-
   <a href="{{ base_path }}/portfolio/portfolio-3/" class="portfolio-card pc-indigo scroll-reveal" data-categories="industry systems">
     <div class="pc-header">
-      <span class="pc-number">03</span>
+      <span class="pc-number">01</span>
       <span class="pc-type">Industry</span>
     </div>
     <h3 class="pc-title">High-Throughput Diffusion Inference System</h3>
@@ -382,23 +349,23 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-4/" class="portfolio-card pc-sky scroll-reveal" data-categories="industry applied">
     <div class="pc-header">
-      <span class="pc-number">04</span>
+      <span class="pc-number">02</span>
       <span class="pc-type">Industry</span>
     </div>
-    <h3 class="pc-title">Video Super-Resolution Pipeline</h3>
-    <p class="pc-excerpt">ESRGAN-based 360p&rarr;720p upscaling with reimplemented RRDBNet architecture, FFmpeg pipeline, and automated PSNR/SSIM evaluation.</p>
+    <h3 class="pc-title">Wan2.2 Video Generation and Super-Resolution</h3>
+    <p class="pc-excerpt">Multi-GPU text- and image-to-video serving on 8&times;H100 with FSDP and Ulysses sequence parallelism, plus a reimplemented ESRGAN upscaler: generate at 360p, deliver at 720p.</p>
     <div class="pc-metrics">
-      <span class="pc-metric"><strong>31.5 dB</strong> PSNR</span>
-      <span class="pc-metric"><strong>0.916</strong> SSIM</span>
+      <span class="pc-metric"><strong>284 s &rarr; ~100 s</strong> per 5 s 720p clip</span>
+      <span class="pc-metric"><strong>31&ndash;32 dB</strong> PSNR</span>
     </div>
     <div class="pc-tags">
-      <span>PyTorch</span><span>ESRGAN</span><span>FFmpeg</span><span>GPU</span>
+      <span>FSDP</span><span>Ulysses SP</span><span>NCCL</span><span>ESRGAN</span>
     </div>
   </a>
 
   <a href="{{ base_path }}/portfolio/portfolio-5/" class="portfolio-card pc-pink scroll-reveal" data-categories="industry applied">
     <div class="pc-header">
-      <span class="pc-number">05</span>
+      <span class="pc-number">03</span>
       <span class="pc-type">Industry</span>
     </div>
     <h3 class="pc-title">AI Virtual Try-On System</h3>
@@ -414,7 +381,7 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-6/" class="portfolio-card pc-rose scroll-reveal" data-categories="applied systems">
     <div class="pc-header">
-      <span class="pc-number">06</span>
+      <span class="pc-number">04</span>
       <span class="pc-type">Automation</span>
     </div>
     <h3 class="pc-title">Daily AI Trend Reporter</h3>
@@ -430,7 +397,7 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-7/" class="portfolio-card pc-amber scroll-reveal" data-categories="research systems">
     <div class="pc-header">
-      <span class="pc-number">07</span>
+      <span class="pc-number">05</span>
       <span class="pc-type">Research</span>
     </div>
     <h3 class="pc-title">Multi-LLM Consistency Browser</h3>
@@ -446,7 +413,7 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-8/" class="portfolio-card pc-green scroll-reveal" data-categories="applied systems">
     <div class="pc-header">
-      <span class="pc-number">08</span>
+      <span class="pc-number">06</span>
       <span class="pc-type">Full-Stack</span>
     </div>
     <h3 class="pc-title">LLM-Powered Recommendation Platform</h3>
@@ -462,7 +429,7 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-9/" class="portfolio-card pc-slate scroll-reveal" data-categories="applied">
     <div class="pc-header">
-      <span class="pc-number">09</span>
+      <span class="pc-number">07</span>
       <span class="pc-type">Applied ML</span>
     </div>
     <h3 class="pc-title">Privacy-Preserving Ed Discussion RAG</h3>
@@ -478,7 +445,7 @@ author_profile: true
 
   <a href="{{ base_path }}/portfolio/portfolio-10/" class="portfolio-card pc-teal scroll-reveal" data-categories="research applied">
     <div class="pc-header">
-      <span class="pc-number">10</span>
+      <span class="pc-number">08</span>
       <span class="pc-type">Research</span>
     </div>
     <h3 class="pc-title">Urban Microclimate Forecasting and Spatial Transfer</h3>

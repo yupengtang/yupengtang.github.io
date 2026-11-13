@@ -1,14 +1,13 @@
-{% if include.kind == 'agent' %}
+{% if include.kind == 'video' %}
 <div class="project-schematic schematic-agent" aria-hidden="true">
-  <span class="schematic-caption">An executable training loop</span>
-  <div class="schematic-nodes"><span>Agent</span><i>&rarr;</i><span>MCP tools</span><i>&rarr;</i><span>Kubernetes</span></div>
-  <div class="schematic-return"><span>&larr; Verifier &amp; reward</span></div>
+  <span class="schematic-caption">Generate low, upscale fast</span>
+  <div class="schematic-nodes"><span>8&times;H100</span><i>&rarr;</i><span>360p</span><i>&rarr;</i><span>ESRGAN 720p</span></div>
+  <div class="schematic-return"><span>284 s &rarr; ~100 s per clip</span></div>
 </div>
 {% else %}
-<div class="project-schematic schematic-inference" aria-hidden="true">
-  <span class="schematic-caption">Shared prefixes. Reused memory.</span>
-  <div class="cache-row"><span>Request A</span><b></b><b></b><b></b><i></i><i></i></div>
-  <div class="cache-row"><span>Request B</span><b></b><b></b><b></b><i></i><i></i></div>
-  <div class="cache-legend"><span></span> Shared KV prefix <em>Schematic</em></div>
+<div class="project-schematic schematic-agent" aria-hidden="true">
+  <span class="schematic-caption">Same model, faster serving</span>
+  <div class="schematic-nodes"><span>12B DiT</span><i>&rarr;</i><span>H100</span><i>&rarr;</i><span>Image</span></div>
+  <div class="schematic-return"><span>30 s &rarr; 1.6 s per image</span></div>
 </div>
 {% endif %}

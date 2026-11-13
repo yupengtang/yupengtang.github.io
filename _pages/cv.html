@@ -70,7 +70,7 @@ redirect_from:
           <div class="cv-location"><i class="fas fa-check-circle"></i> Accepted</div>
         </div>
         <div class="cv-item-content">
-          <div class="cv-title"><a href="https://yupengtang.github.io/when-expert-disagreement-hurts/assets/paper.pdf">When Expert Disagreement Hurts: Prestige and Selectivity in LLM Decision Revision</a></div>
+          <div class="cv-title"><a href="https://arxiv.org/abs/2611.16694">When Expert Disagreement Hurts: Prestige and Selectivity in LLM Decision Revision</a></div>
           <div class="cv-desc">
             <p><strong>Y. Tang</strong>, M. Lin.</p>
             <p>Conference on Neural Information Processing Systems (NeurIPS), 2026. Accepted.</p>
@@ -238,12 +238,12 @@ redirect_from:
           <div class="cv-org"><a href="https://www.gmicloud.ai/" target="_blank" rel="noopener">GMI Cloud</a></div>
           <div class="cv-desc">
             <ul>
-              <li>Shipped FLUX.1-schnell (12B DiT) to production on H100 and cut latency about 19× (about 30 s to 1.6 s per image) by removing per-request CPU-GPU offloading and keeping the text encoders, Transformer, and VAE resident on the GPU (37 GB peak).</li>
-              <li>Engineered the serving loop: queue-pull workers, a heartbeat thread with retry, toxicity and NSFW filters, and GCS upload with backoff; scaled it to multi-GPU with torchrun, with rank 0 broadcasting each request and seed over NCCL; Dockerized for Kubernetes.</li>
+              <li>Shipped FLUX.1-schnell (12B DiT) to production on H100, cutting latency about 19× (about 30 s to 1.6 s per 1360×768 image) by removing per-request CPU-GPU offloading and keeping all four models resident (37 GB peak).</li>
+              <li>Built Wan2.2 (A14B) text- and image-to-video serving as a multi-GPU torchrun worker on 8×H100 nodes, running FSDP and Ulysses sequence parallelism, with NCCL configured for InfiniBand GPUDirect and NVLink.</li>
+              <li>Engineered the serving contract shared by both models: queue-pull workers, rank 0 broadcasting each request and seed over NCCL, heartbeat with retry, toxicity and NSFW classifiers, and GCS upload with backoff; Dockerized for Kubernetes.</li>
+              <li>Cut a 5 s 720p clip from 284 s to about 100 s by generating at 360p and upscaling with a Real-ESRGAN FastAPI service (31–32 dB PSNR).</li>
               <li>Unblocked the launch by root-causing a model-initialization hang in the autoencoder loading path and fixing heartbeat and billing integration failures with the platform team.</li>
-              <li>Built a Real-ESRGAN video super-resolution service (FastAPI, PSNR/SSIM evaluation); generating Wan2.2 at 360p and upscaling to 720p cut a 5 s clip from 284 s to about 100 s at 31 to 32 dB PSNR.</li>
               <li>Built a batch virtual try-on pipeline on a diffusion try-on API: asynchronous submit and poll with tuned intervals, retries, and per-job fault isolation across model × garment sweeps.</li>
-              <li>Synthesized research papers and open-source model documentation to produce a technical review of multimodal generation systems, covering text-to-image, text-to-video, and super-resolution model families and summarizing key benchmark findings for internal evaluation.</li>
             </ul>
           </div>
         </div>

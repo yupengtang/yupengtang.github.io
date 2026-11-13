@@ -1,6 +1,6 @@
 ---
-title: "Video Super-Resolution Pipeline"
-excerpt: "ESRGAN-based 360p to 720p video upscaling system with avg PSNR 31.5 dB, SSIM 0.919, processing at 7.8 fps on GPU"
+title: "Wan2.2 Video Generation and Super-Resolution"
+excerpt: "Multi-GPU Wan2.2 (A14B) video generation on 8×H100 with FSDP and Ulysses sequence parallelism, plus a Real-ESRGAN upscaler that cut a 5 s 720p clip from 284 s to about 100 s"
 collection: portfolio
 ---
 
@@ -33,6 +33,36 @@ collection: portfolio
 .p2-table .avg-row td { background: #e0f2fe; font-weight: 700; }
 code { background: #e0f2fe; padding: 0.1rem 0.45rem; border-radius: 4px; font-size: 0.83em; color: #0369a1; }
 </style>
+
+<p>At <strong>GMI Cloud</strong> I served <strong>Wan2.2 (A14B)</strong>, a mixture-of-experts text- and image-to-video model, on 8&times;H100 nodes, and added a super-resolution stage so that 720p video no longer had to be generated at 720p.</p>
+
+<div class="p2-metric-grid">
+  <div class="p2-metric-card"><div class="p2-metric-num">8&times;H100</div><div class="p2-metric-label">Per Worker</div></div>
+  <div class="p2-metric-card"><div class="p2-metric-num">284&nbsp;&rarr;&nbsp;~100&nbsp;s</div><div class="p2-metric-label">5 s Clip at 720p</div></div>
+  <div class="p2-metric-card"><div class="p2-metric-num">31&ndash;32 dB</div><div class="p2-metric-label">PSNR vs. Native 720p</div></div>
+</div>
+
+<h2>Multi-GPU Generation with Wan2.2</h2>
+
+<div class="p2-flow">
+  <div class="p2-step">Queue pull (rank 0)</div><div class="p2-arrow">&rarr;</div>
+  <div class="p2-step">NCCL broadcast</div><div class="p2-arrow">&rarr;</div>
+  <div class="p2-step">FSDP + Ulysses on 8&times;H100</div><div class="p2-arrow">&rarr;</div>
+  <div class="p2-step">360p video</div><div class="p2-arrow">&rarr;</div>
+  <div class="p2-step">ESRGAN to 720p</div><div class="p2-arrow">&rarr;</div>
+  <div class="p2-step">GCS upload</div>
+</div>
+
+<ul>
+  <li><strong>Launch:</strong> one <code>torchrun</code> process per GPU. FSDP shards the diffusion transformer and the T5 text encoder, and Ulysses sequence parallelism (<code>ulysses_size 8</code>) splits attention over the video token sequence.</li>
+  <li><strong>Interconnect:</strong> NCCL configured for InfiniBand GPUDirect RDMA across nodes and NVLink within a node.</li>
+  <li><strong>Serving contract:</strong> rank 0 pulls each request from the queue and broadcasts the request and seed to every rank, so all GPUs work on the same video. A heartbeat thread with retry reports worker health, prompts pass toxicity and NSFW classifiers, and results upload to GCS with backoff. FLUX.1-schnell runs on the same contract.</li>
+  <li><strong>Generate low, upscale fast:</strong> generating a 5 s clip directly at 720p took 284 s. Generating at 360p and upscaling with the service below brought it to about 100 s, at 31 to 32 dB PSNR against native 720p output.</li>
+</ul>
+
+<hr/>
+
+<h2>The Super-Resolution Stage</h2>
 
 <p>As a Machine Learning Engineer intern at <strong>GMI Cloud</strong>, I built a <strong>video super-resolution pipeline</strong> that upscales AI-generated video from 360p to 720p using an ESRGAN (Enhanced Super-Resolution Generative Adversarial Network) model. The pipeline was designed as a <strong>post-processing stage</strong> for an internal text-to-video generation system. Rather than retraining the generative model at higher resolution (which would require significantly more compute and data), I inserted a dedicated upscaling step that takes low-resolution output and elevates it to a deliverable quality level.</p>
 
